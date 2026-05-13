@@ -1,0 +1,24 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Decision-Grade AI",
+  "description": "A framework for executives working with AI in 2026. Decision-grade analysis, Zero Trust verification, and what to demand from your AI vendors.",
+  "colors": {
+    "primary": "#1E293B",
+    "light": "#FFFFFF",
+    "dark": "#0F172A"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Framework",
+        "pages": ["introduction"]
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/DavidVALIS/decision-grade"
+    }
+  }
+}
