@@ -5,17 +5,37 @@ description: 'What the problem with AI in 2026 actually is, and why your current
 
 The verification deficit is the operational problem underneath AI-augmented analysis. It is not the same problem the executive AI conversation has been organized around for the past three years. The conversation has been about facts and hallucinations. The deficit is about reasoning. This page walks from the misframing most organizations are operating under to the diagnosis the rest of the framework is built on.
 
+<Note>
+  **Three minute read.** Most executive AI guidance is scoped to the wrong problem. Hallucinations are detectable. The real risk has moved one layer down: AI output that reads cleanly, fact-checks, and still reasons badly. Different problem, different fix. The historical parallel is pre-2008 credit ratings.
+</Note>
+
 ## The misframing
 
 Executive guidance about AI is scoped to facts and hallucinations. The standard questions are well-formed and familiar. Can the model make things up. How often. Can we catch it when it does. Should we add a fact-checker. Should we add human review. Should we disclose AI use to the people who read the output.
 
-These are reasonable questions. They produced reasonable answers. Models hallucinate less than they did in 2023. Citation-grounding has improved. Disclosure frameworks have been published by NIST, the European Union, and ISO. Most large organizations now have an AI use policy and a designated AI risk function. The 2024 toolkit works.
+These are reasonable questions. They produced reasonable answers. Models hallucinate less than they did in 2025. Citation-grounding has improved. Disclosure frameworks have been published by NIST, the European Union, and ISO. Most large organizations now have an AI use policy and a designated AI risk function. The 2025 toolkit works.
 
 It works on the problem it was scoped to. It does not work on the problem that has replaced it.
 
-The remaining risk is one layer down. AI output now reads cleanly, passes fact-checkers, and contains no obvious hallucinations. It still reasons badly. It still makes load-bearing causal claims with no mechanism specified. It still omits the boundary conditions that would let a careful reader weigh it. The structural failures are invisible to the checks that were designed for the 2023 problem.
+The remaining risk is one layer down. AI output now reads cleanly, passes fact-checkers, and contains no obvious hallucinations. It still reasons badly. It still makes load-bearing causal claims with no mechanism specified. It still omits the boundary conditions that would let a careful reader weigh it. The structural failures are invisible to the checks that were designed for the 2025 problem.
 
 The misframing is not anyone's fault. The remediation followed the visible failure mode. The visible failure mode changed. The remediation did not.
+
+<Warning>
+  **The kind of sentence that passes every 2025 control and still fails:**
+
+  *"Mid-market companies that deployed generative AI tools in 2025 saw 18% productivity gains in their go-to-market functions, with the largest effects concentrated among sales development reps and account executives."*
+
+  Every fact in the sentence checks out. AI deployment is happening. Mid-market is a real segment. Productivity gains have been reported. SDRs and AEs use these tools. A fact-checker passes it.
+
+  A reasoning-checker does not.
+
+  - **"18% productivity gains"** is phantom precision. Productivity measured how? Calls dialed, pipeline created, revenue closed? Each one is a different 18%.
+  - **"Mid-market companies that deployed"** is self-selection. The companies that deployed gen AI were also the companies investing in better tooling, better hires, and better playbooks. The deployment took credit for the whole improvement.
+  - **"Concentrated among SDRs and AEs"** is an observational claim with no comparison group, no baseline, no methodology, and no source.
+
+  The sentence didn't lie. It left out everything that would let you weigh it. That is the failure no fact-checker catches.
+</Warning>
 
 ## What the problem actually is
 
@@ -30,6 +50,18 @@ The result inside any organization that has adopted AI-assisted drafting: more p
 The verification deficit was always there. AI did not create it. AI revealed it. Before AI, the speed of human production limited the rate at which unverified claims could circulate. That speed limit was not a filter. It was a throttle. Any individual claim was not made more rigorous by the throttle. There were simply fewer claims in flight at any given moment. AI removed the throttle. The deficit became visible.
 
 The public-record analog is the [Open Science Collaboration replication study](https://doi.org/10.1126/science.aac4716), published in *Science* in 2015. One hundred peer-reviewed psychology findings, taken from established journals, by researchers with reputations to protect. The team attempted to replicate each finding. About thirty-six percent succeeded. The verification deficit was present in published academic science before AI was a category. Most fields have not run the test. Whether they would do better or worse is unknown.
+
+<Info>
+  **The verification deficit was always there.**
+
+  100 peer-reviewed psychology findings, taken from established journals, by named researchers with reputations to defend.
+
+  ~36 percent replicated.
+
+  Before AI was a category. Before models could draft. Before any of the production-cost collapse this framework describes.
+
+  AI did not create the deficit. AI made it harder to ignore.
+</Info>
 
 The 2026 executive question is not how to defend against hallucination. It is how to operate when polished output and sound reasoning have decoupled, and when the cost of being wrong about that decoupling has begun to compound with the volume of output an organization produces.
 
@@ -58,6 +90,16 @@ The conclusion is uncomfortable for the controls already in place. They were not
 This pattern is not new. The same architecture has played out before, at scale, with consequences.
 
 By 2006, Moody's was rating approximately thirty mortgage-related securities every working day. From 2000 through 2007, Moody's stamped triple-A on nearly forty-five thousand of them. The agency had scaled output using quantitative models that could assess mortgage-backed securities faster than any human team. The review processes had not scaled with the volume. The ratings looked rigorous. They came with detailed methodology documents. They carried the weight of a century-old brand. They were catastrophically wrong. (Financial Crisis Inquiry Commission, [*The Financial Crisis Inquiry Report*](https://www.govinfo.gov/content/pkg/GPO-FCIC/pdf/GPO-FCIC.pdf), 2011, Chapter 7.)
+
+<Info>
+  **The Moody's numbers, plainly:**
+
+  - **2006:** ~30 triple-A mortgage ratings issued. Every working day.
+  - **2000-2007:** ~45,000 mortgage-related securities rated triple-A in total.
+  - Many defaulted within months of issuance.
+
+  Cheap production. Unchanged review processes. Proxy-based trust. The AAA stamp was the proxy. With AI-generated analysis, polished prose is the proxy. Same architecture, different decade.
+</Info>
 
 The mechanism is proxy substitution. When direct verification is expensive, markets adopt proxies. A rating. A brand name. A well-turned sentence. Proxies work when production volume is low enough that the proxy correlates with the underlying quality. When volume surges and the correlation breaks, the market does not notice until a failure event forces the question.
 

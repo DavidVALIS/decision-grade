@@ -5,6 +5,10 @@ description: 'Zero Trust as the meta-principle for AI verification, and the thre
 
 The Frame names the problem. The Doctrine names the posture organizations should adopt in response. The posture is Zero Trust, applied to AI verification.
 
+<Note>
+  **Three minute read.** Zero Trust in security means never trust by default, always verify. Applied to AI verification, it means the customer should not have to trust the verifier. Every claim a verification system makes about its own behavior should be independently checkable. The doctrine has three layers: Independence (no AI verifies its own work), Doctrine (rules enforced architecturally), Accountability (decisions survive challenge).
+</Note>
+
 Zero Trust is a familiar concept in security architecture: never trust by default, always verify. Don't assume that being inside a perimeter makes you safe. Every access request authenticates regardless of origin. The principle was articulated in security work over the past decade as a response to a specific failure mode: perimeter-based trust models assume the inside is safe, and they fail catastrophically when the inside is breached. Security stopped relying on the perimeter and started requiring verification on every transaction.
 
 AI verification is at the same inflection. The default posture has been to trust the verifier. The verifier's brand, the verifier's methodology, the verifier's staff, the verifier's stated commitments. That posture has the same failure mode as perimeter trust in security: when the inside fails, the outside has no recourse. The fix is the same: don't trust the verifier, verify what the verifier says.
@@ -23,6 +27,18 @@ When a single AI family verifies its own output, the customer is back inside the
 
 The Zero Trust commitment is that no single model family verifies its own work. Verification requires independent agreement across model families with different training data, different objectives, and different failure modes. When multiple independent providers agree, that agreement carries information that no single provider can replicate. When they disagree, the disagreement is also informative, and the disagreement should be recorded.
 
+<Warning>
+  **What Independence rules out:**
+
+  - OpenAI checking OpenAI.
+  - Anthropic checking Anthropic.
+  - A single model issuing a verdict on its own output, even with a different prompt.
+  - A vendor claiming "we verify our work" when the verification runs on the same model family that generated the work.
+  - A "human in the loop" who only reviews what the same model has already approved.
+
+  Same family, same blind spots. A self-assessment is not a verdict.
+</Warning>
+
 The independence principle has implementation implications that are not in scope here. The principle is what matters at the doctrine level. The buyer's checklist later in this framework names the specific commitments to demand from any vendor claiming to verify AI output. The principle is the gate every commitment passes through: if a verification system relies on a single model family for its verdicts, it does not satisfy the Zero Trust posture.
 
 ## Doctrine: rules enforced architecturally
@@ -37,6 +53,17 @@ This principle is what distinguishes a serious verification posture from a marke
 
 The principle generalizes beyond evidence gates. Any rule that the verification system claims to enforce should be enforced architecturally. Refusals that the system claims to log should be logged automatically, not on operator discretion. Rubric versions that the system claims to apply should be applied by hash-binding, not by operator selection. Doctrine that lives only in documentation is not doctrine. Doctrine that the architecture enforces is.
 
+<Warning>
+  **What architectural enforcement rules out:**
+
+  - A style guide that says reviewers must check causal claims, with no mechanism that prevents a deck from shipping when the check is skipped.
+  - A vendor saying "we require evidence for every citation" when the evidence requirement can be turned off for a particular client.
+  - A monthly review cadence that happens when someone remembers, on a calendar that someone controls.
+  - A doctrine that exists in a PDF on a SharePoint somewhere.
+
+  If the only thing standing between the rule and a violation is operator memory or operator discretion, the rule is aspirational.
+</Warning>
+
 ## Accountability: every decision survives independent challenge
 
 The Accountability principle is Zero Trust applied to the audit layer.
@@ -49,25 +76,66 @@ The architectural consequence is that any verification system worth taking serio
 
 The accountability principle extends to internal organizational use. A C-suite reader of an analytical output should not have to trust the analyst, the desk lead, or the chief of staff to forward the right version. The reader should be able to verify the cryptographic match between the document on screen and the certificate attached to it. The trust model is the hash, not the messenger.
 
+<Warning>
+  **What Accountability rules out:**
+
+  - An audit log that the verifier hosts and could rewrite without anyone noticing.
+  - A "trust us, our methodology is sound" claim with no third party that can independently check.
+  - A certificate that says "approved" without anchoring the approval to the specific inputs, the specific rules, and the specific reviewers.
+  - A version of a document on a CEO's screen that the desk team can quietly substitute for a different version.
+
+  If the integrity of the record depends on the verifier behaving well, the integrity of the record is not verifiable.
+</Warning>
+
 ## What the three principles produce, taken together
 
-The three principles produce a set of architectural commitments that any serious verification system carries. The list below is general, not specific to any vendor's implementation. Use it as the template for the buyer's checklist on the next page.
+The three principles produce a set of architectural commitments that any serious verification system carries. The list below is general, not specific to any vendor's implementation. Each commitment is a consequence of the Zero Trust posture. None of them is a feature. Removing any of them is a violation of the constitutional posture, not a product trade-off.
 
-**Independent verification across model families.** No single AI family verifies its own output. Verdicts require agreement across independent providers, with disagreement recorded.
+Click to expand each commitment.
 
-**Architectural enforcement of doctrine.** Rules that the system claims to enforce are enforced by deterministic gates, not operator discretion. The architecture is the doctrine.
+<AccordionGroup>
+  <Accordion title="Independent verification across model families">
+    No single AI family verifies its own output. Verdicts require agreement across independent providers with different training data, different objectives, and different failure modes. Disagreement is informative and is recorded, not hidden.
 
-**Cryptographic anchoring of decisions.** Every verification decision is committed to a tamper-evident record. The integrity of the record is verifiable by parties outside the verifier's control.
+    **What to look for:** A vendor that names which model families participate in verification, what happens when they disagree, and how dissent is logged.
+  </Accordion>
 
-**Public commitments and refusal logs.** Refusals are logged automatically. The log is regularly reviewed and queryable. Over time, the refusal pattern becomes a discriminating signal that anyone can examine.
+  <Accordion title="Architectural enforcement of doctrine">
+    Rules that the system claims to enforce are enforced by deterministic gates, not operator discretion. If the system requires evidence before a citation reaches the analytical layer, the gate cannot be turned off, even by the vendor, even when commercially convenient.
 
-**Rubric-version transparency.** The rules used to grade outputs are public-hash-committed for each customer, so customers can verify they are being graded against the version they were sold.
+    **What to look for:** A vendor that can demonstrate the rule fires deterministically, not on policy. "We require X" is not a doctrine. "X cannot ship without Y, here is the code path" is.
+  </Accordion>
 
-**Source-document hash binding.** The cryptographic match between the document an end-reader sees and the certificate that attests to its provenance is verifiable without going through the verifier.
+  <Accordion title="Cryptographic anchoring of decisions">
+    Every verification decision is committed to a tamper-evident record. The integrity of the record is verifiable by parties outside the verifier's control. Standard implementation is a public chain (blockchain, transparency log, or equivalent infrastructure) that the verifier does not control and cannot quietly alter.
 
-**Doctrine survives institutional change.** Certificates issued before any future acquisition, merger, or change of control remain verifiable against the public chain. New certificates issued after a change of control carry a different signature visible in the chain. Customers can detect a regime change without the verifier having to disclose one.
+    **What to look for:** A vendor that can show you the public anchor for any given decision, and that anyone, including you, can independently verify the anchor without going through the vendor.
+  </Accordion>
 
-Each commitment above is a consequence of the Zero Trust posture. None of them is a feature. Removing any of them is not a product trade-off. It is a violation of the constitutional posture.
+  <Accordion title="Public commitments and refusal logs">
+    Refusals are logged automatically, not at operator discretion. The log is regularly reviewed and queryable. Over time, the refusal pattern becomes a discriminating signal that anyone can examine, and that signal cannot be quietly curated by the vendor.
+
+    **What to look for:** A vendor that publishes the refusal log structure and review cadence, and that lets you audit specific refusals against the published policy.
+  </Accordion>
+
+  <Accordion title="Rubric-version transparency">
+    The rules used to grade outputs are public-hash-committed for each customer. Customers can verify they are being graded against the rubric version they were sold, not a quietly updated one.
+
+    **What to look for:** A vendor that publishes a public hash of the active rubric version per customer, and a change log showing every rubric update with the date and the reason.
+  </Accordion>
+
+  <Accordion title="Source-document hash binding">
+    The cryptographic match between the document an end-reader sees and the certificate that attests to its provenance is verifiable without going through the verifier. A C-suite reader does not have to trust the analyst, the desk lead, or the chief of staff to forward the right version.
+
+    **What to look for:** A vendor whose certificate format includes a hash of the source document, and where the verification of that hash can be performed independently.
+  </Accordion>
+
+  <Accordion title="Doctrine survives institutional change">
+    Certificates issued before any future acquisition, merger, or change of control remain verifiable against the public chain. New certificates issued after a change of control carry a different signature visible in the chain. Customers can detect a regime change without the verifier having to disclose one.
+
+    **What to look for:** A vendor whose public chain entries include a stable issuer identity that cannot be silently replaced. If the issuer key changes, the change is visible in the public record.
+  </Accordion>
+</AccordionGroup>
 
 ## Why the posture is more durable than methodology
 
