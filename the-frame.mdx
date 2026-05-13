@@ -1,0 +1,78 @@
+---
+title: 'The Frame'
+description: 'What the problem with AI in 2026 actually is, and why your current controls do not catch it.'
+---
+
+The verification deficit is the operational problem underneath AI-augmented analysis. It is not the same problem the executive AI conversation has been organized around for the past three years. The conversation has been about facts and hallucinations. The deficit is about reasoning. This page walks from the misframing most organizations are operating under to the diagnosis the rest of the framework is built on.
+
+## The misframing
+
+Executive guidance about AI is scoped to facts and hallucinations. The standard questions are well-formed and familiar. Can the model make things up. How often. Can we catch it when it does. Should we add a fact-checker. Should we add human review. Should we disclose AI use to the people who read the output.
+
+These are reasonable questions. They produced reasonable answers. Models hallucinate less than they did in 2023. Citation-grounding has improved. Disclosure frameworks have been published by NIST, the European Union, and ISO. Most large organizations now have an AI use policy and a designated AI risk function. The 2024 toolkit works.
+
+It works on the problem it was scoped to. It does not work on the problem that has replaced it.
+
+The remaining risk is one layer down. AI output now reads cleanly, passes fact-checkers, and contains no obvious hallucinations. It still reasons badly. It still makes load-bearing causal claims with no mechanism specified. It still omits the boundary conditions that would let a careful reader weigh it. The structural failures are invisible to the checks that were designed for the 2023 problem.
+
+The misframing is not anyone's fault. The remediation followed the visible failure mode. The visible failure mode changed. The remediation did not.
+
+## What the problem actually is
+
+The cost of producing polished-looking analytical output has fallen by a factor of one hundred to one thousand against human equivalents. The cost of verifying that the output reasons correctly has not moved. The gap between those two cost curves is the operational risk.
+
+The production-cost number is documented in public pricing. The cheapest mainstream routes from major model providers price one thousand generated words well below one cent. A mid-career analyst in a consulting firm costs somewhere between five and fifteen dollars for the equivalent volume of polished prose. The compression is between one hundred times and one thousand times, depending on the model tier and how human editing is accounted for.
+
+What hasn't fallen is the cost of verifying that the output reasons correctly. Verification requires domain expertise to audit causal claims, time to trace each assertion to its source, and skepticism trained to spot what is missing rather than what is present. None of those scale at the cost curve of generation. The production layer has been industrialized. The verification layer has not.
+
+The result inside any organization that has adopted AI-assisted drafting: more polished analytical artifacts are produced. Review capacity has stayed flat. The number of unverified claims circulating internally has grown by an order of magnitude. The probability that any specific deck contains an unverified load-bearing claim has not fallen with the cost. It has risen with the volume.
+
+The verification deficit was always there. AI did not create it. AI revealed it. Before AI, the speed of human production limited the rate at which unverified claims could circulate. That speed limit was not a filter. It was a throttle. Any individual claim was not made more rigorous by the throttle. There were simply fewer claims in flight at any given moment. AI removed the throttle. The deficit became visible.
+
+The public-record analog is the [Open Science Collaboration replication study](https://doi.org/10.1126/science.aac4716), published in *Science* in 2015. One hundred peer-reviewed psychology findings, taken from established journals, by researchers with reputations to protect. The team attempted to replicate each finding. About thirty-six percent succeeded. The verification deficit was present in published academic science before AI was a category. Most fields have not run the test. Whether they would do better or worse is unknown.
+
+The 2026 executive question is not how to defend against hallucination. It is how to operate when polished output and sound reasoning have decoupled, and when the cost of being wrong about that decoupling has begun to compound with the volume of output an organization produces.
+
+## Why your existing controls do not catch it
+
+The controls that organizations have built up over decades formalize prose, presentation, and process qualities. They do not formalize structural-reasoning checks. The asymmetry is rational, not accidental, and it explains why disclosure and review regimes do not close the gap.
+
+A representative sample of public editorial and review frameworks (Microsoft Writing Style Guide, Google Developer Documentation Style Guide, the Committee on Publication Ethics peer-reviewer guidelines, the NIH Data Management and Sharing Policy, the PLOS Data Availability Policy) formalizes some combination of clarity, citation format, registration, and data sharing. None formalizes whether causal claims are supported, whether assumptions are stated, whether boundary conditions are named, or whether conclusions are testable.
+
+The reason is mechanical. A reviewer can check whether a sentence reads well in roughly four seconds. A reviewer can check whether the causal claim it makes is actually supported in roughly four hours, plus domain expertise, plus access to source data. When volume rises and staffing stays flat, the slow checks are the first to go. Prose checks survive. Structural checks atrophy.
+
+The incentive system reinforces the asymmetry. Most analytical roles are not scored on whether the analyst was right. Forecasting tournaments score accuracy directly. Some intelligence functions institutionalize accuracy review through standards such as [Intelligence Community Directive 203](https://www.dni.gov/files/documents/ICD/ICD-203.pdf). Most consulting, strategy, policy, and corporate research functions score speed, stakeholder satisfaction, and output volume instead.
+
+When analysts are publicly named and legally exposed, the rules themselves push toward hedged language. [FINRA Rule 2241](https://www.finra.org/rules-guidance/rulebooks/finra-rules/2241), which governs U.S. equity research analysts, is a representative example. Hedged language survives legal review, keeps the client comfortable, and cannot be demonstrated to be wrong. The system selects for prose that sounds authoritative while committing to nothing testable.
+
+The loop reinforces itself. Performance reviews reward confidence, so analysts avoid falsifiable claims. Analysts who hedge get rewarded. Analysts who commit to falsifiable claims do not last. Review systems therefore never encounter falsifiable claims to check. Verification capacity atrophies further.
+
+Disclosure frameworks address a different problem. The [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework), the [EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj), and [ISO/IEC 42001](https://www.iso.org/standard/81230.html) each specify transparency, human oversight, and ongoing monitoring requirements for AI systems. They check what tool was used. They do not check whether the reasoning is sound. The completed disclosure form is what makes everyone feel comfortable, without anyone checking the underlying work.
+
+Even the most disciplined formalized verification systems are partial. The U.S. intelligence community's Structured Analytic Techniques, codified in the [CIA Tradecraft Primer](https://www.cia.gov/resources/csi/static/Tradecraft-Primer-apr09.pdf) and ICD 203, force analysts to surface assumptions through explicit protocols. Recent scholarship questions whether these techniques reliably eliminate reasoning errors in field conditions. If the most rigorous formalized verification system in the world is partial, a checkbox disclosure regime cannot close the structural gap.
+
+The conclusion is uncomfortable for the controls already in place. They were not designed to catch the failure mode that now dominates. Adding more disclosure on top of them does not address the gap. It addresses adjacent gaps. The gap that matters requires a different category of control: proof artifacts that make the reasoning auditable, not just the inputs traceable.
+
+## The historical parallel
+
+This pattern is not new. The same architecture has played out before, at scale, with consequences.
+
+By 2006, Moody's was rating approximately thirty mortgage-related securities every working day. From 2000 through 2007, Moody's stamped triple-A on nearly forty-five thousand of them. The agency had scaled output using quantitative models that could assess mortgage-backed securities faster than any human team. The review processes had not scaled with the volume. The ratings looked rigorous. They came with detailed methodology documents. They carried the weight of a century-old brand. They were catastrophically wrong. (Financial Crisis Inquiry Commission, [*The Financial Crisis Inquiry Report*](https://www.govinfo.gov/content/pkg/GPO-FCIC/pdf/GPO-FCIC.pdf), 2011, Chapter 7.)
+
+The mechanism is proxy substitution. When direct verification is expensive, markets adopt proxies. A rating. A brand name. A well-turned sentence. Proxies work when production volume is low enough that the proxy correlates with the underlying quality. When volume surges and the correlation breaks, the market does not notice until a failure event forces the question.
+
+Credit ratings before 2008 and AI-generated analysis now share the same architecture. Cheap production. Unchanged review processes. Proxy-based trust. The AAA rating was the proxy. With AI-augmented analytical content, polished output is the proxy.
+
+The analogy has limits. Credit ratings carried regulatory force and directly triggered capital requirements. A consulting deck does not trigger margin calls. The structural mechanism, however, is identical: proxy-based trust substitutes for verification, and the substitution is invisible until it fails.
+
+The fix in adjacent domains has been consistent. When failure becomes visible enough, buyers demand proof artifacts. After the 2008 financial crisis, U.S. banking regulators stopped accepting model-brand assurances at face value. The [Supervisory Guidance on Model Risk Management (SR 11-7)](https://www.federalreserve.gov/boarddocs/srletters/2011/sr1107.htm), issued in 2011 and updated by SR 26-2 in 2026, required institutions to validate every material model assumption. Cybersecurity vendor assessments shifted from self-reported compliance to penetration-test evidence and SOC 2 reports when breaches created board-level liability. The 2026 SOC 2 criteria emphasize continuous risk assessment and earlier security artifacts in procurement.
+
+The pattern: when the cost of being wrong exceeds the cost of demanding proof, buyers force the correction. The correction reprices the supply chain around the one thing that has always been scarce. Knowing which claims hold up.
+
+The framework that follows is built on that pattern. The rest of this site walks through what proof artifacts look like for analytical content, what posture executives should adopt toward AI verification, and what to demand from the systems and vendors they depend on.
+
+## Where this goes next
+
+The Frame names the problem. The next layer is the posture. The page on **The Doctrine** introduces Zero Trust as the meta-principle that organizes the architectural response. Read it next if you want the conceptual spine.
+
+If you want the operational layer immediately, jump to **The Buyer's Checklist**, which translates the doctrine into specific questions to ask AI vendors and specific commitments to demand.
