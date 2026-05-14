@@ -1,0 +1,44 @@
+name: Build llms-full.txt
+
+# Regenerates llms-full.txt whenever a page source (.mdx) changes,
+# the build script changes, or this workflow changes.
+# The result is committed back to main with [skip ci] to prevent loops.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.mdx'
+      - 'scripts/build-llms-full.sh'
+      - '.github/workflows/build-llms-full.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # We need to be able to push back to main from this job.
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build llms-full.txt
+        run: |
+          chmod +x scripts/build-llms-full.sh
+          ./scripts/build-llms-full.sh
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add llms-full.txt
+          if git diff --staged --quiet; then
+            echo "No changes to llms-full.txt"
+          else
+            git commit -m "chore: regenerate llms-full.txt [skip ci]"
+            git push
+          fi
