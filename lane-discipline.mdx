@@ -11,6 +11,24 @@ If you take only one operational practice from this framework, take this one. La
   **Three minute read.** Verification is expensive. Demanding it on every output is absurd. The fix is segmentation: a decision-grade lane where buyers pay for verification, and a volume-grade lane where speed dominates. The failure mode is content sliding between lanes without re-verification. The single most expensive mistake: a volume-grade memo becoming the basis for a board decision.
 </Note>
 
+## How the two lanes operate
+
+```mermaid
+flowchart TD
+    A[Analytical output<br/>created] --> B{Cost of being<br/>wrong is high?}
+    B -->|Yes| C[Decision-grade lane]
+    B -->|No| D[Volume-grade lane]
+    C --> E[Verification<br/>process]
+    E --> F[Decision-grade<br/>certified output]
+    D --> G[Ship as-is,<br/>clearly labeled]
+    F --> H[Suitable for board,<br/>capital, regulatory use]
+    G --> I[Suitable for internal,<br/>reversible use]
+    style C fill:#14532D,color:#fff
+    style D fill:#1E293B,color:#fff
+    style F fill:#14532D,color:#fff
+    style G fill:#1E293B,color:#fff
+```
+
 ## Why two lanes
 
 Verification is genuinely expensive and slow. That is precisely why it was the first thing cut under throughput pressure (see [The Frame](/the-frame)), and it is why demanding it everywhere would be absurd. Most analytical work does not need to be audited. Most internal synthesis is reversible, exploratory, or context-setting. Forcing verification on those outputs would collapse cycle time without producing proportional value.
@@ -30,7 +48,7 @@ The market segments. A decision-grade lane, where buyers pay for verification an
 The decision criterion is the cost of being wrong, not the importance of the topic.
 
 <CardGroup cols={2}>
-  <Card title="Decision-grade lane">
+  <Card title="Decision-grade lane" icon="shield">
     **Cost of being wrong is high.** Capital allocation, M&A targets, regulatory submissions, board memos, crisis response briefs, public-facing analytical claims, anything where being wrong moves money, lives, policy, or reputation.
 
     **Audience includes external parties.** Regulators, board, investors, partners, courts.
@@ -40,7 +58,7 @@ The decision criterion is the cost of being wrong, not the importance of the top
     **Reasoning will be challenged.** Litigation, audit, board pushback, regulatory review, journalist inquiry.
   </Card>
 
-  <Card title="Volume-grade lane">
+  <Card title="Volume-grade lane" icon="bolt">
     **Cost of being wrong is low.** Internal context-setting, first-draft synthesis, meeting prep, learning material, brainstorming output, weekly market summaries.
 
     **Audience is internal.** Your team, your function, an internal working group.
@@ -55,12 +73,28 @@ Most output produced inside an organization is volume-grade. That is fine. The e
 
 ## How to classify at point of production
 
-Lane assignment has to happen when content is created, not after. If classification happens after the fact, the classifier is usually the same person who would benefit from the content being treated as decision-grade (the author, the desk lead, the consultant trying to land the engagement). That is a corrupting incentive.
+Lane assignment has to happen when content is created, not after. If classification happens after the fact, the classifier is usually the same person who would benefit from the content being treated as decision-grade. That is a corrupting incentive.
+
+```mermaid
+flowchart TD
+    A[Author creates output] --> B{Could cost of<br/>being wrong exceed<br/>cost of verification?}
+    B -->|Yes| C[Tag: decision-grade]
+    B -->|No| D[Tag: volume-grade]
+    B -->|Unsure| E[Tag: volume-grade]
+    E -.->|Re-verify before<br/>any decision-grade use| C
+    C --> F[Routed to<br/>verification process]
+    D --> G[Routed to<br/>volume workflow]
+    style C fill:#14532D,color:#fff
+    style D fill:#1E293B,color:#fff
+    style E fill:#7C2D12,color:#fff
+```
 
 The practical rule: every analytical artifact carries a lane tag at the moment of creation. The tag is metadata, not decoration. It travels with the file, the deck, the memo, the briefing note.
 
 <Tip>
-  **The diagnostic question for the author:** Could the cost of being wrong about this output exceed the cost of having it verified?
+  **The diagnostic question for the author:**
+
+  > Could the cost of being wrong about this output exceed the cost of having it verified?
 
   If yes, decision-grade. If no, volume-grade. If unsure, treat as volume-grade and require re-verification before any decision-grade use.
 </Tip>
@@ -91,63 +125,91 @@ Three rules govern movement between lanes.
   </Step>
 </Steps>
 
-## Failure modes
+## Four ways lane discipline fails
 
-Four ways lane discipline breaks. Each is worth flagging explicitly because the failure is invisible in the moment and only obvious in the post-mortem.
+Each failure is invisible in the moment and only obvious in the post-mortem. Knowing the failure modes in advance is most of the defense.
 
-<Warning>
-  **The unlabeled slip.** A volume-grade synthesis is passed up the chain, gets re-summarized, gets quoted, and arrives in a decision-grade context with no label and no obvious provenance. The decision-makers treat it as decision-grade because it looks like everything else they read.
+<CardGroup cols={2}>
+  <Card title="1. The unlabeled slip" icon="triangle-exclamation">
+    Volume-grade synthesis passed up the chain arrives in a decision-grade context with no label. Decision-makers treat it as decision-grade because it looks like everything else they read.
 
-  **The fix:** Labels are mandatory at point of creation. Unlabeled content is treated as volume-grade by default. Every quote inherits the source's label.
-</Warning>
+    **Fix:** Labels mandatory at point of creation. Unlabeled content defaults to volume-grade. Quotes inherit source labels.
+  </Card>
 
-<Warning>
-  **The theater inversion.** Everything gets labeled "decision-grade" because labeling something volume-grade looks like the author is not taking the work seriously. The lane distinction collapses because all content is in the same lane.
+  <Card title="2. The theater inversion" icon="mask">
+    Everything gets labeled "decision-grade" because labeling something volume-grade looks like the author is not taking the work seriously. The lane distinction collapses.
 
-  **The fix:** Decision-grade carries a verification cost. If verification is not actually being performed, the label is theater. Lane discipline requires that the label corresponds to a real process difference.
-</Warning>
+    **Fix:** Decision-grade must carry a real verification cost. If verification is not happening, the label is theater. The label must correspond to a process difference.
+  </Card>
 
-<Warning>
-  **The verification lock-in.** Decision-grade verification becomes so expensive or so slow that nothing makes it into the decision-grade lane. The organization defaults to using volume-grade content for decision-grade purposes because the alternative is missing the deadline.
+  <Card title="3. The verification lock-in" icon="clock">
+    Decision-grade verification becomes so slow that nothing makes it through. The organization defaults to volume-grade for decision-grade purposes because the alternative is missing the deadline.
 
-  **The fix:** Verification needs to be fast enough for real-world cycle times. A verification system that adds three weeks to every board memo is not a verification system. It is a bottleneck.
-</Warning>
+    **Fix:** Verification has to fit real cycle times. A verification system that adds three weeks to every board memo is a bottleneck, not a verifier.
+  </Card>
 
-<Warning>
-  **The attention inversion.** Volume-grade content gets more leadership attention than decision-grade content because there is more of it and it lands on more screens. The decision-grade lane becomes vestigial because no one reads the slow, expensive, verified version when the fast unverified version is already in their inbox.
+  <Card title="4. The attention inversion" icon="eye">
+    Volume-grade content gets more leadership attention than decision-grade because there is more of it. The decision-grade lane becomes vestigial.
 
-  **The fix:** Decision-grade outputs need clear routing to the decision-makers who need them. Volume-grade outputs need clear routing away from those same decision-makers unless explicitly requested.
-</Warning>
+    **Fix:** Decision-grade outputs need clear routing to the decision-makers. Volume-grade outputs need clear routing away from them unless explicitly requested.
+  </Card>
+</CardGroup>
 
 ## What lane discipline looks like in practice
 
 The simplest implementation is a metadata tag, a routing rule, and a periodic audit.
 
-The tag is a piece of metadata attached to every analytical artifact at point of creation. It can be a file naming convention, a header field in the document, a tag in a content management system, or a watermark. The form does not matter as long as it is mandatory, visible, and travels with the content.
-
-The routing rule is enforced architecturally where possible. Decision-grade outputs go through the verification process before they can leave the analytical layer. Volume-grade outputs do not. Software that routes content between systems should respect the lane (decision-grade goes one place, volume-grade another).
-
-The periodic audit catches slippage. Sample recent board decisions, capital allocation memos, regulatory submissions, public statements. Trace the analytical content underneath each one. What fraction of the supporting content was decision-grade at the moment of decision? The fraction tells you whether lane discipline is working.
+<Steps>
+  <Step title="Tag every analytical artifact at creation">
+    File naming convention, document header field, content management system tag, or watermark. Form does not matter as long as it is mandatory, visible, and travels with the content.
+  </Step>
+  <Step title="Enforce routing by tag">
+    Decision-grade outputs go through verification before they can leave the analytical layer. Volume-grade outputs do not. Software that routes content between systems respects the lane.
+  </Step>
+  <Step title="Audit periodically for slippage">
+    Sample recent board decisions, capital allocation memos, regulatory submissions, public statements. Trace the analytical content underneath. What fraction was decision-grade at the moment of decision?
+  </Step>
+</Steps>
 
 <Tip>
-  **The single board-level metric:** Of the analytical content that informed your last ten board-level decisions, what percentage carried a decision-grade label at the moment of decision?
+  **The single board-level metric:**
 
-  Below 50 percent: lane discipline is failing.
-  Between 50 and 80 percent: lane discipline is partial.
-  Above 80 percent: lane discipline is working, audit periodically.
-  Exactly 100 percent: you are either doing this exceptionally well or theater is winning. Audit the verification, not the labels.
+  > Of the analytical content that informed your last ten board-level decisions, what percentage carried a decision-grade label at the moment of decision?
+
+  | Score | Interpretation |
+  |---|---|
+  | Below 50% | Lane discipline is failing. Slippage is the norm. |
+  | 50% to 80% | Lane discipline is partial. Audit the gaps. |
+  | Above 80% | Lane discipline is working. Audit periodically. |
+  | Exactly 100% | Either exceptional or theater is winning. Audit the verification, not the labels. |
 </Tip>
 
 ## What this is not
 
-Lane discipline is not a way to suppress AI use inside an organization. The volume-grade lane is where most AI-augmented analysis appropriately lives. Forcing decision-grade verification onto everything is a different failure mode (verification lock-in, see above) with the same downstream effect: nothing gets verified because verification stops being possible.
+Three inoculations against common misreadings.
 
-Lane discipline is not a substitute for The Buyer's Checklist. The two reinforce each other. The Buyer's Checklist tells you what to demand from vendors so the decision-grade verification you buy is real. Lane discipline tells you how to use that verification well inside your organization.
-
-Lane discipline is not a permanent state. The classification of what counts as decision-grade in your organization will change as AI capabilities, regulatory pressure, and competitive context shift. Revisit the lane criteria annually. What was acceptable as volume-grade in 2025 may not be acceptable as volume-grade in 2027.
+<CardGroup cols={3}>
+  <Card title="Not AI suppression" icon="robot">
+    The volume-grade lane is where most AI-augmented analysis appropriately lives. Forcing decision-grade verification onto everything is a different failure mode with the same downstream effect.
+  </Card>
+  <Card title="Not a replacement for the Buyer's Checklist" icon="handshake">
+    The two reinforce each other. The Buyer's Checklist makes the verification you buy real. Lane Discipline makes the verification you bought useful.
+  </Card>
+  <Card title="Not a permanent state" icon="arrows-rotate">
+    What counts as decision-grade in 2025 may not in 2027. Revisit the lane criteria annually as AI capabilities, regulation, and competitive context shift.
+  </Card>
+</CardGroup>
 
 ## Where this goes next
 
-Lane Discipline tells you how to operate inside your organization. The **2026 Watchlist** tells you what to track over the next 18 months: the regulatory cliffs, the procurement signals, the failure events that will tell you whether the framework holds or whether the timeline has shifted.
-
-If you want to revisit the architectural commitments that determine what decision-grade verification actually means, return to [The Doctrine](/the-doctrine) or [The Buyer's Checklist](/buyers-checklist).
+<CardGroup cols={3}>
+  <Card title="2026 Watchlist" icon="calendar" href="/watchlist">
+    Dated signals over the next 18 months that will tell you whether the framework holds.
+  </Card>
+  <Card title="The Doctrine" icon="shield" href="/the-doctrine">
+    The architectural commitments that make decision-grade verification real.
+  </Card>
+  <Card title="The Buyer's Checklist" icon="list-check" href="/buyers-checklist">
+    The seven procurement questions that determine what your decision-grade lane is buying.
+  </Card>
+</CardGroup>
