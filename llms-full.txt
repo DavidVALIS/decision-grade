@@ -331,7 +331,7 @@ The framework that follows on the rest of this site is built on that pattern. Th
 The Frame names the problem. The Doctrine names the posture organizations should adopt in response. The posture is Zero Trust, applied to AI verification.
 
 <Note>
-  **Three minute read.** Zero Trust in security means never trust by default, always verify. Applied to AI verification, it means the customer should not have to trust the verifier. Every claim a verification system makes about its own behavior should be independently checkable. The doctrine has three layers: Independence (no AI verifies its own work), Doctrine (rules enforced architecturally), Accountability (decisions survive challenge).
+  **In short:** Zero Trust in security means never trust by default, always verify. Applied to AI verification, it means the customer should not have to trust the verifier. Every claim a verification system makes about its own behavior should be independently checkable. The doctrine has three layers: Independence (no AI verifies its own work), Doctrine (rules enforced architecturally), Accountability (decisions survive challenge).
 </Note>
 
 ## The security parallel that maps directly onto AI
@@ -341,21 +341,15 @@ Zero Trust is a familiar concept in security architecture. It was articulated ov
 AI verification is at the same inflection. The same shift is required.
 
 | Domain | Default trust model | Failure mode | Fix |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Network security (pre-2015)** | Perimeter trust ("inside is safe") | Breach inside the perimeter = total loss | Zero Trust: verify every transaction |
 | **AI verification (now)** | Trust the verifier ("their brand is sound") | Verifier fails = silent corruption of decisions | Zero Trust: verify the verifier's math |
 
-The constitutional statement is short.
+**The customer should not have to trust the verifier.**
 
-<Tip>
-  **The customer should not have to trust the verifier.**
-
-  Every claim the verifier makes about its own behavior should be independently verifiable, by the customer, by a third party, or by a regulator.
-
-  The reputation of the founder, the team, the company, the doctrine, and the methodology are not inside the trust model.
-
-  The trust model is the math, the cryptographic anchors, the public commitments, and the records that the verifier cannot quietly alter.
-</Tip>
+1. Every claim the verifier makes about its own behavior should be independently verifiable, by the customer, by a third party, or by a regulator.
+2. The reputation of the founder, the team, the company, the doctrine, and the methodology are not inside the trust model.
+3. The trust model is the math, the cryptographic anchors, the public commitments, and the records that the verifier cannot quietly alter.
 
 Once that statement is articulated, every architectural choice that follows stops being a feature decision and starts being a consequence. The doctrine has three layers, each applying Zero Trust to a different part of the verification stack.
 
@@ -399,11 +393,9 @@ The Zero Trust commitment: verification requires independent agreement across mo
 <Warning>
   **What Independence rules out:**
 
-  - OpenAI checking OpenAI.
-  - Anthropic checking Anthropic.
-  - A single model issuing a verdict on its own output, even with a different prompt.
-  - A vendor claiming "we verify our work" when the verification runs on the same model family that generated the work.
-  - A "human in the loop" who only reviews what the same model has already approved.
+  - A single model issuing a verdict on its own output, even with a different prompt
+  - A vendor claiming "we verify our work" 
+  - A "human in the loop" who only reviews what the same model has already approved
 
   Same family, same blind spots. A self-assessment is not a verdict.
 </Warning>
@@ -412,8 +404,8 @@ The Zero Trust commitment: verification requires independent agreement across mo
 
 The second layer is about where the rules live. The Zero Trust commitment: rules are enforced by the architecture, not by operator preference.
 
-| | Anti-pattern | Zero Trust pattern |
-|---|---|---|
+|  | Anti-pattern | Zero Trust pattern |
+| --- | --- | --- |
 | **Where the rule lives** | In a style guide, runbook, or PDF | In code that executes deterministically |
 | **What enforces it** | Reviewer memory, policy, deadline pressure | A gate that cannot be bypassed |
 | **What happens when convenient to skip** | The rule is skipped | The rule fires anyway |
@@ -427,10 +419,10 @@ The Zero Trust commitment generalizes beyond evidence gates. Any rule the verifi
 <Warning>
   **What architectural enforcement rules out:**
 
-  - A style guide that says reviewers must check causal claims, with no mechanism that prevents a deck from shipping when the check is skipped.
-  - A vendor saying "we require evidence for every citation" when the evidence requirement can be turned off for a particular client.
-  - A monthly review cadence that happens when someone remembers, on a calendar that someone controls.
-  - A doctrine that exists in a PDF on a SharePoint somewhere.
+  - A style guide that says reviewers must check causal claims, with no mechanism that prevents a deck from shipping when the check is skipped
+  - A vendor saying "we require evidence for every citation" when the evidence requirement can be turned off for a particular client
+  - A monthly review cadence that happens when someone remembers, on a calendar that someone controls
+  - A doctrine that exists in a PDF on a SharePoint somewhere
 
   If the only thing standing between the rule and a violation is operator memory or operator discretion, the rule is aspirational.
 </Warning>
@@ -464,10 +456,10 @@ The accountability principle extends to internal organizational use. A C-suite r
 <Warning>
   **What Accountability rules out:**
 
-  - An audit log that the verifier hosts and could rewrite without anyone noticing.
-  - A "trust us, our methodology is sound" claim with no third party that can independently check.
-  - A certificate that says "approved" without anchoring the approval to the specific inputs, the specific rules, and the specific reviewers.
-  - A version of a document on a CEO's screen that the desk team can quietly substitute for a different version.
+  - An audit log that the verifier hosts and could rewrite without anyone noticing
+  - A "trust us, our methodology is sound" claim with no third party that can independently check
+  - A certificate that says "approved" without anchoring the approval to the specific inputs, the specific rules, and the specific reviewers
+  - A version of a document on a CEO's screen that the desk team can quietly substitute for a different version
 
   If the integrity of the record depends on the verifier behaving well, the integrity of the record is not verifiable.
 </Warning>
@@ -530,25 +522,25 @@ That durability has consequences across every audience the verification system s
 
 <CardGroup cols={2}>
   <Card title="For customers" icon="user">
-    *Why should I trust your verdict?*
+    _Why should I trust your verdict?_
 
     "You should not have to. Here is the verification you can run yourself."
   </Card>
 
   <Card title="For regulators" icon="landmark">
-    *How do we audit verifiers at scale?*
+    _How do we audit verifiers at scale?_
 
     "You do not have to audit the verifier. You audit the math the verifier published."
   </Card>
 
   <Card title="For investors" icon="chart-line">
-    *Where is the moat?*
+    _Where is the moat?_
 
     "In cryptographic enforcement of doctrine. A methodology can be quietly softened. A commitment to the public chain cannot."
   </Card>
 
   <Card title="For an acquirer" icon="briefcase">
-    *What changes if we buy the company?*
+    _What changes if we buy the company?_
 
     "Certificates issued before the acquisition still validate. New ones carry a different signature visible in the chain. The doctrine cannot be repealed silently."
   </Card>
