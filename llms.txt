@@ -1,0 +1,28 @@
+# Decision-Grade AI
+
+> A framework for executives, technology leaders, and strategy functions working with AI in 2026. Built around verification: what to demand from AI vendors, what to build inside your organization, and what to watch over the next eighteen months.
+
+This site is the canonical reference for the Decision-Grade AI framework. The argument starts from a single observation: AI production cost has fallen by a factor of one hundred to one thousand against human equivalents, while the cost of verifying that the output reasons correctly has not moved. The gap between those two cost curves is the operational risk that most executive AI guidance does not yet address.
+
+The framework is published openly because the Zero Trust posture it advocates extends to the doctrine itself. You should not have to trust the publisher. You can verify the framework, contest it, fork it, or implement it elsewhere.
+
+## Framework pages
+
+- [Introduction](https://decision-grade.ai/introduction): Three-minute overview. Who the framework is for (CEOs/COOs/boards, CIOs/CTOs/CISOs, Chief Strategy/Foresight), how to read it, and where to start.
+- [The Frame](https://decision-grade.ai/the-frame): The diagnosis. Why most executive AI guidance is scoped to the wrong problem (hallucinations) and what the real problem is (the verification deficit). Why existing controls (style guides, disclosure frameworks, performance reviews) do not catch it. The historical parallel to pre-2008 credit ratings.
+- [The Doctrine](https://decision-grade.ai/the-doctrine): The posture. Zero Trust applied to AI verification. Three layers: Independence (no AI family verifies its own work), Doctrine (rules enforced architecturally rather than by operator preference), Accountability (every decision survives independent challenge). Seven architectural commitments that follow.
+- [The Buyer's Checklist](https://decision-grade.ai/buyers-checklist): The action. Seven procurement questions to put to any AI verification vendor. What a serious answer looks like, what a worrying answer looks like, red flags, and a scoring grid. The single-sentence test: "Can I verify your verdicts without having to trust you?"
+- [Lane Discipline](https://decision-grade.ai/lane-discipline): The internal practice. How to separate decision-grade outputs (slow, expensive, verified) from volume-grade outputs (fast, cheap, unverified) inside an organization. Classification, routing rules, failure modes, and the single board-level metric to track.
+- [2026 Watchlist](https://decision-grade.ai/watchlist): The calendar. Dated falsification signals across regulatory (SR 26-2, GENIUS Act, SOC 2 2026, EU AI Act), substrate (MOFCOM rare-earth expiry Nov 2026, AUKUS Pillar Two May 2027, Section 1260H Jun 2027, CATL Oct 2027, Section 5949 Dec 2027), capital market, and technology categories. The single most important date in the 18-month window: November 10, 2026.
+
+## Publisher
+
+Published by VALIS Systems. The publisher has a commercial interest in the doctrine being adopted. The doctrine itself is independent of any specific product. Reference: https://valissystems.com.
+
+Content is licensed under Creative Commons Attribution 4.0 International (CC BY 4.0). Share, adapt, and build upon the work with attribution.
+
+## Repository
+
+Source: https://github.com/DavidVALIS/decision-grade
+
+Substantive disagreements and corrections are welcome via issues and pull requests. The doctrine improves when it is contested.
