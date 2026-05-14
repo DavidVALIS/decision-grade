@@ -3,6 +3,10 @@ title: 'Introduction'
 description: 'A framework for executives working with AI in 2026.'
 ---
 
+<Note>
+  **What this site is.** A framework for executives, technology leaders, and strategy functions navigating AI in 2026. Six pages. Roughly thirty minutes end to end. Built to be read in order, skimmed for one specific question, or referenced over time.
+</Note>
+
 Most executive guidance about AI in 2026 is scoped to facts and hallucinations. Will the model make things up. Can we catch it when it does. Should we add a fact-checker, a human reviewer, a disclosure label. These are reasonable questions. They are not where the operational risk lives.
 
 The risk that matters now sits one layer down. AI generates polished-looking analytical output at a production cost that has fallen by a factor of one hundred to one thousand against human equivalents. The output reads well, fact-checks cleanly, and contains no obvious hallucinations. It still reasons badly. It still makes load-bearing causal claims with no mechanism. It still omits the boundary conditions that would let a careful reader weigh it.
@@ -15,34 +19,78 @@ The 2026 executive question is not how to defend against hallucination. It is ho
 
 Three audiences. The framework serves all three because the underlying problem is universal.
 
-**CEOs, COOs, board members, and chief strategy officers.** You are deciding which analytical outputs to trust as the basis for capital allocation, acquisitions, market entry, and strategic positioning. The framework helps you tell decision-grade output from polished output that looks the same.
+<CardGroup cols={3}>
+  <Card title="CEOs, COOs, board members" icon="building">
+    You are deciding which analytical outputs to trust as the basis for capital allocation, acquisitions, market entry, and strategic positioning. The framework helps you tell decision-grade output from polished output that looks the same.
+  </Card>
 
-**CIOs, CTOs, and CISOs.** You are deploying AI infrastructure and selecting verification partners. The framework maps the Zero Trust posture you already understand from security onto AI verification, and gives you a buyer's checklist for vendor selection.
+  <Card title="CIOs, CTOs, CISOs" icon="server">
+    You are deploying AI infrastructure and selecting verification partners. The framework maps the Zero Trust posture you already understand from security onto AI verification, and gives you a buyer's checklist for vendor selection.
+  </Card>
 
-**Chief Strategy Officers and Chief Foresight Officers.** You are the function inside your organization closest to the verification deficit, because your work depends on reasoning that holds up under expert challenge. The framework names what you have probably been feeling for months without language for.
+  <Card title="Chief Strategy and Foresight" icon="compass">
+    You are the function inside your organization closest to the verification deficit, because your work depends on reasoning that holds up under expert challenge. The framework names what you have probably been feeling for months without language for.
+  </Card>
+</CardGroup>
 
 ## How to read this
 
 This site is a reference, not a primer or an essay. Read it in order if you want the full architecture. Jump to any page if you have a specific question.
 
-The universal layer (The Frame, The Doctrine, What to Demand, What to Build) is the framework. Read it once. Come back when you need to think clearly.
+<Steps>
+  <Step title="The Frame — the diagnosis">
+    What the problem actually is. Why current controls miss it. The historical parallel (pre-2008 credit ratings) that names the failure mode.
+  </Step>
+  <Step title="The Doctrine — the posture">
+    Zero Trust as the meta-principle. The three layers: Independence, Doctrine, Accountability.
+  </Step>
+  <Step title="The Buyer's Checklist — the action">
+    Seven procurement questions to put to AI verification vendors. Red flags. Scoring grid.
+  </Step>
+  <Step title="Lane Discipline — the internal practice">
+    Decision-grade vs. volume-grade. Classification, routing, failure modes.
+  </Step>
+  <Step title="2026 Watchlist — the calendar">
+    Dated signals that will tell you whether the framework holds. Updated as signals resolve.
+  </Step>
+</Steps>
 
-The role-specific layer (For Your Role) translates the framework into action for CEOs, CIOs, and Chief Strategy. Use it when you need to implement.
-
-The Watchlist tracks the 2026 and 2027 signals that will tell you whether the framework holds. It is updated as signals arrive.
-
-Every page is published in Markdown source at the linked GitHub repository. You can ask any AI to read the entire framework. An `llms.txt` index is published at the site root for that purpose. The site is verifiable. The doctrine is forkable. The framework is contestable. That is part of the posture, not a side feature.
+<Tip>
+  **The doctrine is verifiable.** Every page is published in Markdown source at the linked GitHub repository. You can ask any AI to read the entire framework. An `llms.txt` index is published at the site root for that purpose. The site is verifiable. The doctrine is forkable. The framework is contestable. That is part of the posture, not a side feature.
+</Tip>
 
 ## What the framework is not
 
-This is not a list of AI tools. It is not a survey of vendor capabilities. It is not a "future of work" thesis or a "ten ways AI will transform your business" primer. There are dozens of those. They are scoped to the questions the AI conversation was asking in 2024 and 2025. The conversation has moved.
+Three inoculations against the most common misreadings.
 
-This framework is scoped to the question executives will face in 2026 and 2027: when the cost of producing polished analytical output has collapsed, what does it mean to verify the reasoning underneath, and what should you demand from the systems and vendors you depend on.
+<CardGroup cols={3}>
+  <Card title="Not a list of AI tools" icon="screwdriver-wrench">
+    No vendor survey. No "top 10 platforms." If you came here for tool selection, this is the wrong site.
+  </Card>
+
+  <Card title="Not a future-of-work thesis" icon="briefcase">
+    No predictions about which jobs disappear. The framework is scoped to verification, not labor substitution.
+  </Card>
+
+  <Card title="Not 2023 content with a 2026 date" icon="calendar-xmark">
+    The questions executives asked in 2024 and 2025 produced reasonable 2024-2025 answers. The questions have moved. So has this framework.
+  </Card>
+</CardGroup>
+
+The framework is scoped to one question: when the cost of producing polished analytical output has collapsed, what does it mean to verify the reasoning underneath, and what should you demand from the systems and vendors you depend on.
 
 ## Where to start
 
-If you read in order, the next page is **The Frame: what the problem actually is**. It walks from the misframing most organizations are operating under to the diagnosis the rest of the framework is built on.
+<CardGroup cols={3}>
+  <Card title="Read in order" icon="book" href="/the-frame">
+    Start with **The Frame**. Each page builds on the last. The full architecture in roughly thirty minutes.
+  </Card>
 
-If you want the architecture first, jump to **The Doctrine: Zero Trust as the meta-principle**.
+  <Card title="Architecture first" icon="shield" href="/the-doctrine">
+    Skip to **The Doctrine** if you want the conceptual spine before the diagnosis.
+  </Card>
 
-If you want the action layer immediately, jump to **The Buyer's Checklist**.
+  <Card title="Action first" icon="list-check" href="/buyers-checklist">
+    Skip to **The Buyer's Checklist** if you have an AI vendor evaluation this quarter.
+  </Card>
+</CardGroup>
