@@ -5,11 +5,13 @@ description: 'Seven questions to put to any AI verification vendor. What a serio
 
 If you only read one page on this site, read this one. It translates The Doctrine into the specific questions you should put to any AI vendor claiming to verify analytical output, what a serious answer looks like, and what to walk away from.
 
-The single sentence test:
+<Tip>
+  **The single sentence test:**
 
-**Can I verify your verdicts without having to trust you?**
+  > Can I verify your verdicts without having to trust you?
 
-If the answer requires trusting the vendor, the vendor is selling perimeter security. If the answer is "yes, here is how," you are talking to a Zero Trust verifier. The seven questions below unpack what that single sentence means in procurement language.
+  If the answer requires trusting the vendor, the vendor is selling perimeter security. If the answer is "yes, here is how," you are talking to a Zero Trust verifier. The seven questions below unpack what that single sentence means in procurement language.
+</Tip>
 
 <Note>
   **How to use this page.** Take the seven questions to a vendor evaluation. Each one corresponds to one of the seven architectural commitments in The Doctrine. Score each answer on a five-point scale:
@@ -24,13 +26,49 @@ If the answer requires trusting the vendor, the vendor is selling perimeter secu
   A vendor that scores below 2 on any question is not a Zero Trust verifier. They may still be useful for volume-grade work. They should not be in your decision-grade lane.
 </Note>
 
+## The seven questions at a glance
+
+<CardGroup cols={2}>
+  <Card title="1. Independent verification" icon="layer-group" href="#1-independent-verification-across-model-families">
+    Which model families verify your output? What happens when they disagree?
+  </Card>
+  <Card title="2. Architectural enforcement" icon="gavel" href="#2-architectural-enforcement-of-doctrine">
+    Show me a rule that fires deterministically. Can it be turned off?
+  </Card>
+  <Card title="3. Cryptographic anchoring" icon="link" href="#3-cryptographic-anchoring-of-decisions">
+    How do I verify a decision without going through you?
+  </Card>
+  <Card title="4. Public refusal logs" icon="ban" href="#4-public-refusal-logs">
+    Where is your refusal log? Show me a specific refusal.
+  </Card>
+  <Card title="5. Rubric transparency" icon="ruler" href="#5-rubric-version-transparency">
+    What rubric version am I being graded against? Show me the change log.
+  </Card>
+  <Card title="6. Source-document binding" icon="fingerprint" href="#6-source-document-hash-binding">
+    How does my CEO know they're looking at the version you certified?
+  </Card>
+</CardGroup>
+
+<CardGroup cols={1}>
+  <Card title="7. Doctrine survives change" icon="building-shield" href="#7-doctrine-survives-institutional-change">
+    What happens to my certificates if you are acquired?
+  </Card>
+</CardGroup>
+
+---
+
 ## 1. Independent verification across model families
 
 **The question:** Which model families participate in your verification process? What happens when they disagree, and how is that disagreement recorded?
 
-**A serious answer:** Names two or more independent model families with different training data and different objectives. Describes the adjudication protocol (majority vote, weighted vote, mandatory consensus, escalation path). Confirms that dissent is recorded in a form the customer can audit.
-
-**A worrying answer:** "We use the best model for the job." "We use an ensemble." "We have human reviewers." None of those answer the question. The follow-up: which families, what protocol, how is dissent recorded?
+<CardGroup cols={2}>
+  <Card title="A serious answer" icon="circle-check">
+    Names two or more independent model families. Describes the adjudication protocol (majority vote, weighted vote, mandatory consensus, escalation path). Confirms dissent is recorded in a form the customer can audit.
+  </Card>
+  <Card title="A worrying answer" icon="circle-xmark">
+    "We use the best model for the job." "We use an ensemble." "We have human reviewers." None of those answer the question. The follow-up: which families, what protocol, how is dissent recorded?
+  </Card>
+</CardGroup>
 
 <Warning>
   **Red flags:**
@@ -42,13 +80,20 @@ If the answer requires trusting the vendor, the vendor is selling perimeter secu
 
 **Why it matters:** Same model, same blind spots. Same training data, same biases. Verification by the same family is the cognitive equivalent of asking a witness to corroborate their own testimony.
 
+---
+
 ## 2. Architectural enforcement of doctrine
 
 **The question:** Show me a rule your system claims to enforce. Walk me through the architecture that enforces it. Confirm the rule cannot be bypassed, even by your team, even when commercially convenient.
 
-**A serious answer:** Picks a specific rule (an evidence gate, a citation requirement, a refusal trigger). Describes the code path or deterministic process that enforces it. Can answer "what happens if you wanted to ship without this rule firing" with "we cannot, here is why."
-
-**A worrying answer:** "Our policy is to..." "Our reviewers always..." "We have a process for..." Policies and processes are operator-dependent. Architecture is not.
+<CardGroup cols={2}>
+  <Card title="A serious answer" icon="circle-check">
+    Picks a specific rule (an evidence gate, a citation requirement, a refusal trigger). Describes the code path that enforces it. Can answer "what happens if you wanted to ship without this rule firing" with "we cannot, here is why."
+  </Card>
+  <Card title="A worrying answer" icon="circle-xmark">
+    "Our policy is to..." "Our reviewers always..." "We have a process for..." Policies and processes are operator-dependent. Architecture is not.
+  </Card>
+</CardGroup>
 
 <Warning>
   **Red flags:**
@@ -60,13 +105,29 @@ If the answer requires trusting the vendor, the vendor is selling perimeter secu
 
 **Why it matters:** Documentation does not enforce itself. Style guides do not catch errors. Performance reviews do not improve reasoning. If the only thing between the rule and a violation is operator memory or operator discretion, the rule is aspirational.
 
+---
+
 ## 3. Cryptographic anchoring of decisions
 
 **The question:** Pick any verification decision you have made for a customer. How do I independently verify that decision, right now, without going through you?
 
-**A serious answer:** Provides a cryptographic anchor (a transparency log entry, a public chain commitment, a signed certificate that resolves against an authority the vendor does not control). Walks the buyer through the verification path: "click this link, run this command, get this confirmation."
+```mermaid
+flowchart LR
+    A[Vendor decision] --> B{Where is<br/>the record?}
+    B -->|Vendor-controlled| C[Customer must trust<br/>vendor to retrieve it]
+    B -->|Public anchor| D[Anyone can verify<br/>without the vendor]
+    style C fill:#7F1D1D,color:#fff
+    style D fill:#14532D,color:#fff
+```
 
-**A worrying answer:** "We have an audit log." "We can pull the record for you." "Our records are tamper-resistant." Tamper-resistant is not tamper-evident. Vendor-controlled records are not independent.
+<CardGroup cols={2}>
+  <Card title="A serious answer" icon="circle-check">
+    Provides a cryptographic anchor (transparency log entry, public chain commitment, signed certificate resolving against an authority the vendor does not control). Walks you through verification: "click this link, run this command, get this confirmation."
+  </Card>
+  <Card title="A worrying answer" icon="circle-xmark">
+    "We have an audit log." "We can pull the record for you." "Our records are tamper-resistant." Tamper-resistant is not tamper-evident. Vendor-controlled records are not independent.
+  </Card>
+</CardGroup>
 
 <Warning>
   **Red flags:**
@@ -78,13 +139,20 @@ If the answer requires trusting the vendor, the vendor is selling perimeter secu
 
 **Why it matters:** If the integrity of the record depends on the vendor behaving well, the integrity of the record is not verifiable. After a failure event, the vendor's records are the first thing that becomes contested.
 
+---
+
 ## 4. Public refusal logs
 
 **The question:** Where is your refusal log? Show me a specific refusal from the last 30 days. Walk me through how you would audit a refusal pattern over time.
 
-**A serious answer:** Points to a publicly accessible (or customer-auditable) log. Can produce specific refusals on demand. Explains the structure of the log, the review cadence, and how refusal patterns are aggregated and surfaced.
-
-**A worrying answer:** "We don't refuse often." "We log internally." "We have a process if there is an issue." A refusal log is a public commitment. If it is not visible, it does not exist.
+<CardGroup cols={2}>
+  <Card title="A serious answer" icon="circle-check">
+    Points to a publicly accessible or customer-auditable log. Can produce specific refusals on demand. Explains the structure, the review cadence, and how refusal patterns are aggregated.
+  </Card>
+  <Card title="A worrying answer" icon="circle-xmark">
+    "We don't refuse often." "We log internally." "We have a process if there is an issue." A refusal log is a public commitment. If it is not visible, it does not exist.
+  </Card>
+</CardGroup>
 
 <Warning>
   **Red flags:**
@@ -96,13 +164,20 @@ If the answer requires trusting the vendor, the vendor is selling perimeter secu
 
 **Why it matters:** A vendor's pattern of what they refuse to do is a more durable signal of integrity than any methodology statement. Over time, refusal patterns reveal whether the doctrine is real or marketing.
 
+---
+
 ## 5. Rubric-version transparency
 
 **The question:** What rubric version am I being graded against right now? How would I detect if you changed it? Show me the change log for the last three rubric versions.
 
-**A serious answer:** Provides a public hash of the active rubric per customer. Maintains a change log with timestamps and reasons. Can produce the diff between any two versions. Has a notification process when rubrics change.
-
-**A worrying answer:** "We continuously improve our methodology." "Our rubrics evolve." "We do not share rubrics externally." Rubric drift without transparency is how the AAA stamp lost its meaning between 2000 and 2008.
+<CardGroup cols={2}>
+  <Card title="A serious answer" icon="circle-check">
+    Provides a public hash of the active rubric per customer. Maintains a change log with timestamps and reasons. Can produce the diff between any two versions. Has a notification process when rubrics change.
+  </Card>
+  <Card title="A worrying answer" icon="circle-xmark">
+    "We continuously improve our methodology." "Our rubrics evolve." "We do not share rubrics externally." Rubric drift without transparency is how the AAA stamp lost its meaning between 2000 and 2008.
+  </Card>
+</CardGroup>
 
 <Warning>
   **Red flags:**
@@ -114,13 +189,29 @@ If the answer requires trusting the vendor, the vendor is selling perimeter secu
 
 **Why it matters:** A verification grade is only meaningful if you know what it was graded against. A vendor that can quietly change the rubric can quietly redefine what "verified" means without telling you.
 
+---
+
 ## 6. Source-document hash binding
 
 **The question:** When my CEO opens the analytical artifact you delivered, how do they know they are looking at the version you certified? How do I detect a substitution somewhere between your system and their screen?
 
-**A serious answer:** The certificate format includes a cryptographic hash of the source document. Verification can be performed independently. If the document is modified, even by one character, the verification fails. The hash is checkable by anyone, not just the vendor.
+```mermaid
+flowchart LR
+    V[Verified version<br/>from vendor] -->|hop 1| A[Analyst]
+    A -->|hop 2| D[Desk lead]
+    D -->|hop 3| C[Chief of staff]
+    C -->|hop 4| E[CEO screen]
+    V -.->|Hash binding<br/>verifiable at every hop| E
+```
 
-**A worrying answer:** "We send a PDF." "We sign the document." "We track versions." Signing is necessary but not sufficient if the signing happens on the vendor's side and the verification happens on the vendor's side.
+<CardGroup cols={2}>
+  <Card title="A serious answer" icon="circle-check">
+    Certificate format includes a cryptographic hash of the source document. Verification can be performed independently. If the document is modified, even by one character, verification fails. The hash is checkable by anyone, not just the vendor.
+  </Card>
+  <Card title="A worrying answer" icon="circle-xmark">
+    "We send a PDF." "We sign the document." "We track versions." Signing is necessary but not sufficient if both signing and verification happen on the vendor's side.
+  </Card>
+</CardGroup>
 
 <Warning>
   **Red flags:**
@@ -132,13 +223,20 @@ If the answer requires trusting the vendor, the vendor is selling perimeter secu
 
 **Why it matters:** A verified analysis is only useful if the decision-maker reads the verified version. Between the verifier and the executive, there are usually three to five organizational hops. Each hop is a substitution opportunity. The hash closes the gap.
 
+---
+
 ## 7. Doctrine survives institutional change
 
 **The question:** What happens to my certificates if you are acquired? If your founder leaves? If the company changes hands? Will the verification I bought today still validate in five years?
 
-**A serious answer:** Certificates are anchored to public infrastructure that the vendor does not control. The vendor's signing key is part of the certificate; if the key changes, the change is visible in the public chain. The doctrine is, in effect, constitutional rather than corporate.
-
-**A worrying answer:** "We are not planning to be acquired." "We would honor existing customers." "Our records would persist." None of those answer the question, because all of them depend on the vendor's continued cooperation.
+<CardGroup cols={2}>
+  <Card title="A serious answer" icon="circle-check">
+    Certificates are anchored to public infrastructure the vendor does not control. The vendor's signing key is part of the certificate; if the key changes, the change is visible in the public chain. The doctrine is constitutional rather than corporate.
+  </Card>
+  <Card title="A worrying answer" icon="circle-xmark">
+    "We're not planning to be acquired." "We would honor existing customers." "Our records would persist." None answer the question, because all depend on the vendor's continued cooperation.
+  </Card>
+</CardGroup>
 
 <Warning>
   **Red flags:**
@@ -149,6 +247,8 @@ If the answer requires trusting the vendor, the vendor is selling perimeter secu
 </Warning>
 
 **Why it matters:** The lifetime of a strategic decision often exceeds the lifetime of any specific vendor. A verification system that depends on the vendor's continued goodwill is not Zero Trust. It is perimeter trust with extra steps.
+
+---
 
 ## How to score a vendor
 
@@ -170,7 +270,9 @@ Sum the scores across the seven questions. The maximum is 35.
   <Card title="22 to 28" icon="shield-halved">
     Zero Trust with public commitments. A serious verification partner.
   </Card>
+</CardGroup>
 
+<CardGroup cols={1}>
   <Card title="29 to 35" icon="shield">
     Full Zero Trust with cryptographic verification you can run yourself. The category leader.
   </Card>
@@ -182,16 +284,42 @@ A vendor that refuses to engage with one or more of these questions has answered
 
 You do not need every vendor in your market to pass this checklist. You need to ask the questions. The asking itself moves the market.
 
-Vendors respond to procurement signals. When concentrated, high-stakes buyers (institutional investors, government procurement offices, regulated industries) start requiring architectural answers, vendor architectures change. This is the SR 11-7 dynamic from 2011 applied to AI verification. After 2008, banks did not improve model risk management because they wanted to. They improved it because regulators required artifact-based validation. Once the requirement was in place, the supply side adjusted.
+```mermaid
+flowchart LR
+    A[Concentrated, high-stakes<br/>buyers ask the seven questions] --> B[Vendors discover<br/>their answers are scored]
+    B --> C[Vendors with weak answers<br/>lose contracts]
+    C --> D[Vendor architectures change]
+    D --> E[Market floor rises<br/>for everyone]
+```
 
 The framework predicts the same correction will arrive in AI verification within the next 18 months. The earliest movers will be regulated industries, large institutional buyers, and government procurement. The later movers will follow the public failure events. Your buying power is the lever that pulls the correction forward in your market.
 
 <Tip>
-  **The single most useful thing you can do this quarter:** Add the seven questions to your next AI vendor RFP. Score the answers. Share the scores with your peers. The signal compounds.
+  **The single most useful thing you can do this quarter:**
+
+  <Steps>
+    <Step title="Add the seven questions to your next AI vendor RFP">
+      Word them exactly as they appear on this page. Vendor familiarity with the framing is itself a signal.
+    </Step>
+    <Step title="Score the answers using the five-point scale">
+      Decision-grade threshold is 22 or above. Below 15 is volume-lane only.
+    </Step>
+    <Step title="Share the scores with your peers">
+      Procurement signals compound when they propagate. The early movers do the most work; the late movers benefit from the market floor that early movers built.
+    </Step>
+  </Steps>
 </Tip>
 
 ## Where this goes next
 
-The Buyer's Checklist tells you what to demand from vendors. The next page, **Lane Discipline**, covers what to build inside your own organization: how to separate decision-grade outputs from volume-grade outputs, how to route work between the lanes, and how to prevent volume-lane content from quietly becoming the basis for board decisions.
-
-If you want the time-bound signals to watch, jump to the **2026 Watchlist**.
+<CardGroup cols={3}>
+  <Card title="Lane Discipline" icon="signs-post" href="/lane-discipline">
+    What to build inside your organization: decision-grade vs. volume-grade routing.
+  </Card>
+  <Card title="The Doctrine" icon="shield" href="/the-doctrine">
+    The Zero Trust posture the seven questions rest on.
+  </Card>
+  <Card title="2026 Watchlist" icon="calendar" href="/watchlist">
+    Dated signals over the next 18 months that test the framework.
+  </Card>
+</CardGroup>
