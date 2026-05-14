@@ -13,9 +13,10 @@ declare -A titles=(
   [buyers-checklist]="The Buyer's Checklist"
   [lane-discipline]="Lane Discipline"
   [watchlist]="2026 Watchlist"
+  [about]="About"
 )
 
-PAGES=(introduction the-frame the-doctrine buyers-checklist lane-discipline watchlist)
+PAGES=(introduction the-frame the-doctrine buyers-checklist lane-discipline watchlist about)
 
 {
   cat <<'HEADER'
