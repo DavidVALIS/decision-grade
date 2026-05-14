@@ -632,7 +632,7 @@ The Buyer's Checklist tells you what to demand from vendors. Lane Discipline tel
 If you take only one operational practice from this framework, take this one. Lane discipline is the difference between an organization that benefits from AI-augmented analysis and one that quietly poisons its own decision-making with it.
 
 <Note>
-  **Three minute read.** Verification is expensive. Demanding it on every output is absurd. The fix is segmentation: a decision-grade lane where buyers pay for verification, and a volume-grade lane where speed dominates. The failure mode is content sliding between lanes without re-verification. The single most expensive mistake: a volume-grade memo becoming the basis for a board decision.
+  **In short:** Verification is expensive. Demanding it on every output is absurd. The fix is segmentation: a decision-grade lane where buyers pay for verification, and a volume-grade lane where speed dominates. The failure mode is content sliding between lanes without re-verification. The single most expensive mistake: a volume-grade memo becoming the basis for a board decision.
 </Note>
 
 ## How the two lanes operate
@@ -735,13 +735,11 @@ Three rules govern movement between lanes.
 
     If you want to use volume-grade content in a decision-grade context, it goes through the verification process. Otherwise it does not get used.
   </Step>
-
   <Step title="Decision-grade content can be downgraded">
     For volume-grade use. Re-verification is not required. The verification you paid for once was sufficient; using the content in a lower-stakes context does not retroactively raise the bar.
 
     The lane label can be downgraded by anyone. Upgrading requires a verification step.
   </Step>
-
   <Step title="Labels travel with content">
     Every excerpt, every quoted line, every screenshot in a downstream document inherits the lane label of the source. A board memo that quotes a volume-grade analysis is, at that quoted moment, importing volume-grade reasoning into a decision-grade context.
 
@@ -801,7 +799,7 @@ The simplest implementation is a metadata tag, a routing rule, and a periodic au
   > Of the analytical content that informed your last ten board-level decisions, what percentage carried a decision-grade label at the moment of decision?
 
   | Score | Interpretation |
-  |---|---|
+  | --- | --- |
   | Below 50% | Lane discipline is failing. Slippage is the norm. |
   | 50% to 80% | Lane discipline is partial. Audit the gaps. |
   | Above 80% | Lane discipline is working. Audit periodically. |
@@ -816,9 +814,11 @@ Three inoculations against common misreadings.
   <Card title="Not AI suppression" icon="robot">
     The volume-grade lane is where most AI-augmented analysis appropriately lives. Forcing decision-grade verification onto everything is a different failure mode with the same downstream effect.
   </Card>
+
   <Card title="Not a replacement for the Buyer's Checklist" icon="handshake">
     The two reinforce each other. The Buyer's Checklist makes the verification you buy real. Lane Discipline makes the verification you bought useful.
   </Card>
+
   <Card title="Not a permanent state" icon="arrows-rotate">
     What counts as decision-grade in 2025 may not in 2027. Revisit the lane criteria annually as AI capabilities, regulation, and competitive context shift.
   </Card>
@@ -830,9 +830,11 @@ Three inoculations against common misreadings.
   <Card title="2026 Watchlist" icon="calendar" href="/watchlist">
     Dated signals over the next 18 months that will tell you whether the framework holds.
   </Card>
+
   <Card title="The Doctrine" icon="shield" href="/the-doctrine">
     The architectural commitments that make decision-grade verification real.
   </Card>
+
   <Card title="The Buyer's Checklist" icon="list-check" href="/buyers-checklist">
     The seven procurement questions that determine what your decision-grade lane is buying.
   </Card>
