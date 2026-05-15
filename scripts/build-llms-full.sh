@@ -14,9 +14,10 @@ declare -A titles=(
   [lane-discipline]="Lane Discipline"
   [watchlist]="2026 Watchlist"
   [about]="About"
+  [mcp]="MCP Server"
 )
 
-PAGES=(introduction the-frame the-doctrine buyers-checklist lane-discipline watchlist about)
+PAGES=(introduction the-frame the-doctrine buyers-checklist lane-discipline watchlist about mcp)
 
 {
   cat <<'HEADER'

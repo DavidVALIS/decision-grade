@@ -18,6 +18,7 @@ const SLUGS = [
   'lane-discipline',
   'watchlist',
   'about',
+  'mcp',
 ];
 
 const NUMS = {
@@ -28,6 +29,7 @@ const NUMS = {
   'lane-discipline': '04',
   watchlist: '05',
   about: 'A',
+  mcp: 'M',
 };
 
 function slugify(s) {

@@ -3,6 +3,7 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import remarkGfm from 'remark-gfm';
 
 const REPO_ROOT = path.resolve(process.cwd());
 
@@ -72,6 +73,7 @@ export async function loadMdx(slug: string): Promise<MdxBundle> {
     parseFrontmatter: false,
     mdxOptions: {
       development: false,
+      remarkPlugins: [remarkGfm],
     },
   });
   return {
