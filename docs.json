@@ -24,5 +24,8 @@
     "socials": {
       "github": "https://github.com/DavidVALIS/decision-grade"
     }
+  },
+  "fonts": {
+    "family": "Barlow"
   }
 }
