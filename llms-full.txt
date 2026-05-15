@@ -850,7 +850,7 @@ A framework that does not specify how it could be wrong is not a framework. It i
 Read each signal as a falsification candidate. If the signal resolves one way, the framework strengthens. If it resolves the other way, the framework weakens. The page is built to be updated as resolutions arrive.
 
 <Note>
-  **Three minute read.** Five categories of signal. The most important is the buyer-side test: do high-stakes purchasers start demanding proof artifacts in 2026 RFPs. The substrate-level signals from regulatory cliffs in late 2026 and 2027 tell you whether the broader shift this framework sits within is propagating on schedule. Capital-market signals are noisier but informative.
+  **In short:** Five categories of signal. The most important is the buyer-side test: do high-stakes purchasers start demanding proof artifacts in 2026 RFPs. The substrate-level signals from regulatory cliffs in late 2026 and 2027 tell you whether the broader shift this framework sits within is propagating on schedule. Capital-market signals are noisier but informative.
 </Note>
 
 ## The 18-month timeline at a glance
@@ -882,6 +882,7 @@ This is the single signal that most directly tests the framework. If it resolves
   <Card title="Framework holds if" icon="circle-check">
     Even one of them requires structural-transparency artifacts (assumption registers, claim-source maps, boundary conditions, alternative explanations, or any equivalent proof artifact) as a condition of contract by the end of 2026.
   </Card>
+
   <Card title="Framework weakens if" icon="circle-xmark">
     All of them renew their major analytical-content contracts through 2026 without asking for proof artifacts in their acceptance criteria.
   </Card>
@@ -894,15 +895,15 @@ If the framework weakens on this signal, the correction is not arriving in this 
 Already in force as of May 2026. Track for implementation severity, waiver applications, and enforcement actions that signal whether the regulatory perimeter is real or theatrical.
 
 | Signal | Date in force | What to watch for | What it means |
-|---|---|---|---|
-| **[SR 26-2](https://www.federalreserve.gov/supervisionreg/srletters/SR2602.pdf)** Revised Guidance on Model Risk Management | April 17, 2026 | First material enforcement action against a major bank for inadequate AI/model validation | Leading indicator that buyer-side correction is real and propagating |
+| --- | --- | --- | --- |
+| [**SR 26-2**](https://www.federalreserve.gov/supervisionreg/srletters/SR2602.pdf) Revised Guidance on Model Risk Management | April 17, 2026 | First material enforcement action against a major bank for inadequate AI/model validation | Leading indicator that buyer-side correction is real and propagating |
 | **GENIUS Act** implementation | July 18, 2025 onward | First OCC enforcement against a stablecoin issuer for inadequate attestation; substantive vs perfunctory BDO attestations for Tether USA₮ | Tests whether the federal coalition is enforcing the perimeter or rubber-stamping it |
 | **SOC 2 2026 criteria** | 2026 | Enterprise procurement teams pushing 2026 SOC 2 criteria into AI-vendor RFPs | The crossover from security to AI verification procurement |
-| **[EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)** high-risk provisions | Staggered 2026-2027 | First regulator-level fine against an AI verification provider for inadequate transparency or oversight | European enforcement typically leads U.S. enforcement by 12-18 months |
+| [**EU AI Act**](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) high-risk provisions | Staggered 2026-2027 | First regulator-level fine against an AI verification provider for inadequate transparency or oversight | European enforcement typically leads U.S. enforcement by 12-18 months |
 
 ## Substrate signals
 
-These come from outside the analytical-content market but bear directly on whether the broader verification-collapse regime described in [Perera and Wickramasinghe's *The Verification Collapse*](https://shanakaanslemperera.substack.com/p/the-verification-collapse) is propagating on schedule.
+These come from outside the analytical-content market but bear directly on whether the broader verification-collapse regime described in [Perera and Wickramasinghe's _The Verification Collapse_](https://shanakaanslemperera.substack.com/p/the-verification-collapse) is propagating on schedule.
 
 <AccordionGroup>
   <Accordion title="Nov 10, 2026 — MOFCOM rare-earth suspension expiry">
@@ -912,7 +913,7 @@ These come from outside the analytical-content market but bear directly on wheth
 
     **Framework weakens if:** Beijing extends without conditions and Western diversification stalls.
 
-    *This is the single most important date in the 18-month window. Most other signals take their tempo from how this resolves.*
+    _This is the single most important date in the 18-month window. Most other signals take their tempo from how this resolves._
   </Accordion>
 
   <Accordion title="May 2027 — AUKUS Pillar Two operational deliverables">
@@ -948,17 +949,6 @@ These come from outside the analytical-content market but bear directly on wheth
   </Accordion>
 </AccordionGroup>
 
-## Capital market signals
-
-Noisier than regulatory signals but informative about how capital is pricing the substrate transition.
-
-| Signal | What to watch for | Framework implication |
-|---|---|---|
-| **Anduril Series H pricing** | Reported in marketing since Feb 2026 at targeted post-money above $60B | Holds at or above target. Weakens below ~$45B or failure to close. |
-| **Helsing trajectory** | Subsequent Bundeswehr trial outcomes after Feb 2026 framework compression (€4.3B → €2B) | Holds if European autonomy-stack capital continues at ~25% of U.S. Weakens if it compresses further. |
-| **Public autonomy names** (AeroVironment, Kratos, DroneShield) | Whether the public/private valuation gap persists, narrows, or inverts | Persistent gap supports substrate-transition thesis. Convergence weakens it. |
-| **Stablecoin Treasury demand** | Tether at $127B in U.S. Treasuries as of Jun 2025. Apollo projects $2T stablecoin market cap by 2028 | Continued growth strengthens monetary-substrate thesis. Material deceleration weakens it. |
-
 ## Technology and capability signals
 
 Less time-bound than regulatory cliffs but worth tracking for inflection points.
@@ -981,7 +971,7 @@ Less time-bound than regulatory cliffs but worth tracking for inflection points.
   </Card>
 
   <Card title="Deepfake-based fraud growth" icon="user-secret">
-    **Window:** Ongoing. Arup $25M fraud Jan 2024. JINKUSU CAM targeting financial-services liveness checks now.
+    **Window:** Ongoing. Arup \$25M fraud Jan 2024. JINKUSU CAM targeting financial-services liveness checks now.
 
     **Watch for:** First board-level corporate liability event from deepfake-based fraud at a Fortune 500 company.
 
@@ -1003,15 +993,12 @@ Less time-bound than regulatory cliffs but worth tracking for inflection points.
   <Step title="Review monthly">
     Resolved signals get marked. Pending signals stay on the watchlist. New signals get added as the framework develops.
   </Step>
-
   <Step title="Track resolution direction">
     Each signal that resolves contributes either to "framework holds" or "framework weakens." Keep a running tally. A framework that is consistently being weakened by its own falsification candidates should be revised, not defended.
   </Step>
-
   <Step title="Reassess timing at each gate">
     The MOFCOM decision in November 2026 is the first major gate. If the rare-earth suspension is extended, the broader substrate transition is delayed and the firm-level timing this framework specifies probably extends correspondingly.
   </Step>
-
   <Step title="Watch the primary falsification test most closely">
     The top-20 consulting clients renewals are the single most direct test of the framework's core prediction. If that signal resolves against the framework, recalibrate even if the substrate signals are mixed.
   </Step>
@@ -1029,9 +1016,11 @@ Less time-bound than regulatory cliffs but worth tracking for inflection points.
   <Card title="The Frame" icon="diagram-project" href="/the-frame">
     The diagnosis: why current AI controls miss the real problem.
   </Card>
+
   <Card title="The Doctrine" icon="shield" href="/the-doctrine">
     The posture: Zero Trust applied to AI verification.
   </Card>
+
   <Card title="The Buyer's Checklist" icon="list-check" href="/buyers-checklist">
     The action: seven questions to put to AI vendors.
   </Card>
