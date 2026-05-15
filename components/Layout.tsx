@@ -3,6 +3,7 @@ import { TopBar } from '@/components/chrome/TopBar';
 import { Sidebar } from '@/components/chrome/Sidebar';
 import { TOC, type TocItem } from '@/components/chrome/TOC';
 import { Pager } from '@/components/chrome/Pager';
+import { Search } from '@/components/Search';
 import { getBySlug, getPrev, getNext, REPO_URL } from '@/lib/pages';
 import { getIcon } from '@/components/icons';
 
@@ -57,6 +58,7 @@ export function Layout({ slug, title, description, toc = [], children }: LayoutP
         </span>
       </footer>
       <div className="grain-overlay" aria-hidden="true" />
+      <Search />
     </>
   );
 }
