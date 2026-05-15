@@ -21,10 +21,22 @@ export const ABOUT_PAGE: PageEntry = {
   num: 'A',
 };
 
-export const ALL_SLUGS: string[] = [...PAGES.map((p) => p.id), ABOUT_PAGE.id];
+export const MCP_PAGE: PageEntry = {
+  id: 'mcp',
+  title: 'MCP Server',
+  icon: 'IconFork',
+  num: 'M',
+};
+
+export const ALL_SLUGS: string[] = [
+  ...PAGES.map((p) => p.id),
+  ABOUT_PAGE.id,
+  MCP_PAGE.id,
+];
 
 export function getBySlug(slug: string): PageEntry | undefined {
   if (slug === ABOUT_PAGE.id) return ABOUT_PAGE;
+  if (slug === MCP_PAGE.id) return MCP_PAGE;
   return PAGES.find((p) => p.id === slug);
 }
 
