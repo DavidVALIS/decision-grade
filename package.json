@@ -5,10 +5,10 @@
   "description": "Decision-Grade AI documentation site.",
   "scripts": {
     "predev": "node scripts/sync-public.mjs",
-    "dev": "next dev",
+    "dev": "next dev -p 3005",
     "prebuild": "node scripts/sync-public.mjs",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3005",
     "lint": "next lint"
   },
   "dependencies": {
