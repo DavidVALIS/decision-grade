@@ -1,15 +1,13 @@
 ---
-title: "The Frame"
-description: "What the problem with AI in 2026 actually is, and why your current controls do not catch it."
+title: 'The Frame'
+description: 'What the problem with AI in 2026 actually is, and why your current controls do not catch it.'
 ---
 
+The verification deficit is the operational problem underneath AI-augmented analysis. The executive AI conversation has been organized around facts and hallucinations. The deficit is about reasoning. This page walks from the misframing most organizations are operating under to the diagnosis the rest of the framework is built on.
+
 <Note>
-  **In short:** Most executive AI guidance is scoped to the wrong problem. Hallucinations are detectable. The real risk has moved one layer down. AI output that reads cleanly, fact-checks, and still reasons badly. Different problem, different fix. The historical parallel is pre-2008 credit ratings.
+  **Three minute read.** Most executive AI guidance is scoped to the wrong problem. Hallucinations are detectable. The real risk has moved one layer down: AI output that reads cleanly, fact-checks, and still reasons badly. Different problem, different fix. The historical parallel is pre-2008 credit ratings.
 </Note>
-
-The verification deficit is the operational problem underneath AI-augmented analysis. The executive AI conversation has been organized around facts and hallucinations. The deficit is about reasoning. 
-
-Models hallucinate less than they did in 2025. Citation-grounding has improved. Disclosure frameworks have been published by NIST, the European Union, and ISO. Most large organizations now have an AI use policy and a designated AI risk function.  
 
 ## Most executive AI guidance is solving last year's problem
 
@@ -38,7 +36,7 @@ The misframing is not anyone's fault. The remediation followed the visible failu
 <Warning>
   **The kind of sentence that passes every 2025 control and still fails:**
 
-  _"Mid-market companies that deployed generative AI tools in 2025 saw 18% productivity gains in their go-to-market functions, with the largest effects concentrated among sales development reps and account executives."_
+  *"Mid-market companies that deployed generative AI tools in 2025 saw 18% productivity gains in their go-to-market functions, with the largest effects concentrated among sales development reps and account executives."*
 
   Every fact in the sentence checks out. AI deployment is happening. Mid-market is a real segment. Productivity gains have been reported. SDRs and AEs use these tools. A fact-checker passes it.
 
@@ -53,7 +51,20 @@ The misframing is not anyone's fault. The remediation followed the visible failu
 
 ## The verification deficit, in one comparison
 
-Production cost has fallen by a factor of 100 to 1,000 relative to human equivalents. Verification cost has not moved. The gap is the operational risk.
+Production cost has fallen by a factor of one hundred to one thousand against human equivalents. Verification cost has not moved. The gap is the operational risk.
+
+| Cost layer | 2020 | 2026 | Change |
+|---|---|---|---|
+| **Producing 1,000 words of polished analytical prose** | $5 to $15 (mid-career analyst time) | $0.001 to $0.02 (mainstream model API) | ~250x to 15,000x cheaper |
+| **Verifying that the 1,000 words reasons correctly** | Hours of expert review, plus access to source data | Hours of expert review, plus access to source data | Unchanged |
+
+<Tip>
+  **The asymmetry, plainly.**
+
+  Drafting queues are empty. Review queues are full. Throughput metrics still point at the wrong door.
+
+  The scarce resource is no longer the analyst who writes. It is the reviewer who catches what the writing assumes.
+</Tip>
 
 The production layer has been industrialized. The verification layer has not. The result inside any organization that has adopted AI-assisted drafting:
 
@@ -76,7 +87,7 @@ The verification deficit was always there. AI did not create it. AI revealed it.
 
   In 2015, the [Open Science Collaboration](https://doi.org/10.1126/science.aac4716) tried to replicate 100 peer-reviewed psychology findings.
 
-  Only 36% replicated.
+  ~36% replicated.
 
   Before AI. Before models could draft. Before any of the production-cost collapse this framework describes.
 
@@ -85,10 +96,28 @@ The verification deficit was always there. AI did not create it. AI revealed it.
 
 ## Why your existing controls do not catch it
 
+The diagnosis is not that one thing is broken. It is that four things compound.
+
+```mermaid
+flowchart TD
+    L1["Layer 1<br/>Drafting costs collapse<br/>$0.001 to $0.02 per 1,000 words"]
+    L2["Layer 2<br/>Review gates check style and coherence,<br/>not structural validity"]
+    L3["Layer 3<br/>Analysts rewarded for speed to briefing,<br/>not forecast accuracy"]
+    L4["Layer 4<br/>Clients never see the claim-source map<br/>behind the polished deliverable"]
+    L1 --> L2 --> L3 --> L4
+    L4 -.->|Feedback: opacity hides damage,<br/>incentives intensify| L1
+    style L1 fill:#1E293B,color:#fff
+    style L2 fill:#1E293B,color:#fff
+    style L3 fill:#1E293B,color:#fff
+    style L4 fill:#7F1D1D,color:#fff
+```
+
+Each layer degrades quality on its own. Together they form a self-reinforcing loop: cheap drafting floods the queue, reviewers lack criteria to catch unanchored claims, incentives punish the slowdown that rigor demands, and opacity hides the damage from buyers. Fix one layer and the others compensate. A monocausal diagnosis produces a single-point fix. A stacked system laughs at single-point fixes.
+
 Review systems formalize prose, presentation, and process. They do not formalize structural-reasoning checks. The asymmetry is rational, not accidental, and it explains why disclosure and review regimes do not close the gap.
 
 | What review systems formalize | What they do not formalize |
-| --- | --- |
+|---|---|
 | Clarity of prose | Whether causal claims are supported |
 | Citation format and registration | Whether assumptions are stated |
 | Data sharing and availability | Whether boundary conditions are named |
@@ -141,8 +170,8 @@ Even the most disciplined formalized verification systems are partial. The U.S. 
 
 Cheap production. Unchanged review processes. Proxy-based trust. The architecture is not new. It produced the largest single financial collapse of the post-war era.
 
-|  | 2000-2008 credit ratings | 2024-2026 AI-augmented analysis |
-| --- | --- | --- |
+| | 2000-2008 credit ratings | 2024-2026 AI-augmented analysis |
+|---|---|---|
 | **Cheap production** | Quantitative models scoring securities faster than any human team | LLMs drafting 1,000 words for less than one cent |
 | **Unchanged review** | Methodology documents and a century-old brand | Style guides, fact-checkers, disclosure labels |
 | **Trust proxy** | AAA stamp | Polished prose |
@@ -150,7 +179,7 @@ Cheap production. Unchanged review processes. Proxy-based trust. The architectur
 | **Visible until failure** | No | No |
 | **Cost when it failed** | Trillions | TBD |
 
-(Financial Crisis Inquiry Commission, [_The Financial Crisis Inquiry Report_](https://www.govinfo.gov/content/pkg/GPO-FCIC/pdf/GPO-FCIC.pdf), 2011, Chapter 7.)
+(Financial Crisis Inquiry Commission, [*The Financial Crisis Inquiry Report*](https://www.govinfo.gov/content/pkg/GPO-FCIC/pdf/GPO-FCIC.pdf), 2011, Chapter 7.)
 
 <Info>
   **The Moody's numbers, plainly:**
@@ -160,6 +189,18 @@ Cheap production. Unchanged review processes. Proxy-based trust. The architectur
   - Many defaulted within months of issuance.
 
   Same architecture, different decade.
+</Info>
+
+<Info>
+  **Another pattern, same shape: 1898 Hearst and the USS Maine.**
+
+  In February 1898, editors at Hearst's *New York Journal* published accounts of the USS Maine explosion that passed every editorial standard of the day. Attribution. Sourcing. Narrative coherence.
+
+  The standard itself was the problem. Reviewers caught typos and unclear antecedents. They did not catch unanchored causal claims, absent boundary conditions, or unfalsifiable predictions about Spanish responsibility.
+
+  The gate was perfectly maintained. It was facing the wrong direction. Public consequence: war.
+
+  Same pattern as the analytical content market now. Cheap production (penny papers then, AI drafts now). Unchanged review criteria. Standards that look rigorous and check the wrong things.
 </Info>
 
 The mechanism that produced the failure is the same mechanism operating in analytical content now:
@@ -174,8 +215,6 @@ flowchart TD
     style B fill:#1E293B,color:#fff
     style F fill:#7F1D1D,color:#fff
 ```
-
-## When the cost of being wrong exceeds the cost of demanding proof, buyers force the correction
 
 The fix in adjacent domains has been consistent. When failure becomes visible enough, buyers demand proof artifacts.
 
