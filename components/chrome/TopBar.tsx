@@ -15,6 +15,8 @@ export function TopBar() {
   const router = useRouter();
   const slug = (router.query.slug as string) ?? router.pathname.replace('/', '');
   const isAbout = slug === 'about';
+  const isMcp = slug === 'mcp';
+  const isFramework = !isAbout && !isMcp;
   const [isMac, setIsMac] = useState(true);
 
   useEffect(() => {
@@ -32,11 +34,14 @@ export function TopBar() {
         </Link>
 
         <nav className="dg-topnav" aria-label="Primary">
-          <Link href="/introduction/" className={!isAbout ? 'active' : ''}>
+          <Link href="/introduction/" className={isFramework ? 'active' : ''}>
             Framework
           </Link>
           <Link href="/about/" className={isAbout ? 'active' : ''}>
             About
+          </Link>
+          <Link href="/mcp/" className={isMcp ? 'active' : ''}>
+            MCP
           </Link>
           <a href={REPO_URL} target="_blank" rel="noreferrer">
             Source
