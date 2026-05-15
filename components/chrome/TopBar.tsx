@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { IconSearch, IconSparkle, IconGitHub, ValisMark } from '@/components/icons';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { REPO_URL } from '@/lib/pages';
 
 function openSearch() {
@@ -72,6 +73,7 @@ export function TopBar() {
           >
             <IconSparkle size={16} />
           </button>
+          <ThemeToggle />
         </div>
       </div>
     </header>

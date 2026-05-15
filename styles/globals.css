@@ -1257,3 +1257,75 @@ a.dg-card:hover { background: var(--bg-3); border-color: var(--rule-strong); }
   .dg-search-modal { padding: 6vh 12px 4vh; }
   .dg-search-card { max-height: 88vh; }
 }
+
+/* ───────────────────────────────────────────────────────────── Light mode */
+/* Paper-cream palette. Activated via [data-theme="light"] on <html>. */
+
+:root[data-theme="light"] {
+  --bg-1: #f4f0e8;
+  --bg-2: #eee8dc;
+  --bg-3: #e8e2d6;
+  --bg-callout: #f8f4ec;
+
+  --ink: #1a1814;
+  --paper: #f4f0e8;
+  --paper-alt: #eee8dc;
+  --warm-mid: #e8e2d6;
+  --warm-mid-2: #c4bdb3;
+
+  --fg-1: #1a1814;
+  --fg-2: #3a3630;
+  --fg-3: #6e6960;
+  --fg-4: #8a847a;
+  --ghost: #6e6960;
+  --ghost-2: #3a3630;
+
+  --rule: #d4cec4;
+  --rule-strong: #b8b1a3;
+  --rule-subtle: rgba(26, 24, 20, 0.06);
+
+  --accent-muted: rgba(231, 149, 131, 0.30);
+  --accent-soft: rgba(231, 149, 131, 0.14);
+
+  --verified: #16803C;
+  --challenged: #B45309;
+  --unverified: #DC2626;
+  --citation: #2563EB;
+
+  --verified-bg: rgba(22, 128, 60, 0.08);
+  --challenged-bg: rgba(180, 83, 9, 0.08);
+  --unverified-bg: rgba(220, 38, 38, 0.06);
+  --citation-bg: rgba(37, 99, 235, 0.06);
+}
+
+/* Light grain — multiply rather than screen, so the texture darkens the paper */
+:root[data-theme="light"] .grain-overlay {
+  mix-blend-mode: multiply;
+  opacity: 0.6;
+}
+
+/* Light topbar — paper backdrop with subtle blur */
+:root[data-theme="light"] .dg-topbar {
+  background: color-mix(in oklab, var(--bg-1) 88%, transparent);
+}
+
+/* Light scrollbar tweak */
+:root[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: var(--rule-strong);
+}
+
+/* Light search modal — slightly different overlay tone */
+:root[data-theme="light"] .dg-search-modal {
+  background: rgba(244, 240, 232, 0.78);
+}
+
+/* Light callout backgrounds need a touch more contrast against paper */
+:root[data-theme="light"] .dg-callout,
+:root[data-theme="light"] .dg-card {
+  background: var(--bg-2);
+}
+
+/* Light mermaid backgrounds */
+:root[data-theme="light"] .mermaid svg {
+  background: var(--bg-2);
+}
