@@ -55,19 +55,19 @@ The 2026 executive question is not how to defend against hallucination. It is ho
 This site is a reference, not a primer or an essay. Read it in order if you want the full architecture. Jump to any page if you have a specific question.
 
 <Steps>
-  <Step title="**The Frame — the diagnosis**">
+  <Step title="The Frame — the diagnosis">
     What the problem actually is. Why current controls miss it.
   </Step>
-  <Step title="**The Doctrine — the posture**">
+  <Step title="The Doctrine — the posture">
     Zero Trust as the meta-principle. The three layers: Independence, Doctrine, Accountability.
   </Step>
-  <Step title="**The Buyer's Checklist — the action**">
+  <Step title="The Buyer's Checklist — the action">
     Seven procurement questions to put to AI verification vendors. Red flags. Scoring grid.
   </Step>
-  <Step title="**Lane Discipline — the internal practice**">
+  <Step title="Lane Discipline — the internal practice">
     Decision-grade vs. volume-grade. Classification, routing, failure modes.
   </Step>
-  <Step title="**2026 Watchlist — the calendar**">
+  <Step title="2026 Watchlist — the calendar">
     Dated signals that will tell you whether the framework holds. Updated as signals resolve.
   </Step>
 </Steps>
