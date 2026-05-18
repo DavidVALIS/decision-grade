@@ -8,7 +8,7 @@ The Buyer's Checklist tells you what to demand from vendors. Lane Discipline tel
 If you take only one operational practice from this framework, take this one. Lane discipline is the difference between an organization that benefits from AI-augmented analysis and one that quietly poisons its own decision-making with it.
 
 <Note>
-  **Three minute read.** Verification is expensive. Demanding it on every output is absurd. The fix is segmentation: a decision-grade lane where buyers pay for verification, and a volume-grade lane where speed dominates. The failure mode is content sliding between lanes without re-verification. The single most expensive mistake: a volume-grade memo becoming the basis for a board decision.
+  **In short:** Verification is expensive. Demanding it on every output is absurd. The fix is segmentation: a decision-grade lane where buyers pay for verification, and a volume-grade lane where speed dominates. The failure mode is content sliding between lanes without re-verification. The single most expensive mistake: a volume-grade memo becoming the basis for a board decision.
 </Note>
 
 ## How the two lanes operate
@@ -31,25 +31,12 @@ flowchart TD
 
 ## Why two lanes
 
-Verification is genuinely expensive and slow. That is precisely why it was the first thing cut under throughput pressure (see [The Frame](/the-frame)), and it is why demanding it everywhere would be absurd. Most analytical work does not need to be audited. Most internal synthesis is reversible, exploratory, or context-setting. Forcing verification on those outputs would collapse cycle time without producing proportional value.
+Verification is genuinely expensive and slow. That is precisely why it was the first thing cut under throughput pressure (see [The Frame](/the-frame)), and it is why demanding it everywhere would be absurd. 
+
+Most analytical work does not need to be audited. Most internal synthesis is reversible, exploratory, or context-setting. Forcing verification on those outputs would collapse cycle time without producing proportional value.
 
 The market segments. A decision-grade lane, where buyers pay for verification and producers invest in it. A volume-grade lane, where speed and cost dominate and everyone understands what they are getting. Two lanes can coexist. The danger is not that they exist. The danger is that organizations fail to separate them, letting volume-lane outputs slide into decision-grade use.
 
-<Warning>
-  **Gresham's Law for reasoning.**
-
-  When all documents look equally polished (because AI-generated prose is uniformly fluent), decision-makers cannot distinguish decision-grade from volume-grade output without explicit labeling. The absence of labeling creates a market in which cheap, unverified analysis crowds out expensive, verified analysis because they look identical.
-
-  The unverified version is cheaper to produce, easier to ship, and indistinguishable on the surface. Without labels, it wins.
-</Warning>
-
-<Tip>
-  **The asymmetry the lanes are responding to.**
-
-  Drafting queues are empty. Review queues are full. Throughput metrics in most organizations still point at the wrong door.
-
-  Lane discipline is the operational response to this asymmetry. Without it, the lane that crowds out the other is the one that runs at the speed of drafting, not the speed of verification.
-</Tip>
 
 ## What goes in which lane
 
@@ -102,7 +89,7 @@ The practical rule: every analytical artifact carries a lane tag at the moment o
 <Tip>
   **The diagnostic question for the author:**
 
-  > Could the cost of being wrong about this output exceed the cost of having it verified?
+  "Could the cost of being wrong about this output exceed the cost of having it verified?"
 
   If yes, decision-grade. If no, volume-grade. If unsure, treat as volume-grade and require re-verification before any decision-grade use.
 </Tip>
@@ -182,7 +169,7 @@ The simplest implementation is a metadata tag, a routing rule, and a periodic au
 <Tip>
   **The single board-level metric:**
 
-  > Of the analytical content that informed your last ten board-level decisions, what percentage carried a decision-grade label at the moment of decision?
+  "Of the analytical content that informed your last ten board-level decisions, what percentage carried a decision-grade label at the moment of decision?"
 
   | Score | Interpretation |
   |---|---|
@@ -196,17 +183,17 @@ The simplest implementation is a metadata tag, a routing rule, and a periodic au
 
 Three inoculations against common misreadings.
 
-<CardGroup cols={3}>
-  <Card title="Not AI suppression" icon="robot">
-    The volume-grade lane is where most AI-augmented analysis appropriately lives. Forcing decision-grade verification onto everything is a different failure mode with the same downstream effect.
-  </Card>
-  <Card title="Not a replacement for the Buyer's Checklist" icon="handshake">
+<Steps>
+  <Step title="Not AI suppression">
+    The volume-grade lane is where most AI-augmented analysis appropriately lives. Forcing decision-grade verification onto everything is not a solution.
+  </Step>
+  <Step title="Not a replacement for the Buyer's Checklist">
     The two reinforce each other. The Buyer's Checklist makes the verification you buy real. Lane Discipline makes the verification you bought useful.
-  </Card>
-  <Card title="Not a permanent state" icon="arrows-rotate">
+  </Step>
+  <Step title="Not a permanent state">
     What counts as decision-grade in 2025 may not in 2027. Revisit the lane criteria annually as AI capabilities, regulation, and competitive context shift.
-  </Card>
-</CardGroup>
+  </Step>
+</Steps>
 
 ## Where this goes next
 
