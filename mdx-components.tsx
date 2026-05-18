@@ -11,6 +11,7 @@ import { AccordionGroup } from '@/components/mdx/AccordionGroup';
 import { Steps } from '@/components/mdx/Steps';
 import { Step } from '@/components/mdx/Step';
 import { Mermaid } from '@/components/mdx/Mermaid';
+import { Stat, StatRow } from '@/components/mdx/Stat';
 
 function slugify(text: string): string {
   return text
@@ -82,6 +83,8 @@ export function useMDXComponents(components: Record<string, unknown> = {}) {
     Steps,
     Step,
     Mermaid,
+    Stat,
+    StatRow,
     Frame: ({ children }: { children: ReactNode }) => (
       <div className="dg-card" style={{ padding: 20, margin: '24px 0' }}>
         {children}
