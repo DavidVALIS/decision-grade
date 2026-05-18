@@ -8,10 +8,11 @@ export type PageEntry = {
 export const PAGES: PageEntry[] = [
   { id: 'introduction', title: 'Introduction', icon: 'IconLayers', num: '00' },
   { id: 'the-frame', title: 'The Frame', icon: 'IconCrosshair', num: '01' },
-  { id: 'the-doctrine', title: 'The Doctrine', icon: 'IconShield', num: '02' },
-  { id: 'buyers-checklist', title: "The Buyer's Checklist", icon: 'IconChecklist', num: '03' },
-  { id: 'lane-discipline', title: 'Lane Discipline', icon: 'IconLanes', num: '04' },
-  { id: 'watchlist', title: '2026 Watchlist', icon: 'IconCalendar', num: '05' },
+  { id: 'evidence', title: 'The Evidence Base', icon: 'IconPulse', num: '02' },
+  { id: 'the-doctrine', title: 'The Doctrine', icon: 'IconShield', num: '03' },
+  { id: 'buyers-checklist', title: "The Buyer's Checklist", icon: 'IconChecklist', num: '04' },
+  { id: 'lane-discipline', title: 'Lane Discipline', icon: 'IconLanes', num: '05' },
+  { id: 'watchlist', title: '2026 Watchlist', icon: 'IconCalendar', num: '06' },
 ];
 
 export const ABOUT_PAGE: PageEntry = {

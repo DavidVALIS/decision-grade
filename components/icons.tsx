@@ -413,6 +413,19 @@ const ICON_MAP: Record<string, IconComponent> = {
   link: IconArrowRight,
   'arrows-rotate': IconArrowRight,
   'screwdriver-wrench': IconToolX,
+
+  // Evidence Base page additions
+  'gauge-high': IconPulse,
+  'gauge-low': IconPulse,
+  'magnifying-glass-chart': IconPulse,
+  chart: IconPulse,
+  virus: IconWarning,
+  ghost: IconWarning,
+  'building-circle-exclamation': IconWarning,
+  'link-slash': IconX,
+  'square-minus': IconX,
+  brain: IconSparkle,
+  'brain-circuit': IconSparkle,
 };
 
 export function getIcon(name: string | undefined): IconComponent | undefined {

@@ -13,6 +13,7 @@ const ROOT = path.resolve(__dirname, '..');
 const SLUGS = [
   'introduction',
   'the-frame',
+  'evidence',
   'the-doctrine',
   'buyers-checklist',
   'lane-discipline',
@@ -24,10 +25,11 @@ const SLUGS = [
 const NUMS = {
   introduction: '00',
   'the-frame': '01',
-  'the-doctrine': '02',
-  'buyers-checklist': '03',
-  'lane-discipline': '04',
-  watchlist: '05',
+  evidence: '02',
+  'the-doctrine': '03',
+  'buyers-checklist': '04',
+  'lane-discipline': '05',
+  watchlist: '06',
   about: 'A',
   mcp: 'M',
 };

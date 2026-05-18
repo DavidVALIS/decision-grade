@@ -9,6 +9,7 @@ cd "$(dirname "$0")/.."
 declare -A titles=(
   [introduction]="Introduction"
   [the-frame]="The Frame"
+  [evidence]="The Evidence Base"
   [the-doctrine]="The Doctrine"
   [buyers-checklist]="The Buyer's Checklist"
   [lane-discipline]="Lane Discipline"
@@ -17,7 +18,7 @@ declare -A titles=(
   [mcp]="MCP Server"
 )
 
-PAGES=(introduction the-frame the-doctrine buyers-checklist lane-discipline watchlist about mcp)
+PAGES=(introduction the-frame evidence the-doctrine buyers-checklist lane-discipline watchlist about mcp)
 
 {
   cat <<'HEADER'
@@ -25,7 +26,7 @@ PAGES=(introduction the-frame the-doctrine buyers-checklist lane-discipline watc
 
 > A framework for executives, technology leaders, and strategy functions working with AI in 2026. Built around verification: what to demand from AI vendors, what to build inside your organization, and what to watch over the next eighteen months.
 
-This file is the full text of all eight pages of the decision-grade.ai framework, assembled into a single document for AI-assisted reading. The canonical reading experience is at https://decision-grade.ai. Source is at https://github.com/DavidVALIS/decision-grade.
+This file is the full text of all nine pages of the decision-grade.ai framework, assembled into a single document for AI-assisted reading. The canonical reading experience is at https://decision-grade.ai. Source is at https://github.com/DavidVALIS/decision-grade.
 
 Published by VALIS Systems. Content licensed under Creative Commons Attribution 4.0 International (CC BY 4.0). Reference: https://valissystems.com.
 
