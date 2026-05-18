@@ -57,25 +57,62 @@ Here are some examples of the mechanisms I lay out above:
 </AccordionGroup>
 
 
+Those are the mechanisms verification provides. Here is what their absence looks like.
+
+The hard cases are not the obvious ones. Pro-tier models already cite everything. The failure mode that survives 2025 controls is output whose citations check out and whose reasoning still does not.
+
+Five examples follow. Each is a paragraph a McKinsey, BCG, or Gartner-shaped reader would nod through. Each is built around real, verifiable citations. Each fails at the structural-reasoning layer.
+
+<AccordionGroup>
+  <Accordion title="1. Selection-defined population (survivorship bias)">
+    *"Across the mid-market firms that have meaningfully integrated AI into their research workflows, time-to-insight has compressed by 30 to 50 percent without measurable loss of analytical quality. Organizations with mature governance frameworks have been disproportionate capturers of this efficiency, and the trajectory suggests the gap between AI-mature and AI-immature firms will widen through 2027."*
+
+    Citations: real productivity study, real governance-performance correlation, real industry forecast. All three describe what they claim to describe.
+
+    **Why it fails:** "Mid-market firms that have meaningfully integrated AI" is a survivor-defined population. The studies describe organizations that already succeeded; the conclusion generalizes the pattern to organizations contemplating the move. The selection rule does the load-bearing work. It is the same shape as "among hedge funds that survived 2008, conservative balance sheets outperformed." Both citations real. Guidance for anyone not already a survivor: useless.
+  </Accordion>
+
+  <Accordion title="2. Mechanism substitution (citation supports X, conclusion asserts Y)">
+    *"Deploying AI-assisted research across the analyst function reduces time-to-first-draft by 40 to 60 percent, freeing senior capacity for the higher-judgment work that drives strategic differentiation. Firms that have made the transition report sustained gains in client-facing throughput and improved analyst retention."*
+
+    Citations: four sources, all real, each describing exactly what it claims.
+
+    **Why it fails:** The citations measure time saved on drafts. The conclusion asserts the freed time goes to judgment. The source does not say where the freed time actually goes. Existing literature on professional time use (in law, consulting, equity research) suggests freed capacity gets absorbed by more clients, more deliverables, or earlier deadlines, not by more deliberation. The citation supports the first claim. The inferential step to the second is unsupported and, in the source as cited, unsourceable.
+  </Accordion>
+
+  <Accordion title="3. Aggregation across incomparable populations">
+    *"Controlled studies show AI coding assistants deliver a 55 percent acceleration in routine engineering tasks. Applying analogous tooling to the strategy function should produce comparable efficiency gains, particularly in the standardized components of analytical work: research synthesis, competitive review, and first-pass scenario construction."*
+
+    Citations: real randomized trial, real productivity literature.
+
+    **Why it fails:** The 55 percent is observed on a specific population. Developers writing boilerplate against well-typed APIs with deterministic test suites. Strategic research synthesis has no ground truth, no test harness, no structural type checking. The number is correct for its population. The analogical move to strategy is the unsupported step, and no citation can fix it, because the failure is in the inference, not the evidence.
+  </Accordion>
+
+  <Accordion title="4. Reverse causation (arrow read backward)">
+    *"Organizations with mature AI governance frameworks consistently outperform their less-prepared peers on AI-driven productivity metrics. Formalizing your governance practice is therefore one of the strongest moves available to a CIO planning AI deployment over the next eighteen months."*
+
+    Citations: real cross-sectional study, real industry advisory.
+
+    **Why it fails:** The studied organizations did not become good at AI because they had governance. They had governance because they were already well-resourced organizations capable of building anything they chose to build, including governance. The correlation is real. The implied causal direction is not established by the citation. A reader installing governance expecting the outperformance to follow is reading the arrow backward.
+  </Accordion>
+
+  <Accordion title="5. Trend extrapolation past the data">
+    *"Frontier model capability has roughly doubled every six months over the past three years. Inference cost has fallen by an order of magnitude annually over the same window. On the current trajectory, analytical workflows that today require senior judgment will be addressable by frontier models within eighteen to twenty-four months, which materially changes the case for investing in specialized analyst headcount over the planning horizon."*
+
+    Citations: three real sources, all describing observed trends accurately.
+
+    **Why it fails:** The citations describe the regime up to a point in time. The conclusion projects through the planning horizon. Whether the trend continues is the load-bearing assumption, and it sits in none of the citations. The argument depends entirely on an extrapolation the cited evidence does not itself vouch for. The same structural argument supported SaaS multiples in 2021. The trajectory was real until it wasn't.
+  </Accordion>
+</AccordionGroup>
+
 <Note>
-  **The kind of sentence that passes every 2025 control and still fails:**
+  **One shared property across all five.**
 
-  "In our analysis of leading mid-market deployments, AI-augmented research workflows demonstrate measurable productivity benefits for go-to-market organizations, with the strongest effects concentrated where senior analysts can redirect attention toward higher-value strategic synthesis. The trajectory suggests organizations with mature AI governance frameworks will continue to capture disproportionate value from these efficiencies through 2027 and beyond."
+  The citations were never the missing thing. Adding more of them does not address what is broken. What is broken is the inference from cited evidence to claimed conclusion.
 
-  Every clause is hedged. Every word is defensible individually. A fact-checker has nothing to fail. A reading partner says "sounds about right." A board signs off.
+  A fact-checker confirms the citations. A reasoning-checker, if one existed in the workflow, would notice that the citations measure one thing and the conclusion asserts another. The fact-checker exists at every major firm. The reasoning-checker does not.
 
-  A reasoning-checker has nothing to weigh, which is the failure.
-
-  - **"Our analysis of leading mid-market deployments"** has no methodology, no sample size, no definition of "leading," no inclusion criteria. The phrase commits to having done analysis and to nothing about how.
-  - **"Measurable productivity benefits"** does not specify the measure. Measurable productivity benefits compared to what baseline? Over what period? Held constant for what?
-  - **"Strongest effects concentrated where..."** is an observational claim with no comparison group. The sentence says "the gains showed up where senior analysts could redirect attention" — which is tautological. Where they could redirect, they did. That tells you nothing about whether the redirection produced value.
-  - **"Mature AI governance frameworks"** is defined nowhere. Any organization can self-certify as mature.
-  - **"Disproportionate value"** is disproportionate to what reference class. Unspecified.
-  - **"The trajectory suggests..."** through 2027 and beyond. Trajectory of what data, measured how, projected by which model.
-
-  Read clause by clause, every fragment passes. Read as a whole, the sentence commits to nothing testable. This is the harder failure mode — not phantom precision the eye catches, but professional hedging that a trained reader nods past.
-
-  The sentence did not lie. It refused to make a claim that could be wrong. That is the failure no fact-checker catches.
+  This is the failure no 2025 control was designed to surface, and the failure no Pro-tier "more citations" upgrade closes.
 </Note>
 
 ## The verification deficit, in one comparison
