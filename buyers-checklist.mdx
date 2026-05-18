@@ -149,19 +149,19 @@ flowchart LR
     Points to a publicly accessible or customer-auditable log. Can produce specific refusals on demand. Explains the structure, the review cadence, and how refusal patterns are aggregated.
   </Card>
   <Card title="A worrying answer" icon="circle-xmark">
-    "We don't refuse often." "We log internally." "We have a process if there is an issue." A refusal log is a public commitment. If it is not visible, it does not exist.
+    "We don't refuse often." "We log internally with no audit trail." "We have a process if there is an issue." Internal-only logs that the customer cannot query are theater. Customer-auditable logs (with privacy-preserving access controls, salted commitments, or per-customer keys) are acceptable. Globally public is one valid option but not the only one.
   </Card>
 </CardGroup>
 
 <Warning>
   **Red flags:**
   - No refusal log at all
-  - A refusal log only the vendor can read
-  - Refusals that are reviewed but not published
-  - A vendor uncomfortable showing you specific refusals
+  - A log only the vendor can read and curate before you see it
+  - Refusals that are reviewed but never queryable
+  - A vendor uncomfortable showing you specific refusals you have a right to inspect
 </Warning>
 
-**Why it matters:** A vendor's pattern of what they refuse to do is a more durable signal of integrity than any methodology statement. Over time, refusal patterns reveal whether the doctrine is real or marketing.
+**Why it matters:** A vendor's pattern of what they refuse to do is a more durable signal of integrity than any methodology statement. The log does not have to be globally public if the customer can audit it. What matters is that the pattern is queryable by parties outside the vendor, and the vendor cannot quietly curate which refusals are visible to which customers.
 
 ---
 
@@ -278,6 +278,14 @@ Sum the scores across the seven questions. The maximum is 35.
 </CardGroup>
 
 A vendor that refuses to engage with one or more of these questions has answered them. The refusal is the answer.
+
+<Note>
+  **A note on these thresholds.** The 22, 28, and 35 bands are provisional. They have not been calibrated against measured verification quality across a representative vendor sample. Use them as a comparative ranking within your RFP process, not as a certification regime. As more vendors are scored against these questions, the thresholds will be revised upward or downward, and the change log will be visible in the [repository](https://github.com/DavidVALIS/decision-grade).
+</Note>
+
+## On the current state of the category
+
+At the time of writing, no vendor scores full marks across all seven questions. That is not necessarily a problem. Categories define their bar before they are populated; the buyer's lever works by asking, not by waiting for a vendor that already passes. If your evaluation produces a top score of 18, that tells you something about the market more than about the seven vendors you scored. The market is still being built. Your asking is part of building it.
 
 ## The buyer's lever
 

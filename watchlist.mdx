@@ -8,14 +8,16 @@ A framework that does not specify how it could be wrong is not a framework. It i
 Read it as a stress test, not as a forecast you can outsource. The framework is directional. Timing is uncertain. The point of this page is to make the uncertainty visible.
 
 <Note>
-  **In short:** Five scenario trajectories. Two levers that move the system this quarter. One decision window (August 1, 2026). One thesis falsifier (AI volume rises, unanchored-claim rate does not).
+  **In short:** Five scenario trajectories. Two levers that move the system this quarter. One per-organization deadline (90 days from the day your team adopted AI-assisted drafting). One thesis falsifier (AI volume rises, unanchored-claim rate does not).
 </Note>
 
-## The decision window: August 1, 2026
+## The decision window: 90 days from your AI adoption date
 
-There is one date worth treating as a deadline.
+There is one date worth treating as a deadline. It is not a calendar date. It is the day your team adopted AI-assisted drafting, formally or informally.
 
-By August 1, 2026, any pipeline that labels output "decision-grade" should have a structural-validity release gate in place. Miss the date and the team will normalize the faster cadence. Later gates feel like sabotage rather than quality control. The retrofit cost rises sharply once the new cadence is calendared, staffed, and expected by clients.
+The 90-day window starts then. After that, the new cadence is normalized. Gates installed later feel like sabotage rather than quality control. The retrofit cost rises sharply once the new cadence is calendared, staffed, and expected by clients.
+
+If your team has been using AI-assisted drafting for more than a quarter already, you are already inside the window where retrofit cost rises. Install the gate now.
 
 <Tip>
   **The no-regret action.** Require every decision-grade brief to include:
@@ -111,7 +113,19 @@ Three observable proxies:
 
 If those metrics stay at pre-AI baselines while volume climbs, the verification-gap story is wrong. Existing review gates are absorbing the shock. The framework should be revised, not defended.
 
+### A frank acknowledgment
 
+The proxies above are hard to operationalize in practice. Most analytical work is quietly superseded rather than formally retracted. Client-reported accuracy is produced by clients with motivated reasoning. Rejection rates require a published rejection policy most firms do not have. The framework's falsifier is genuine in form and operationally weak in current practice.
+
+What would make the falsifier observable:
+
+- **A sampling protocol.** Random selection of decision-grade outputs from a defined population, with disclosed inclusion criteria.
+- **A baseline period.** Pre-AI-adoption window of at least four quarters, with the adoption date logged explicitly per team.
+- **A defect taxonomy.** Unanchored claim, missing assumption, unspecified mechanism, unfalsifiable prediction, phantom precision. Each defect with a definition and an examples set.
+- **Inter-rater reliability targets.** Multiple coders per sample, Cohen's kappa above 0.7 before any rate is published.
+- **Survivorship-bias treatment.** Include outputs that were withdrawn or downgraded, not only those that shipped.
+
+Until that data exists for a representative sample, the falsifier is a methodology in waiting. The framework predicts the rate rises. The framework is currently unable to prove it. This is the most honest the page can be about its own grounding.
 
 ## Regulatory signals 
 
@@ -119,10 +133,10 @@ These signals are already live as of May 2026. Track them for implementation sev
 
 | Signal | Date in force | What to watch for | What it tells you |
 |---|---|---|---|
-| **[SR 26-2](https://www.federalreserve.gov/supervisionreg/srletters/SR2602.pdf)** Revised Guidance on Model Risk Management | April 17, 2026 | First material enforcement action against a major bank for inadequate AI/model validation | Procurement-of-proof dynamic is real and propagating from banking outward |
-| **GENIUS Act** implementation | July 18, 2025 onward | First OCC enforcement against a stablecoin issuer for inadequate attestation; whether BDO attestations for federally-supervised stablecoins are substantive or perfunctory | Federal coalition is enforcing the perimeter, not rubber-stamping it |
-| **SOC 2 2026 criteria** | 2026 | Enterprise procurement teams pushing 2026 SOC 2 criteria into AI-vendor RFPs | The crossover from security procurement to AI verification procurement is happening |
-| **[EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)** high-risk provisions | Staggered 2026-2027 | First regulator-level fine against an AI verification provider for inadequate transparency or oversight | European enforcement typically leads U.S. enforcement by 12-18 months in adjacent domains |
+| **[SR 26-2](https://www.federalreserve.gov/supervisionreg/srletters/SR2602.pdf)** Revised Guidance on Model Risk Management | April 17, 2026 | First material enforcement action against a major bank for inadequate model validation. *Caveat: SR 26-2 explicitly excludes generative and agentic AI from scope.* Use as proxy for general model-validation enforcement direction, not as direct AI verification regulation. | The procurement-of-proof dynamic is propagating from banking, even with gen AI out of scope. Watch the next iteration of the guidance for AI inclusion. |
+| **GENIUS Act** implementation | July 18, 2025 onward | First OCC enforcement against a stablecoin issuer for inadequate attestation; whether BDO attestations for federally-supervised stablecoins are substantive or perfunctory | Federal coalition enforcing a regulated perimeter around private dollar liabilities, even if not yet around analytical reasoning |
+| **[NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework) in federal procurement** | RMF 1.0 published Jan 2023; GenAI Profile published Jul 2024 | Federal agencies citing AI RMF as a procurement requirement under FedRAMP, GSA schedules, or agency-specific acquisition rules | Federal procurement adopting AI risk frameworks is a leading indicator of broader enterprise procurement moves |
+| **[EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)** high-risk provisions | High-risk standalone systems: December 2, 2027. High-risk systems integrated into products: August 2, 2028. Dates per the AI Act omnibus political agreement. | First regulator-level fine against an AI verification provider for inadequate transparency, oversight, or risk management | European enforcement typically leads U.S. enforcement by 12-18 months in adjacent domains |
 
 ## Indicators worth instrumenting now
 
@@ -154,8 +168,8 @@ If you want to run the framework's tests on your own pipeline, these are the mea
 ## How to use this page
 
 <Steps>
-  <Step title="Mark August 1, 2026 in the calendar">
-    If your organization labels output decision-grade, the structural-validity release gate should be in production by that date. Treat the date as a planning deadline tied to adoption lock-in, not as a hard event.
+  <Step title="Date the start of your 90-day window">
+    Mark the day your team adopted AI-assisted drafting (formally authorized or shadow). Treat that as day zero. The structural-validity release gate should be in production by day 90 from that date. If you cannot identify the adoption date, assume it has already passed and install the gate now.
   </Step>
 
   <Step title="Track the two levers this quarter">

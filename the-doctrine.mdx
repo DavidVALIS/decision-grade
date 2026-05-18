@@ -20,6 +20,10 @@ AI verification is at the same inflection. The same shift is required.
 | **Network security (pre-2015)** | Perimeter trust ("inside is safe") | Breach inside the perimeter = total loss | Zero Trust: verify every transaction |
 | **AI verification (now)** | Trust the verifier ("their brand is sound") | Verifier fails = silent corruption of decisions | Zero Trust: verify the verifier's math |
 
+<Note>
+  **A note on the borrowing.** Zero Trust as a security concept is precisely defined in [NIST SP 800-207](https://csrc.nist.gov/publications/detail/sp/800-207/final): every access request authenticated regardless of perimeter location. Applying it to AI verification is analogy, not derivation. The mapping is useful (every verification claim should be independently checkable, regardless of who is making it) but the technical implications of NIST 800-207 are not the technical implications of this doctrine. Treat the analogy as a framing device, not a citation.
+</Note>
+
 The constitutional statement is short: **The customer should not have to trust the verifier.**
 1. Every claim the verifier makes about its own behavior should be independently verifiable, by the customer, by a third party, or by a regulator.
 2. The reputation of the founder, the team, the company, the doctrine, and the methodology are not inside the trust model.
@@ -76,6 +80,20 @@ The Zero Trust commitment: verification requires independent agreement across mo
   A self-assessment is not a verdict.
 </Note>
 
+### Independence by vendor is necessary, not sufficient
+
+Frontier models converge. Shared training corpora, similar RLHF norms, comparable benchmark pressure, common failure modes on the soft-reasoning errors this framework is built around. Three frontier models that all pass the example sentence in The Frame buy you less independence than the doctrine implies. Independence-by-vendor is the floor, not the ceiling.
+
+The partial defenses that turn vendor independence into cognitive independence:
+
+- **Diverse adjudication protocols.** Majority vote, weighted vote, mandatory consensus, escalation to a human expert. Not interchangeable. Majority vote tolerates correlated failure; mandatory consensus surfaces it.
+- **Calibrated disagreement handling.** Recording dissent is necessary; the meaningful work is treating disagreement as information rather than noise.
+- **Adversarial example sets.** Verifiers should be tested against cases known to be hard for the dominant training pattern, not just held-out samples from the same distribution.
+- **Source-grounded checks.** Verification against external data the models cannot have memorized.
+- **Domain-expert challenge.** Humans with subject-matter expertise reviewing dissent, not just adjudicating the overall verdict.
+
+The doctrine is right to rule out same-family verification. It would be wrong to treat three-vendor agreement as the destination.
+
 ## 2. Doctrine: rules enforced architecturally
 
 The second layer is about where the rules live. The Zero Trust commitment: rules are enforced by the architecture, not by operator preference.
@@ -83,10 +101,10 @@ The second layer is about where the rules live. The Zero Trust commitment: rules
 | | Anti-pattern | Zero Trust pattern |
 |---|---|---|
 | **Where the rule lives** | In a style guide, runbook, or PDF | In code that executes deterministically |
-| **What enforces it** | Reviewer memory, policy, deadline pressure | A gate that cannot be bypassed |
-| **What happens when convenient to skip** | The rule is skipped | The rule fires anyway |
+| **What enforces it** | Reviewer memory, policy, deadline pressure | A gate that fires automatically; overrides require break-glass authorization |
+| **What happens when convenient to skip** | The rule is skipped | The rule fires anyway, or the override is logged where everyone can see it |
 | **Verification claim** | "Our process is to..." | "The system cannot ship without..." |
-| **Audit answer** | "We have a policy" | "Here is the code path" |
+| **Audit answer** | "We have a policy" | "Here is the code path, and here are the logged exceptions" |
 
 The standard failure mode for analytical processes is that the rules exist in documentation but not in execution. A style guide says reviewers must check causal claims. The reviewer is under deadline pressure. The check does not happen. The output ships, and the documentation is silent on whether the check was actually performed. The rule existed; the enforcement did not.
 
@@ -102,6 +120,19 @@ The Zero Trust commitment generalizes beyond evidence gates. Any rule the verifi
 
   If the only thing standing between the rule and a violation is operator memory or operator discretion, the rule is aspirational.
 </Note>
+
+### A note on override design
+
+"Cannot be bypassed" is shorthand. Real systems need emergency overrides for safety incidents, legal holds, key rotations, customer-specific compliance, and incident response. The doctrine's commitment is not that overrides are impossible. It is that overrides cannot happen silently.
+
+Any bypass requires:
+
+- **A signed reason code** naming the authority and rationale
+- **An immutable log entry** recording the override
+- **Customer notification** when the override is material to their certificate
+- **Audit review** at a documented cadence
+
+The architecture surfaces every exception. It does not pretend exceptions never happen. A vendor that claims their gate can never be bypassed is either lying or has not yet had a customer with a real edge case. A vendor that shows you the override protocol, the override log, and the audit cadence is operating the doctrine as designed.
 
 ## 3. Accountability: every decision survives independent challenge
 
@@ -134,6 +165,22 @@ The accountability principle extends to internal organizational use. A C-suite r
 
   If the integrity of the record depends on the verifier behaving well, the integrity of the record is not verifiable.
 </Note>
+
+### What cryptographic anchoring proves, and what it does not
+
+Cryptographic anchoring is necessary but not sufficient. The doctrine is strong on procedural integrity and exactly as strong as the reasoning it anchors. This distinction is important enough to be explicit.
+
+| What it proves | What it does not prove |
+|---|---|
+| The record has not been altered after the fact | The original reasoning was sound |
+| The signature came from the issuer's key | The issuer's methodology was valid |
+| The append-only log is intact | The sources cited were reliable |
+| The artifact bound to the certificate is unmodified | The conclusion follows from the evidence |
+| The rubric version applied is verifiable | The rubric itself was well-designed |
+
+A hash proves the record is stable. It does not prove the analysis was correct. A signed certificate binds an output to a process; it does not validate the process. A public commitment log proves a vendor said something publicly; it does not prove what they said was right.
+
+Provenance is a precondition for validity audits, not a substitute for them. The doctrine on this page produces tamper-evident records. Whether the records contain valid reasoning is a separate question, answered by domain experts, replication, and the discipline of asking what evidence would change the conclusion. The framework is honest about which question it answers and which it does not.
 
 ## What the three principles produce, taken together
 
