@@ -17,14 +17,12 @@ The framework is published openly because the Zero Trust posture it advocates ex
 
 
 <Note>
-  **What this site is:** A framework for executives, technology leaders, and strategy functions navigating AI in 2026. 
+  **What this site is.** A framework for executives, technology leaders, and strategy functions navigating AI in 2026. Six pages. Roughly thirty minutes end to end. Built to be read in order, skimmed for one specific question, or referenced over time.
 </Note>
 
-Is the guidance you receive about AI still scoped to facts and hallucinations? Will the model make things up? Can we catch it when it does? 
+Most executive guidance about AI in 2026 is scoped to facts and hallucinations. Will the model make things up. Can we catch it when it does. Should we add a fact-checker, a human reviewer, a disclosure label. These are reasonable questions. They are not where the operational risk lives.
 
-These are reasonable questions. They are not where the operational risk lives.
-
-The risk that matters sits one layer down: AI generates polished-looking analytical output at a production cost that has fallen by a factor of 100 to 1,000 relative to human equivalents. The output reads well, fact-checks cleanly, and contains no obvious hallucinations. It still reasons badly. It still makes load-bearing causal claims with no mechanism. It still omits the boundary conditions that would let a careful reader weigh it.
+The risk that matters now sits one layer down. AI generates polished-looking analytical output at a production cost that has fallen by a factor of one hundred to one thousand against human equivalents. The output reads well, fact-checks cleanly, and contains no obvious hallucinations. It still reasons badly. It still makes load-bearing causal claims with no mechanism. It still omits the boundary conditions that would let a careful reader weigh it.
 
 Your existing controls do not catch this. They were not designed to. Style guides formalize prose. Performance reviews reward speed and confidence. Disclosure frameworks check what tool was used, not whether the reasoning is sound. The verification deficit was already inside your organization before any model was deployed. AI did not create it. AI revealed it.
 
@@ -36,15 +34,15 @@ Three audiences. The framework serves all three because the underlying problem i
 
 <CardGroup cols={3}>
   <Card title="CEOs, COOs, board members" icon="building">
-    This framework helps you tell decision-grade output from polished output that looks the same.
+    You are deciding which analytical outputs to trust as the basis for capital allocation, acquisitions, market entry, and strategic positioning. The framework helps you tell decision-grade output from polished output that looks the same.
   </Card>
 
   <Card title="CIOs, CTOs, CISOs" icon="server">
-    This framework maps the Zero Trust posture you already understand from security onto AI verification, and gives you a buyer's checklist for vendor selection.
+    You are deploying AI infrastructure and selecting verification partners. The framework maps the Zero Trust posture you already understand from security onto AI verification, and gives you a buyer's checklist for vendor selection.
   </Card>
 
   <Card title="Chief Strategy and Foresight" icon="compass">
-    This framework names what you have probably been feeling for months without language for.
+    You are the function inside your organization closest to the verification deficit, because your work depends on reasoning that holds up under expert challenge. The framework names what you have probably been feeling for months without language for.
   </Card>
 </CardGroup>
 
@@ -53,30 +51,28 @@ Three audiences. The framework serves all three because the underlying problem i
 This site is a reference, not a primer or an essay. Read it in order if you want the full architecture. Jump to any page if you have a specific question.
 
 <Steps>
-  <Step title="The Frame: The diagnosis">
-    What the problem actually is. Why current controls miss it. 
+  <Step title="The Frame — the diagnosis">
+    What the problem actually is. Why current controls miss it. The historical parallel (pre-2008 credit ratings) that names the failure mode.
   </Step>
-  <Step title="The Doctrine: The posture">
+  <Step title="The Doctrine — the posture">
     Zero Trust as the meta-principle. The three layers: Independence, Doctrine, Accountability.
   </Step>
-  <Step title="The Buyer's Checklist: The action">
+  <Step title="The Buyer's Checklist — the action">
     Seven procurement questions to put to AI verification vendors. Red flags. Scoring grid.
   </Step>
-  <Step title="Lane Discipline: The internal practice">
+  <Step title="Lane Discipline — the internal practice">
     Decision-grade vs. volume-grade. Classification, routing, failure modes.
   </Step>
-  <Step title="2026 Watchlist: The calendar">
+  <Step title="2026 Watchlist — the calendar">
     Dated signals that will tell you whether the framework holds. Updated as signals resolve.
   </Step>
 </Steps>
 
 <Tip>
-  **The doctrine is verifiable.** Every page is published in Markdown source at the linked GitHub repository. You can ask any AI to read the entire framework. An `llms.txt` index is published at the site root for that purpose. The site is verifiable. The doctrine is forkable. The framework is contestable. That is part of the posture, not a side feature.
+  **The doctrine is verifiable.** Every page is published in Markdown source at the linked GitHub repository. You can ask any AI to read the entire framework. Three surfaces make this practical: an [`llms.txt`](/llms.txt) index of every page, a [`llms-full.txt`](/llms-full.txt) bundle that ships the entire framework as one document for ingestion in a single fetch, and an [MCP server](/mcp/) at `decision-grade.ai/api/mcp` that any MCP-aware AI client (Claude Desktop, Cursor, others) can connect to directly. The site is verifiable. The doctrine is forkable. The framework is contestable. That is part of the posture, not a side feature.
 </Tip>
 
 ## What the framework is not
-
-This is not a list of AI tools. It is not a survey of vendor capabilities. It is not a "future of work" thesis or a "ten ways AI will transform your business" primer. There are dozens of those. They are scoped to the questions the AI conversation was asking in 2025. The conversation has moved.
 
 Three inoculations against the most common misreadings.
 
@@ -94,7 +90,7 @@ Three inoculations against the most common misreadings.
   </Card>
 </CardGroup>
 
-This framework is scoped to the question executives will face in 2026 and 2027: when the cost of producing polished analytical output has collapsed, what does it mean to verify the reasoning underneath, and what should you demand from the systems and vendors you depend on?
+The framework is scoped to one question: when the cost of producing polished analytical output has collapsed, what does it mean to verify the reasoning underneath, and what should you demand from the systems and vendors you depend on.
 
 ## Where to start
 
