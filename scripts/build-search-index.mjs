@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import matter from 'gray-matter';
+import { renderStats } from './render-stats.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -47,9 +48,11 @@ function stripMdx(content) {
   s = s.replace(/```[\s\S]*?```/g, ' ');
   // Strip inline code
   s = s.replace(/`[^`]+`/g, ' ');
-  // Strip JSX/HTML tags but keep inner text. Run twice to handle nested-ish cases.
-  s = s.replace(/<[^>]+>/g, ' ');
-  s = s.replace(/<[^>]+>/g, ' ');
+  // Strip JSX/HTML tags but keep inner text. Use [\s\S] so multi-line tags
+  // (e.g. self-closing JSX with attributes on separate lines) are matched.
+  // Run twice to handle nested-ish cases.
+  s = s.replace(/<[a-zA-Z\/][\s\S]*?>/g, ' ');
+  s = s.replace(/<[a-zA-Z\/][\s\S]*?>/g, ' ');
   // Strip markdown bold/italic emphasis markers (keep content)
   s = s.replace(/\*\*([^*]+)\*\*/g, '$1');
   s = s.replace(/(^|[\s(])\*([^*\n]+)\*/g, '$1$2');
@@ -82,7 +85,10 @@ function buildIndex() {
     }
 
     const raw = fs.readFileSync(file, 'utf-8');
-    const { data, content } = matter(raw);
+    const { data, content: rawContent } = matter(raw);
+    // Render <Stat> JSX blocks as markdown so values, labels, and sources
+    // are searchable and appear in the section text.
+    const content = renderStats(rawContent);
 
     const sections = [];
 

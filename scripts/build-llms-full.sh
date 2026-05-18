@@ -48,12 +48,14 @@ HEADER
     echo ""
     # Strip only the YAML frontmatter (between the first two --- at the top of the file).
     # Horizontal rules (---) further down in the file must be preserved.
+    # Then render <StatRow> / <Stat> JSX blocks as plain markdown bullets so
+    # the bundle reads as text for downstream LLM consumers.
     awk '
       NR==1 && /^---$/ { fm=1; next }
       fm==1 && /^---$/ { fm=2; next }
       fm==2 { print }
       fm=="" && NR==1 { fm=2; print }
-    ' "$f.mdx"
+    ' "$f.mdx" | node scripts/render-stats.mjs
   done
 } > llms-full.txt
 
