@@ -574,7 +574,7 @@ The framework's empirical foundation rests on seven independently published, pri
 
 Three additional studies are worth naming. They do not carry the page, but they widen the empirical floor.
 
-<CardGroup cols={3}>
+<CardGroup cols={1}>
   <Card title="Columbia Tow Center AI-search audit" icon="magnifying-glass">
     1,600 queries across eight AI-search and chatbot tools. Collectively wrong on over 60 percent of queries. Perplexity wrong 37 percent of the time. Grok 3 wrong 94 percent of the time, with 154 of 200 citations leading to 404 pages. [CJR, March 2025](https://www.cjr.org/tow_center/we-compared-eight-ai-search-engines-theyre-all-bad-at-citing-news.php).
   </Card>
