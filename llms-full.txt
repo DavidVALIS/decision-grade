@@ -2,11 +2,11 @@
 
 > A framework for executives, technology leaders, and strategy functions working with AI in 2026. Built around verification: what to demand from AI vendors, what to build inside your organization, and what to watch over the next eighteen months.
 
-This file is the full text of all six pages of the decision-grade.ai framework, assembled into a single document for AI-assisted reading. The canonical reading experience is at https://decision-grade.ai. Source is at https://github.com/DavidVALIS/decision-grade.
+This file is the full text of all eight pages of the decision-grade.ai framework, assembled into a single document for AI-assisted reading. The canonical reading experience is at https://decision-grade.ai. Source is at https://github.com/DavidVALIS/decision-grade.
 
 Published by VALIS Systems. Content licensed under Creative Commons Attribution 4.0 International (CC BY 4.0). Reference: https://valissystems.com.
 
-The framework starts from a single observation: AI production cost has fallen by a factor of one hundred to one thousand against human equivalents, while the cost of verifying that the output reasons correctly has not moved. The gap between those two cost curves is the operational risk that most executive AI guidance does not yet address.
+The framework starts from a single observation: AI is already in your analytical pipeline somewhere. The token-level production cost collapsed by two to three orders of magnitude. The all-in cost of analytical work fell by roughly 5x to 20x. Verification cost has not moved at the same rate at the structural-reasoning layer. The gap between those two cost curves is the operational risk that most executive AI guidance does not yet address.
 
 The framework is published openly because the Zero Trust posture it advocates extends to the doctrine itself. You should not have to trust the publisher. You can verify the framework, contest it, fork it, or implement it elsewhere.
 
@@ -24,7 +24,7 @@ Is the guidance you receive about AI still scoped to facts and hallucinations? W
 
 These are reasonable questions. They are not where the operational risk lives.
 
-The risk that matters sits one layer down: AI generates polished-looking analytical output at a production cost that has fallen by a factor of 100 to 1,000 relative to human equivalents. 
+The risk that matters sits one layer down: AI is already in your analytical pipeline somewhere, whether you formally authorized it or not. Research synthesis, first-draft generation, code review, summarization, market sweeps, briefing prep. The token-level cost of producing words has collapsed by two to three orders of magnitude. The all-in cost of analytical work, once human prompting, editing, and integration are counted, has fallen by roughly 5x to 20x. Different scale, same direction. Throughput is up either way.
 
 The output reads well, fact-checks cleanly, and contains no obvious hallucinations. It still reasons badly. It still makes load-bearing causal claims with no mechanism. It still omits the boundary conditions that would let a careful reader weigh it.
 
@@ -180,43 +180,56 @@ Here are some examples of the mechanisms I lay out above:
 <Note>
   **The kind of sentence that passes every 2025 control and still fails:**
 
-  "Mid-market companies that deployed generative AI tools in 2025 saw 18% productivity gains in their go-to-market functions, with the largest effects concentrated among sales development reps and account executives."
+  "In our analysis of leading mid-market deployments, AI-augmented research workflows demonstrate measurable productivity benefits for go-to-market organizations, with the strongest effects concentrated where senior analysts can redirect attention toward higher-value strategic synthesis. The trajectory suggests organizations with mature AI governance frameworks will continue to capture disproportionate value from these efficiencies through 2027 and beyond."
 
-  Every fact in the sentence checks out. AI deployment is happening. Mid-market is a real segment. Productivity gains have been reported. SDRs and AEs use these tools. A fact-checker passes it.
+  Every clause is hedged. Every word is defensible individually. A fact-checker has nothing to fail. A reading partner says "sounds about right." A board signs off.
 
-  A reasoning-checker does not.
+  A reasoning-checker has nothing to weigh, which is the failure.
 
-  - **"18% productivity gains"** is phantom precision. Productivity measured how? Calls dialed, pipeline created, revenue closed? Each one is a different 18%.
-  - **"Mid-market companies that deployed"** is self-selection. The companies that deployed gen AI were also the companies investing in better tooling, better hires, and better playbooks. The deployment took credit for the whole improvement.
-  - **"Concentrated among SDRs and AEs"** is an observational claim with no comparison group, no baseline, no methodology, and no source.
+  - **"Our analysis of leading mid-market deployments"** has no methodology, no sample size, no definition of "leading," no inclusion criteria. The phrase commits to having done analysis and to nothing about how.
+  - **"Measurable productivity benefits"** does not specify the measure. Measurable productivity benefits compared to what baseline? Over what period? Held constant for what?
+  - **"Strongest effects concentrated where..."** is an observational claim with no comparison group. The sentence says "the gains showed up where senior analysts could redirect attention" — which is tautological. Where they could redirect, they did. That tells you nothing about whether the redirection produced value.
+  - **"Mature AI governance frameworks"** is defined nowhere. Any organization can self-certify as mature.
+  - **"Disproportionate value"** is disproportionate to what reference class. Unspecified.
+  - **"The trajectory suggests..."** through 2027 and beyond. Trajectory of what data, measured how, projected by which model.
 
-  The sentence didn't lie. It left out everything that would let you weigh it. That is the failure no fact-checker catches.
+  Read clause by clause, every fragment passes. Read as a whole, the sentence commits to nothing testable. This is the harder failure mode — not phantom precision the eye catches, but professional hedging that a trained reader nods past.
+
+  The sentence did not lie. It refused to make a claim that could be wrong. That is the failure no fact-checker catches.
 </Note>
 
 ## The verification deficit, in one comparison
 
-Production cost has fallen by a factor of one hundred to one thousand against human equivalents. Verification cost has not moved. The gap is the operational risk.
+AI is in your analytical pipeline somewhere, accelerating throughput at one or more upstream steps. The token-level production cost collapsed by orders of magnitude. The all-in production cost, including the human prompting, editing, and integration that real analytical work still requires, fell by a more modest multiple. Either lens tells the same story: more analytical artifacts move through any given reviewer than was possible two years ago.
 
 | Cost layer | 2020 | 2026 | Change |
 |---|---|---|---|
-| **Producing 1,000 words of polished analytical prose** | $5 to $15 (mid-career analyst time) | $0.001 to $0.02 (mainstream model API) | ~250x to 15,000x cheaper |
-| **Verifying that the 1,000 words reasons correctly** | Hours of expert review, plus access to source data | Hours of expert review, plus access to source data | Unchanged |
+| **Producing 1,000 words at the token layer** | $5 to $15 (mid-career analyst time) | $0.001 to $0.02 (mainstream model API) | 250x to 15,000x cheaper |
+| **Producing 1,000 words all-in (with human prompting, editing, integration)** | $5 to $15 | $0.50 to $3 | ~5x to 20x cheaper |
+| **Verifying the structural reasoning underneath** | Hours of expert review, plus access to source data | Hours of expert review, plus access to source data, partially augmented by automated checks | Mostly unchanged at the structural layer |
+
+The token-level ratio is the headline. The all-in ratio is what shows up in throughput. Both matter for the diagnosis.
+
+### The counterthesis worth engaging
+
+The same technology that collapsed production cost is also collapsing some verification cost. Retrieval-augmented fact-checking, automated citation tracing, internal consistency checks, multi-model adjudication. None of these existed at scale in 2023. If verification is getting cheaper at the same rate as generation, the gap closes endogenously and the framework's premise weakens.
+
+Where the counterthesis holds: the fact-checking layer. Hallucination detection, citation grounding, internal consistency. These are getting cheaper. Some of this framework's own architectural commitments (independent verification across model families) ride on that improvement.
+
+Where it does not hold: the structural-reasoning layer. Verifying that a causal claim has real grounding, that an assumption was committed to before the conclusion, that a falsifier is observable, that a rubric was applied consistently. These require human expertise and judgment that does not scale at the same rate. The bottleneck migrates upward in the verification stack rather than closing. That migration is the operational risk this framework is built around.
+
+### The outcome at the reviewer's desk
 
 The scarce resource is no longer the analyst who writes. It is the reviewer who catches what the writing assumes.
 
-The production layer has been industrialized. The verification layer has not. Any output is now downstream of AI analysis, whether you know it or not.
-
-
-The outcome:
-
 <Steps>
-  <Step title="More polished analytical artifacts are produced">
-    Often 10x to 40x the volume of two years ago.
+  <Step title="Throughput rose because the upstream work got faster">
+    Research, summarization, and first-draft generation that took days now take hours. The deliverable does not have to be AI-generated for AI to be accelerating the pipeline behind it.
   </Step>
   <Step title="Review capacity has stayed flat">
-    The slow checks were the first thing cut under throughput pressure.
+    Reviewer headcount, meeting time, and domain access did not scale at the same rate. The slow checks were the first thing cut under throughput pressure.
   </Step>
-  <Step title="Unverified claims circulate at an order of magnitude greater volume">
+  <Step title="Unverified claims circulate at materially higher volume">
     The probability that any specific output contains an unverified load-bearing claim has not fallen with the cost. It has risen with the volume.
   </Step>
 </Steps>
@@ -290,7 +303,15 @@ The fix in adjacent domains has been consistent. When failure becomes visible en
   The pattern: when the cost of being wrong exceeds the cost of demanding proof, buyers force the correction.
 </Note>
 
-The analogy has limits. Credit ratings carried regulatory force and directly triggered capital requirements. A consulting deck does not trigger margin calls. The structural mechanism, however, is identical: proxy-based trust substitutes for verification, and the substitution is invisible until it fails.
+The analogy has limits worth naming. Credit ratings carried regulatory force and directly triggered capital requirements; the 2008 cascade required leverage, fire-sale dynamics, and correlated mass holdings. A consulting deck does not trigger margin calls. The structural mechanism, however, is identical: proxy-based trust substitutes for verification, and the substitution is invisible until it fails.
+
+What is the analogue to the margin call for analytical content? Three candidates, none of them as fast or as systemic as 2008, all of them capable of producing the same effect over months rather than days:
+
+- **Regulatory enforcement** when an AI-augmented analysis underpins a regulated decision and turns out wrong. The SEC, FDA, financial regulators, and analogous bodies have authority over specific decision categories where unverified reasoning would expose the regulated entity directly.
+- **Litigation exposure** when a board, fiduciary, or counterparty acted on AI-augmented analysis that turns out to have hidden assumptions or missing premises. Discovery will reach for the reasoning chain. Tamper-evident reasoning is defensible; revisable Google Docs are not.
+- **Public failure events** that trigger buyer flight. The cybersecurity industry repriced trust in proxies after SolarWinds. The verification-of-analysis market will reprice trust in proxies after the first comparable disclosure.
+
+The cascade is slower than 2008. The structural mechanism is identical. The framework predicts the repricing arrives within eighteen months of the first widely-reported failure event.
 
 The framework that follows on the rest of this site is built on that pattern. The next pages walk through what proof artifacts look like for analytical content, what posture executives should adopt toward AI verification, and what to demand from the systems and vendors they depend on.
 
@@ -331,6 +352,10 @@ AI verification is at the same inflection. The same shift is required.
 |---|---|---|---|
 | **Network security (pre-2015)** | Perimeter trust ("inside is safe") | Breach inside the perimeter = total loss | Zero Trust: verify every transaction |
 | **AI verification (now)** | Trust the verifier ("their brand is sound") | Verifier fails = silent corruption of decisions | Zero Trust: verify the verifier's math |
+
+<Note>
+  **A note on the borrowing.** Zero Trust as a security concept is precisely defined in [NIST SP 800-207](https://csrc.nist.gov/publications/detail/sp/800-207/final): every access request authenticated regardless of perimeter location. Applying it to AI verification is analogy, not derivation. The mapping is useful (every verification claim should be independently checkable, regardless of who is making it) but the technical implications of NIST 800-207 are not the technical implications of this doctrine. Treat the analogy as a framing device, not a citation.
+</Note>
 
 The constitutional statement is short: **The customer should not have to trust the verifier.**
 1. Every claim the verifier makes about its own behavior should be independently verifiable, by the customer, by a third party, or by a regulator.
@@ -388,6 +413,20 @@ The Zero Trust commitment: verification requires independent agreement across mo
   A self-assessment is not a verdict.
 </Note>
 
+### Independence by vendor is necessary, not sufficient
+
+Frontier models converge. Shared training corpora, similar RLHF norms, comparable benchmark pressure, common failure modes on the soft-reasoning errors this framework is built around. Three frontier models that all pass the example sentence in The Frame buy you less independence than the doctrine implies. Independence-by-vendor is the floor, not the ceiling.
+
+The partial defenses that turn vendor independence into cognitive independence:
+
+- **Diverse adjudication protocols.** Majority vote, weighted vote, mandatory consensus, escalation to a human expert. Not interchangeable. Majority vote tolerates correlated failure; mandatory consensus surfaces it.
+- **Calibrated disagreement handling.** Recording dissent is necessary; the meaningful work is treating disagreement as information rather than noise.
+- **Adversarial example sets.** Verifiers should be tested against cases known to be hard for the dominant training pattern, not just held-out samples from the same distribution.
+- **Source-grounded checks.** Verification against external data the models cannot have memorized.
+- **Domain-expert challenge.** Humans with subject-matter expertise reviewing dissent, not just adjudicating the overall verdict.
+
+The doctrine is right to rule out same-family verification. It would be wrong to treat three-vendor agreement as the destination.
+
 ## 2. Doctrine: rules enforced architecturally
 
 The second layer is about where the rules live. The Zero Trust commitment: rules are enforced by the architecture, not by operator preference.
@@ -395,10 +434,10 @@ The second layer is about where the rules live. The Zero Trust commitment: rules
 | | Anti-pattern | Zero Trust pattern |
 |---|---|---|
 | **Where the rule lives** | In a style guide, runbook, or PDF | In code that executes deterministically |
-| **What enforces it** | Reviewer memory, policy, deadline pressure | A gate that cannot be bypassed |
-| **What happens when convenient to skip** | The rule is skipped | The rule fires anyway |
+| **What enforces it** | Reviewer memory, policy, deadline pressure | A gate that fires automatically; overrides require break-glass authorization |
+| **What happens when convenient to skip** | The rule is skipped | The rule fires anyway, or the override is logged where everyone can see it |
 | **Verification claim** | "Our process is to..." | "The system cannot ship without..." |
-| **Audit answer** | "We have a policy" | "Here is the code path" |
+| **Audit answer** | "We have a policy" | "Here is the code path, and here are the logged exceptions" |
 
 The standard failure mode for analytical processes is that the rules exist in documentation but not in execution. A style guide says reviewers must check causal claims. The reviewer is under deadline pressure. The check does not happen. The output ships, and the documentation is silent on whether the check was actually performed. The rule existed; the enforcement did not.
 
@@ -414,6 +453,19 @@ The Zero Trust commitment generalizes beyond evidence gates. Any rule the verifi
 
   If the only thing standing between the rule and a violation is operator memory or operator discretion, the rule is aspirational.
 </Note>
+
+### A note on override design
+
+"Cannot be bypassed" is shorthand. Real systems need emergency overrides for safety incidents, legal holds, key rotations, customer-specific compliance, and incident response. The doctrine's commitment is not that overrides are impossible. It is that overrides cannot happen silently.
+
+Any bypass requires:
+
+- **A signed reason code** naming the authority and rationale
+- **An immutable log entry** recording the override
+- **Customer notification** when the override is material to their certificate
+- **Audit review** at a documented cadence
+
+The architecture surfaces every exception. It does not pretend exceptions never happen. A vendor that claims their gate can never be bypassed is either lying or has not yet had a customer with a real edge case. A vendor that shows you the override protocol, the override log, and the audit cadence is operating the doctrine as designed.
 
 ## 3. Accountability: every decision survives independent challenge
 
@@ -446,6 +498,22 @@ The accountability principle extends to internal organizational use. A C-suite r
 
   If the integrity of the record depends on the verifier behaving well, the integrity of the record is not verifiable.
 </Note>
+
+### What cryptographic anchoring proves, and what it does not
+
+Cryptographic anchoring is necessary but not sufficient. The doctrine is strong on procedural integrity and exactly as strong as the reasoning it anchors. This distinction is important enough to be explicit.
+
+| What it proves | What it does not prove |
+|---|---|
+| The record has not been altered after the fact | The original reasoning was sound |
+| The signature came from the issuer's key | The issuer's methodology was valid |
+| The append-only log is intact | The sources cited were reliable |
+| The artifact bound to the certificate is unmodified | The conclusion follows from the evidence |
+| The rubric version applied is verifiable | The rubric itself was well-designed |
+
+A hash proves the record is stable. It does not prove the analysis was correct. A signed certificate binds an output to a process; it does not validate the process. A public commitment log proves a vendor said something publicly; it does not prove what they said was right.
+
+Provenance is a precondition for validity audits, not a substitute for them. The doctrine on this page produces tamper-evident records. Whether the records contain valid reasoning is a separate question, answered by domain experts, replication, and the discipline of asking what evidence would change the conclusion. The framework is honest about which question it answers and which it does not.
 
 ## What the three principles produce, taken together
 
@@ -603,6 +671,274 @@ A vendor that scores below 2 on any question is not a Zero Trust verifier. They 
 
 
 
+---
+
+## 1. Independent verification across model families
+
+**The question:** Which model families participate in your verification process? What happens when they disagree, and how is that disagreement recorded?
+
+<CardGroup cols={2}>
+  <Card title="A serious answer" icon="circle-check">
+    Names two or more independent model families. Describes the adjudication protocol (majority vote, weighted vote, mandatory consensus, escalation path). Confirms dissent is recorded in a form the customer can audit.
+  </Card>
+  <Card title="A worrying answer" icon="circle-xmark">
+    "We use the best model for the job." "We use an ensemble." "We have human reviewers." None of those answer the question. The follow-up: which families, what protocol, how is dissent recorded?
+  </Card>
+</CardGroup>
+
+<Warning>
+  **Red flags:**
+  - A single model family doing both generation and verification
+  - "Our model checks itself" or "we run a verifier prompt"
+  - An ensemble that is several models from the same family
+  - A human-in-the-loop that only sees what the model has already approved
+</Warning>
+
+**Why it matters:** Same model, same blind spots. Same training data, same biases. Verification by the same family is the cognitive equivalent of asking a witness to corroborate their own testimony.
+
+---
+
+## 2. Architectural enforcement of doctrine
+
+**The question:** Show me a rule your system claims to enforce. Walk me through the architecture that enforces it. Confirm the rule cannot be bypassed, even by your team, even when commercially convenient.
+
+<CardGroup cols={2}>
+  <Card title="A serious answer" icon="circle-check">
+    Picks a specific rule (an evidence gate, a citation requirement, a refusal trigger). Describes the code path that enforces it. Can answer "what happens if you wanted to ship without this rule firing" with "we cannot, here is why."
+  </Card>
+  <Card title="A worrying answer" icon="circle-xmark">
+    "Our policy is to..." "Our reviewers always..." "We have a process for..." Policies and processes are operator-dependent. Architecture is not.
+  </Card>
+</CardGroup>
+
+<Warning>
+  **Red flags:**
+  - The vendor describes policies instead of mechanisms
+  - The rule has exceptions the vendor can grant
+  - "We can turn that off for enterprise customers"
+  - The enforcement lives in a runbook, not in code
+</Warning>
+
+**Why it matters:** Documentation does not enforce itself. Style guides do not catch errors. Performance reviews do not improve reasoning. If the only thing between the rule and a violation is operator memory or operator discretion, the rule is aspirational.
+
+---
+
+## 3. Cryptographic anchoring of decisions
+
+**The question:** Pick any verification decision you have made for a customer. How do I independently verify that decision, right now, without going through you?
+
+```mermaid
+flowchart LR
+    A[Vendor decision] --> B{Where is<br/>the record?}
+    B -->|Vendor-controlled| C[Customer must trust<br/>vendor to retrieve it]
+    B -->|Public anchor| D[Anyone can verify<br/>without the vendor]
+    style C fill:#7F1D1D,color:#fff
+    style D fill:#14532D,color:#fff
+```
+
+<CardGroup cols={2}>
+  <Card title="A serious answer" icon="circle-check">
+    Provides a cryptographic anchor (transparency log entry, public chain commitment, signed certificate resolving against an authority the vendor does not control). Walks you through verification: "click this link, run this command, get this confirmation."
+  </Card>
+  <Card title="A worrying answer" icon="circle-xmark">
+    "We have an audit log." "We can pull the record for you." "Our records are tamper-resistant." Tamper-resistant is not tamper-evident. Vendor-controlled records are not independent.
+  </Card>
+</CardGroup>
+
+<Warning>
+  **Red flags:**
+  - The audit log is hosted on the vendor's infrastructure
+  - The vendor is the only party who can confirm a record is authentic
+  - "Tamper-resistant" without an external anchor
+  - Records that can be "amended" or "updated" rather than appended
+</Warning>
+
+**Why it matters:** If the integrity of the record depends on the vendor behaving well, the integrity of the record is not verifiable. After a failure event, the vendor's records are the first thing that becomes contested.
+
+---
+
+## 4. Public refusal logs
+
+**The question:** Where is your refusal log? Show me a specific refusal from the last 30 days. Walk me through how you would audit a refusal pattern over time.
+
+<CardGroup cols={2}>
+  <Card title="A serious answer" icon="circle-check">
+    Points to a publicly accessible or customer-auditable log. Can produce specific refusals on demand. Explains the structure, the review cadence, and how refusal patterns are aggregated.
+  </Card>
+  <Card title="A worrying answer" icon="circle-xmark">
+    "We don't refuse often." "We log internally with no audit trail." "We have a process if there is an issue." Internal-only logs that the customer cannot query are theater. Customer-auditable logs (with privacy-preserving access controls, salted commitments, or per-customer keys) are acceptable. Globally public is one valid option but not the only one.
+  </Card>
+</CardGroup>
+
+<Warning>
+  **Red flags:**
+  - No refusal log at all
+  - A log only the vendor can read and curate before you see it
+  - Refusals that are reviewed but never queryable
+  - A vendor uncomfortable showing you specific refusals you have a right to inspect
+</Warning>
+
+**Why it matters:** A vendor's pattern of what they refuse to do is a more durable signal of integrity than any methodology statement. The log does not have to be globally public if the customer can audit it. What matters is that the pattern is queryable by parties outside the vendor, and the vendor cannot quietly curate which refusals are visible to which customers.
+
+---
+
+## 5. Rubric-version transparency
+
+**The question:** What rubric version am I being graded against right now? How would I detect if you changed it? Show me the change log for the last three rubric versions.
+
+<CardGroup cols={2}>
+  <Card title="A serious answer" icon="circle-check">
+    Provides a public hash of the active rubric per customer. Maintains a change log with timestamps and reasons. Can produce the diff between any two versions. Has a notification process when rubrics change.
+  </Card>
+  <Card title="A worrying answer" icon="circle-xmark">
+    "We continuously improve our methodology." "Our rubrics evolve." "We do not share rubrics externally." Rubric drift without transparency is how the AAA stamp lost its meaning between 2000 and 2008.
+  </Card>
+</CardGroup>
+
+<Warning>
+  **Red flags:**
+  - No version control on rubrics
+  - Rubrics that can be silently updated
+  - "Methodology is proprietary" with no version hash exposed
+  - Different rubrics applied to different customers without disclosure
+</Warning>
+
+**Why it matters:** A verification grade is only meaningful if you know what it was graded against. A vendor that can quietly change the rubric can quietly redefine what "verified" means without telling you.
+
+---
+
+## 6. Source-document hash binding
+
+**The question:** When my CEO opens the analytical artifact you delivered, how do they know they are looking at the version you certified? How do I detect a substitution somewhere between your system and their screen?
+
+```mermaid
+flowchart LR
+    V[Verified version<br/>from vendor] -->|hop 1| A[Analyst]
+    A -->|hop 2| D[Desk lead]
+    D -->|hop 3| C[Chief of staff]
+    C -->|hop 4| E[CEO screen]
+    V -.->|Hash binding<br/>verifiable at every hop| E
+```
+
+<CardGroup cols={2}>
+  <Card title="A serious answer" icon="circle-check">
+    Certificate format includes a cryptographic hash of the source document. Verification can be performed independently. If the document is modified, even by one character, verification fails. The hash is checkable by anyone, not just the vendor.
+  </Card>
+  <Card title="A worrying answer" icon="circle-xmark">
+    "We send a PDF." "We sign the document." "We track versions." Signing is necessary but not sufficient if both signing and verification happen on the vendor's side.
+  </Card>
+</CardGroup>
+
+<Warning>
+  **Red flags:**
+  - No hash binding between source and certificate
+  - Verification only possible through the vendor's portal
+  - "Trusted intermediaries" who can re-sign on the way to the executive
+  - Document workflows where the version that gets executive review is not the version that was verified
+</Warning>
+
+**Why it matters:** A verified analysis is only useful if the decision-maker reads the verified version. Between the verifier and the executive, there are usually three to five organizational hops. Each hop is a substitution opportunity. The hash closes the gap.
+
+---
+
+## 7. Doctrine survives institutional change
+
+**The question:** What happens to my certificates if you are acquired? If your founder leaves? If the company changes hands? Will the verification I bought today still validate in five years?
+
+<CardGroup cols={2}>
+  <Card title="A serious answer" icon="circle-check">
+    Certificates are anchored to public infrastructure the vendor does not control. The vendor's signing key is part of the certificate; if the key changes, the change is visible in the public chain. The doctrine is constitutional rather than corporate.
+  </Card>
+  <Card title="A worrying answer" icon="circle-xmark">
+    "We're not planning to be acquired." "We would honor existing customers." "Our records would persist." None answer the question, because all depend on the vendor's continued cooperation.
+  </Card>
+</CardGroup>
+
+<Warning>
+  **Red flags:**
+  - The verification only works while the vendor is operating
+  - Certificates that "expire" or require renewal through the vendor
+  - No visible mechanism for detecting a regime change at the vendor
+  - "Trust us" answers when asked about acquisition scenarios
+</Warning>
+
+**Why it matters:** The lifetime of a strategic decision often exceeds the lifetime of any specific vendor. A verification system that depends on the vendor's continued goodwill is not Zero Trust. It is perimeter trust with extra steps.
+
+---
+
+## How to score a vendor
+
+Sum the scores across the seven questions. The maximum is 35.
+
+<CardGroup cols={2}>
+  <Card title="0 to 7" icon="circle-xmark">
+    Marketing claims. Not a verification system. Suitable for volume-lane work only.
+  </Card>
+
+  <Card title="8 to 14" icon="circle-half-stroke">
+    Process-based. Useful but not Zero Trust. Acceptable for low-stakes work.
+  </Card>
+
+  <Card title="15 to 21" icon="circle-check">
+    Architectural posture. Real engineering investment. Suitable for most decision-grade work.
+  </Card>
+
+  <Card title="22 to 28" icon="shield-halved">
+    Zero Trust with public commitments. A serious verification partner.
+  </Card>
+</CardGroup>
+
+<CardGroup cols={1}>
+  <Card title="29 to 35" icon="shield">
+    Full Zero Trust with cryptographic verification you can run yourself. The category leader.
+  </Card>
+</CardGroup>
+
+A vendor that refuses to engage with one or more of these questions has answered them. The refusal is the answer.
+
+<Note>
+  **A note on these thresholds.** The 22, 28, and 35 bands are provisional. They have not been calibrated against measured verification quality across a representative vendor sample. Use them as a comparative ranking within your RFP process, not as a certification regime. As more vendors are scored against these questions, the thresholds will be revised upward or downward, and the change log will be visible in the [repository](https://github.com/DavidVALIS/decision-grade).
+</Note>
+
+## On the current state of the category
+
+At the time of writing, no vendor scores full marks across all seven questions. That is not necessarily a problem. Categories define their bar before they are populated; the buyer's lever works by asking, not by waiting for a vendor that already passes. If your evaluation produces a top score of 18, that tells you something about the market more than about the seven vendors you scored. The market is still being built. Your asking is part of building it.
+
+## The buyer's lever
+
+You do not need every vendor in your market to pass this checklist. You need to ask the questions. The asking itself moves the market.
+
+The framework predicts the same correction will arrive in AI verification within the next 18 months. The earliest movers will be regulated industries, large institutional buyers, and government procurement. The later movers will follow the public failure events. Your buying power is the lever that pulls the correction forward in your market.
+
+<Tip>
+  **The single most useful thing you can do this quarter:**
+
+  <Steps>
+    <Step title="Add the seven questions to your next AI vendor RFP">
+      Word them exactly as they appear on this page. Vendor familiarity with the framing is itself a signal.
+    </Step>
+    <Step title="Score the answers using the five-point scale">
+      Decision-grade threshold is 22 or above. Below 15 is volume-lane only.
+    </Step>
+    <Step title="Share the scores with your peers">
+      Procurement signals compound when they propagate. The early movers do the most work; the late movers benefit from the market floor that early movers built.
+    </Step>
+  </Steps>
+</Tip>
+
+## Where this goes next
+
+<CardGroup cols={3}>
+  <Card title="Lane Discipline" icon="signs-post" href="/lane-discipline">
+    What to build inside your organization: decision-grade vs. volume-grade routing.
+  </Card>
+  <Card title="The Doctrine" icon="shield" href="/the-doctrine">
+    The Zero Trust posture the seven questions rest on.
+  </Card>
+  <Card title="2026 Watchlist" icon="calendar" href="/watchlist">
+    Dated signals over the next 18 months that test the framework.
+  </Card>
+</CardGroup>
 
 ---
 
@@ -772,6 +1108,32 @@ The simplest implementation is a metadata tag, a routing rule, and a periodic au
   </Step>
 </Steps>
 
+### Operational specifics worth deciding upfront
+
+The three-step pattern needs five operational decisions before it survives contact with a real organization. Resolve these before the first lane label gets assigned, or you will retrofit them under pressure.
+
+<AccordionGroup>
+  <Accordion title="Who can assign the lane label">
+    The author at point of creation, with a designated supervisor sign-off required for decision-grade. The supervisor sign-off is the moment verification cost commits. Letting the author self-promote to decision-grade without a second signature is the most common source of theater inversion.
+  </Accordion>
+
+  <Accordion title="Who can upgrade volume-grade to decision-grade">
+    Only via re-verification, never by reassignment. The upgrade gate is the same gate as original decision-grade certification. No expedited paths, no exceptions. Upgrade without re-verification turns the lane into a status marker rather than a process commitment.
+  </Accordion>
+
+  <Accordion title="How embedded content inherits labels">
+    Slides quoting a memo. Memos quoting research. Briefs quoting summaries. The label of the embedded content travels with it. A decision-grade slide containing a volume-grade quote is, for the duration of the quote, importing volume-grade reasoning. Either the quoted material is re-verified before inclusion, or the slide is downgraded for the portions that depend on it.
+  </Accordion>
+
+  <Accordion title="Audit sample size and cadence">
+    Sample 10% of decision-grade outputs each quarter, minimum 20 documents. Trace the analytical content underneath to its source labels. Where the trace breaks, log the slippage and route it to a fix. The audit is the only way to detect theater inversion before it becomes culture. Two coders per audit improves inter-rater reliability; one coder is better than none.
+  </Accordion>
+
+  <Accordion title="Exception logging when overrides happen">
+    Overrides will happen: deadline pressure, executive request, regulatory urgency. Log every override explicitly. Who approved, what was overridden, why, what compensating controls were in place, and what date the override expires. The exception log becomes its own discriminating signal over time. A team that overrides every week has a process problem. A team that has never overridden has a theater problem.
+  </Accordion>
+</AccordionGroup>
+
 <Tip>
   **The single board-level metric:**
 
@@ -825,14 +1187,16 @@ A framework that does not specify how it could be wrong is not a framework. It i
 Read it as a stress test, not as a forecast you can outsource. The framework is directional. Timing is uncertain. The point of this page is to make the uncertainty visible.
 
 <Note>
-  **In short:** Five scenario trajectories. Two levers that move the system this quarter. One decision window (August 1, 2026). One thesis falsifier (AI volume rises, unanchored-claim rate does not).
+  **In short:** Five scenario trajectories. Two levers that move the system this quarter. One per-organization deadline (90 days from the day your team adopted AI-assisted drafting). One thesis falsifier (AI volume rises, unanchored-claim rate does not).
 </Note>
 
-## The decision window: August 1, 2026
+## The decision window: 90 days from your AI adoption date
 
-There is one date worth treating as a deadline.
+There is one date worth treating as a deadline. It is not a calendar date. It is the day your team adopted AI-assisted drafting, formally or informally.
 
-By August 1, 2026, any pipeline that labels output "decision-grade" should have a structural-validity release gate in place. Miss the date and the team will normalize the faster cadence. Later gates feel like sabotage rather than quality control. The retrofit cost rises sharply once the new cadence is calendared, staffed, and expected by clients.
+The 90-day window starts then. After that, the new cadence is normalized. Gates installed later feel like sabotage rather than quality control. The retrofit cost rises sharply once the new cadence is calendared, staffed, and expected by clients.
+
+If your team has been using AI-assisted drafting for more than a quarter already, you are already inside the window where retrofit cost rises. Install the gate now.
 
 <Tip>
   **The no-regret action.** Require every decision-grade brief to include:
@@ -928,7 +1292,19 @@ Three observable proxies:
 
 If those metrics stay at pre-AI baselines while volume climbs, the verification-gap story is wrong. Existing review gates are absorbing the shock. The framework should be revised, not defended.
 
+### A frank acknowledgment
 
+The proxies above are hard to operationalize in practice. Most analytical work is quietly superseded rather than formally retracted. Client-reported accuracy is produced by clients with motivated reasoning. Rejection rates require a published rejection policy most firms do not have. The framework's falsifier is genuine in form and operationally weak in current practice.
+
+What would make the falsifier observable:
+
+- **A sampling protocol.** Random selection of decision-grade outputs from a defined population, with disclosed inclusion criteria.
+- **A baseline period.** Pre-AI-adoption window of at least four quarters, with the adoption date logged explicitly per team.
+- **A defect taxonomy.** Unanchored claim, missing assumption, unspecified mechanism, unfalsifiable prediction, phantom precision. Each defect with a definition and an examples set.
+- **Inter-rater reliability targets.** Multiple coders per sample, Cohen's kappa above 0.7 before any rate is published.
+- **Survivorship-bias treatment.** Include outputs that were withdrawn or downgraded, not only those that shipped.
+
+Until that data exists for a representative sample, the falsifier is a methodology in waiting. The framework predicts the rate rises. The framework is currently unable to prove it. This is the most honest the page can be about its own grounding.
 
 ## Regulatory signals 
 
@@ -936,10 +1312,10 @@ These signals are already live as of May 2026. Track them for implementation sev
 
 | Signal | Date in force | What to watch for | What it tells you |
 |---|---|---|---|
-| **[SR 26-2](https://www.federalreserve.gov/supervisionreg/srletters/SR2602.pdf)** Revised Guidance on Model Risk Management | April 17, 2026 | First material enforcement action against a major bank for inadequate AI/model validation | Procurement-of-proof dynamic is real and propagating from banking outward |
-| **GENIUS Act** implementation | July 18, 2025 onward | First OCC enforcement against a stablecoin issuer for inadequate attestation; whether BDO attestations for federally-supervised stablecoins are substantive or perfunctory | Federal coalition is enforcing the perimeter, not rubber-stamping it |
-| **SOC 2 2026 criteria** | 2026 | Enterprise procurement teams pushing 2026 SOC 2 criteria into AI-vendor RFPs | The crossover from security procurement to AI verification procurement is happening |
-| **[EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)** high-risk provisions | Staggered 2026-2027 | First regulator-level fine against an AI verification provider for inadequate transparency or oversight | European enforcement typically leads U.S. enforcement by 12-18 months in adjacent domains |
+| **[SR 26-2](https://www.federalreserve.gov/supervisionreg/srletters/SR2602.pdf)** Revised Guidance on Model Risk Management | April 17, 2026 | First material enforcement action against a major bank for inadequate model validation. *Caveat: SR 26-2 explicitly excludes generative and agentic AI from scope.* Use as proxy for general model-validation enforcement direction, not as direct AI verification regulation. | The procurement-of-proof dynamic is propagating from banking, even with gen AI out of scope. Watch the next iteration of the guidance for AI inclusion. |
+| **GENIUS Act** implementation | July 18, 2025 onward | First OCC enforcement against a stablecoin issuer for inadequate attestation; whether BDO attestations for federally-supervised stablecoins are substantive or perfunctory | Federal coalition enforcing a regulated perimeter around private dollar liabilities, even if not yet around analytical reasoning |
+| **[NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework) in federal procurement** | RMF 1.0 published Jan 2023; GenAI Profile published Jul 2024 | Federal agencies citing AI RMF as a procurement requirement under FedRAMP, GSA schedules, or agency-specific acquisition rules | Federal procurement adopting AI risk frameworks is a leading indicator of broader enterprise procurement moves |
+| **[EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)** high-risk provisions | High-risk standalone systems: December 2, 2027. High-risk systems integrated into products: August 2, 2028. Dates per the AI Act omnibus political agreement. | First regulator-level fine against an AI verification provider for inadequate transparency, oversight, or risk management | European enforcement typically leads U.S. enforcement by 12-18 months in adjacent domains |
 
 ## Indicators worth instrumenting now
 
@@ -971,8 +1347,8 @@ If you want to run the framework's tests on your own pipeline, these are the mea
 ## How to use this page
 
 <Steps>
-  <Step title="Mark August 1, 2026 in the calendar">
-    If your organization labels output decision-grade, the structural-validity release gate should be in production by that date. Treat the date as a planning deadline tied to adoption lock-in, not as a hard event.
+  <Step title="Date the start of your 90-day window">
+    Mark the day your team adopted AI-assisted drafting (formally authorized or shadow). Treat that as day zero. The structural-validity release gate should be in production by day 90 from that date. If you cannot identify the adoption date, assume it has already passed and install the gate now.
   </Step>
 
   <Step title="Track the two levers this quarter">
