@@ -5,63 +5,54 @@ description: 'Seven questions to put to any AI verification vendor. What a serio
 
 If you only read one page on this site, read this one. It translates The Doctrine into the specific questions you should put to any AI vendor claiming to verify analytical output, what a serious answer looks like, and what to walk away from.
 
-<Tip>
+<Note>
   **The single sentence test:**
 
-  > Can I verify your verdicts without having to trust you?
+  "Can I verify your verdicts without having to trust you?"
 
   If the answer requires trusting the vendor, the vendor is selling perimeter security. If the answer is "yes, here is how," you are talking to a Zero Trust verifier. The seven questions below unpack what that single sentence means in procurement language.
-</Tip>
-
-<Note>
-  **How to use this page.** Take the seven questions to a vendor evaluation. Each one corresponds to one of the seven architectural commitments in The Doctrine. Score each answer on a five-point scale:
-
-  - **0** No answer.
-  - **1** Marketing answer.
-  - **2** Process answer.
-  - **3** Architectural answer with limitations named.
-  - **4** Architectural answer with public commitments.
-  - **5** Architectural answer with public commitments and cryptographic verification you can run yourself.
-
-  A vendor that scores below 2 on any question is not a Zero Trust verifier. They may still be useful for volume-grade work. They should not be in your decision-grade lane.
 </Note>
 
-## Why seven questions, not fewer
 
-The failure mode this checklist addresses is stacked. Cheap drafting compounds with style-only review compounds with speed incentives compounds with buyer opacity. A vendor that addresses one layer while the others persist is not a verifier. They have fixed one of four broken things.
+**How to use this page.** 
+Take the seven questions to a vendor evaluation. Each one corresponds to one of the seven architectural commitments in The Doctrine. Score each answer on a five-point scale:
+- **0** No answer.
+- **1** Marketing answer.
+- **2** Process answer.
+- **3** Architectural answer with limitations named.
+- **4** Architectural answer with public commitments.
+- **5** Architectural answer with public commitments and cryptographic verification you can run yourself.
 
-The seven questions test whether a vendor's architecture spans the full stack. A vendor that scores 5 on cryptographic anchoring but 0 on independent verification is solving one problem while the others compound. The score sum tells you the overall band. The weakest answer tells you where the architecture fails.
+A vendor that scores below 2 on any question is not a Zero Trust verifier. They may still be useful for volume-grade work. They should not be in your decision-grade lane.
 
-A stacked failure needs a stacked response.
 
 ## The seven questions at a glance
 
-<CardGroup cols={2}>
-  <Card title="1. Independent verification" icon="layer-group" href="#1-independent-verification-across-model-families">
+<Steps>
+  <Step title="Independent verification">
     Which model families verify your output? What happens when they disagree?
-  </Card>
-  <Card title="2. Architectural enforcement" icon="gavel" href="#2-architectural-enforcement-of-doctrine">
+  </Step>
+  <Step title="Architectural enforcement">
     Show me a rule that fires deterministically. Can it be turned off?
-  </Card>
-  <Card title="3. Cryptographic anchoring" icon="link" href="#3-cryptographic-anchoring-of-decisions">
+  </Step>
+  <Step title="Cryptographic anchoring">
     How do I verify a decision without going through you?
-  </Card>
-  <Card title="4. Public refusal logs" icon="ban" href="#4-public-refusal-logs">
+  </Step>
+  <Step title="Public refusal logs">
     Where is your refusal log? Show me a specific refusal.
-  </Card>
-  <Card title="5. Rubric transparency" icon="ruler" href="#5-rubric-version-transparency">
+  </Step>
+  <Step title="Rubric transparency">
     What rubric version am I being graded against? Show me the change log.
-  </Card>
-  <Card title="6. Source-document binding" icon="fingerprint" href="#6-source-document-hash-binding">
+  </Step>
+  <Step title="Source-document binding">
     How does my CEO know they're looking at the version you certified?
-  </Card>
-</CardGroup>
-
-<CardGroup cols={1}>
-  <Card title="7. Doctrine survives change" icon="building-shield" href="#7-doctrine-survives-institutional-change">
+  </Step>
+  <Step title="Doctrine survives change">
     What happens to my certificates if you are acquired?
-  </Card>
-</CardGroup>
+  </Step>
+</Steps>
+
+
 
 ---
 
@@ -291,14 +282,6 @@ A vendor that refuses to engage with one or more of these questions has answered
 ## The buyer's lever
 
 You do not need every vendor in your market to pass this checklist. You need to ask the questions. The asking itself moves the market.
-
-```mermaid
-flowchart LR
-    A[Concentrated, high-stakes<br/>buyers ask the seven questions] --> B[Vendors discover<br/>their answers are scored]
-    B --> C[Vendors with weak answers<br/>lose contracts]
-    C --> D[Vendor architectures change]
-    D --> E[Market floor rises<br/>for everyone]
-```
 
 The framework predicts the same correction will arrive in AI verification within the next 18 months. The earliest movers will be regulated industries, large institutional buyers, and government procurement. The later movers will follow the public failure events. Your buying power is the lever that pulls the correction forward in your market.
 
