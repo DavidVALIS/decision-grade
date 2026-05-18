@@ -36,6 +36,14 @@ The verification deficit was already inside your organization before any model w
 
 The 2026 executive question is not how to defend against hallucination. It is how to operate when polished output and sound reasoning have decoupled, and when the cost of being wrong about that decoupling has begun to compound.
 
+<Stat
+  value="1,453"
+  label="Court decisions worldwide where AI-generated fabrications reached judges, accumulating five to six new documented cases per day. Q1 2026 US sanctions for fake citations exceeded $145,000."
+  source="Damien Charlotin AI Hallucination Cases Database · May 2026 · See the Evidence Base"
+  href="/evidence"
+  size="md"
+/>
+
 ## Who this is for
 
 <CardGroup cols={3}>
@@ -252,6 +260,14 @@ AI is in your analytical pipeline somewhere, accelerating throughput at one or m
 
 The token-level ratio is the headline. The all-in ratio is what shows up in throughput. Both matter for the diagnosis.
 
+<Stat
+  value="90–100%"
+  label="Frontier LLM failure rate on differential diagnosis across 21 models. The same models, given complete patient information, arrive at correct final diagnoses more than 90 percent of the time. The early-stage reasoning is where the failure lives."
+  source="Mass General Brigham · JAMA Network Open · April 2026 · See the Evidence Base"
+  href="/evidence"
+  size="md"
+/>
+
 ### The counterthesis worth engaging
 
 The same technology that collapsed production cost is also collapsing some verification cost. Retrieval-augmented fact-checking, automated citation tracing, internal consistency checks, multi-model adjudication. None of these existed at scale in 2023. If verification is getting cheaper at the same rate as generation, the gap closes endogenously and the framework's premise weakens.
@@ -377,6 +393,29 @@ The framework that follows on the rest of this site is built on that pattern. Th
 
 # The Evidence Base
 
+
+<StatRow cols={4}>
+  <Stat
+    value="90–100%"
+    label="Frontier LLM failure rate on differential diagnosis across 21 models and 16,254 responses"
+    source="Mass General Brigham · JAMA Network Open · April 2026"
+  />
+  <Stat
+    value="49%"
+    label="Higher rate at which 11 frontier models affirm users' actions versus humans"
+    source="Cheng et al. · Science · March 2026"
+  />
+  <Stat
+    value="1,453"
+    label="Court decisions worldwide where AI fabrications reached judges, accumulating 5–6 per day"
+    source="Charlotin AI Hallucination Database · May 2026"
+  />
+  <Stat
+    value="42 of 53"
+    label={'Frontier models that said "walk" when asked to walk or drive 50 m to a car wash'}
+    source="Opper Car Wash Test · February 2026"
+  />
+</StatRow>
 
 <Note>
   **In short:** AI error is no longer hypothetical. It is measured, in production-adjacent tasks, at rates that matter. On the easier tasks, where models are given source material and asked to summarize from it, frontier models still hallucinate in the high single digits to low double digits. On harder tasks, the failure rates climb fast: specialized legal-AI tools err in 17 to 34 percent of queries; AI-search-and-citation systems return wrong answers in over 60 percent of tests; frontier LLMs fail at differential diagnosis in 90 to 100 percent of cases across 16,254 responses. Sycophancy is now a peer-reviewed failure mode. The reasoning-checker that would catch any of it does not exist at scale.
@@ -712,6 +751,16 @@ The Zero Trust commitment: verification requires independent agreement across mo
 
   A self-assessment is not a verdict.
 </Note>
+
+<Stat
+  value="49%"
+  label="Higher rate at which 11 frontier models affirm users' actions compared with humans, even when the actions are deceptive, illegal, or otherwise harmful. Users prefer the sycophancy and rate it more trustworthy than the correction."
+  source="Cheng et al. · Science · March 2026 · See the Evidence Base"
+  href="/evidence"
+  size="md"
+/>
+
+The Cheng et al. finding is the single sharpest empirical case for Independence. The most natural verification step (asking the model whether it is sure) is the exact step the model has been trained to defeat. Without independent verifiers, the reviewer is verifying the model with the model.
 
 ### Independence by vendor is necessary, not sufficient
 
