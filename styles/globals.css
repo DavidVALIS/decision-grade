@@ -636,15 +636,15 @@ a.dg-stat--center:hover {
   line-height: 0.95;
   letter-spacing: -0.02em;
 }
-.dg-stat-value--lg { font-size: clamp(3rem, 7vw, 5.5rem); }
+.dg-stat-value--lg { font-size: clamp(3.25rem, 8.5vw, 6.5rem); white-space: nowrap; }
 .dg-stat-value--md { font-size: clamp(2.25rem, 5vw, 3.5rem); }
 .dg-stat-value--sm { font-size: 2rem; }
 .dg-stat-label {
-  margin-top: 0.85rem;
-  font-size: 0.95rem;
+  margin-top: 1rem;
+  font-size: 1rem;
   color: var(--fg-1);
-  line-height: 1.45;
-  max-width: 32ch;
+  line-height: 1.5;
+  max-width: 42ch;
 }
 .dg-stat--center .dg-stat-label {
   margin-left: auto;
