@@ -606,6 +606,80 @@ a.dg-card:hover { background: var(--bg-3); border-color: var(--rule-strong); }
   .dg-card-grid--2, .dg-card-grid--3 { grid-template-columns: 1fr; }
 }
 
+/* ============================== Stat ============================== */
+.dg-stat {
+  display: block;
+  padding: 1.5rem 1.25rem;
+  border-left: 2px solid var(--accent-muted);
+  text-decoration: none;
+  color: inherit;
+  transition: border-left-color 0.2s ease, background 0.2s ease;
+}
+.dg-stat--center {
+  text-align: center;
+  border-left: none;
+  border-top: 2px solid var(--accent-muted);
+  padding-top: 1.25rem;
+}
+a.dg-stat:hover {
+  border-left-color: var(--accent);
+  background: var(--accent-soft);
+}
+a.dg-stat--center:hover {
+  border-left-color: transparent;
+  border-top-color: var(--accent);
+}
+.dg-stat-value {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  color: var(--accent);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+.dg-stat-value--lg { font-size: clamp(3rem, 7vw, 5.5rem); }
+.dg-stat-value--md { font-size: clamp(2.25rem, 5vw, 3.5rem); }
+.dg-stat-value--sm { font-size: 2rem; }
+.dg-stat-label {
+  margin-top: 0.85rem;
+  font-size: 0.95rem;
+  color: var(--fg-1);
+  line-height: 1.45;
+  max-width: 32ch;
+}
+.dg-stat--center .dg-stat-label {
+  margin-left: auto;
+  margin-right: auto;
+}
+.dg-stat-source {
+  margin-top: 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--fg-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+}
+.dg-stat--link .dg-stat-source::after {
+  content: ' →';
+  color: var(--accent);
+}
+.dg-stat-row {
+  display: grid;
+  gap: 1rem;
+  margin: 2.25rem 0 2.75rem;
+}
+.dg-stat-row--2 { grid-template-columns: repeat(2, 1fr); }
+.dg-stat-row--3 { grid-template-columns: repeat(3, 1fr); }
+.dg-stat-row--4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 1000px) {
+  .dg-stat-row--3, .dg-stat-row--4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .dg-stat-row--2, .dg-stat-row--3, .dg-stat-row--4 { grid-template-columns: 1fr; }
+  .dg-stat-value--lg { font-size: clamp(2.5rem, 12vw, 3.75rem); }
+}
+
 /* ============================== Steps ============================== */
 .dg-steps {
   margin: 40px 0;

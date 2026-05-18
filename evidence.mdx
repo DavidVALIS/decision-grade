@@ -3,6 +3,29 @@ title: 'The Evidence Base'
 description: 'Measured AI error rates in May 2026: hallucination, citation failure, sycophancy, multi-step reasoning collapse, deployment failure. Named sources, primary citations, honest limits.'
 ---
 
+<StatRow cols={4}>
+  <Stat
+    value="90–100%"
+    label="Frontier LLM failure rate on differential diagnosis across 21 models and 16,254 responses"
+    source="Mass General Brigham · JAMA Network Open · April 2026"
+  />
+  <Stat
+    value="49%"
+    label="Higher rate at which 11 frontier models affirm users' actions versus humans"
+    source="Cheng et al. · Science · March 2026"
+  />
+  <Stat
+    value="1,453"
+    label="Court decisions worldwide where AI fabrications reached judges, accumulating 5–6 per day"
+    source="Charlotin AI Hallucination Database · May 2026"
+  />
+  <Stat
+    value="42 of 53"
+    label={'Frontier models that said "walk" when asked to walk or drive 50 m to a car wash'}
+    source="Opper Car Wash Test · February 2026"
+  />
+</StatRow>
+
 <Note>
   **In short:** AI error is no longer hypothetical. It is measured, in production-adjacent tasks, at rates that matter. On the easier tasks, where models are given source material and asked to summarize from it, frontier models still hallucinate in the high single digits to low double digits. On harder tasks, the failure rates climb fast: specialized legal-AI tools err in 17 to 34 percent of queries; AI-search-and-citation systems return wrong answers in over 60 percent of tests; frontier LLMs fail at differential diagnosis in 90 to 100 percent of cases across 16,254 responses. Sycophancy is now a peer-reviewed failure mode. The reasoning-checker that would catch any of it does not exist at scale.
 </Note>
