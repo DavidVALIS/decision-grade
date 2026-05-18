@@ -180,7 +180,7 @@ Here are some examples of the mechanisms I lay out above:
 <Note>
   **The kind of sentence that passes every 2025 control and still fails:**
 
-  *"Mid-market companies that deployed generative AI tools in 2025 saw 18% productivity gains in their go-to-market functions, with the largest effects concentrated among sales development reps and account executives."*
+  "Mid-market companies that deployed generative AI tools in 2025 saw 18% productivity gains in their go-to-market functions, with the largest effects concentrated among sales development reps and account executives."
 
   Every fact in the sentence checks out. AI deployment is happening. Mid-market is a real segment. Productivity gains have been reported. SDRs and AEs use these tools. A fact-checker passes it.
 
