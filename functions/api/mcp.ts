@@ -71,7 +71,7 @@ const TOOLS = [
         slug: {
           type: 'string',
           description:
-            'The page slug. One of: introduction, the-frame, the-doctrine, buyers-checklist, lane-discipline, watchlist, about.',
+            'The page slug. One of: introduction, the-frame, evidence, the-doctrine, buyers-checklist, lane-discipline, watchlist, about.',
         },
       },
       required: ['slug'],
