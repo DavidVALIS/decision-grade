@@ -60,43 +60,56 @@ Here are some examples of the mechanisms I lay out above:
 <Note>
   **The kind of sentence that passes every 2025 control and still fails:**
 
-  "Mid-market companies that deployed generative AI tools in 2025 saw 18% productivity gains in their go-to-market functions, with the largest effects concentrated among sales development reps and account executives."
+  "In our analysis of leading mid-market deployments, AI-augmented research workflows demonstrate measurable productivity benefits for go-to-market organizations, with the strongest effects concentrated where senior analysts can redirect attention toward higher-value strategic synthesis. The trajectory suggests organizations with mature AI governance frameworks will continue to capture disproportionate value from these efficiencies through 2027 and beyond."
 
-  Every fact in the sentence checks out. AI deployment is happening. Mid-market is a real segment. Productivity gains have been reported. SDRs and AEs use these tools. A fact-checker passes it.
+  Every clause is hedged. Every word is defensible individually. A fact-checker has nothing to fail. A reading partner says "sounds about right." A board signs off.
 
-  A reasoning-checker does not.
+  A reasoning-checker has nothing to weigh, which is the failure.
 
-  - **"18% productivity gains"** is phantom precision. Productivity measured how? Calls dialed, pipeline created, revenue closed? Each one is a different 18%.
-  - **"Mid-market companies that deployed"** is self-selection. The companies that deployed gen AI were also the companies investing in better tooling, better hires, and better playbooks. The deployment took credit for the whole improvement.
-  - **"Concentrated among SDRs and AEs"** is an observational claim with no comparison group, no baseline, no methodology, and no source.
+  - **"Our analysis of leading mid-market deployments"** has no methodology, no sample size, no definition of "leading," no inclusion criteria. The phrase commits to having done analysis and to nothing about how.
+  - **"Measurable productivity benefits"** does not specify the measure. Measurable productivity benefits compared to what baseline? Over what period? Held constant for what?
+  - **"Strongest effects concentrated where..."** is an observational claim with no comparison group. The sentence says "the gains showed up where senior analysts could redirect attention" — which is tautological. Where they could redirect, they did. That tells you nothing about whether the redirection produced value.
+  - **"Mature AI governance frameworks"** is defined nowhere. Any organization can self-certify as mature.
+  - **"Disproportionate value"** is disproportionate to what reference class. Unspecified.
+  - **"The trajectory suggests..."** through 2027 and beyond. Trajectory of what data, measured how, projected by which model.
 
-  The sentence didn't lie. It left out everything that would let you weigh it. That is the failure no fact-checker catches.
+  Read clause by clause, every fragment passes. Read as a whole, the sentence commits to nothing testable. This is the harder failure mode — not phantom precision the eye catches, but professional hedging that a trained reader nods past.
+
+  The sentence did not lie. It refused to make a claim that could be wrong. That is the failure no fact-checker catches.
 </Note>
 
 ## The verification deficit, in one comparison
 
-Production cost has fallen by a factor of one hundred to one thousand against human equivalents. Verification cost has not moved. The gap is the operational risk.
+AI is in your analytical pipeline somewhere, accelerating throughput at one or more upstream steps. The token-level production cost collapsed by orders of magnitude. The all-in production cost, including the human prompting, editing, and integration that real analytical work still requires, fell by a more modest multiple. Either lens tells the same story: more analytical artifacts move through any given reviewer than was possible two years ago.
 
 | Cost layer | 2020 | 2026 | Change |
 |---|---|---|---|
-| **Producing 1,000 words of polished analytical prose** | $5 to $15 (mid-career analyst time) | $0.001 to $0.02 (mainstream model API) | ~250x to 15,000x cheaper |
-| **Verifying that the 1,000 words reasons correctly** | Hours of expert review, plus access to source data | Hours of expert review, plus access to source data | Unchanged |
+| **Producing 1,000 words at the token layer** | $5 to $15 (mid-career analyst time) | $0.001 to $0.02 (mainstream model API) | 250x to 15,000x cheaper |
+| **Producing 1,000 words all-in (with human prompting, editing, integration)** | $5 to $15 | $0.50 to $3 | ~5x to 20x cheaper |
+| **Verifying the structural reasoning underneath** | Hours of expert review, plus access to source data | Hours of expert review, plus access to source data, partially augmented by automated checks | Mostly unchanged at the structural layer |
+
+The token-level ratio is the headline. The all-in ratio is what shows up in throughput. Both matter for the diagnosis.
+
+### The counterthesis worth engaging
+
+The same technology that collapsed production cost is also collapsing some verification cost. Retrieval-augmented fact-checking, automated citation tracing, internal consistency checks, multi-model adjudication. None of these existed at scale in 2023. If verification is getting cheaper at the same rate as generation, the gap closes endogenously and the framework's premise weakens.
+
+Where the counterthesis holds: the fact-checking layer. Hallucination detection, citation grounding, internal consistency. These are getting cheaper. Some of this framework's own architectural commitments (independent verification across model families) ride on that improvement.
+
+Where it does not hold: the structural-reasoning layer. Verifying that a causal claim has real grounding, that an assumption was committed to before the conclusion, that a falsifier is observable, that a rubric was applied consistently. These require human expertise and judgment that does not scale at the same rate. The bottleneck migrates upward in the verification stack rather than closing. That migration is the operational risk this framework is built around.
+
+### The outcome at the reviewer's desk
 
 The scarce resource is no longer the analyst who writes. It is the reviewer who catches what the writing assumes.
 
-The production layer has been industrialized. The verification layer has not. Any output is now downstream of AI analysis, whether you know it or not.
-
-
-The outcome:
-
 <Steps>
-  <Step title="More polished analytical artifacts are produced">
-    Often 10x to 40x the volume of two years ago.
+  <Step title="Throughput rose because the upstream work got faster">
+    Research, summarization, and first-draft generation that took days now take hours. The deliverable does not have to be AI-generated for AI to be accelerating the pipeline behind it.
   </Step>
   <Step title="Review capacity has stayed flat">
-    The slow checks were the first thing cut under throughput pressure.
+    Reviewer headcount, meeting time, and domain access did not scale at the same rate. The slow checks were the first thing cut under throughput pressure.
   </Step>
-  <Step title="Unverified claims circulate at an order of magnitude greater volume">
+  <Step title="Unverified claims circulate at materially higher volume">
     The probability that any specific output contains an unverified load-bearing claim has not fallen with the cost. It has risen with the volume.
   </Step>
 </Steps>
@@ -170,7 +183,15 @@ The fix in adjacent domains has been consistent. When failure becomes visible en
   The pattern: when the cost of being wrong exceeds the cost of demanding proof, buyers force the correction.
 </Note>
 
-The analogy has limits. Credit ratings carried regulatory force and directly triggered capital requirements. A consulting deck does not trigger margin calls. The structural mechanism, however, is identical: proxy-based trust substitutes for verification, and the substitution is invisible until it fails.
+The analogy has limits worth naming. Credit ratings carried regulatory force and directly triggered capital requirements; the 2008 cascade required leverage, fire-sale dynamics, and correlated mass holdings. A consulting deck does not trigger margin calls. The structural mechanism, however, is identical: proxy-based trust substitutes for verification, and the substitution is invisible until it fails.
+
+What is the analogue to the margin call for analytical content? Three candidates, none of them as fast or as systemic as 2008, all of them capable of producing the same effect over months rather than days:
+
+- **Regulatory enforcement** when an AI-augmented analysis underpins a regulated decision and turns out wrong. The SEC, FDA, financial regulators, and analogous bodies have authority over specific decision categories where unverified reasoning would expose the regulated entity directly.
+- **Litigation exposure** when a board, fiduciary, or counterparty acted on AI-augmented analysis that turns out to have hidden assumptions or missing premises. Discovery will reach for the reasoning chain. Tamper-evident reasoning is defensible; revisable Google Docs are not.
+- **Public failure events** that trigger buyer flight. The cybersecurity industry repriced trust in proxies after SolarWinds. The verification-of-analysis market will reprice trust in proxies after the first comparable disclosure.
+
+The cascade is slower than 2008. The structural mechanism is identical. The framework predicts the repricing arrives within eighteen months of the first widely-reported failure event.
 
 The framework that follows on the rest of this site is built on that pattern. The next pages walk through what proof artifacts look like for analytical content, what posture executives should adopt toward AI verification, and what to demand from the systems and vendors they depend on.
 
