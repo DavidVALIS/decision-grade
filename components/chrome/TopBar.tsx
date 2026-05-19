@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { IconSearch, IconSparkle, IconGitHub, ValisMark } from '@/components/icons';
+import { IconSearch, IconSparkle, IconGitHub, IconMenu, ValisMark } from '@/components/icons';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { REPO_URL } from '@/lib/pages';
 
 function openSearch() {
   if (typeof window !== 'undefined') {
     window.dispatchEvent(new Event('open-search'));
+  }
+}
+
+function openSidebar() {
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new Event('open-sidebar'));
   }
 }
 
@@ -28,6 +34,16 @@ export function TopBar() {
   return (
     <header className="dg-topbar">
       <div className="dg-topbar-inner">
+        <button
+          className="dg-burger"
+          type="button"
+          title="Open navigation"
+          aria-label="Open navigation"
+          onClick={openSidebar}
+        >
+          <IconMenu size={20} />
+        </button>
+
         <Link href="/introduction/" className="dg-brand">
           <ValisMark size={24} />
           <span className="dg-brand-text">Decision-Grade AI</span>
