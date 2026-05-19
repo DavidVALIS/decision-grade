@@ -69,7 +69,7 @@ export function Sidebar() {
         </button>
 
         <div className="dg-sidebar-group">
-          <p className="dg-sidebar-group-label">Framework · v1.0</p>
+          <p className="dg-sidebar-group-label">Framework</p>
           {PAGES.map((p) => {
             const Icon = getIcon(p.icon);
             const active = slug === p.id;
@@ -90,22 +90,29 @@ export function Sidebar() {
         <div className="dg-sidebar-group">
           <p className="dg-sidebar-group-label">Appendix</p>
           <Link
+            href="/about/"
+            className={`dg-sidebar-item${slug === 'about' ? ' dg-sidebar-item--active' : ''}`}
+          >
+            <span className="dg-sidebar-num">A1</span>
+            <span>About</span>
+          </Link>
+          <Link
             href="/mcp/"
             className={`dg-sidebar-item${slug === 'mcp' ? ' dg-sidebar-item--active' : ''}`}
           >
-            <span className="dg-sidebar-num">A1</span>
+            <span className="dg-sidebar-num">A2</span>
             <span>MCP server</span>
           </Link>
           <a className="dg-sidebar-item" href="/llms.txt" target="_blank" rel="noreferrer">
-            <span className="dg-sidebar-num">A2</span>
+            <span className="dg-sidebar-num">A3</span>
             <span>llms.txt index</span>
           </a>
           <a className="dg-sidebar-item" href="/llms-full.txt" target="_blank" rel="noreferrer">
-            <span className="dg-sidebar-num">A3</span>
+            <span className="dg-sidebar-num">A4</span>
             <span>Full text bundle</span>
           </a>
           <a className="dg-sidebar-item" href={`${REPO_URL}/tree/main`} target="_blank" rel="noreferrer">
-            <span className="dg-sidebar-num">A4</span>
+            <span className="dg-sidebar-num">A5</span>
             <span>Markdown source</span>
           </a>
         </div>
