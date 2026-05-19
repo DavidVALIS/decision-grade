@@ -1,6 +1,6 @@
 ---
 title: 'The Evidence Base'
-description: 'Measured AI error rates in May 2026: hallucination, citation failure, sycophancy, multi-step reasoning collapse, deployment failure. Named sources, primary citations, honest limits.'
+description: 'Measured AI error rates in May 2026 across clinical reasoning, scientific summarization, court filings, and human calibration on AI output. Named sources, primary citations, honest limits.'
 ---
 
 <StatRow cols={2}>
@@ -43,18 +43,6 @@ Each one on its own would be bad. Together, they describe a specific trap.
 The natural mitigations have already been measured. Reviewers can't reliably tell good AI answers from bad ones. Asking the model "are you sure?" is the move it's been trained to defeat. Prompting it to be more careful makes the overgeneralization worse. Every check that lives downstream of generation is broken.
 
 The fix isn't "stop using AI." That isn't going to happen. The fix is upstream: don't let an AI's answer count as a decision until a verification layer has run against the analysis itself, not just its facts. The [Doctrine page](/the-doctrine) describes that posture. This page is the empirical case for why no weaker posture survives.
-
-<Note>
-  **In short:** Current public evidence does not support a single universal AI error rate. It supports something more important: AI failure is task-dependent, measurable, and already visible in production-adjacent workflows. These results do not prove that every AI-assisted decision is unreliable. They prove that polished AI output cannot be treated as verified analysis without task-specific controls.
-</Note>
-
-The framework on this site argues that AI verification has decoupled from AI generation, and that organizations are absorbing structural-reasoning failures at rates their current controls were not designed to detect. This page is the empirical case.
-
-The pages on either side of this one (the diagnosis in [The Frame](/the-frame), the posture in [The Doctrine](/the-doctrine)) make the argument. This page sources it.
-
-The framework's actual target is sharper than "AI hallucinates." It is: AI-augmented analytical work fails on the relationship between claim, evidence, assumption, comparison, time period, and recommendation, even when individual facts and citations are correct. Five new studies now measure that failure directly in adjacent analytical domains (policy reports, SEC filings, scientific summarization, human calibration on AI output, and the trust / critical-thinking inverse-correlation). They are presented in the [Direct evidence](#direct-evidence-ai-fails-at-analysis-not-just-at-facts) section.
-
-What is still not directly measured is the rate of structural-reasoning failure in *deployed executive decision workflows*: AI-generated board memos, M&A diligence, regulatory submissions, strategy decks. The five direct sources are the closest approach. The gap that remains is the [closing section](#what-is-not-yet-measured).
 
 ## The state of the evidence in May 2026
 
@@ -241,9 +229,7 @@ The seven sources below close specific objections that the framework's diagnosis
 
 ## Direct evidence: AI fails at analysis, not just at facts
 
-The seven anchor sources above establish that AI fails measurably across grounded summarization, citation retrieval, legal research, clinical reasoning, court filings, and frontier safety controls. That evidence is real but adjacent. The framework's actual target is sharper: AI-augmented analytical work fails on the *relationship* between claim, evidence, assumption, comparison, time period, and recommendation, even when individual facts and citations are correct.
-
-Five recent studies measure that failure directly. They are not yet a single unified benchmark of executive decision memos. They are the closest existing public measurement of structural-reasoning failure in analytical workflows, and they shift the framework from "this gap is asserted" to "this gap is partly observed."
+The seven anchor sources above are real but adjacent: grounded summarization, citation retrieval, legal research, clinical reasoning, court filings, frontier safety controls. The framework's actual target is sharper. Five recent studies measure structural-reasoning failure directly in analytical workflows, shifting the framework from "this gap is asserted" to "this gap is partly observed." They are not yet a single unified benchmark of executive decision memos, but they are the closest existing public measurement.
 
 <AccordionGroup>
   <Accordion title="1. RAND 2026 — claim truthfulness on technical policy reports">
@@ -299,7 +285,7 @@ Five recent studies measure that failure directly. They are not yet a single uni
 
 Two further studies widen the floor. CLAIM-BENCH (IJCNLP 2025, [arXiv 2506.08235](https://arxiv.org/abs/2506.08235)) tested six LLMs on more than 300 claim-evidence pairs from AI research papers and found significant gaps in claim-to-evidence reasoning that close only with multi-pass prompting. SECQUE (ACL GEM 2025, [arXiv 2504.04596](https://arxiv.org/abs/2504.04596)) tested seven LLMs on 565 expert-written SEC-filing questions; analyst-insight generation was the hardest task category across all models tested.
 
-Taken together, these seven sources do not measure executive decision memos directly. They do measure: claim truthfulness against policy evidence (RAND), longitudinal and cross-entity reasoning in financial analysis (Fin-RATE), overgeneralization in scientific summarization (Peters and Chin-Yee), human calibration on AI output (Steyvers), and the inverse-correlation between trust and critical thinking (Lee). The "structural reasoning fails even when facts and citations check out" claim has gone from asserted to partly observed.
+Taken together, the five direct measurements plus the two supporting studies do not measure executive decision memos directly. They do measure: claim truthfulness against policy evidence (RAND), longitudinal and cross-entity reasoning in financial analysis (Fin-RATE), overgeneralization in scientific summarization (Peters and Chin-Yee), human calibration on AI output (Steyvers), and the inverse-correlation between trust and critical thinking (Lee). The "structural reasoning fails even when facts and citations check out" claim has gone from asserted to partly observed.
 
 ## Supporting evidence
 
@@ -351,7 +337,7 @@ The framework's Zero Trust posture extends to the evidence on this page. Seven t
   </Accordion>
 
   <Accordion title="Reasoning settings were disabled for toggleable models in the MGB study, and newer reasoning models post-date the paper">
-    The Mass General Brigham paper tested architecturally reasoning-optimized models (Grok 4, GPT-5, Claude 4.5 Opus, Claude 3.7 Sonnet, DeepSeek R1, Gemini 2.5 Pro, Gemini 3.0 Pro, Gemini 3.0 Flash, GPT-o1 series, GPT-o3-Mini) in their reasoning configuration. For models with a *toggleable* reasoning mode (GPT-5's reasoning_effort dial, Claude's extended-thinking switch, Gemini Flash Thinking), the toggle was disabled to assess base deployment behavior. The 90 to 100 percent differential-diagnosis failure rate held across both groups. Models released after the paper's submission window (GPT-5.5 Pro, Claude Opus 4.7, Gemini 3.1 Pro) were not tested. The framework's prediction is that the benchmark-vs-deployment decoupling will persist on those models; the data is not in yet.
+    The MGB paper tested architecturally reasoning-optimized models in their reasoning configuration but disabled toggleable reasoning modes for models that have them (GPT-5's reasoning_effort dial, Claude's extended-thinking switch, Gemini Flash Thinking). The 90 to 100 percent differential-diagnosis failure rate held across both groups. Newer reasoning-mode models (GPT-5.5 Pro, Claude Opus 4.7, Gemini 3.1 Pro) post-date the paper and were not tested. Full methodology in anchor source #1 above.
   </Accordion>
 </AccordionGroup>
 
