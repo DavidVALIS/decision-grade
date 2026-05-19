@@ -383,10 +383,10 @@ The framework that follows on the rest of this site is built on that pattern. Th
 
 
 
-  - **90–100%** — Off-the-shelf frontier LLM differential-diagnosis failure rate across 21 models and 16,254 responses. Reasoning-optimized models including Grok 4, GPT-5, and Claude 4.5 Opus failed at the same rate. — (Mass General Brigham · JAMA Network Open · April 2026)
-  - **4.85×** — More likely than human experts that LLM summaries of scientific research contain overly broad generalizations, across 4,900 summaries and 10 LLMs (95% CI 3.06 to 7.70, p < 0.001). Newer models performed worse than older ones. — (Peters and Chin-Yee · Royal Society Open Science · April 2025)
-  - **1,455** — Legal decisions worldwide where AI-generated content (fabricated citations, false quotes, misrepresented authorities) was addressed by a court — (Charlotin AI Hallucination Cases Database · 17 May 2026)
-  - **0.59 AUC** — Reviewer accuracy distinguishing correct from incorrect AI answers given default explanations, barely above the 0.50 random-chance line. The model's own internal confidence carries AUC 0.75 to 0.78. — (Steyvers et al. · Nature Machine Intelligence · February 2025)
+  - **90–100%** — Off-the-shelf AI's failure rate at the early-stage diagnostic step doctors do first. Reasoning modes failed at the same rate. — (Mass General Brigham · JAMA Network Open · April 2026)
+  - **4.85×** — How much more often AI overstates scientific research than human experts do. Newer models did worse. — (Peters and Chin-Yee · Royal Society Open Science · April 2025)
+  - **1,455** — Real court rulings worldwide where AI-invented citations or quotes reached a judge. — (Charlotin AI Hallucination Cases Database · 17 May 2026)
+  - **0.59 AUC** — How well humans spot AI's wrong answers. Random guessing is 0.50. Longer AI explanations did not help. — (Steyvers et al. · Nature Machine Intelligence · February 2025)
 
 
 ## Why these four matter as a combined force
