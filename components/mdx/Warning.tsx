@@ -6,7 +6,7 @@ export function Warning({ children, title }: { children: ReactNode; title?: stri
     <div className="dg-callout dg-callout--warn" role="note">
       <IconWarning className="dg-callout-icon" size={20} />
       <div style={{ minWidth: 0, flex: 1 }}>
-        <p className="dg-callout-label">{title ?? 'Warning'}</p>
+        {title ? <p className="dg-callout-label">{title}</p> : null}
         <div className="dg-callout-body">{children}</div>
       </div>
     </div>
