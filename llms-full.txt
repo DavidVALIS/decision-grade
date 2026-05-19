@@ -401,11 +401,11 @@ Each one on its own would be bad. Together, they describe a specific trap.
 
 4. **The person checking the AI's answer can't reliably tell if it's right.** Researchers gave 301 people the AI's answers, asked them to spot the wrong ones, and tracked how well they did. People distinguished correct from incorrect answers barely better than flipping a coin. Longer, more elaborate explanations made readers *more* confident in the AI without making them any better at catching errors. The natural assumption that "a senior person will catch it" is the assumption the data refuses to support.
 
-**Put it all together and you get the trap:** AI is a fast, smart-sounding assistant; its summaries leave out the limits and exceptions that make the difference; the person reading the output can't reliably catch when it's wrong; and the mistakes are already landing in courtrooms and clinics and boardrooms.
+**Put it all together and you get the trap:** these aren't four separate failures. They're four views of one. AI gets individual facts and citations right, and gets the *relationships* between them wrong: the comparison, the boundary condition, the temporal window, the unstated precondition, the inference that ties the recommendation to the evidence. Polished output at the sentence level. Broken analysis at the structural level.
 
-You'll like working with this assistant. You'll trust this assistant. And every so often the assistant will hand you a polished answer whose underlying frame is broken, and you won't catch it because nothing in the answer looks wrong.
+The natural mitigations have already been measured. Reviewers can't reliably tell good AI answers from bad ones. Asking the model "are you sure?" is the move it's been trained to defeat. Prompting it to be more careful makes the overgeneralization worse. Every check that lives downstream of generation is broken.
 
-The fix isn't "stop using AI." That isn't going to happen. The fix is: don't let an AI's answer count as a decision until something independent has checked it.
+The fix isn't "stop using AI." That isn't going to happen. The fix is upstream: don't let an AI's answer count as a decision until a verification layer has run against the analysis itself, not just its facts. The [Doctrine page](/the-doctrine) describes that posture. This page is the empirical case for why no weaker posture survives.
 
 <Note>
   **In short:** Current public evidence does not support a single universal AI error rate. It supports something more important: AI failure is task-dependent, measurable, and already visible in production-adjacent workflows. These results do not prove that every AI-assisted decision is unreliable. They prove that polished AI output cannot be treated as verified analysis without task-specific controls.
