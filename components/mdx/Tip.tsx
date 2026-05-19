@@ -6,7 +6,7 @@ export function Tip({ children, title }: { children: ReactNode; title?: string }
     <div className="dg-callout dg-callout--tip" role="note">
       <IconCheck className="dg-callout-icon" size={20} />
       <div style={{ minWidth: 0, flex: 1 }}>
-        <p className="dg-callout-label">{title ?? 'Tip'}</p>
+        {title ? <p className="dg-callout-label">{title}</p> : null}
         <div className="dg-callout-body">{children}</div>
       </div>
     </div>
