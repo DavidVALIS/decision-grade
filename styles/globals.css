@@ -1156,14 +1156,18 @@ a.dg-stat--center:hover {
   .dg-toc { display: none; }
   .dg-content { padding: 56px 40px; }
 }
+.dg-mobile-search { display: none; }
+
 @media (max-width: 760px) {
   .dg-shell { grid-template-columns: 1fr; }
   .dg-content { padding: 40px 24px; border-right: 0; }
   .dg-search { display: none; }
-  .dg-topbar-inner { padding: 14px 20px; gap: 12px; }
+  .dg-topbar-inner { padding: 14px 16px; gap: 10px; }
   .dg-topnav { display: none; }
   .dg-pager { grid-template-columns: 1fr; }
   .dg-brand-text { font-size: 0.78rem; }
+  .dg-desktop-only { display: none !important; }
+  .dg-mobile-search { display: inline-flex; }
 }
 
 /* ============================== Mobile burger + drawer ============================== */

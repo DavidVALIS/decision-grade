@@ -75,8 +75,17 @@ export function TopBar() {
             <span>Search or ask...</span>
             <span className="kbd">{isMac ? '⌘K' : 'Ctrl K'}</span>
           </button>
+          <button
+            className="icon-btn dg-mobile-search"
+            type="button"
+            title="Search"
+            aria-label="Search"
+            onClick={openSearch}
+          >
+            <IconSearch size={16} />
+          </button>
           <a
-            className="icon-btn"
+            className="icon-btn dg-desktop-only"
             title="Source on GitHub"
             href={REPO_URL}
             target="_blank"
@@ -86,7 +95,7 @@ export function TopBar() {
             <IconGitHub size={16} />
           </a>
           <button
-            className="icon-btn"
+            className="icon-btn dg-desktop-only"
             type="button"
             title="Ask VALIS"
             aria-label="Ask VALIS"
