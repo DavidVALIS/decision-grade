@@ -63,7 +63,7 @@ This site is a reference, not a primer or an essay. Read it in order if you want
     What the problem actually is. Why current controls miss it.
   </Step>
   <Step title="The Evidence Base — the data">
-    Seven anchor sources with named primary citations. Measured AI error rates as of May 2026 across four error modes and three measurement tiers.
+    Twelve verified sources across two layers. Layer 1: seven anchor sources establishing that AI failure is measurable in adjacent domains (medical reasoning, sycophancy, court filings, benchmark saturation, grounded summarization, safety, the car-wash diagnostic). Layer 2: five sources measuring structural-reasoning failure directly in analytical work (RAND policy claims, Fin-RATE SEC filings, Peters and Chin-Yee on overgeneralization, Steyvers on human calibration, Lee et al. on trust and critical thinking).
   </Step>
   <Step title="The Doctrine — the posture">
     Zero Trust as the meta-principle. The three layers: Independence, Doctrine, Accountability.
@@ -397,7 +397,9 @@ The framework on this site argues that AI verification has decoupled from AI gen
 
 The pages on either side of this one (the diagnosis in [The Frame](/the-frame), the posture in [The Doctrine](/the-doctrine)) make the argument. This page sources it.
 
-What the page does not yet do is directly measure the framework's actual target: the rate at which AI-assisted executive analysis contains unsupported causal claims, hidden assumptions, invalid comparisons, phantom precision, or recommendations that do not follow from the evidence. The evidence below establishes a floor for the wider problem. The specific rate of structural-reasoning failure in deployed decision workflows remains undermeasured. That gap is addressed in the [closing section of this page](#what-is-not-yet-measured).
+The framework's actual target is sharper than "AI hallucinates." It is: AI-augmented analytical work fails on the relationship between claim, evidence, assumption, comparison, time period, and recommendation, even when individual facts and citations are correct. Five new studies now measure that failure directly in adjacent analytical domains (policy reports, SEC filings, scientific summarization, human calibration on AI output, and the trust / critical-thinking inverse-correlation). They are presented in the [Direct evidence](#direct-evidence-ai-fails-at-analysis-not-just-at-facts) section.
+
+What is still not directly measured is the rate of structural-reasoning failure in *deployed executive decision workflows*: AI-generated board memos, M&A diligence, regulatory submissions, strategy decks. The five direct sources are the closest approach. The gap that remains is the [closing section](#what-is-not-yet-measured).
 
 ## The state of the evidence in May 2026
 
@@ -578,6 +580,68 @@ The seven sources below close specific objections that the framework's diagnosis
   </Accordion>
 </AccordionGroup>
 
+## Direct evidence: AI fails at analysis, not just at facts
+
+The seven anchor sources above establish that AI fails measurably across grounded summarization, citation retrieval, legal research, clinical reasoning, court filings, and frontier safety controls. That evidence is real but adjacent. The framework's actual target is sharper: AI-augmented analytical work fails on the *relationship* between claim, evidence, assumption, comparison, time period, and recommendation, even when individual facts and citations are correct.
+
+Five recent studies measure that failure directly. They are not yet a single unified benchmark of executive decision memos. They are the closest existing public measurement of structural-reasoning failure in analytical workflows, and they shift the framework from "this gap is asserted" to "this gap is partly observed."
+
+<AccordionGroup>
+  <Accordion title="1. RAND 2026 — claim truthfulness on technical policy reports">
+    **Evidence type:** Institutional research report (RAND Corporation). Not peer-reviewed.
+
+    **Headline finding:** Baseline LLM configurations achieved 48 to 54 percent accuracy on a six-category truthfulness task evaluating claims against source policy research reports. The categories included unsupported assertions, partial inaccuracies, inferred reasoning, and conflicting opinions. The benchmark is designed around analyst-grade reasoning, not fact lookup.
+
+    **Citation:** RAND Research Report [RRA4269-1](https://www.rand.org/pubs/research_reports/RRA4269-1.html), April 2026.
+
+    **What it kills:** The "but the model can summarize" defense. Even with the source documents available, baseline systems get the truthfulness judgment wrong roughly half the time on the nuanced categories that are exactly what an analyst is paid to apply.
+  </Accordion>
+
+  <Accordion title="2. Fin-RATE 2026 — analytical errors in SEC-filing tracking">
+    **Evidence type:** arXiv preprint, not yet peer-reviewed. 17-LLM evaluation on SEC filings.
+
+    **Headline finding:** Accuracy dropped 18.60 percent moving from single-document reasoning to longitudinal tracking across reporting periods, and 14.35 percent moving to cross-entity comparison. The paper classifies the failure modes as comparison hallucinations, entity confusion, temporal mismatches, fabricated temporal claims, and trend distortion. These are not hallucinated citations; they are inferential errors in financial analysis.
+
+    **Citation:** "Fin-RATE: A Real-world Financial Analytics and Tracking Evaluation Benchmark for LLMs on SEC Filings," [arXiv 2602.07294](https://arxiv.org/abs/2602.07294), February 2026.
+
+    **What it kills:** The "but RAG over SEC filings is solid" defense. Even when the source documents are present and retrieval is clean, the model fails on the analytical relationships between them. The error taxonomy matches the framework's own definition of structural-reasoning failure almost line for line.
+  </Accordion>
+
+  <Accordion title="3. Peters and Chin-Yee 2025 — overgeneralization in scientific summarization">
+    **Evidence type:** Peer-reviewed study (Royal Society Open Science).
+
+    **Headline finding:** LLM summaries of scientific texts were 4.85 times more likely than human-expert summaries to contain overly broad generalizations (95 percent confidence interval 3.06 to 7.70, p<0.001). The result held across 4,900 LLM summaries and 10 LLMs tested. Per-model overgeneralization rates ranged from 26 to 73 percent. Newer models performed worse than earlier ones, against the usual "newer is better" assumption.
+
+    **Citation:** Uwe Peters and Benjamin Chin-Yee, "Generalization bias in large language model summarization of scientific research," *Royal Society Open Science*, April 2025. [DOI 10.1098/rsos.241776](https://royalsocietypublishing.org/doi/10.1098/rsos.241776).
+
+    **What it kills:** The "but the model summarizes accurately" defense. Overgeneralization is the structural failure that turns "this pilot showed promise" into "this strategy works." Direct quantification of the framework's claim that AI output omits boundary conditions.
+  </Accordion>
+
+  <Accordion title="4. Steyvers et al. 2025 — humans cannot reliably tell when AI is wrong">
+    **Evidence type:** Peer-reviewed study (Nature Machine Intelligence).
+
+    **Headline finding:** Under default LLM explanations, users distinguished correct from incorrect model answers at an AUC of 0.59 to 0.60, barely above chance (0.50). The model's own internal confidence carried far more information (AUC 0.75 to 0.78). Longer explanations increased user confidence without improving answer accuracy. Uncertainty-aware explanations narrowed the calibration gap.
+
+    **Citation:** Mark Steyvers et al., "What Large Language Models Know and What People Think They Know," *Nature Machine Intelligence*, February 2025. [DOI 10.1038/s42256-024-00976-7](https://www.nature.com/articles/s42256-024-00976-7).
+
+    **What it kills:** The "but a reviewer will catch a bad answer" defense. The reviewer cannot, not at usefully better than chance. The combination of confident-sounding output and the reviewer's own overestimation of their discrimination ability is the failure mechanism the framework was built around.
+  </Accordion>
+
+  <Accordion title="5. Lee et al. 2025 — high trust in GenAI correlates with less critical thinking">
+    **Evidence type:** Peer-reviewed study (CHI 2025). Self-reported survey of 319 knowledge workers and 936 first-hand GenAI work examples. Correlational, not causal.
+
+    **Headline finding:** Higher confidence in generative AI was associated with less self-reported critical thinking; higher self-confidence was associated with more. The data also showed that GenAI shifts cognitive work away from information gathering and idea generation toward verification, integration, and task stewardship. The result is directional, and the methodology is self-report rather than behavioral, but the pattern is consistent.
+
+    **Citation:** Hao-Ping Lee et al., "The Impact of Generative AI on Critical Thinking," *CHI 2025*. [DOI 10.1145/3706598.3713778](https://doi.org/10.1145/3706598.3713778).
+
+    **What it kills:** The "but humans add judgment on top" defense. The judgment shrinks when trust in the system is high. The mechanism is organizational, not technical, and it concentrates exactly where the framework predicts: at the point where a busy reviewer scans confident output without independent challenge.
+  </Accordion>
+</AccordionGroup>
+
+Two further studies widen the floor. CLAIM-BENCH (IJCNLP 2025, [arXiv 2506.08235](https://arxiv.org/abs/2506.08235)) tested six LLMs on more than 300 claim-evidence pairs from AI research papers and found significant gaps in claim-to-evidence reasoning that close only with multi-pass prompting. SECQUE (ACL GEM 2025, [arXiv 2504.04596](https://arxiv.org/abs/2504.04596)) tested seven LLMs on 565 expert-written SEC-filing questions; analyst-insight generation was the hardest task category across all models tested.
+
+Taken together, these seven sources do not measure executive decision memos directly. They do measure: claim truthfulness against policy evidence (RAND), longitudinal and cross-entity reasoning in financial analysis (Fin-RATE), overgeneralization in scientific summarization (Peters and Chin-Yee), human calibration on AI output (Steyvers), and the inverse-correlation between trust and critical thinking (Lee). The "structural reasoning fails even when facts and citations check out" claim has gone from asserted to partly observed.
+
 ## Supporting evidence
 
 Three additional studies are worth naming. They do not carry the page, but they widen the empirical floor.
@@ -630,7 +694,9 @@ The framework's Zero Trust posture extends to the evidence on this page. Seven t
 
 ## What is not yet measured
 
-This is the most important section on the page. The seven anchor sources above establish a floor for the wider problem. None of them directly measures the framework's actual target: the rate at which AI-assisted executive analysis contains unsupported causal claims, hidden assumptions, invalid comparisons, phantom precision, or recommendations that do not follow from the evidence.
+This section is now narrower than it was. The Direct evidence section above shifted the framework from "this gap is asserted" to "this gap is partly observed." RAND's policy-claim benchmark, Fin-RATE's financial-analytics taxonomy, Peters and Chin-Yee's overgeneralization study, Steyvers et al. on human calibration, and Lee et al. on the trust / critical-thinking inverse correlation each measure a slice of the framework's actual target.
+
+What still does not exist at scale is direct measurement of *deployed* executive analytical work: AI-augmented board memos, M&A diligence, regulatory submissions, strategy decks, capital-allocation memos. The five direct sources above cover the closest analogues. The deployment-level slice remains uncatalogued in public.
 
 Domain-specific validators exist. Retrieval checks exist. Legal citators exist. Medical review workflows exist. Benchmark harnesses exist. Human review exists. What does not yet exist at scale is a general-purpose, deployment-level system that checks whether AI-generated analysis is structurally valid: whether the claim follows from the evidence, whether assumptions are exposed, whether citations support the conclusion, and whether hidden constraints have been surfaced across arbitrary organizational outputs.
 
