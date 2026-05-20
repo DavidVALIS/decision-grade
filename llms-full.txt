@@ -20,19 +20,19 @@ The framework is published openly because the Zero Trust posture it advocates ex
   **What this site is:** A framework for executives, technology leaders, and strategy functions navigating AI in 2026. 
 </Note>
 
-Most AI guidance you'll read in 2026 is still scoped to facts and hallucinations: will the model make things up, can we catch it. These are reasonable questions. They are not where the operational risk lives.
+Most AI guidance you will read in 2026 is still scoped to facts and hallucinations. Will the model make things up. Can we catch it when it does. These are reasonable questions. They are not where the operational risk lives now.
 
-The risk that matters sits one layer down: AI is already in your analytical pipeline somewhere, whether you formally authorized it or not. Research synthesis, first-draft generation, code review, summarization, market sweeps, briefing prep. 
+The risk that matters sits one layer down. AI is already in your analytical pipeline, whether you formally authorized it or not. Research synthesis, first-draft generation, summarization, briefing prep, the work whose output you are about to put your name on.
 
-The token-level cost of producing words has collapsed by two to three orders of magnitude. The all-in cost of analytical work, once human prompting, editing, and integration are counted, has fallen by at least 5x, and in more sophisticated workflows, as much as 20x. 
+The cost of producing polished words has collapsed. At the token layer, by two to three orders of magnitude. End-to-end, once human prompting, editing, and integration are counted, by a factor of five to twenty.
 
 The output reads well, fact-checks cleanly, and contains no obvious hallucinations. It still reasons badly. It still makes load-bearing causal claims with no mechanism. It still omits the boundary conditions that would let a careful reader weigh it.
 
-Your existing controls do not catch this. They were not designed to. Style guides formalize prose. Performance reviews reward speed and confidence. Disclosure frameworks check what tool was used, not whether the reasoning is sound. 
+Your existing controls do not catch this. They were not designed to. Style guides formalize prose. Performance reviews reward speed and confidence. Disclosure frameworks check what tool was used, not whether the reasoning is sound.
 
 The verification deficit was already inside your organization before any model was deployed. AI did not create it. AI revealed it.
 
-The 2026 executive question is not how to defend against hallucination. It is how to operate when polished output and sound reasoning have decoupled, and when the cost of being wrong about that decoupling has begun to compound.
+The 2026 executive question is not how to defend against hallucination. It is how to operate when polished output and sound reasoning have come apart, and when the cost of being wrong about that gap has begun to compound.
 
 - **1,455** — Legal decisions worldwide where AI-generated content (fabricated citations, false quotes, misrepresented authorities) was addressed by a court. Q1 2026 US sanctions for fake citations exceeded $145,000. — (Damien Charlotin AI Hallucination Cases Database · 17 May 2026 · See the Evidence Base)
 
@@ -54,37 +54,35 @@ The 2026 executive question is not how to defend against hallucination. It is ho
 
 ## How to read this
 
-This site is a reference, not a primer or an essay. Read it in order if you want the full architecture. Jump to any page if you have a specific question.
+A reference, not a primer. Read in order for the full architecture. Jump in if you have a specific question.
 
 <Steps>
-  <Step title="The Frame — the diagnosis">
-    What the problem actually is. Why current controls miss it.
+  <Step title="The Frame">
+    The diagnosis. What the problem actually is, and why your current controls do not catch it.
   </Step>
-  <Step title="The Evidence Base — the data">
-    Twelve verified sources across two layers. Layer 1: seven anchor sources establishing that AI failure is measurable in adjacent domains (medical reasoning, sycophancy, court filings, benchmark saturation, grounded summarization, safety, the car-wash diagnostic). Layer 2: five sources measuring structural-reasoning failure directly in analytical work (RAND policy claims, Fin-RATE SEC filings, Peters and Chin-Yee on overgeneralization, Steyvers on human calibration, Lee et al. on trust and critical thinking).
+  <Step title="The Evidence Base">
+    The data. Twelve named sources, dated and primary-cited, on how AI fails in May 2026.
   </Step>
-  <Step title="The Doctrine — the posture">
-    Zero Trust as the meta-principle. The three layers: Independence, Doctrine, Accountability.
+  <Step title="The Doctrine">
+    The posture. Zero Trust applied to AI verification, in three layers.
   </Step>
-  <Step title="The Buyer's Checklist — the action">
-    Seven procurement questions to put to AI verification vendors. Red flags. Scoring grid.
+  <Step title="The Buyer's Checklist">
+    The action outside your walls. Seven questions to put to any AI vendor.
   </Step>
-  <Step title="Lane Discipline — the internal practice">
-    Decision-grade vs. volume-grade. Classification, routing, failure modes.
+  <Step title="Lane Discipline">
+    The action inside your walls. Decision-grade output versus volume-grade output, and how to keep them separate.
   </Step>
-  <Step title="2026 Watchlist — the calendar">
-    Dated signals that will tell you whether the framework holds. Updated as signals resolve.
+  <Step title="2026 Watchlist">
+    The calendar. Dated signals that will tell you whether the framework holds, and where it would break.
   </Step>
 </Steps>
 
 <Tip>
-  **The doctrine is verifiable:** 
+  **The framework is published openly.**
 
-  * Every page is published in Markdown source at the linked GitHub repository. 
-  * You can ask any AI to read the entire framework: There is an llms.txt index of every page, a llms-full.txt bundle that ships the entire framework as one document for ingestion in a single fetch.
-  * There's an MCP server that any MCP-aware AI client (Claude Desktop, Cursor, others) can connect to directly. 
-  
-  The site is verifiable. The framework is contestable. That is part of the posture, not a side feature.
+  The source is on GitHub. Any AI can be pointed at the whole thing in a single fetch. The site has an MCP server so any AI client can read it directly.
+
+  That openness is part of the posture, not a side feature. The doctrine should not require trusting the publisher.
 </Tip>
 
 ## What the framework is not
@@ -92,34 +90,34 @@ This site is a reference, not a primer or an essay. Read it in order if you want
 Three inoculations against the most common misreadings.
 
 <CardGroup cols={3}>
-  <Card title="Not a list of AI tools" icon="screwdriver-wrench">
-    No vendor survey. No "top 10 platforms." If you came here for tool selection, this is the wrong site.
+  <Card title="Not a vendor list" icon="screwdriver-wrench">
+    No "top 10 platforms," no buyer's guide to specific products. If you came for tool selection, this is the wrong site.
   </Card>
 
   <Card title="Not a future-of-work thesis" icon="briefcase">
-    No predictions about which jobs disappear. The framework is scoped to verification.
+    No predictions about which jobs disappear. The frame is verification, not labor.
   </Card>
 
   <Card title="Not 2025 content with a 2026 date" icon="calendar-xmark">
-    AI has moved. So has this framework.
+    The question has moved. So has the framework.
   </Card>
 </CardGroup>
 
-This framework is scoped to the question executives will face in 2026 and 2027: when the cost of producing polished analytical output has collapsed, what does it mean to verify the reasoning underneath, and what should you demand from the systems and vendors you depend on?
+The scope is one question. When the cost of producing polished analytical output has collapsed, what does it mean to verify the reasoning underneath, and what should you ask of the systems and vendors you depend on for that verification?
 
 ## Where to start
 
 <CardGroup cols={3}>
   <Card title="Read in order" icon="book" href="/the-frame">
-    Start with **The Frame**. Each page builds on the last. Roughly thirty minutes.
+    Start with **The Frame**. Roughly thirty minutes for the full architecture.
   </Card>
 
   <Card title="Architecture first" icon="shield" href="/the-doctrine">
-    Skip to **The Doctrine** if you want to skip the diagnosis.
+    **The Doctrine** if you want the posture before the diagnosis.
   </Card>
 
   <Card title="Action first" icon="list-check" href="/buyers-checklist">
-    Skip to **The Buyer's Checklist** if you want to skip to AI vendor evaluation without the context.
+    **The Buyer's Checklist** if a vendor evaluation is already on your calendar.
   </Card>
 </CardGroup>
 
@@ -128,10 +126,12 @@ This framework is scoped to the question executives will face in 2026 and 2027: 
 # The Frame
 
 
-The verification deficit is the operational problem underneath AI-augmented analysis. This page walks from the misframing most organizations are operating under to the diagnosis the rest of the framework is built on.
+The risk has moved. Last year's question was whether AI would make things up. This year's question is what to do when it doesn't.
+
+This page is the diagnosis. Where the failure now lives, what your current controls miss, and why the pattern is one your industry has seen before.
 
 <Note>
-  **In short:** Most executive AI guidance is scoped to the wrong problem. Hallucinations are detectable, and the real risk has moved one layer down: AI output that reads cleanly, fact-checks, and still reasons badly. 
+  **In short:** Most executive AI guidance is scoped to the wrong problem. Hallucinations are detectable. The real risk has moved one layer down, to output that reads cleanly, fact-checks, and still reasons badly.
 </Note>
 
 ## Most executive AI guidance is solving last year's problem
@@ -156,9 +156,7 @@ The questions executives are asking about AI in 2026 are the questions that matt
   </Card>
 </CardGroup>
 
-Every item on the right requires structure well beyond a single LLM call: independent verifiers, deterministic gates, public commitments, cryptographic anchors. That structure is what the rest of this site lays out.
-
-Here are some examples of the mechanisms I lay out above:
+Every item on the right requires structure well beyond a single LLM call. [The Doctrine](/the-doctrine) sets out what that structure looks like. Before that: five plain examples of what the right-hand column actually means in a deliverable.
 <AccordionGroup>
   <Accordion title="Independent grounding of the causal claim">
     A report says retention rose 15% because of the new onboarding flow. The "because" is the load-bearing part. Without a comparison to similar companies that didn't change onboarding, the rise could just as easily be from a market shift, a price change, or the three other things the same team fixed that quarter.
@@ -296,14 +294,7 @@ AI removed the throttle. The deficit became visible.
 
 The diagnosis is not that one thing is broken. It is that several things compound.
 
-<Steps>
-  <Step title="Cheap analysis floods the queue">  </Step>
-  <Step title="Review gates check style and coherence, not structural validity"> </Step>
-  <Step title="Analysts are rewarded for speed to briefing, not forecast accuracy"></Step>
-  <Step title="Clients never see the claim-source map behind the polished deliverable"></Step>
-  <Step title="Opacity hides damage, incentives intensify"></Step>
-  <Step title="More cheap analysis, faster"></Step>
-</Steps>
+Cheap analysis floods the queue. Review gates check style and coherence, not structural validity. Analysts are rewarded for speed to briefing, not for forecast accuracy. Clients never see the claim-source map behind the polished deliverable. Opacity hides damage; incentives intensify; more cheap analysis floods in, faster. The loop closes on itself.
 
 Review systems formalize prose, presentation, and process, not structural-reasoning checks. That asymmetry is why disclosure and review regimes do not close the gap.
 
@@ -355,7 +346,7 @@ What is the analogue to the margin call for analytical content? Three candidates
 
 The cascade is slower than 2008. The structural mechanism is identical. The framework predicts the repricing arrives within eighteen months of the first widely-reported failure event.
 
-The framework that follows on the rest of this site is built on that pattern. The next pages walk through what proof artifacts look like for analytical content, what posture executives should adopt toward AI verification, and what to demand from the systems and vendors they depend on.
+The rest of the site is built on that pattern. What proof artifacts look like for analytical content. What posture survives contact with the failure modes above. What to ask of the systems and vendors you already depend on.
 
 ## Where this goes next
 
@@ -479,7 +470,7 @@ A 62,000-jailbreak count from a challenge platform is not comparable to a 9.3 pe
 The seven sources below close specific objections that the framework's diagnosis has to survive. Each one is presented with its evidence type, headline finding, methodology, citation, and the objection it defeats. Together they establish a floor for the wider problem the framework addresses, not the rate of structural-reasoning failure itself (see [What is not yet measured](#what-is-not-yet-measured)).
 
 <AccordionGroup>
-  <Accordion title="1. Mass General Brigham — frontier LLMs fail at clinical reasoning across 21 models">
+  <Accordion title="1. Mass General Brigham: frontier LLMs fail at clinical reasoning across 21 models">
     **Evidence type:** Peer-reviewed study. Controlled failure under defined conditions (staged clinical vignettes); does not measure deployment-grade clinical incidence.
 
     **Headline finding:** Across 21 frontier large language models evaluated on 29 standardized clinical vignettes (16,254 total responses), differential-diagnosis failure rates exceeded 80 percent in every model tested, with failure rates ranging from 90 to 100 percent. The same models, when given complete patient information, arrived at correct final diagnoses more than 90 percent of the time. The early-stage reasoning is where models fail.
@@ -497,7 +488,7 @@ The seven sources below close specific objections that the framework's diagnosis
     **What it kills:** The "but doctors use AI successfully" defense. The study tests the exact early-stage reasoning where clinical decisions are actually made, and the failure is uniform across all 21 frontier models.
   </Accordion>
 
-  <Accordion title="2. Cheng et al. — AI sycophancy is now a peer-reviewed failure mode">
+  <Accordion title="2. Cheng et al.: AI sycophancy is now a peer-reviewed failure mode">
     **Evidence type:** Peer-reviewed study. Measures a judgment-distortion effect, not a conventional factual-error rate.
 
     **Headline finding:** Across 11 state-of-the-art models (including ChatGPT, Claude, Gemini, DeepSeek, Llama, Qwen, Mistral), AI affirmed users' actions 49 percent more often than humans did, even when queries involved deception, illegality, or other harms. In three preregistered experiments (N = 2,405), a single interaction with sycophantic AI reduced participants' willingness to take responsibility and increased their conviction that they were right. Sycophantic responses were also rated more trustworthy and users said they would seek AI advice again.
@@ -509,7 +500,7 @@ The seven sources below close specific objections that the framework's diagnosis
     **What it kills:** The "but a reviewer can catch it by asking the model whether it's sure" defense. The natural verification step (asking the model to reconsider) is the exact step the model has been trained to defeat. Users prefer the sycophancy and trust it more than the correction.
   </Accordion>
 
-  <Accordion title="3. Damien Charlotin's AI Hallucination Cases Database — actual courtroom outcomes">
+  <Accordion title="3. Damien Charlotin's AI Hallucination Cases Database: actual courtroom outcomes">
     **Evidence type:** Live legal-case database (real-world case accumulation; not an incidence rate).
 
     **Headline finding:** As of 17 May 2026, 1,455 legal decisions worldwide have been catalogued in which the use of generative AI was established or alleged and addressed by a court or tribunal. The categories include fabricated citations (1,214), misrepresented authorities (581), false quotes (383), and outdated advice (31). Cases span 34 countries; the USA accounts for 1,004, Canada 152, Australia 74, the UK 56, Israel 52, and the rest distributed across 29 other jurisdictions. Eugene Volokh documented 17 US court decisions in a single day (31 March 2026) noting suspected AI hallucinations in filings. US sanctions in Q1 2026 alone exceeded $145,000, with a single Oregon case reaching $110,000.
@@ -523,7 +514,7 @@ The seven sources below close specific objections that the framework's diagnosis
     **What it kills:** The "but it isn't actually happening in the real world" defense. The cases are dated, jurisdiction-tagged, and accumulating in public. What this evidence does *not* show: the rate of AI-assisted filings that contain fabrications. Courts do not check every citation in every filing, so the denominator is unknown.
   </Accordion>
 
-  <Accordion title="4. Stanford HAI 2026 AI Index — benchmark saturation outpacing evaluation">
+  <Accordion title="4. Stanford HAI 2026 AI Index: benchmark saturation outpacing evaluation">
     **Evidence type:** Annual cross-industry index. Useful context on evaluation fragility and adoption scale; not itself a direct error-rate measurement.
 
     **Headline finding:** SWE-bench Verified climbed from 60 percent to near 100 percent in a single year. Humanity's Last Exam moved from 8.8 percent (October 2025) to over 50 percent (Anthropic's Claude Opus 4.6, Google's Gemini 3.1 Pro) by April 2026. The same report concedes that frontier models score below 20 percent on replication in astrophysics and 33 percent on Earth-observation questions. The "jagged frontier" is now official.
@@ -537,7 +528,7 @@ The seven sources below close specific objections that the framework's diagnosis
     **What it kills:** The "but the benchmark scores prove the model is ready" defense. The most authoritative annual index in the field explicitly warns that benchmark performance is decoupled from deployment performance.
   </Accordion>
 
-  <Accordion title="5. Vectara HHEM-2.3 — third-party hallucination measurement on grounded summarization">
+  <Accordion title="5. Vectara HHEM-2.3: third-party hallucination measurement on grounded summarization">
     **Evidence type:** Commercial benchmark maintained by an AI-retrieval vendor. Useful diagnostic under public methodology; not a neutral academic gold standard.
 
     **Headline finding:** On a controlled grounded-summarization task (the model is given source material and asked to summarize from it, an objectively easier task than open-ended fact retrieval), frontier models cluster at 7 to 13 percent hallucination. On Vectara's enterprise dataset of 7,700 longer documents (February 2026 release), Claude Opus 4.6 sat at 12.2 percent, Gemini 3 Pro at 13.6 percent, Claude Haiku 4.5 at 9.8 percent. Reasoning models performed worse than non-reasoning models on this task, because reasoning models add inferences beyond the source.
@@ -549,7 +540,7 @@ The seven sources below close specific objections that the framework's diagnosis
     **What it kills:** The "but RAG and grounding solved it" defense. The Vectara test is grounded summarization on supplied documents. The hallucination rates are still in double digits for flagship models.
   </Accordion>
 
-  <Accordion title="6. UK AI Security Institute + Gray Swan — every frontier model is jailbreakable">
+  <Accordion title="6. UK AI Security Institute + Gray Swan: every frontier model is jailbreakable">
     **Evidence type:** Government evaluation (AISI Trends Report) combined with a challenge-platform result (Gray Swan Arena). Two distinct sources, presented together because they corroborate each other.
 
     **Headline finding (AISI Trends Report):** AISI evaluated frontier models over two years and found vulnerabilities in every system it tested. Universal jailbreaks (techniques that override safeguards across categories) were found across tested systems, with the time required to find one increasing from minutes to several hours between model generations. AISI's April 2026 evaluation of Claude Mythos Preview reported the first model to complete a 32-step enterprise cyber-attack simulation end-to-end.
@@ -565,7 +556,7 @@ The seven sources below close specific objections that the framework's diagnosis
     **What it kills:** The "but the labs have safety teams and it's fine" defense. A government-backed evaluation and an open red-teaming competition independently produced the same conclusion: every model tested was vulnerable. The 62,000 figure is the count of successful breaks across 44 specified behaviors, not the count of distinct harmful behaviors discovered.
   </Accordion>
 
-  <Accordion title="7. Opper car wash test + Heuristic Override Benchmark — reasoning failure on a child-level prompt">
+  <Accordion title="7. Opper car wash test + Heuristic Override Benchmark: reasoning failure on a child-level prompt">
     **Evidence type:** Diagnostic test (vendor-run public evaluation) plus a follow-up preprint that systematized the failure mode. Useful for explaining a class of cognitive failure; not a primary statistical anchor.
 
     **Headline finding (Opper, February 2026):** A simple prompt ("I want to wash my car. The car wash is 50 meters away. Should I walk or drive?") was administered to 53 frontier models with no system prompt, a forced choice between "drive" and "walk," and a required reasoning field. The correct answer is drive, because the car must be physically present to be washed. On a single run, 42 of 53 models said "walk." Only 11 said "drive." Across ten repeated trials per model, only 5 models out of 53 got it right every time (Claude Opus 4.6, Gemini 2.0 Flash Lite, Gemini 3 Flash, Gemini 3 Pro, Grok-4). The wrong answers all shared a structure: fluent reasoning about distance, fuel, exercise, and environment, while missing the unstated constraint that the car must be at the car wash.
@@ -591,7 +582,7 @@ The seven sources below close specific objections that the framework's diagnosis
 The seven anchor sources above are real but adjacent: grounded summarization, citation retrieval, legal research, clinical reasoning, court filings, frontier safety controls. The framework's actual target is sharper. Five recent studies measure structural-reasoning failure directly in analytical workflows, shifting the framework from "this gap is asserted" to "this gap is partly observed." They are not yet a single unified benchmark of executive decision memos, but they are the closest existing public measurement.
 
 <AccordionGroup>
-  <Accordion title="1. RAND 2026 — claim truthfulness on technical policy reports">
+  <Accordion title="1. RAND 2026: claim truthfulness on technical policy reports">
     **Evidence type:** Institutional research report (RAND Corporation). Not peer-reviewed.
 
     **Headline finding:** Baseline LLM configurations achieved 48 to 54 percent accuracy on a six-category truthfulness task evaluating claims against source policy research reports. The categories included unsupported assertions, partial inaccuracies, inferred reasoning, and conflicting opinions. The benchmark is designed around analyst-grade reasoning, not fact lookup.
@@ -601,7 +592,7 @@ The seven anchor sources above are real but adjacent: grounded summarization, ci
     **What it kills:** The "but the model can summarize" defense. Even with the source documents available, baseline systems get the truthfulness judgment wrong roughly half the time on the nuanced categories that are exactly what an analyst is paid to apply.
   </Accordion>
 
-  <Accordion title="2. Fin-RATE 2026 — analytical errors in SEC-filing tracking">
+  <Accordion title="2. Fin-RATE 2026: analytical errors in SEC-filing tracking">
     **Evidence type:** arXiv preprint, not yet peer-reviewed. 17-LLM evaluation on SEC filings.
 
     **Headline finding:** Accuracy dropped 18.60 percent moving from single-document reasoning to longitudinal tracking across reporting periods, and 14.35 percent moving to cross-entity comparison. The paper classifies the failure modes as comparison hallucinations, entity confusion, temporal mismatches, fabricated temporal claims, and trend distortion. These are not hallucinated citations; they are inferential errors in financial analysis.
@@ -611,7 +602,7 @@ The seven anchor sources above are real but adjacent: grounded summarization, ci
     **What it kills:** The "but RAG over SEC filings is solid" defense. Even when the source documents are present and retrieval is clean, the model fails on the analytical relationships between them. The error taxonomy matches the framework's own definition of structural-reasoning failure almost line for line.
   </Accordion>
 
-  <Accordion title="3. Peters and Chin-Yee 2025 — overgeneralization in scientific summarization">
+  <Accordion title="3. Peters and Chin-Yee 2025: overgeneralization in scientific summarization">
     **Evidence type:** Peer-reviewed study (Royal Society Open Science).
 
     **Headline finding:** LLM summaries of scientific texts were 4.85 times more likely than human-expert summaries to contain overly broad generalizations (95 percent confidence interval 3.06 to 7.70, p < 0.001). The result held across 4,900 LLM summaries and 10 LLMs tested. Per-model overgeneralization rates ranged from 26 to 73 percent. Newer models performed worse than earlier ones, against the usual "newer is better" assumption.
@@ -621,7 +612,7 @@ The seven anchor sources above are real but adjacent: grounded summarization, ci
     **What it kills:** The "but the model summarizes accurately" defense. Overgeneralization is the structural failure that turns "this pilot showed promise" into "this strategy works." Direct quantification of the framework's claim that AI output omits boundary conditions.
   </Accordion>
 
-  <Accordion title="4. Steyvers et al. 2025 — humans cannot reliably tell when AI is wrong">
+  <Accordion title="4. Steyvers et al. 2025: humans cannot reliably tell when AI is wrong">
     **Evidence type:** Peer-reviewed study (Nature Machine Intelligence).
 
     **Headline finding:** Under default LLM explanations, users distinguished correct from incorrect model answers at an AUC of 0.59 to 0.60, barely above chance (0.50). The model's own internal confidence carried far more information (AUC 0.75 to 0.78). Longer explanations increased user confidence without improving answer accuracy. Uncertainty-aware explanations narrowed the calibration gap.
@@ -631,7 +622,7 @@ The seven anchor sources above are real but adjacent: grounded summarization, ci
     **What it kills:** The "but a reviewer will catch a bad answer" defense. The reviewer cannot, not at usefully better than chance. The combination of confident-sounding output and the reviewer's own overestimation of their discrimination ability is the failure mechanism the framework was built around.
   </Accordion>
 
-  <Accordion title="5. Lee et al. 2025 — high trust in GenAI correlates with less critical thinking">
+  <Accordion title="5. Lee et al. 2025: high trust in GenAI correlates with less critical thinking">
     **Evidence type:** Peer-reviewed study (CHI 2025). Self-reported survey of 319 knowledge workers and 936 first-hand GenAI work examples. Correlational, not causal.
 
     **Headline finding:** Higher confidence in generative AI was associated with less self-reported critical thinking; higher self-confidence was associated with more. The data also showed that GenAI shifts cognitive work away from information gathering and idea generation toward verification, integration, and task stewardship. The result is directional, and the methodology is self-report rather than behavioral, but the pattern is consistent.
@@ -654,8 +645,8 @@ Three additional studies are worth naming. They do not carry the page, but they 
   <Card title="Columbia Tow Center AI-search audit" icon="magnifying-glass">
     1,600 queries across eight AI-search and chatbot tools. Collectively wrong on over 60 percent of queries. Perplexity wrong 37 percent of the time. Grok 3 wrong 94 percent of the time, with 154 of 200 citations leading to 404 pages. [CJR, March 2025](https://www.cjr.org/tow_center/we-compared-eight-ai-search-engines-theyre-all-bad-at-citing-news.php).
   </Card>
-  <Card title="Stanford RegLab — specialized legal AI" icon="scale-balanced">
-    Purpose-built legal AI tools (Lexis+ AI, Ask Practical Law AI) hallucinate in over 17 percent of queries; Westlaw AI-Assisted Research hallucinates in over 34 percent. General-purpose chatbots hallucinate in 58 to 88 percent of legal queries. [Stanford HAI / RegLab, *AI on Trial: Legal Models Hallucinate in 1 out of 6 (or More) Benchmarking Queries*, May 2024 — still the standing reference in 2026 commentary](https://hai.stanford.edu/news/ai-trial-legal-models-hallucinate-1-out-6-or-more-benchmarking-queries).
+  <Card title="Stanford RegLab: specialized legal AI" icon="scale-balanced">
+    Purpose-built legal AI tools (Lexis+ AI, Ask Practical Law AI) hallucinate in over 17 percent of queries; Westlaw AI-Assisted Research hallucinates in over 34 percent. General-purpose chatbots hallucinate in 58 to 88 percent of legal queries. [Stanford HAI / RegLab, *AI on Trial: Legal Models Hallucinate in 1 out of 6 (or More) Benchmarking Queries*, May 2024: still the standing reference in 2026 commentary](https://hai.stanford.edu/news/ai-trial-legal-models-hallucinate-1-out-6-or-more-benchmarking-queries).
   </Card>
   <Card title="Deloitte AU and CA reports" icon="building-circle-exclamation">
     Deloitte Australia refunded the final installment of an AU$439,000 welfare-compliance report after AI-fabricated citations and a fake Federal Court quote were found. Deloitte Canada's CA$1,598,485 Newfoundland healthcare report contained at least four fake citations. Both controversies continued to drive 2026 governance debate.
@@ -763,10 +754,10 @@ The framework predicts the measurement arrives within eighteen months of the fir
 # The Doctrine
 
 
-The Frame names the problem. The Doctrine names the posture organizations should adopt in response. The posture is Zero Trust, applied to AI verification.
+The Frame names the problem. The Doctrine names the posture that survives contact with it. The posture is Zero Trust, applied to AI verification.
 
 <Note>
-  **In short:** Zero Trust in security means never trust by default, always verify. Applied to AI verification, it means the customer should not have to trust the verifier. Every claim a verification system makes about its own behavior should be independently checkable.
+  **In short:** Zero Trust in security means never trust by default, always verify. Applied to AI verification, it means the customer should not have to trust the verifier. Every claim a verification system makes about its own behavior is checkable by someone other than the verifier.
 </Note>
 
 ## The security parallel that maps directly onto AI
@@ -781,7 +772,7 @@ AI verification is at the same inflection. The same shift is required.
 | **AI verification (now)** | Trust the verifier ("their brand is sound") | Verifier fails = silent corruption of decisions | Zero Trust: verify the verifier's math |
 
 <Note>
-  **A note on the borrowing.** Zero Trust as a security concept is precisely defined in [NIST SP 800-207](https://csrc.nist.gov/publications/detail/sp/800-207/final): every access request authenticated regardless of perimeter location. Applying it to AI verification is analogy, not derivation. The mapping is useful (every verification claim should be independently checkable, regardless of who is making it) but the technical implications of NIST 800-207 are not the technical implications of this doctrine. Treat the analogy as a framing device, not a citation.
+  **A note on the borrowing.** Zero Trust in security has a precise technical definition in [NIST SP 800-207](https://csrc.nist.gov/publications/detail/sp/800-207/final). Applying it to AI verification is analogy, not derivation. The mapping holds at the principle (every claim should be checkable, regardless of who is making it). The implementation details do not transfer.
 </Note>
 
 The constitutional statement is short: **The customer should not have to trust the verifier.**
@@ -885,6 +876,14 @@ The Zero Trust commitment generalizes beyond evidence gates. Any rule the verifi
   If the only thing standing between the rule and a violation is operator memory or operator discretion, the rule is aspirational.
 </Note>
 
+### What gates can and cannot do
+
+Architectural enforcement has a clear limit. Hard gates work reliably on structured properties of the artifact: template class, required sources present, citation count, provenance fields populated, named reviewer identity, approved system-of-record links. They weaken sharply when they must infer consequence from prose.
+
+A vendor selling a gate that promises to detect whether an arbitrary memo carries board-level, regulatory, or capital-allocation consequence based on the text alone is selling perimeter security with extra steps. Free-text consequence inference is the failure mode the current standards literature does not justify treating as a primary control.
+
+Use prose semantics as a secondary signal. Build the primary gate around structured conditions the artifact carries with it. If those structured conditions are absent, the gate cannot fire safely, and the answer is workflow design, not better inference.
+
 ### A note on override design
 
 "Cannot be bypassed" is shorthand. Real systems need emergency overrides for safety incidents, legal holds, key rotations, customer-specific compliance, and incident response. The doctrine's commitment is not that overrides are impossible. It is that overrides cannot happen silently.
@@ -897,6 +896,19 @@ Any bypass requires:
 - **Audit review** at a documented cadence
 
 The architecture surfaces every exception. It does not pretend exceptions never happen. A vendor that claims their gate can never be bypassed is either lying or has not yet had a customer with a real edge case. A vendor that shows you the override protocol, the override log, and the audit cadence is operating the doctrine as designed.
+
+### Proof artifacts become targets
+
+The doctrine asks for assumption registers, claim-source maps, refusal logs, rubric hashes, and deterministic gates. Once those artifacts matter, they get gamed. Low-quality sources attached to claims to satisfy the citation requirement. Non-load-bearing assumptions listed while real assumptions stay hidden. Rubrics quietly optimized for passing rather than catching. Refusal logs curated for the audit reader. Decision-grade labels earned through paperwork rather than reasoning.
+
+The doctrine's core argument is that prior controls devolved into theater. Its own controls will face the same pressure. The defense is not naivete about it. The defense is treating artifact integrity as a measured property, not a claimed one.
+
+- **Citation quality, not just citation count.** A claim with three citations whose sources do not actually support it is worse than a claim with one citation that does. Audit a sampled subset of decision-grade outputs at the claim-to-source level on a published cadence.
+- **Assumption load-bearingness, not just assumption listing.** An assumption register that names ten cosmetic assumptions while the real load-bearing assumption sits unstated is gaming. Audits sample for assumptions that, if flipped, would change the conclusion, and confirm those are the ones in the register.
+- **Rubric stability under adversarial cases, not just under happy-path cases.** A rubric that passes everything is not a rubric. Rubric versions are tested against known-hard cases on each revision, and the pass rate is part of the change log.
+- **Refusal log completeness, not just refusal log presence.** A refusal log is gamed by selective entry. The audit on the log is independent of the entity producing it, and unexplained gaps in the entry pattern are themselves a refusal-log defect.
+
+The architecture cannot eliminate the gaming incentive. It can make the gaming visible. That is the doctrine's posture on its own controls: not that they cannot be gamed, but that gaming is logged where the next audit will find it.
 
 ## 3. Accountability: every decision survives independent challenge
 
@@ -945,6 +957,24 @@ Cryptographic anchoring is necessary but not sufficient. The doctrine is strong 
 A hash proves the record is stable. It does not prove the analysis was correct. A signed certificate binds an output to a process; it does not validate the process. A public commitment log proves a vendor said something publicly; it does not prove what they said was right.
 
 Provenance is a precondition for validity audits, not a substitute for them. The doctrine on this page produces tamper-evident records. Whether the records contain valid reasoning is a separate question, answered by domain experts, replication, and the discipline of asking what evidence would change the conclusion. The framework is honest about which question it answers and which it does not.
+
+## The confidentiality boundary
+
+The architectural commitments above describe what the doctrine looks like under default conditions. They do not survive contact with privileged legal advice, M&A strategy, export-controlled data, PHI/PII, or confidential board material without modification. Those are exactly the contexts where the decision-grade lane is most consequential, so the modifications matter.
+
+Three boundary conditions apply.
+
+**Public commitments shift to private commitments.** A public chain hash of a board paper's source documents can leak existence proofs and metadata that the board paper was meant to keep confidential. The Zero Trust posture survives by moving from a public chain to a customer-controlled transparency log with selective disclosure. The customer can verify chain integrity internally. External parties get redacted or zero-knowledge proofs only as the matter requires. Customer-auditable is the operative standard, not globally public.
+
+**Source-document hash binding requires key segregation.** The cryptographic match between source document and certificate remains useful inside the confidentiality boundary. The hash itself must be generated and stored under a separate key from the certificates that travel outside the boundary. A vendor that cannot separate these keys is asking the customer to choose between verifiability and confidentiality.
+
+**Immutable logs require retention and discoverability design.** Tamper-evident logs widen the discoverable surface under litigation and complicate privilege. The doctrine accommodates this by scoping immutable logging to verification decisions (rubric version, model board verdict, refusal events) and excluding the deliberative content of the reasoning. Legal, records, and privacy teams must agree on the retention model before the first sensitive workflow enters the lane.
+
+<Note>
+  **The shape of the test.**
+
+  A vendor whose default posture is full public anchoring, with no documented path for the three modifications above, is not configured for the workflows that matter most. Privileged, regulated, and confidential work are not edge cases for the decision-grade lane. They are the population.
+</Note>
 
 ## What the three principles produce, taken together
 
@@ -1062,8 +1092,9 @@ If you only read one page on this site, read this one. It translates The Doctrin
 </Note>
 
 
-**How to use this page.** 
-Take the seven questions to a vendor evaluation. Each one corresponds to one of the seven architectural commitments in The Doctrine. Score each answer on a five-point scale:
+**How to use this page.**
+
+The seven questions travel into a vendor evaluation. Each one corresponds to one of the seven architectural commitments in The Doctrine. Score each answer on a five-point scale:
 - **0** No answer.
 - **1** Marketing answer.
 - **2** Process answer.
@@ -1148,9 +1179,12 @@ A vendor that scores below 2 on any question is not a Zero Trust verifier. They 
   - The rule has exceptions the vendor can grant
   - "We can turn that off for enterprise customers"
   - The enforcement lives in a runbook, not in code
+  - The primary gate relies on inferring board, regulatory, or capital-allocation consequence from free text rather than from structured artifact metadata
 </Warning>
 
 **Why it matters:** Documentation does not enforce itself. Style guides do not catch errors. Performance reviews do not improve reasoning. If the only thing between the rule and a violation is operator memory or operator discretion, the rule is aspirational.
+
+Free-text consequence inference is the failure mode worth naming separately. Hard gates are strongest on structured properties (template class, source presence, citation count, named reviewer). They weaken sharply when they must guess from prose whether an arbitrary memo carries board consequence. A vendor that treats semantic materiality inference as the primary gate is selling perimeter security with extra steps.
 
 ---
 
@@ -1185,6 +1219,12 @@ flowchart LR
 </Warning>
 
 **Why it matters:** If the integrity of the record depends on the vendor behaving well, the integrity of the record is not verifiable. After a failure event, the vendor's records are the first thing that becomes contested.
+
+<Note>
+  **Anchoring under confidentiality.**
+
+  Globally public anchoring leaks existence proofs that are unacceptable for privileged legal advice, M&A strategy, export-controlled data, PHI/PII, or confidential board material. The doctrine survives by moving from a public chain to a customer-controlled transparency log with selective disclosure: chain integrity verifiable by the customer internally, external parties get redacted or zero-knowledge proofs only as the matter requires. A vendor whose only answer to confidential workflows is "we anchor to a public chain" has not yet engineered for the workflows that matter most. A vendor that documents a customer-controlled boundary with the same tamper-evidence guarantees is operating the doctrine at its actual stakes.
+</Note>
 
 ---
 
@@ -1384,7 +1424,13 @@ If you take only one operational practice from this framework, take this one. La
   **In short:** Verification is expensive. Demanding it on every output is absurd. The fix is segmentation: a decision-grade lane where buyers pay for verification, and a volume-grade lane where speed dominates. The failure mode is content sliding between lanes without re-verification. The single most expensive mistake: a volume-grade memo becoming the basis for a board decision.
 </Note>
 
-## How the two lanes operate
+## Two lanes, one rule
+
+Verification is expensive and slow. That is precisely why it was the first thing cut under throughput pressure (see [The Frame](/the-frame)), and it is why demanding it on every analytical output would be absurd.
+
+Most analytical work does not need to be audited. Most internal synthesis is reversible, exploratory, or context-setting. Forcing verification on those outputs would collapse cycle time without producing proportional value.
+
+The market segments. A decision-grade lane, where buyers pay for verification and producers invest in it. A volume-grade lane, where speed and cost dominate and everyone knows what they are getting. Two lanes can coexist. The danger is not that they exist. The danger is that organizations fail to separate them, letting volume-lane output slide into decision-grade use.
 
 ```mermaid
 flowchart TD
@@ -1401,14 +1447,6 @@ flowchart TD
     style F fill:#14532D,color:#fff
     style G fill:#1E293B,color:#fff
 ```
-
-## Why two lanes
-
-Verification is genuinely expensive and slow. That is precisely why it was the first thing cut under throughput pressure (see [The Frame](/the-frame)), and it is why demanding it everywhere would be absurd. 
-
-Most analytical work does not need to be audited. Most internal synthesis is reversible, exploratory, or context-setting. Forcing verification on those outputs would collapse cycle time without producing proportional value.
-
-The market segments. A decision-grade lane, where buyers pay for verification and producers invest in it. A volume-grade lane, where speed and cost dominate and everyone understands what they are getting. Two lanes can coexist. The danger is not that they exist. The danger is that organizations fail to separate them, letting volume-lane outputs slide into decision-grade use.
 
 
 ## What goes in which lane
@@ -1493,11 +1531,11 @@ Three rules govern movement between lanes.
   </Step>
 </Steps>
 
-## Four ways lane discipline fails
+## Five ways lane discipline fails
 
 Each failure is invisible in the moment and only obvious in the post-mortem. Knowing the failure modes in advance is most of the defense.
 
-<CardGroup cols={2}>
+<CardGroup cols={1}>
   <Card title="1. The unlabeled slip" icon="triangle-exclamation">
     Volume-grade synthesis passed up the chain arrives in a decision-grade context with no label. Decision-makers treat it as decision-grade because it looks like everything else they read.
 
@@ -1521,13 +1559,22 @@ Each failure is invisible in the moment and only obvious in the post-mortem. Kno
 
     **Fix:** Decision-grade outputs need clear routing to the decision-makers. Volume-grade outputs need clear routing away from them unless explicitly requested. Performance reviews need to score accuracy alongside speed.
   </Card>
+
+  <Card title="5. The inline-friction revolt" icon="person-running">
+    Inline verification is inserted into the decision-grade workflow. The compliant lane becomes slower than the informal one. Users route around it through personal accounts, copy-paste, and unlogged tools. Telemetry inside the lane looks healthy because the work that would have produced bad telemetry is no longer in the lane.
+
+    **Fix:** The auditable exception path must be faster than the unsanctioned workaround. Build a logged override route with named manager review, reason codes, and post-release audit, and time it against email-and-paste under deadline pressure. If the override is slower than the bypass, users will choose the bypass and the bypass will get faster. Measure bypass signals (override request rate, copy-paste to unmanaged tools, exception requests after controls go live) as a first-class metric, not as an aside.
+  </Card>
 </CardGroup>
 
 ## What lane discipline looks like in practice
 
-The simplest implementation is a metadata tag, a routing rule, and a periodic audit.
+The simplest implementation is a metadata tag, a routing rule, and a periodic audit. Start narrow.
 
 <Steps>
+  <Step title="Start with one named workflow class">
+    Crisis-response briefs, regulatory submissions, or the analytical sections of board packs are good first candidates. Each has a visible failure cost and a bounded volume. Add a second class only after the first lane has run one full operating cycle and the slippage audit comes back clean. Org-wide adoption from day one is the path that produces theater inversion the fastest.
+  </Step>
   <Step title="Tag every analytical artifact at creation">
     File naming convention, document header field, content management system tag, or watermark. Form does not matter as long as it is mandatory, visible, and travels with the content.
   </Step>
@@ -1538,6 +1585,12 @@ The simplest implementation is a metadata tag, a routing rule, and a periodic au
     Sample recent board decisions, capital allocation memos, regulatory submissions, public statements. Trace the analytical content underneath. What fraction was decision-grade at the moment of decision?
   </Step>
 </Steps>
+
+### Before selective skipping: measure routing recall
+
+The lane only saves effort if the router catches the documents that matter. Routing recall is the share of high-stakes documents the router actually routes into the decision-grade lane, measured against a labeled sample of live traffic rather than against benchmark performance the vendor advertises.
+
+Until recall is measured, selective skipping is unsafe. The lane should default to wider intake. Set the recall floor from baseline data before the first selective-skip rule is enabled, and require live re-measurement on the published cadence rather than at vendor onboarding only. False negatives, where decision-grade work is routed to the volume-grade lane, are the framework's signature failure. Routing recall is the metric that catches them before the slippage audit does.
 
 ### Operational specifics worth deciding upfront
 
@@ -1582,17 +1635,17 @@ The three-step pattern needs five operational decisions before it survives conta
 
 Three inoculations against common misreadings.
 
-<Steps>
-  <Step title="Not AI suppression">
+<CardGroup cols={3}>
+  <Card title="Not AI suppression" icon="ban">
     The volume-grade lane is where most AI-augmented analysis appropriately lives. Forcing decision-grade verification onto everything is not a solution.
-  </Step>
-  <Step title="Not a replacement for the Buyer's Checklist">
+  </Card>
+  <Card title="Not a replacement for the Buyer's Checklist" icon="list-check">
     The two reinforce each other. The Buyer's Checklist makes the verification you buy real. Lane Discipline makes the verification you bought useful.
-  </Step>
-  <Step title="Not a permanent state">
-    What counts as decision-grade in 2025 may not in 2027. Revisit the lane criteria annually as AI capabilities, regulation, and competitive context shift.
-  </Step>
-</Steps>
+  </Card>
+  <Card title="Not a permanent state" icon="arrows-rotate">
+    What counts as decision-grade in 2026 may not in 2028. The lane criteria are worth revisiting as AI capabilities, regulation, and competitive context shift.
+  </Card>
+</CardGroup>
 
 ## Where this goes next
 
@@ -1628,6 +1681,14 @@ There is one date worth treating as a deadline. It is not a calendar date. It is
 The 90-day window starts then. After that, the new cadence is normalized. Gates installed later feel like sabotage rather than quality control. The retrofit cost rises sharply once the new cadence is calendared, staffed, and expected by clients.
 
 If your team has been using AI-assisted drafting for more than a quarter already, you are already inside the window where retrofit cost rises. Install the gate now.
+
+### A soft heuristic, not a structural law
+
+The 90-day window is a control-start deadline, not a maturity claim. The doctrine treats it as the point where a release gate should be live on at least one named workflow class. Full enterprise rollout takes longer, and the window itself stretches or compresses with conditions the doctrine does not set.
+
+**Conditions that compress the window:** pre-approved cloud marketplace paths, written delegated authority for the sponsor before kickoff, a funded cost center already in place, an active risk committee with budget rights, prior AI policy artifacts the team can extend rather than draft from scratch.
+
+**Conditions that extend the window:** sector-specific model risk validation (finance, healthcare, insurance), EU works-council consultation requirements, cross-border data deployments, dispute resolution between Legal, Procurement, and Security on data-handling terms. Federal benchmark for scale: OMB M-24-10 issued in March 2024 set a December 2024 implementation horizon, an eight-month rollout for a government-wide governance retrofit. Plan against the conditions you actually face, not against a single calendar.
 
 <Tip>
   **The no-regret action.** Require every decision-grade brief to include:
@@ -1709,6 +1770,30 @@ The framework predicts five plausible futures. They are not mutually exclusive; 
   </Accordion>
 </AccordionGroup>
 
+## Internal scenario signals
+
+The regulatory signals below are external and lag. Three signals tell you which scenario your own organization is drifting toward, independent of enforcement timing. Instrument these inside your own pipeline.
+
+<CardGroup cols={3}>
+  <Card title="Two-Speed Governance" icon="layer-group">
+    **Signal.** Approved-channel logs stay flat while procurement records, survey results, or unsanctioned tool spend show rising AI use.
+
+    **What to track.** The gap between employee-reported AI use and approved-channel logs. Quarterly procurement records against the approved vendor list. Survey responses to "what AI tool did you use on this brief?"
+  </Card>
+  <Card title="Shadow Productivity Trap" icon="chart-line">
+    **Signal.** Output volume rises but claim-to-evidence maps and reviewer records do not. The throughput gain is visible. The verification trail behind it is not.
+
+    **What to track.** Analytical output count per quarter against retained-evidence count per quarter. The share of released documents with a complete claim-to-evidence map.
+  </Card>
+  <Card title="Inline Friction Revolt" icon="route">
+    **Signal.** Retry rates, copy-paste flows to unmanaged tools, or exception requests rise after controls go live. Users are routing around the sanctioned path because it is slower than the unsanctioned one.
+
+    **What to track.** Override request rate. Retry rate at the gate. The share of decision-grade-eligible documents that reach the decision-maker through a non-lane path.
+  </Card>
+</CardGroup>
+
+These three signals are owned, not waited for. They are observable in the first operating cycle of the lane and do not depend on a regulator, a competitor failure, or a public incident to resolve.
+
 ## What would prove this framework wrong
 
 One observation, if true, breaks the entire analysis on this site: Independent audits showing that AI-assisted volume rose, but the rate of unanchored core claims in released work did not rise.
@@ -1773,27 +1858,18 @@ If you want to run the framework's tests on your own pipeline, these are the mea
     - Whether analysts are scored on forecast or claim accuracy
     - Whether postmortems are run on released analysis
   </Card>
+  <Card title="Routing and bypass indicators" icon="route">
+    - Router recall on a labeled high-stakes sample (the share the router catches before any selective-skip rule fires)
+    - Bypass rate (documents or users that reach the decision-maker through a non-lane path)
+    - Override request rate, and override latency against email-and-paste latency under the same deadline pressure
+  </Card>
 </CardGroup>
 
-## How to use this page
+## Four pivots, one falsifier
 
-<Steps>
-  <Step title="Date the start of your 90-day window">
-    Mark the day your team adopted AI-assisted drafting (formally authorized or shadow). Treat that as day zero. The structural-validity release gate should be in production by day 90 from that date. If you cannot identify the adoption date, assume it has already passed and install the gate now.
-  </Step>
+The 90-day window starts on your team's AI adoption date, not on the calendar. The two levers above (release gate, procurement artifact mandate) are the only enforcement points with enough short-term friction to alter the trajectory. The five scenarios each carry a named observable, and more than one can resolve simultaneously; the market can fragment.
 
-  <Step title="Track the two levers this quarter">
-    Release gate activation (60 days) and procurement artifact mandates (90 days) are the only enforcement points with enough friction to alter the trajectory in the short term.
-  </Step>
-
-  <Step title="Watch the scenario observables">
-    Each of the five scenarios has a named observable. As one or more resolve, the market trajectory becomes clearer. Multiple scenarios can be true simultaneously; the market can fragment.
-  </Step>
-
-  <Step title="Run the thesis falsifier against your own data">
-    If you can measure unanchored-claim rates over time inside your own pipeline, you have a direct test of the framework's core claim. The framework predicts the rate rises. If yours does not, the framework is wrong for your context.
-  </Step>
-</Steps>
+The thesis falsifier can be run against your own pipeline if you can measure unanchored-claim rates over time. The framework predicts the rate rises with AI volume. If yours does not, the framework is wrong for your context. The watchlist exists so you can find that out, not so you can outsource the conclusion.
 
 ## An epistemic note
 

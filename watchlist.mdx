@@ -19,6 +19,14 @@ The 90-day window starts then. After that, the new cadence is normalized. Gates 
 
 If your team has been using AI-assisted drafting for more than a quarter already, you are already inside the window where retrofit cost rises. Install the gate now.
 
+### A soft heuristic, not a structural law
+
+The 90-day window is a control-start deadline, not a maturity claim. The doctrine treats it as the point where a release gate should be live on at least one named workflow class. Full enterprise rollout takes longer, and the window itself stretches or compresses with conditions the doctrine does not set.
+
+**Conditions that compress the window:** pre-approved cloud marketplace paths, written delegated authority for the sponsor before kickoff, a funded cost center already in place, an active risk committee with budget rights, prior AI policy artifacts the team can extend rather than draft from scratch.
+
+**Conditions that extend the window:** sector-specific model risk validation (finance, healthcare, insurance), EU works-council consultation requirements, cross-border data deployments, dispute resolution between Legal, Procurement, and Security on data-handling terms. Federal benchmark for scale: OMB M-24-10 issued in March 2024 set a December 2024 implementation horizon, an eight-month rollout for a government-wide governance retrofit. Plan against the conditions you actually face, not against a single calendar.
+
 <Tip>
   **The no-regret action.** Require every decision-grade brief to include:
 
@@ -99,6 +107,30 @@ The framework predicts five plausible futures. They are not mutually exclusive; 
   </Accordion>
 </AccordionGroup>
 
+## Internal scenario signals
+
+The regulatory signals below are external and lag. Three signals tell you which scenario your own organization is drifting toward, independent of enforcement timing. Instrument these inside your own pipeline.
+
+<CardGroup cols={3}>
+  <Card title="Two-Speed Governance" icon="layer-group">
+    **Signal.** Approved-channel logs stay flat while procurement records, survey results, or unsanctioned tool spend show rising AI use.
+
+    **What to track.** The gap between employee-reported AI use and approved-channel logs. Quarterly procurement records against the approved vendor list. Survey responses to "what AI tool did you use on this brief?"
+  </Card>
+  <Card title="Shadow Productivity Trap" icon="chart-line">
+    **Signal.** Output volume rises but claim-to-evidence maps and reviewer records do not. The throughput gain is visible. The verification trail behind it is not.
+
+    **What to track.** Analytical output count per quarter against retained-evidence count per quarter. The share of released documents with a complete claim-to-evidence map.
+  </Card>
+  <Card title="Inline Friction Revolt" icon="route">
+    **Signal.** Retry rates, copy-paste flows to unmanaged tools, or exception requests rise after controls go live. Users are routing around the sanctioned path because it is slower than the unsanctioned one.
+
+    **What to track.** Override request rate. Retry rate at the gate. The share of decision-grade-eligible documents that reach the decision-maker through a non-lane path.
+  </Card>
+</CardGroup>
+
+These three signals are owned, not waited for. They are observable in the first operating cycle of the lane and do not depend on a regulator, a competitor failure, or a public incident to resolve.
+
 ## What would prove this framework wrong
 
 One observation, if true, breaks the entire analysis on this site: Independent audits showing that AI-assisted volume rose, but the rate of unanchored core claims in released work did not rise.
@@ -163,27 +195,18 @@ If you want to run the framework's tests on your own pipeline, these are the mea
     - Whether analysts are scored on forecast or claim accuracy
     - Whether postmortems are run on released analysis
   </Card>
+  <Card title="Routing and bypass indicators" icon="route">
+    - Router recall on a labeled high-stakes sample (the share the router catches before any selective-skip rule fires)
+    - Bypass rate (documents or users that reach the decision-maker through a non-lane path)
+    - Override request rate, and override latency against email-and-paste latency under the same deadline pressure
+  </Card>
 </CardGroup>
 
-## How to use this page
+## Four pivots, one falsifier
 
-<Steps>
-  <Step title="Date the start of your 90-day window">
-    Mark the day your team adopted AI-assisted drafting (formally authorized or shadow). Treat that as day zero. The structural-validity release gate should be in production by day 90 from that date. If you cannot identify the adoption date, assume it has already passed and install the gate now.
-  </Step>
+The 90-day window starts on your team's AI adoption date, not on the calendar. The two levers above (release gate, procurement artifact mandate) are the only enforcement points with enough short-term friction to alter the trajectory. The five scenarios each carry a named observable, and more than one can resolve simultaneously; the market can fragment.
 
-  <Step title="Track the two levers this quarter">
-    Release gate activation (60 days) and procurement artifact mandates (90 days) are the only enforcement points with enough friction to alter the trajectory in the short term.
-  </Step>
-
-  <Step title="Watch the scenario observables">
-    Each of the five scenarios has a named observable. As one or more resolve, the market trajectory becomes clearer. Multiple scenarios can be true simultaneously; the market can fragment.
-  </Step>
-
-  <Step title="Run the thesis falsifier against your own data">
-    If you can measure unanchored-claim rates over time inside your own pipeline, you have a direct test of the framework's core claim. The framework predicts the rate rises. If yours does not, the framework is wrong for your context.
-  </Step>
-</Steps>
+The thesis falsifier can be run against your own pipeline if you can measure unanchored-claim rates over time. The framework predicts the rate rises with AI volume. If yours does not, the framework is wrong for your context. The watchlist exists so you can find that out, not so you can outsource the conclusion.
 
 ## An epistemic note
 

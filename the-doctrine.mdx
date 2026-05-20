@@ -3,10 +3,10 @@ title: 'The Doctrine'
 description: 'Zero Trust as the meta-principle for AI verification, and the three layers it organizes.'
 ---
 
-The Frame names the problem. The Doctrine names the posture organizations should adopt in response. The posture is Zero Trust, applied to AI verification.
+The Frame names the problem. The Doctrine names the posture that survives contact with it. The posture is Zero Trust, applied to AI verification.
 
 <Note>
-  **In short:** Zero Trust in security means never trust by default, always verify. Applied to AI verification, it means the customer should not have to trust the verifier. Every claim a verification system makes about its own behavior should be independently checkable.
+  **In short:** Zero Trust in security means never trust by default, always verify. Applied to AI verification, it means the customer should not have to trust the verifier. Every claim a verification system makes about its own behavior is checkable by someone other than the verifier.
 </Note>
 
 ## The security parallel that maps directly onto AI
@@ -21,7 +21,7 @@ AI verification is at the same inflection. The same shift is required.
 | **AI verification (now)** | Trust the verifier ("their brand is sound") | Verifier fails = silent corruption of decisions | Zero Trust: verify the verifier's math |
 
 <Note>
-  **A note on the borrowing.** Zero Trust as a security concept is precisely defined in [NIST SP 800-207](https://csrc.nist.gov/publications/detail/sp/800-207/final): every access request authenticated regardless of perimeter location. Applying it to AI verification is analogy, not derivation. The mapping is useful (every verification claim should be independently checkable, regardless of who is making it) but the technical implications of NIST 800-207 are not the technical implications of this doctrine. Treat the analogy as a framing device, not a citation.
+  **A note on the borrowing.** Zero Trust in security has a precise technical definition in [NIST SP 800-207](https://csrc.nist.gov/publications/detail/sp/800-207/final). Applying it to AI verification is analogy, not derivation. The mapping holds at the principle (every claim should be checkable, regardless of who is making it). The implementation details do not transfer.
 </Note>
 
 The constitutional statement is short: **The customer should not have to trust the verifier.**
@@ -131,6 +131,14 @@ The Zero Trust commitment generalizes beyond evidence gates. Any rule the verifi
   If the only thing standing between the rule and a violation is operator memory or operator discretion, the rule is aspirational.
 </Note>
 
+### What gates can and cannot do
+
+Architectural enforcement has a clear limit. Hard gates work reliably on structured properties of the artifact: template class, required sources present, citation count, provenance fields populated, named reviewer identity, approved system-of-record links. They weaken sharply when they must infer consequence from prose.
+
+A vendor selling a gate that promises to detect whether an arbitrary memo carries board-level, regulatory, or capital-allocation consequence based on the text alone is selling perimeter security with extra steps. Free-text consequence inference is the failure mode the current standards literature does not justify treating as a primary control.
+
+Use prose semantics as a secondary signal. Build the primary gate around structured conditions the artifact carries with it. If those structured conditions are absent, the gate cannot fire safely, and the answer is workflow design, not better inference.
+
 ### A note on override design
 
 "Cannot be bypassed" is shorthand. Real systems need emergency overrides for safety incidents, legal holds, key rotations, customer-specific compliance, and incident response. The doctrine's commitment is not that overrides are impossible. It is that overrides cannot happen silently.
@@ -143,6 +151,19 @@ Any bypass requires:
 - **Audit review** at a documented cadence
 
 The architecture surfaces every exception. It does not pretend exceptions never happen. A vendor that claims their gate can never be bypassed is either lying or has not yet had a customer with a real edge case. A vendor that shows you the override protocol, the override log, and the audit cadence is operating the doctrine as designed.
+
+### Proof artifacts become targets
+
+The doctrine asks for assumption registers, claim-source maps, refusal logs, rubric hashes, and deterministic gates. Once those artifacts matter, they get gamed. Low-quality sources attached to claims to satisfy the citation requirement. Non-load-bearing assumptions listed while real assumptions stay hidden. Rubrics quietly optimized for passing rather than catching. Refusal logs curated for the audit reader. Decision-grade labels earned through paperwork rather than reasoning.
+
+The doctrine's core argument is that prior controls devolved into theater. Its own controls will face the same pressure. The defense is not naivete about it. The defense is treating artifact integrity as a measured property, not a claimed one.
+
+- **Citation quality, not just citation count.** A claim with three citations whose sources do not actually support it is worse than a claim with one citation that does. Audit a sampled subset of decision-grade outputs at the claim-to-source level on a published cadence.
+- **Assumption load-bearingness, not just assumption listing.** An assumption register that names ten cosmetic assumptions while the real load-bearing assumption sits unstated is gaming. Audits sample for assumptions that, if flipped, would change the conclusion, and confirm those are the ones in the register.
+- **Rubric stability under adversarial cases, not just under happy-path cases.** A rubric that passes everything is not a rubric. Rubric versions are tested against known-hard cases on each revision, and the pass rate is part of the change log.
+- **Refusal log completeness, not just refusal log presence.** A refusal log is gamed by selective entry. The audit on the log is independent of the entity producing it, and unexplained gaps in the entry pattern are themselves a refusal-log defect.
+
+The architecture cannot eliminate the gaming incentive. It can make the gaming visible. That is the doctrine's posture on its own controls: not that they cannot be gamed, but that gaming is logged where the next audit will find it.
 
 ## 3. Accountability: every decision survives independent challenge
 
@@ -191,6 +212,24 @@ Cryptographic anchoring is necessary but not sufficient. The doctrine is strong 
 A hash proves the record is stable. It does not prove the analysis was correct. A signed certificate binds an output to a process; it does not validate the process. A public commitment log proves a vendor said something publicly; it does not prove what they said was right.
 
 Provenance is a precondition for validity audits, not a substitute for them. The doctrine on this page produces tamper-evident records. Whether the records contain valid reasoning is a separate question, answered by domain experts, replication, and the discipline of asking what evidence would change the conclusion. The framework is honest about which question it answers and which it does not.
+
+## The confidentiality boundary
+
+The architectural commitments above describe what the doctrine looks like under default conditions. They do not survive contact with privileged legal advice, M&A strategy, export-controlled data, PHI/PII, or confidential board material without modification. Those are exactly the contexts where the decision-grade lane is most consequential, so the modifications matter.
+
+Three boundary conditions apply.
+
+**Public commitments shift to private commitments.** A public chain hash of a board paper's source documents can leak existence proofs and metadata that the board paper was meant to keep confidential. The Zero Trust posture survives by moving from a public chain to a customer-controlled transparency log with selective disclosure. The customer can verify chain integrity internally. External parties get redacted or zero-knowledge proofs only as the matter requires. Customer-auditable is the operative standard, not globally public.
+
+**Source-document hash binding requires key segregation.** The cryptographic match between source document and certificate remains useful inside the confidentiality boundary. The hash itself must be generated and stored under a separate key from the certificates that travel outside the boundary. A vendor that cannot separate these keys is asking the customer to choose between verifiability and confidentiality.
+
+**Immutable logs require retention and discoverability design.** Tamper-evident logs widen the discoverable surface under litigation and complicate privilege. The doctrine accommodates this by scoping immutable logging to verification decisions (rubric version, model board verdict, refusal events) and excluding the deliberative content of the reasoning. Legal, records, and privacy teams must agree on the retention model before the first sensitive workflow enters the lane.
+
+<Note>
+  **The shape of the test.**
+
+  A vendor whose default posture is full public anchoring, with no documented path for the three modifications above, is not configured for the workflows that matter most. Privileged, regulated, and confidential work are not edge cases for the decision-grade lane. They are the population.
+</Note>
 
 ## What the three principles produce, taken together
 

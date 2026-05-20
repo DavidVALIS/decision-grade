@@ -11,7 +11,13 @@ If you take only one operational practice from this framework, take this one. La
   **In short:** Verification is expensive. Demanding it on every output is absurd. The fix is segmentation: a decision-grade lane where buyers pay for verification, and a volume-grade lane where speed dominates. The failure mode is content sliding between lanes without re-verification. The single most expensive mistake: a volume-grade memo becoming the basis for a board decision.
 </Note>
 
-## How the two lanes operate
+## Two lanes, one rule
+
+Verification is expensive and slow. That is precisely why it was the first thing cut under throughput pressure (see [The Frame](/the-frame)), and it is why demanding it on every analytical output would be absurd.
+
+Most analytical work does not need to be audited. Most internal synthesis is reversible, exploratory, or context-setting. Forcing verification on those outputs would collapse cycle time without producing proportional value.
+
+The market segments. A decision-grade lane, where buyers pay for verification and producers invest in it. A volume-grade lane, where speed and cost dominate and everyone knows what they are getting. Two lanes can coexist. The danger is not that they exist. The danger is that organizations fail to separate them, letting volume-lane output slide into decision-grade use.
 
 ```mermaid
 flowchart TD
@@ -28,14 +34,6 @@ flowchart TD
     style F fill:#14532D,color:#fff
     style G fill:#1E293B,color:#fff
 ```
-
-## Why two lanes
-
-Verification is genuinely expensive and slow. That is precisely why it was the first thing cut under throughput pressure (see [The Frame](/the-frame)), and it is why demanding it everywhere would be absurd. 
-
-Most analytical work does not need to be audited. Most internal synthesis is reversible, exploratory, or context-setting. Forcing verification on those outputs would collapse cycle time without producing proportional value.
-
-The market segments. A decision-grade lane, where buyers pay for verification and producers invest in it. A volume-grade lane, where speed and cost dominate and everyone understands what they are getting. Two lanes can coexist. The danger is not that they exist. The danger is that organizations fail to separate them, letting volume-lane outputs slide into decision-grade use.
 
 
 ## What goes in which lane
@@ -120,11 +118,11 @@ Three rules govern movement between lanes.
   </Step>
 </Steps>
 
-## Four ways lane discipline fails
+## Five ways lane discipline fails
 
 Each failure is invisible in the moment and only obvious in the post-mortem. Knowing the failure modes in advance is most of the defense.
 
-<CardGroup cols={2}>
+<CardGroup cols={1}>
   <Card title="1. The unlabeled slip" icon="triangle-exclamation">
     Volume-grade synthesis passed up the chain arrives in a decision-grade context with no label. Decision-makers treat it as decision-grade because it looks like everything else they read.
 
@@ -148,13 +146,22 @@ Each failure is invisible in the moment and only obvious in the post-mortem. Kno
 
     **Fix:** Decision-grade outputs need clear routing to the decision-makers. Volume-grade outputs need clear routing away from them unless explicitly requested. Performance reviews need to score accuracy alongside speed.
   </Card>
+
+  <Card title="5. The inline-friction revolt" icon="person-running">
+    Inline verification is inserted into the decision-grade workflow. The compliant lane becomes slower than the informal one. Users route around it through personal accounts, copy-paste, and unlogged tools. Telemetry inside the lane looks healthy because the work that would have produced bad telemetry is no longer in the lane.
+
+    **Fix:** The auditable exception path must be faster than the unsanctioned workaround. Build a logged override route with named manager review, reason codes, and post-release audit, and time it against email-and-paste under deadline pressure. If the override is slower than the bypass, users will choose the bypass and the bypass will get faster. Measure bypass signals (override request rate, copy-paste to unmanaged tools, exception requests after controls go live) as a first-class metric, not as an aside.
+  </Card>
 </CardGroup>
 
 ## What lane discipline looks like in practice
 
-The simplest implementation is a metadata tag, a routing rule, and a periodic audit.
+The simplest implementation is a metadata tag, a routing rule, and a periodic audit. Start narrow.
 
 <Steps>
+  <Step title="Start with one named workflow class">
+    Crisis-response briefs, regulatory submissions, or the analytical sections of board packs are good first candidates. Each has a visible failure cost and a bounded volume. Add a second class only after the first lane has run one full operating cycle and the slippage audit comes back clean. Org-wide adoption from day one is the path that produces theater inversion the fastest.
+  </Step>
   <Step title="Tag every analytical artifact at creation">
     File naming convention, document header field, content management system tag, or watermark. Form does not matter as long as it is mandatory, visible, and travels with the content.
   </Step>
@@ -165,6 +172,12 @@ The simplest implementation is a metadata tag, a routing rule, and a periodic au
     Sample recent board decisions, capital allocation memos, regulatory submissions, public statements. Trace the analytical content underneath. What fraction was decision-grade at the moment of decision?
   </Step>
 </Steps>
+
+### Before selective skipping: measure routing recall
+
+The lane only saves effort if the router catches the documents that matter. Routing recall is the share of high-stakes documents the router actually routes into the decision-grade lane, measured against a labeled sample of live traffic rather than against benchmark performance the vendor advertises.
+
+Until recall is measured, selective skipping is unsafe. The lane should default to wider intake. Set the recall floor from baseline data before the first selective-skip rule is enabled, and require live re-measurement on the published cadence rather than at vendor onboarding only. False negatives, where decision-grade work is routed to the volume-grade lane, are the framework's signature failure. Routing recall is the metric that catches them before the slippage audit does.
 
 ### Operational specifics worth deciding upfront
 
@@ -209,17 +222,17 @@ The three-step pattern needs five operational decisions before it survives conta
 
 Three inoculations against common misreadings.
 
-<Steps>
-  <Step title="Not AI suppression">
+<CardGroup cols={3}>
+  <Card title="Not AI suppression" icon="ban">
     The volume-grade lane is where most AI-augmented analysis appropriately lives. Forcing decision-grade verification onto everything is not a solution.
-  </Step>
-  <Step title="Not a replacement for the Buyer's Checklist">
+  </Card>
+  <Card title="Not a replacement for the Buyer's Checklist" icon="list-check">
     The two reinforce each other. The Buyer's Checklist makes the verification you buy real. Lane Discipline makes the verification you bought useful.
-  </Step>
-  <Step title="Not a permanent state">
-    What counts as decision-grade in 2025 may not in 2027. Revisit the lane criteria annually as AI capabilities, regulation, and competitive context shift.
-  </Step>
-</Steps>
+  </Card>
+  <Card title="Not a permanent state" icon="arrows-rotate">
+    What counts as decision-grade in 2026 may not in 2028. The lane criteria are worth revisiting as AI capabilities, regulation, and competitive context shift.
+  </Card>
+</CardGroup>
 
 ## Where this goes next
 
