@@ -7,19 +7,19 @@ description: 'Executive guidance for building AI into your workflows.'
   **What this site is:** A framework for executives, technology leaders, and strategy functions navigating AI in 2026. 
 </Note>
 
-Most AI guidance you'll read in 2026 is still scoped to facts and hallucinations: will the model make things up, can we catch it. These are reasonable questions. They are not where the operational risk lives.
+Most AI guidance you will read in 2026 is still scoped to facts and hallucinations. Will the model make things up. Can we catch it when it does. These are reasonable questions. They are not where the operational risk lives now.
 
-The risk that matters sits one layer down: AI is already in your analytical pipeline somewhere, whether you formally authorized it or not. Research synthesis, first-draft generation, code review, summarization, market sweeps, briefing prep. 
+The risk that matters sits one layer down. AI is already in your analytical pipeline, whether you formally authorized it or not. Research synthesis, first-draft generation, summarization, briefing prep, the work whose output you are about to put your name on.
 
-The token-level cost of producing words has collapsed by two to three orders of magnitude. The all-in cost of analytical work, once human prompting, editing, and integration are counted, has fallen by at least 5x, and in more sophisticated workflows, as much as 20x. 
+The cost of producing polished words has collapsed. At the token layer, by two to three orders of magnitude. End-to-end, once human prompting, editing, and integration are counted, by a factor of five to twenty.
 
 The output reads well, fact-checks cleanly, and contains no obvious hallucinations. It still reasons badly. It still makes load-bearing causal claims with no mechanism. It still omits the boundary conditions that would let a careful reader weigh it.
 
-Your existing controls do not catch this. They were not designed to. Style guides formalize prose. Performance reviews reward speed and confidence. Disclosure frameworks check what tool was used, not whether the reasoning is sound. 
+Your existing controls do not catch this. They were not designed to. Style guides formalize prose. Performance reviews reward speed and confidence. Disclosure frameworks check what tool was used, not whether the reasoning is sound.
 
 The verification deficit was already inside your organization before any model was deployed. AI did not create it. AI revealed it.
 
-The 2026 executive question is not how to defend against hallucination. It is how to operate when polished output and sound reasoning have decoupled, and when the cost of being wrong about that decoupling has begun to compound.
+The 2026 executive question is not how to defend against hallucination. It is how to operate when polished output and sound reasoning have come apart, and when the cost of being wrong about that gap has begun to compound.
 
 <Stat
   value="1,455"
@@ -47,37 +47,35 @@ The 2026 executive question is not how to defend against hallucination. It is ho
 
 ## How to read this
 
-This site is a reference, not a primer or an essay. Read it in order if you want the full architecture. Jump to any page if you have a specific question.
+A reference, not a primer. Read in order for the full architecture. Jump in if you have a specific question.
 
 <Steps>
-  <Step title="The Frame — the diagnosis">
-    What the problem actually is. Why current controls miss it.
+  <Step title="The Frame">
+    The diagnosis. What the problem actually is, and why your current controls do not catch it.
   </Step>
-  <Step title="The Evidence Base — the data">
-    Twelve verified sources across two layers. Layer 1: seven anchor sources establishing that AI failure is measurable in adjacent domains (medical reasoning, sycophancy, court filings, benchmark saturation, grounded summarization, safety, the car-wash diagnostic). Layer 2: five sources measuring structural-reasoning failure directly in analytical work (RAND policy claims, Fin-RATE SEC filings, Peters and Chin-Yee on overgeneralization, Steyvers on human calibration, Lee et al. on trust and critical thinking).
+  <Step title="The Evidence Base">
+    The data. Twelve named sources, dated and primary-cited, on how AI fails in May 2026.
   </Step>
-  <Step title="The Doctrine — the posture">
-    Zero Trust as the meta-principle. The three layers: Independence, Doctrine, Accountability.
+  <Step title="The Doctrine">
+    The posture. Zero Trust applied to AI verification, in three layers.
   </Step>
-  <Step title="The Buyer's Checklist — the action">
-    Seven procurement questions to put to AI verification vendors. Red flags. Scoring grid.
+  <Step title="The Buyer's Checklist">
+    The action outside your walls. Seven questions to put to any AI vendor.
   </Step>
-  <Step title="Lane Discipline — the internal practice">
-    Decision-grade vs. volume-grade. Classification, routing, failure modes.
+  <Step title="Lane Discipline">
+    The action inside your walls. Decision-grade output versus volume-grade output, and how to keep them separate.
   </Step>
-  <Step title="2026 Watchlist — the calendar">
-    Dated signals that will tell you whether the framework holds. Updated as signals resolve.
+  <Step title="2026 Watchlist">
+    The calendar. Dated signals that will tell you whether the framework holds, and where it would break.
   </Step>
 </Steps>
 
 <Tip>
-  **The doctrine is verifiable:** 
+  **The framework is published openly.**
 
-  * Every page is published in Markdown source at the linked GitHub repository. 
-  * You can ask any AI to read the entire framework: There is an llms.txt index of every page, a llms-full.txt bundle that ships the entire framework as one document for ingestion in a single fetch.
-  * There's an MCP server that any MCP-aware AI client (Claude Desktop, Cursor, others) can connect to directly. 
-  
-  The site is verifiable. The framework is contestable. That is part of the posture, not a side feature.
+  The source is on GitHub. Any AI can be pointed at the whole thing in a single fetch. The site has an MCP server so any AI client can read it directly.
+
+  That openness is part of the posture, not a side feature. The doctrine should not require trusting the publisher.
 </Tip>
 
 ## What the framework is not
@@ -85,33 +83,33 @@ This site is a reference, not a primer or an essay. Read it in order if you want
 Three inoculations against the most common misreadings.
 
 <CardGroup cols={3}>
-  <Card title="Not a list of AI tools" icon="screwdriver-wrench">
-    No vendor survey. No "top 10 platforms." If you came here for tool selection, this is the wrong site.
+  <Card title="Not a vendor list" icon="screwdriver-wrench">
+    No "top 10 platforms," no buyer's guide to specific products. If you came for tool selection, this is the wrong site.
   </Card>
 
   <Card title="Not a future-of-work thesis" icon="briefcase">
-    No predictions about which jobs disappear. The framework is scoped to verification.
+    No predictions about which jobs disappear. The frame is verification, not labor.
   </Card>
 
   <Card title="Not 2025 content with a 2026 date" icon="calendar-xmark">
-    AI has moved. So has this framework.
+    The question has moved. So has the framework.
   </Card>
 </CardGroup>
 
-This framework is scoped to the question executives will face in 2026 and 2027: when the cost of producing polished analytical output has collapsed, what does it mean to verify the reasoning underneath, and what should you demand from the systems and vendors you depend on?
+The scope is one question. When the cost of producing polished analytical output has collapsed, what does it mean to verify the reasoning underneath, and what should you ask of the systems and vendors you depend on for that verification?
 
 ## Where to start
 
 <CardGroup cols={3}>
   <Card title="Read in order" icon="book" href="/the-frame">
-    Start with **The Frame**. Each page builds on the last. Roughly thirty minutes.
+    Start with **The Frame**. Roughly thirty minutes for the full architecture.
   </Card>
 
   <Card title="Architecture first" icon="shield" href="/the-doctrine">
-    Skip to **The Doctrine** if you want to skip the diagnosis.
+    **The Doctrine** if you want the posture before the diagnosis.
   </Card>
 
   <Card title="Action first" icon="list-check" href="/buyers-checklist">
-    Skip to **The Buyer's Checklist** if you want to skip to AI vendor evaluation without the context.
+    **The Buyer's Checklist** if a vendor evaluation is already on your calendar.
   </Card>
 </CardGroup>

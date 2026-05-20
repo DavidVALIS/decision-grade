@@ -14,8 +14,9 @@ If you only read one page on this site, read this one. It translates The Doctrin
 </Note>
 
 
-**How to use this page.** 
-Take the seven questions to a vendor evaluation. Each one corresponds to one of the seven architectural commitments in The Doctrine. Score each answer on a five-point scale:
+**How to use this page.**
+
+The seven questions travel into a vendor evaluation. Each one corresponds to one of the seven architectural commitments in The Doctrine. Score each answer on a five-point scale:
 - **0** No answer.
 - **1** Marketing answer.
 - **2** Process answer.
@@ -100,9 +101,12 @@ A vendor that scores below 2 on any question is not a Zero Trust verifier. They 
   - The rule has exceptions the vendor can grant
   - "We can turn that off for enterprise customers"
   - The enforcement lives in a runbook, not in code
+  - The primary gate relies on inferring board, regulatory, or capital-allocation consequence from free text rather than from structured artifact metadata
 </Warning>
 
 **Why it matters:** Documentation does not enforce itself. Style guides do not catch errors. Performance reviews do not improve reasoning. If the only thing between the rule and a violation is operator memory or operator discretion, the rule is aspirational.
+
+Free-text consequence inference is the failure mode worth naming separately. Hard gates are strongest on structured properties (template class, source presence, citation count, named reviewer). They weaken sharply when they must guess from prose whether an arbitrary memo carries board consequence. A vendor that treats semantic materiality inference as the primary gate is selling perimeter security with extra steps.
 
 ---
 
@@ -137,6 +141,12 @@ flowchart LR
 </Warning>
 
 **Why it matters:** If the integrity of the record depends on the vendor behaving well, the integrity of the record is not verifiable. After a failure event, the vendor's records are the first thing that becomes contested.
+
+<Note>
+  **Anchoring under confidentiality.**
+
+  Globally public anchoring leaks existence proofs that are unacceptable for privileged legal advice, M&A strategy, export-controlled data, PHI/PII, or confidential board material. The doctrine survives by moving from a public chain to a customer-controlled transparency log with selective disclosure: chain integrity verifiable by the customer internally, external parties get redacted or zero-knowledge proofs only as the matter requires. A vendor whose only answer to confidential workflows is "we anchor to a public chain" has not yet engineered for the workflows that matter most. A vendor that documents a customer-controlled boundary with the same tamper-evidence guarantees is operating the doctrine at its actual stakes.
+</Note>
 
 ---
 
