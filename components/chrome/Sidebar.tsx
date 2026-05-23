@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { PAGES, REPO_URL, REPO_RAW_URL } from '@/lib/pages';
+import { PAGES, BENCHMARK_PAGES, BENCHMARK_VERSION_GROUPS, REPO_URL, REPO_RAW_URL } from '@/lib/pages';
 import { getIcon, IconX } from '@/components/icons';
 
 export function Sidebar() {
@@ -85,6 +85,45 @@ export function Sidebar() {
               </Link>
             );
           })}
+        </div>
+
+        <div className="dg-sidebar-group">
+          <p className="dg-sidebar-group-label">Benchmarks</p>
+          {BENCHMARK_PAGES.map((p) => {
+            const Icon = getIcon(p.icon);
+            const active = slug === p.id;
+            return (
+              <Link
+                key={p.id}
+                href={`/${p.id}/`}
+                className={`dg-sidebar-item${active ? ' dg-sidebar-item--active' : ''}`}
+              >
+                <span className="dg-sidebar-num">{p.num}</span>
+                {Icon ? <Icon className="dg-sidebar-icon" size={16} /> : null}
+                <span>{p.title}</span>
+              </Link>
+            );
+          })}
+          {BENCHMARK_VERSION_GROUPS.map((group) => (
+            <div key={group.version} className="dg-sidebar-subgroup">
+              <p className="dg-sidebar-subgroup-label">{group.version}</p>
+              {group.pages.map((p) => {
+                const Icon = getIcon(p.icon);
+                const active = slug === p.id;
+                return (
+                  <Link
+                    key={p.id}
+                    href={`/${p.id}/`}
+                    className={`dg-sidebar-item dg-sidebar-item--nested${active ? ' dg-sidebar-item--active' : ''}`}
+                  >
+                    <span className="dg-sidebar-num">{p.num}</span>
+                    {Icon ? <Icon className="dg-sidebar-icon" size={14} /> : null}
+                    <span>{p.title}</span>
+                  </Link>
+                );
+              })}
+            </div>
+          ))}
         </div>
 
         <div className="dg-sidebar-group">

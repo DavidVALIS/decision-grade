@@ -421,6 +421,30 @@ img, svg { max-width: 100%; display: block; }
   flex-shrink: 0;
 }
 
+/* Nested benchmarks version sub-group (e.g. v1.0.0 wedges) */
+.dg-sidebar-subgroup {
+  margin: 6px 0 12px 18px;
+  padding-left: 12px;
+  border-left: 1px solid var(--rule, rgba(255,255,255,0.08));
+}
+.dg-sidebar-subgroup-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-4);
+  margin: 4px 0 8px;
+}
+.dg-sidebar-item--nested {
+  font-size: 0.82rem;
+  padding: 5px 0;
+  gap: 10px;
+}
+.dg-sidebar-item--nested .dg-sidebar-num {
+  font-size: 0.6rem;
+  min-width: 30px;
+}
+
 /* ============================== Content ============================== */
 .dg-content {
   padding: var(--content-pad-y, 72px) 64px;
@@ -1514,4 +1538,247 @@ a.dg-stat--center:hover {
 /* Light mermaid backgrounds */
 :root[data-theme="light"] .mermaid svg {
   background: var(--bg-2);
+}
+
+/* =====================================================================
+   Benchmarks (Decision-Grade.AI benchmarks layer)
+   ===================================================================== */
+
+/* Per-test stakes table: CEO / Analyst / Operator rows */
+.dg-bench-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0 16px;
+  max-width: 780px;
+  font-size: 0.95rem;
+}
+.dg-bench-table thead th {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--fg-4);
+  border-bottom: 1px solid var(--rule, rgba(255,255,255,0.10));
+  padding: 6px 16px 6px 0;
+  text-align: left;
+  vertical-align: bottom;
+  background: transparent;
+}
+.dg-bench-table thead th:first-child { width: 130px; }
+.dg-bench-table tbody td {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--fg-2);
+  padding: 14px 16px 14px 0;
+  border-bottom: 1px solid var(--rule-soft, rgba(255,255,255,0.04));
+  vertical-align: top;
+}
+.dg-bench-table tbody td:first-child {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-1);
+  white-space: nowrap;
+  padding-right: 20px;
+}
+
+/* Per-model finding card grid */
+.dg-bench-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0 32px;
+}
+.dg-bench-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 18px;
+  border: 1px solid var(--rule, rgba(255,255,255,0.08));
+  background: transparent;
+}
+.dg-bench-card__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-4);
+  margin: 0;
+}
+.dg-bench-card__headline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 2.4rem;
+  line-height: 1;
+  color: var(--fg-1);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.dg-bench-card__metric {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--fg-3);
+  margin: 0;
+}
+.dg-bench-card__stats {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-4);
+}
+
+/* Comparison chart SVG */
+.dg-bench-chart {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  margin: 20px 0 28px;
+}
+.dg-bench-chart__axis {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  fill: var(--fg-4);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.dg-bench-chart__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--fg-2);
+  letter-spacing: 0.04em;
+}
+.dg-bench-chart__value {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--fg-1);
+}
+.dg-bench-chart__value-sm {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  fill: var(--fg-3);
+}
+.dg-bench-chart__model {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  fill: var(--bg-0, #0c0b09);
+  letter-spacing: 0.04em;
+}
+.dg-bench-chart__track { fill: var(--rule-soft, rgba(255,255,255,0.06)); }
+.dg-bench-chart__bar { fill: var(--fg-2); }
+.dg-bench-chart__bar--leader { fill: var(--accent); }
+
+/* Anchoring evidence band */
+.dg-bench-evidence {
+  border-top: 1px solid var(--rule, rgba(255,255,255,0.10));
+  border-bottom: 1px solid var(--rule, rgba(255,255,255,0.10));
+  background: var(--bg-2, rgba(255,255,255,0.02));
+  padding: 24px;
+  margin: 32px 0;
+}
+.dg-bench-evidence__row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 20px;
+}
+.dg-bench-evidence__cell { display: flex; flex-direction: column; gap: 4px; }
+.dg-bench-evidence__label {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-4);
+}
+.dg-bench-evidence__value {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--fg-1);
+  overflow-wrap: anywhere;
+  word-break: break-all;
+}
+.dg-bench-evidence__sub {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--fg-3);
+}
+.dg-bench-evidence__verify {
+  border-top: 1px solid var(--rule, rgba(255,255,255,0.08));
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.dg-bench-evidence__verify code {
+  display: block;
+  padding: 12px 16px;
+  background: var(--bg-1, rgba(0,0,0,0.20));
+  border: 1px solid var(--rule, rgba(255,255,255,0.08));
+  font-size: 0.82rem;
+  overflow-x: auto;
+}
+
+/* Methodology disclosure callout (LBCI only) */
+.dg-bench-disclosure {
+  border-top: 2px solid var(--accent);
+  border-bottom: 1px solid var(--rule, rgba(255,255,255,0.10));
+  background: var(--bg-2, rgba(255,255,255,0.02));
+  padding: 32px;
+  margin: 32px 0;
+}
+.dg-bench-disclosure__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 16px;
+}
+.dg-bench-disclosure__body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--fg-2);
+  max-width: 780px;
+  white-space: pre-wrap;
+}
+
+/* Per-test section wrapper */
+.dg-bench-test {
+  margin: 40px 0;
+  max-width: 780px;
+}
+.dg-bench-test__name {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--fg-1);
+  margin: 0 0 8px;
+}
+.dg-bench-test__score {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--fg-4);
+  margin: 0 0 18px;
+}
+.dg-bench-test__sep { color: var(--accent); margin: 0 4px; }
+
+@media (max-width: 720px) {
+  .dg-bench-card-grid { grid-template-columns: 1fr; }
+  .dg-bench-evidence__row { grid-template-columns: 1fr; gap: 16px; }
+  .dg-bench-table { font-size: 0.9rem; }
 }
