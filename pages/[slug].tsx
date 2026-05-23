@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote';
@@ -13,16 +15,23 @@ type PageProps = {
   toc: TocItem[];
 };
 
+function mdxExists(slug: string): boolean {
+  return fs.existsSync(path.join(process.cwd(), `${slug}.mdx`));
+}
+
 export const getStaticPaths: GetStaticPaths = async () => {
+  // A slug registered in lib/pages.ts may not yet have a committed MDX file
+  // (work-in-progress pages live in the working tree but stay un-staged).
+  // Skip those rather than failing the prerender on CI's clean checkout.
   return {
-    paths: ALL_SLUGS.map((slug) => ({ params: { slug } })),
+    paths: ALL_SLUGS.filter(mdxExists).map((slug) => ({ params: { slug } })),
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
   const slug = ctx.params?.slug as string;
-  if (!slug || !ALL_SLUGS.includes(slug)) {
+  if (!slug || !ALL_SLUGS.includes(slug) || !mdxExists(slug)) {
     return { notFound: true };
   }
   const { mdxSource, frontmatter, toc } = await loadMdx(slug);
