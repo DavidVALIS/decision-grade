@@ -2,27 +2,34 @@ import { modelScores, headlineMetric, getWedge, type WedgeKey, type RosterScore 
 
 export type BenchmarkComparisonChartProps = {
   wedge: WedgeKey;
+  /** Show the 95% decision-grade reference line. Default true. */
+  showBar?: boolean;
 };
 
 /**
  * Server-side SVG: side-by-side model comparison on the wedge's headline
- * metric. Salmon highlight goes to the leader. LBCI is rendered specially
- * elsewhere (per-tier breakdown lives in BenchmarkTierComparison).
+ * metric. Salmon highlight goes to the leader. A dashed reference line at
+ * 0.95 makes pass/fail visually obvious -- bars that don't reach the line
+ * are below the decision-grade bar.
  */
-export function BenchmarkComparisonChart({ wedge }: BenchmarkComparisonChartProps) {
+export function BenchmarkComparisonChart({ wedge, showBar = true }: BenchmarkComparisonChartProps) {
   const { label } = headlineMetric(wedge);
   const scores = modelScores(wedge);
   if (scores.length === 0) return null;
 
-  // Layout constants
-  const width = 460;
-  const labelW = 200;
-  const barH = 18;
-  const gap = 8;
-  const pad = 12;
-  const inner = width - labelW - pad * 2;
-  const height = pad * 2 + scores.length * (barH + gap) - gap;
+  // Layout constants -- vertical-stack layout uses bigger fonts and bars
+  // so the chart reads at a glance without the visitor squinting.
+  const width = 640;
+  const labelW = 240;
+  const barH = 30;
+  const gap = 16;
+  const padTop = 22;
+  const padBottom = 32;
+  const padX = 16;
+  const inner = width - labelW - padX * 2;
+  const height = padTop + padBottom + scores.length * (barH + gap) - gap;
   const leader = scores.reduce((a, b) => (a.value >= b.value ? a : b)).value;
+  const barX95 = labelW + inner * 0.95;
 
   return (
     <svg
@@ -32,23 +39,38 @@ export function BenchmarkComparisonChart({ wedge }: BenchmarkComparisonChartProp
       preserveAspectRatio="xMinYMin meet"
       width="100%"
       aria-label={`${wedge} comparison: ${scores
-        .map((s) => `${s.model_id} ${s.value.toFixed(3)}`)
-        .join(', ')}`}
+        .map((s) => `${s.model_id} ${s.value.toFixed(2)}`)
+        .join(', ')}. 95 percent bar at 0.95.`}
     >
-      <text x={pad} y={14} className="dg-bench-chart__axis">
+      <text x={padX} y={12} className="dg-bench-chart__axis">
         {label}
       </text>
+      {showBar ? (
+        <>
+          <line
+            x1={barX95}
+            x2={barX95}
+            y1={padTop - 4}
+            y2={height - padBottom + 4}
+            className="dg-bench-chart__threshold"
+          />
+          <text
+            x={barX95}
+            y={height - 8}
+            textAnchor="middle"
+            className="dg-bench-chart__threshold-label"
+          >
+            95% bar
+          </text>
+        </>
+      ) : null}
       {scores.map((s, i) => {
-        const y = pad + 8 + i * (barH + gap);
+        const y = padTop + i * (barH + gap);
         const isLeader = Math.abs(s.value - leader) < 1e-9 && leader > 0;
         const bw = Math.max(0, Math.min(1, s.value)) * inner;
         return (
           <g key={s.model_id}>
-            <text
-              x={pad}
-              y={y + barH * 0.7}
-              className="dg-bench-chart__label"
-            >
+            <text x={padX} y={y + barH * 0.7} className="dg-bench-chart__label">
               {s.model_id}
             </text>
             <rect
@@ -68,12 +90,12 @@ export function BenchmarkComparisonChart({ wedge }: BenchmarkComparisonChartProp
               }
             />
             <text
-              x={width - pad}
+              x={width - padX}
               y={y + barH * 0.7}
               textAnchor="end"
               className="dg-bench-chart__value"
             >
-              {s.value.toFixed(3)}
+              {s.value.toFixed(2)}
             </text>
           </g>
         );

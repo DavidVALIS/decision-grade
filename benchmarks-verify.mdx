@@ -1,17 +1,23 @@
 ---
 title: 'Verify the record yourself'
-description: 'Cosign + OpenTimestamps. Three commands. A clean machine. You do not need to trust the publisher.'
+description: 'Three terminal commands. Five minutes. Confirm nothing in this publication was changed after the fact. You do not need to trust us.'
 ---
 
-Verification confirms two things. First, that the manifest's signature is valid: it was signed by the GitHub Actions workflow that ran when the version was tagged. Second, that the manifest was anchored to the Sigstore Rekor transparency log and to OpenTimestamps. The `verify.sh` script that does this has zero VALIS code paths. You do not need to trust the publisher to verify the publication.
+The pre-registration architecture of this publication is designed so that independent verification is possible without trust in the publisher. The test plan was signed and timestamped before any model was called. The verification procedure below confirms that the published artifacts match the signed and timestamped record.
 
-## Requirements
+Here is what verification does. It opens the file with the test plan. It re-computes the file's fingerprint. It checks that fingerprint against the signature recorded in Sigstore's public transparency log. It checks that fingerprint against the Bitcoin block where it was timestamped. If the file was changed by a single character after publication, all three checks fail. If everything matches, you have proof that the test plan you are reading is the test plan we signed and timestamped, not a quietly-edited version.
 
-- `cosign` v2.5 or newer (Sigstore CLI)
-- `ots` (`pip install opentimestamps-client`)
-- `jq`, `sha256sum` (or `shasum -a 256` on macOS), `git`
+You do not need to be a security engineer to do this. The script is one line. The output is human-readable. A green run looks like the screenshots below.
 
-## Procedure
+## What you need installed
+
+- `cosign` v2.5 or newer. (Sigstore's verifier. One command: `brew install cosign` on macOS, or download the binary from the Sigstore project.)
+- `ots`. (The OpenTimestamps verifier. Install with `pip install opentimestamps-client`.)
+- `jq`, `sha256sum` (or `shasum -a 256` on macOS), `git`. Pre-installed on most developer laptops.
+
+If you do not have these and do not want to install them, the Docker recipe further down does the whole thing in a clean container in two commands.
+
+## The three commands
 
 ```bash
 git clone https://github.com/valisbench/benchmarks.git
@@ -19,11 +25,11 @@ cd benchmarks
 ./verify.sh v1.0.0
 ```
 
-## What a passing run looks like
+That is the whole flow. The script lives in the public repo, has zero VALIS code paths, and walks through the same checks anyone running this work themselves would walk through.
 
-Three exit states, three real terminal outputs. Each block is the exact bytes `verify.sh` prints in that state.
+## What a green run looks like
 
-### Exit 0: full pass
+This is the exact output for a fully-anchored publication. Every line ends in `OK` or `Bitcoin-confirmed`.
 
 ```text
 $ ./verify.sh v1.0.0
@@ -49,28 +55,28 @@ $ ./verify.sh v1.0.0
 [verify] FULL PASS (6 wedges, all anchored, exit 0)
 ```
 
-### Exit 1: partial pass (Rekor verified, OTS still pending Bitcoin block)
+## What a partial-pass run looks like
+
+If you run this within a few hours of a fresh publish, the Bitcoin block may not have confirmed yet. That is normal. It happens because Bitcoin blocks land roughly every 10 minutes and the OpenTimestamps service batches submissions every few hours. The signature in Sigstore is already there. The Bitcoin anchor is on its way.
 
 ```text
 $ ./verify.sh v1.0.0
-[verify] v1.0.0: checking 6 wedge manifests
 [verify] phantom_precision:               manifest sha256 OK
 [verify] phantom_precision:               cosign + Rekor entry OK
 [verify] phantom_precision:               OTS pending (Bitcoin block not yet found)
-[verify] mechanism_gap:                   manifest sha256 OK
-[verify] mechanism_gap:                   cosign + Rekor entry OK
-[verify] mechanism_gap:                   OTS pending (Bitcoin block not yet found)
-... (truncated for brevity)
+... (truncated)
 [verify] PARTIAL PASS (6 wedges Rekor-verified, OTS pending, exit 1)
 [verify] Bitcoin confirmation typically arrives 3-6h after publish.
-[verify] The daily ots_finalizer upgrades pending proofs to confirmed automatically.
 ```
 
-### Exit 2: fail (manifest altered after publication, or signature invalid)
+A partial pass is not a failure. The Sigstore signature has done the heavy lifting. The Bitcoin timestamp catches up automatically. Re-run the script the next day and it will go green.
+
+## What a failed run looks like
+
+If a file was changed after publication, you will see something like this.
 
 ```text
 $ ./verify.sh v1.0.0
-[verify] v1.0.0: checking 6 wedge manifests
 [verify] phantom_precision:               manifest sha256 OK
 [verify] phantom_precision:               cosign verify-blob FAILED
 [verify]   recorded log index: 1591012427
@@ -79,24 +85,23 @@ $ ./verify.sh v1.0.0
 [verify] Open an issue: https://github.com/valisbench/benchmarks/issues
 ```
 
-## Exit codes
+If you ever see this on a real publication, open an issue. The whole pipeline is built on the assumption that this never happens. If it does, we need to know.
 
-- `0` Full pass. Cosign valid, Rekor verified, OTS Bitcoin-confirmed.
-- `1` Partial pass. Cosign valid, Rekor verified, OTS still pending. Bitcoin confirmation can take 3-6h. A partial pass within that window is not a failure.
-- `2` Fail. Cosign or Rekor verification failed. The manifest was altered after publication or the signature is invalid. Open an issue.
-- `3` Fail. A required input file is missing from the repo. The publication itself was incomplete. Open an issue.
+## The Docker one-liner
 
-## From a clean Docker container
-
-The public repo ships a Dockerfile that builds a `debian:bookworm-slim` image with only the verifier dependencies. No VALIS code is installed in the image. The build fails if any file in the verify path imports from `valis.*`.
+If installing cosign and ots locally is not preferred, the public repo ships a Dockerfile that builds an isolated image containing only the verifier dependencies. The image is ephemeral; it can be removed after verification.
 
 ```bash
 docker build -t valisbench-verify .
 docker run --rm valisbench-verify ./verify.sh v1.0.0
 ```
 
-## What "pass" actually means
+The Docker image contains only the verifier dependencies. The build fails if any file in the verify path imports from `valis.*`. The intent is to make verification reproducible on a clean machine without any publisher-supplied code.
 
-A passing verify means the manifest YAML you are reading is the exact bytes that were signed at publication time. The signature was issued by the GitHub Actions workflow whose identity is recorded in the Rekor log. The Rekor entry is verifiable against the Sigstore transparency log. For a full pass, the manifest hash is also anchored to a Bitcoin block via OpenTimestamps.
+## What verification establishes
 
-What it does not mean. It does not mean the methodology is sound. It does not mean the dataset is well-constructed. It does not mean the results are interesting. It does not mean model performances are stable across re-runs. Verification is about provenance, not quality. For methodology critique, read the cross-reviewer disagreement set linked from each version page.
+Verification confirms that the test plan published here matches the bytes signed at publication time. The signature was issued by the GitHub Actions workflow whose identity is recorded in the Sigstore transparency log. The Bitcoin anchor confirms that the fingerprint was committed to Bitcoin's chain on the date of publication. Any subsequent modification of the published artifacts leaves a detectable trace in either the Sigstore log or the OpenTimestamps proof.
+
+Verification does not establish that the test plan is well designed, that the cases are well chosen, that the rubric is correct, or that any specific conclusion follows from the data. Verification confirms provenance, not analytical quality. Methodological critique should refer to the [reviewer disagreement set](/benchmarks-v1-0-0-disagreement/) and the per-wedge pages.
+
+Methodological concerns and proposed corrections can be filed as issues at [github.com/valisbench/benchmarks/issues](https://github.com/valisbench/benchmarks/issues). The publication's failure-publication commitment specifies that null results, unfavorable results, and methodology challenges all publish on the same page.

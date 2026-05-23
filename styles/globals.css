@@ -1648,20 +1648,22 @@ a.dg-stat--center:hover {
 }
 .dg-bench-chart__axis {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 12px;
   fill: var(--fg-4);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 .dg-bench-chart__label {
   font-family: var(--font-mono);
-  font-size: 11px;
-  fill: var(--fg-2);
+  font-size: 15px;
+  fill: var(--fg-1);
   letter-spacing: 0.04em;
 }
 .dg-bench-chart__value {
-  font-family: var(--font-mono);
-  font-size: 11px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 22px;
   fill: var(--fg-1);
 }
 .dg-bench-chart__value-sm {
@@ -1781,4 +1783,66 @@ a.dg-stat--center:hover {
   .dg-bench-card-grid { grid-template-columns: 1fr; }
   .dg-bench-evidence__row { grid-template-columns: 1fr; gap: 16px; }
   .dg-bench-table { font-size: 0.9rem; }
+}
+
+/* ── Threshold reference line on the comparison chart ────────────────── */
+.dg-bench-chart__threshold {
+  stroke: var(--accent);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+  opacity: 0.65;
+}
+.dg-bench-chart__threshold-label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  fill: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── At-a-glance results stack (vertical, full-width per test) ─────── */
+.dg-bench-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 40px 0 64px;
+}
+.dg-bench-grid__cell {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 36px 0 40px;
+  border-top: 1px solid var(--rule);
+  background: transparent;
+  text-decoration: none;
+  color: var(--fg-1);
+  transition: background 200ms;
+}
+.dg-bench-grid__cell:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+.dg-bench-grid__cell:hover {
+  background: var(--bg-2);
+}
+.dg-bench-grid__question {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.2;
+  color: var(--fg-1);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.dg-bench-grid__description {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--fg-2);
+  margin: 0;
+  max-width: 780px;
+}
+.dg-bench-grid__cell .dg-bench-chart {
+  margin: 8px 0 0;
+  max-width: 100%;
 }

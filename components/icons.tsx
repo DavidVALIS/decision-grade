@@ -356,6 +356,9 @@ const ICON_MAP: Record<string, IconComponent> = {
   IconBars,
 
   // FontAwesome-style names used in the MDX
+  bars: IconBars,
+  'chart-bar': IconBars,
+  'chart-column': IconBars,
   building: IconBuilding,
   'building-shield': IconShield,
   server: IconServers,

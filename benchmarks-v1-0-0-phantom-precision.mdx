@@ -1,33 +1,29 @@
 ---
 title: 'Can it spot a fake number?'
-description: 'Phantom precision. 500 cases. Best model 0.65 F1. The failure mode is precision: models flag real numbers as suspicious too.'
+description: 'Phantom precision. 500 cases. Best model 0.65 F1. The failure mode is precision, not recall.'
 ---
 
-We hid a fabricated number inside otherwise sound business prose. Something like "the Brazilian medical device market grew 14.3 percent in 2024." The number is invented. Everything around it reads like a real consulting deck. The question for the model was simple: find the lie.
+The test hides one fabricated numerical claim inside a paragraph of plausible business prose, alongside one to three real, sourced numerical claims as distractors. The model is asked to flag the fabricated claim. The score is per-passage F1 against the ground-truth fabricated spans, with the distractor false-positive rate reported separately.
 
 <BenchmarkTestSection wedge="phantom_precision" name="The numbers" scoreLine="Macro F1 · 500 cases · 3 models">
 
-Claude Opus 4.7 found the fabricated statistic in 99 percent of cases. GPT-5.5 found it in 99 percent of cases. Gemini 3.1 Pro found it 100 percent of the time it got to produce an answer at all.
+Recall is near-perfect across all three models. Each one correctly flags the fabricated claim in roughly 99 percent of cases. The macro F1 spread reflects a single shared failure mode: precision. Models also flag real, sourced numerical claims as suspicious, producing a sustained false-positive rate on legitimate citations.
 
-The catch is what they did next. Recall on the fabricated claim is near-perfect across all three models. Precision is not. The macro F1 numbers reflect a single shared behavior. When the model is asked to flag the fake statistic in a paragraph that also contains real, sourced statistics, it tends to flag the real ones too. Models are cautious. They over-cite.
-
-This is a quieter failure than "the model hallucinated a number." It means a model deployed to vet other models' outputs would generate a high false-positive rate on legitimate citations. The verification layer is itself unreliable.
-
-Gemini's column reads worse for a different reason. It hits the 1024 max_tokens budget on 54 percent of cases. Its internal thinking consumes the budget before the answer arrives. On the cases it did finish (228 of 500), it scored similar precision-recall behavior to Opus and GPT.
+Gemini's substantially lower F1 reflects a separate effect: it exceeded the 1024 max_tokens budget on 272 of 500 cases (54 percent), with internal reasoning consuming the budget before the answer was produced. On the 228 cases it finished, its precision-recall behaviour was similar to Opus and GPT-5.5.
 
 </BenchmarkTestSection>
 
-## What "below 95 percent" actually means
+## What "below 95 percent" implies
 
 <BenchmarkExampleTable
-  ceo="Your CFO presents a board deck with twenty market-size numbers. The deck was drafted by an AI. At a 65 percent catch rate, seven of those numbers are hallucinated and nobody knows which seven. You make a capital allocation decision on the strength of the chart."
-  analyst="You spend your morning reading a 30-page AI-drafted brief. By lunch you realize one number does not match the source. Now you have to re-verify every other number in the document. The afternoon is gone. The brief was supposed to save you a day."
-  operator="Thirty agents produce 174 memos a week. At a 35 percent miss rate on planted numbers, you are quietly shipping roughly 60 memos a week with at least one invented figure each. The principal acts on a sample. The portfolio reflects the rest."
+  ceo="AI-drafted analysis informs executive decisions. At a 65 percent catch rate on the planted fabrications, the rate of unflagged fabricated figures reaching the final document is approximately one in three. The deck reads well; the verification load shifts to the reader."
+  analyst="Vetting an AI-drafted brief requires manual re-verification of each numerical claim. The miss rate on this test does not permit treating AI-flagged citations as cleared. AI accelerates draft production, not verification."
+  operator="At scale, the per-call miss rate compounds. An organisation routing 1,000 reports per day through this style of AI analysis ships approximately 350 documents containing at least one unflagged fabricated figure under the rubric of this test."
 />
 
 ## What would falsify this finding
 
-A frontier model that finds the fabricated claim while also recognising that "47 percent of Fortune 500 companies report X" (a real, sourced statistic) is not a hallucination. None of the three models tested do that consistently at v1.0.0.
+A frontier model that combines near-perfect recall on fabricated claims with precision sufficient to maintain F1 above 0.95. As of v1.0.0, no tested model meets this condition.
 
 ## Anchored artifacts
 

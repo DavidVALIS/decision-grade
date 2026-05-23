@@ -1,102 +1,104 @@
 ---
 title: 'How the benchmark works'
-description: 'Pre-registration, public anchoring, and the principles that make a result survive scrutiny.'
+description: 'Pre-register what you are going to do, sign it, anchor it, run the test, publish results. The short version, in plain language.'
 ---
 
-Most public AI benchmarks publish numbers. They do not publish commitments. A benchmark whose dataset can be silently changed, whose model roster can be re-rolled, or whose unflattering runs can be hidden is not a measurement instrument. It is a press release with a confidence interval.
+Before we ever ask an AI a single question, we publish the test. The exact questions. The exact models we will ask. The exact way we will score the answers. The exact threshold we want the answer to clear. All of it goes into one file. We sign that file cryptographically. We register the signature in a public log nobody owns. We timestamp the file's fingerprint into a Bitcoin block.
 
-We do this differently. Before any model is called, we publish the dataset hash, the model roster with exact version strings, the sampling parameters, the scoring rubric, and the hypothesis. The manifest is signed with Sigstore cosign. The signature is anchored to the Sigstore Rekor transparency log. The hash is timestamped to a Bitcoin block via OpenTimestamps. If we re-publish a different manifest under the same version tag later, the old one stays in Rekor forever.
+Then we run the test.
 
-After the run, the results publish on the same page as the manifest. Null results publish. Unfavorable results publish. The commitment to do that is itself anchored.
+The purpose of this pre-registration is to remove the publisher's ability to alter the test parameters after observing results. The signature, the transparency log, and the Bitcoin anchor exist so that any retroactive change to the test plan is independently detectable by any third party. The mechanism does not rely on the publisher's intent; it removes the publisher's capacity to alter the record undetectably.
 
-## The seven principles
+When the test finishes, the results publish on the same page as the original test plan. Good results, bad results, embarrassing results. The commitment to publish either way is part of the file that gets signed.
+
+## The five things we lock down before running
 
 <Steps>
 
-<Step title="Pre-registration is the artifact">
-The manifest freezes everything that could be retroactively changed: dataset hash, model versions, temperature, seed, scoring rubric, refusal policy, failure-publication commitment. The signed bytes of that file are the benchmark.
+<Step title="The questions">
+500 cases per test, hand-written. The hash of the file gets recorded. If the file ever changes by a single character, the hash changes, and the change is detectable against the signed record.
 </Step>
 
-<Step title="Two anchors, not one">
-The Sigstore Rekor log records the GitHub Actions identity that signed the manifest. The OpenTimestamps proof anchors the manifest hash to a Bitcoin block. Re-publishing under the same tag is detectable in either log alone.
+<Step title="The roster">
+The exact model names and version strings we will call. Not "GPT-5.5" but `gpt-5.5-2026-04-23`. The provider can release a new version six months later. The version we tested cannot be retroactively swapped.
 </Step>
 
-<Step title="Refusal is its own category">
-A refusal is not a wrong answer. We report refusal rates per model per wedge. F1 is computed over the non-refused subset. A model that refuses every case scores "refusal: 100%" with no F1 reported, which is the correct answer.
+<Step title="The settings">
+Temperature, seed, max tokens. The dials we set on the model when we called it. If we re-ran the test with hotter settings to get better numbers, you would see the difference between what was anchored and what was run.
 </Step>
 
-<Step title="Synthetic ground truth is disclosed, not hidden">
-Where the dataset is synthesised, we say so on the wedge page. Where the rubric uses a constructed dependency graph instead of expert judgement, we say so on the wedge page. The disclosure is part of the cryptographic commitment.
+<Step title="The rubric">
+How we score each answer. What counts as right. What counts as wrong. What counts as the model refusing to answer (which we report separately, never as wrong).
 </Step>
 
-<Step title="Spot-check panels are required, not optional">
-Each wedge's case set is reviewed by three independent frontier models before publication: Claude Opus 4.7, GPT-5.5, and Gemini 3.1 Pro. The gate is zero unanimous fails on a 50-case sample. The panel result is published verbatim alongside the manifest.
+<Step title="The commitment to publish">
+A sentence that says, in plain language, that we will publish whatever we find. Null results publish. Embarrassing results publish. The commitment itself is part of the signed file, so abandoning it would be visible too.
 </Step>
 
-<Step title="Disagreement is data">
-Where the three reviewers diverge on rubric application, we publish the cases verbatim with each reviewer's rationale. The boundary of a rubric is itself part of the published artifact.
+</Steps>
+
+## What "anchored" actually means
+
+Two things, both done with public infrastructure nobody owns.
+
+The first is a transparency log run by the Sigstore project. When we sign our test file, the signature goes into that log along with the GitHub Actions identity that signed it. If we ever sign a different file later under the same name, the old entry stays in the log forever. Anyone can pull the log and check.
+
+The second is a Bitcoin block. Through a free service called OpenTimestamps, the fingerprint of our test file gets bundled with thousands of others and folded into a Bitcoin transaction. Once that block confirms (a few hours, usually), the fingerprint is part of Bitcoin's history. Re-writing it would require re-writing Bitcoin's history. Which is not a thing that happens.
+
+Both checks happen in the verifier script anyone can run on their laptop. You do not have to trust us. The whole verification chain is publicly auditable in about a minute.
+
+## Worked example: phantom precision, end to end
+
+Phantom precision is the test that asks: can the model spot the fabricated number hidden in a paragraph that also contains real, sourced numbers? Here is how the test gets built and run.
+
+<Steps>
+
+<Step title="Cases written">
+500 paragraphs of plausible business prose. Each one contains exactly one fabricated number and one to three real, sourced numbers. The founder reviews each one for plausibility. The cases file is saved and its SHA256 fingerprint is recorded.
+
+(This is one of six tests. The full v1.0.0 publication covers 3,000 cases across all six tests.)
+</Step>
+
+<Step title="Test file written">
+The pre-registration document. It says: "We will ask these three models, with these settings, to find the fabricated number in each of these 500 cases. We will score per-passage F1 against the ground-truth fabricated spans. We will report refusals separately. We will publish whatever we find."
+</Step>
+
+<Step title="Spot-check panel runs">
+Three independent frontier models review a 50-case sample of the dataset. Each returns pass/fail with rationale on each case. The gate is zero unanimous-fail cases. For phantom precision, 44 cases were unanimous pass, 4 were 2-of-3 pass, and 2 were 1-of-3 pass. Zero unanimous fails. The 4 + 2 cases that produced disagreement are published verbatim alongside the result.
+</Step>
+
+<Step title="Sign and anchor">
+A git tag triggers an automated workflow. The workflow signs the test file with the project's keyless OIDC signature, posts the signature to the Sigstore transparency log, receives the log entry index, and runs the OpenTimestamps fingerprinting against the file's hash. All of this happens in the public domain.
+</Step>
+
+<Step title="Bitcoin block lands">
+Within a few hours of the tag push, the relevant Bitcoin block confirms. A scheduled job updates the OpenTimestamps proof to "fully anchored" status. The file's fingerprint is now part of the Bitcoin record. It cannot be changed.
+</Step>
+
+<Step title="Run the test, publish the result">
+The actual AI calls run. Each model gets each case with the pre-registered settings. The answers get scored against the pre-registered rubric. The results publish on the same page as the original test file, with a results.jsonl artifact alongside the manifest.
 </Step>
 
 <Step title="Anyone can verify">
-The `verify.sh` script at [github.com/valisbench/benchmarks](https://github.com/valisbench/benchmarks) has zero VALIS code paths. A Debian Docker container with cosign and ots installed runs it. You do not need to trust the publisher to verify the publication.
+A reader runs `./verify.sh v1.0.0`. The script confirms the test file matches the signed bytes, the signature matches the recorded identity, the Sigstore log entry is intact, and the Bitcoin anchor is valid. A green run takes about a minute. No VALIS code is involved.
 </Step>
 
 </Steps>
 
 ## Sampling parameter deviation
 
-<Note>
-**Deviation from the pre-registered manifest.** The v1.0.0 manifests pre-register `temperature: 0`, `top_p: 1`, `seed: 42` for all three providers. After pre-registration and anchoring, Anthropic deprecated these parameters on Claude Opus 4.7 and OpenAI deprecated them on GPT-5.5. Both APIs reject non-default values and use internal adaptive sampling. The harness omits sampling parameters when calling these models. Gemini 3.1 Pro Preview still accepts the parameters and was called with the pre-registered values.
+The v1.0.0 pre-registration committed to specific temperature and top_p values in the test plan. After signing and anchoring, two of the three providers (Anthropic for Claude Opus 4.7, OpenAI for GPT-5.5) deprecated those sampling parameters. Both APIs now reject non-default values. Gemini 3.1 Pro Preview continues to accept the parameters.
 
-Anthropic's own documentation states that `temperature=0` never guaranteed identical outputs on prior models. The substantive commitment of the pre-registration -- no stochastic tuning of model behavior -- is honored across all three providers. The deviation is in which API surface expresses that commitment, not in the commitment itself.
-</Note>
+Re-signing the manifest under updated sampling parameters was rejected as a remediation: doing so would replace the cryptographic record of the original pre-registration. The implementation instead omits the sampling parameters when calling the two affected providers, and passes the originally-specified values to Gemini, where the API still accepts them.
 
-## Reasoning-model token budgets
-
-All three frontier models on the v1.0.0 roster are reasoning models. They do internal thinking before producing the final answer, and that thinking consumes part of the `max_tokens` budget on each call. The manifests pre-register `max_tokens: 1024` for every model.
-
-Gemini 3.1 Pro Preview exposes its thinking content as part of the response stream by default. When the budget is tight, the budget is consumed before the answer arrives and the case is recorded as `partial_response` rather than `response`. Excluded from F1, the same as any non-response outcome. Anthropic and OpenAI's reasoning content is omitted from the response stream by default, so the same 1024 budget produces the answer directly.
-
-This is a measurement observation about how each model handles the budget it is given, not a deviation from pre-registration. The `outcome_counts` field of every result row reports the per-case breakdown explicitly. Where you see a high `partial_response` rate, that is itself data about the model.
-
-## Worked example: phantom precision end-to-end
-
-How does a single wedge move from idea to anchored result? Here is phantom precision, step by step.
-
-<Steps>
-
-<Step title="Cases authored">
-500 cases hand-crafted. Each one is a paragraph of plausible business prose containing one fabricated numerical claim ("a recent McKinsey study showed 42% gains") and one to three real numerical claims as distractors. Each case reviewed by the founder for plausibility. The cases file is hashed.
-</Step>
-
-<Step title="Manifest written">
-The manifest fixes the dataset SHA256, the model roster (Opus 4.7, GPT-5.5 snapshot gpt-5.5-2026-04-23, Gemini 3.1 Pro Preview), sampling parameters, the scoring rubric (per-passage F1 against fabricated spans), the refusal policy, and the failure-publication commitment.
-</Step>
-
-<Step title="Spot-check panel runs">
-Three frontier models review a 50-case sample. Each returns pass/fail per case with rationale. Phantom precision v1.0.0 passed the gate with zero unanimous fails. 44 cases unanimous pass; 4 cases 2-of-3 pass; 2 cases 1-of-3 pass. The 4 + 2 are the disagreement set, published verbatim.
-</Step>
-
-<Step title="Tag pushed, run executes">
-`benchmarks-v1.0.0` git tag triggers the GitHub Actions workflow. `cosign sign-blob` with keyless OIDC signs the manifest. Sigstore Rekor receives the signature and returns the log index. `ots stamp` runs against the manifest hash. The OpenTimestamps proof commits to the public repo in "pending" state.
-</Step>
-
-<Step title="Bitcoin block lands">
-Within 3-6 hours, the Bitcoin block confirms. The daily `ots_finalizer` workflow upgrades the proof to "confirmed" automatically. The manifest hash is now anchored in a Bitcoin block. The record cannot be edited.
-</Step>
-
-<Step title="Anyone can verify">
-With cosign, ots, and the public repo, `./verify.sh v1.0.0` runs the chain end-to-end. A FULL PASS exits 0.
-</Step>
-
-</Steps>
+The substantive commitment of the pre-registration -- no manual tuning of model behaviour -- is preserved across all three providers. The deviation is in which API surface enforces the commitment. Anthropic's own published documentation states that `temperature=0` did not guarantee identical outputs on prior models. The published methodology page on decision-grade.ai discloses this deviation in full alongside the per-test results.
 
 ## What v1.0.0 does not yet do
 
 <Warning>
-Datasets are synthesised, not human-labelled. Spot-check panels confirm internal consistency, but v2 will add external labellers for a gold subset.
+**Synthetic cases.** The test sets are hand-written, not curated from real-world incidents. Spot-check panels confirm internal consistency, but v2 will commission external labellers for a gold subset on the trickiest tests.
 
-The private held-out partition (200 cases per wedge) is encrypted at rest in the public repo. The decryption key is held by the founder. v2 will define a rotation policy and a key escrow mechanism.
+**Held-out partition.** A separate set of 200 cases per test is encrypted at rest in the public repo. The decryption key is held by the founder. v2 will define a rotation policy and a key escrow mechanism.
 
-Determinism is best-effort across providers. Temperature zero and a fixed seed do not guarantee identical bytes across re-runs on every provider. The manifest documents this.
+**Determinism.** Temperature zero and a fixed seed do not guarantee identical bytes across re-runs on every provider. The test file says so explicitly.
 </Warning>

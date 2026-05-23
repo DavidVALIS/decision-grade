@@ -1,41 +1,21 @@
 ---
 title: 'v1.0.0 results'
-description: 'Six tests. Three frontier models. The numbers, per wedge, per model. Anchored on 2026-05-22.'
+description: 'Six tests. Three frontier models. The graphs and the takeaway, side by side. Anchored on 2026-05-22.'
 ---
 
-Six failure modes for AI reasoning, run against three frontier models, 500 cases per wedge. The manifests were signed and Bitcoin-timestamped before any model was called. The headline numbers below are the macro F1 score on the wedge's primary metric. The per-wedge pages drill into what each test measures, what each model did, and what "below 95 percent" looks like in production.
+500 questions on each of six tests. Three frontier models took the same exam. Each test asks a different question a careful analyst already asks in their head before signing off. The graphs below show what happened, with the 95 percent decision-grade bar drawn across each one.
 
-<BenchmarkFindingCard wedge="phantom_precision" />
+<BenchmarkResultsGrid />
 
-## Per-wedge breakdown
+## The headline
 
-<CardGroup>
+The best AI in the world cleared the 95 percent bar on two of the six tests. The other four fell short. The hardest one, "notice what is missing from an analysis," had every model below 41 percent. The easiest one, "identify the load-bearing claim in an argument," had two models above 95.
 
-<Card title="Can it spot a fake number?" href="/benchmarks-v1-0-0-phantom-precision/">
-**Phantom precision** · Best: GPT-5.5 at 0.65 F1. The models found the fabricated number almost every time. They also flagged real numbers as suspicious. Precision is the failure mode.
-</Card>
+There is no clean winner. GPT-5.5 leads four of six. Opus leads the other two, including the only test where AI is *almost* trustworthy as a citation-checker. Gemini sits in the middle on three tests and gets squeezed by token-budget cutoffs on the others. The numbers reward different models on different jobs.
 
-<Card title='Does "because" actually mean because?' href="/benchmarks-v1-0-0-mechanism-gap/">
-**Mechanism gap** · Best: GPT-5.5 at 0.97 F1. The one test the best model nearly passed. Most claims with "because" in them are doing real work. A few are smuggling.
-</Card>
+## What sits behind each chart
 
-<Card title="Could this claim ever be proven wrong?" href="/benchmarks-v1-0-0-falsifier-observability/">
-**Falsifier observability** · Best: GPT-5.5 at 0.85 F1. Models catch unfalsifiable claims. They also flag falsifiable-but-vague claims as unfalsifiable. The differentiator is precision.
-</Card>
-
-<Card title="When it cites a source, does the source say that?" href="/benchmarks-v1-0-0-citation-faithfulness/">
-**Citation faithfulness** · Best: Opus 4.7 at 0.86 F1. Recall is perfect across all three. About a quarter of faithful citations are falsely flagged. The failure pattern is to cry wolf until the AI becomes irrelevant.
-</Card>
-
-<Card title="Can it notice what is missing?" href="/benchmarks-v1-0-0-boundary-condition-omission/">
-**Boundary condition omission** · Best: Opus 4.7 at 0.40 F1. *This is the test.* All three frontier models score below 0.41. Good at evaluating what was said. Almost blind to what was not.
-</Card>
-
-<Card title="Which claim, if wrong, breaks the whole thing?" href="/benchmarks-v1-0-0-load-bearing-claim-identification/">
-**Load-bearing claim identification** · Best: GPT-5.5 at 0.99 F1. The one piece of good news. Models can tell you what to double-check, if you ask.
-</Card>
-
-</CardGroup>
+Each per-test page walks through the same three things in plain language. What the test asks. What the model did, in numbers your operations team can act on. What "below 95 percent" looks like for a CEO, an analyst, and an operator running agents through the night. Pick any of the six above to open the deep read.
 
 ## Reviewer disagreement
 
