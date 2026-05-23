@@ -1,0 +1,38 @@
+---
+title: 'Can it spot a fake number?'
+description: 'Phantom precision. 500 cases. Best model 0.65 F1. The failure mode is precision: models flag real numbers as suspicious too.'
+---
+
+We hid a fabricated number inside otherwise sound business prose. Something like "the Brazilian medical device market grew 14.3 percent in 2024." The number is invented. Everything around it reads like a real consulting deck. The question for the model was simple: find the lie.
+
+<BenchmarkTestSection wedge="phantom_precision" name="The numbers" scoreLine="Macro F1 · 500 cases · 3 models">
+
+Claude Opus 4.7 found the fabricated statistic in 99 percent of cases. GPT-5.5 found it in 99 percent of cases. Gemini 3.1 Pro found it 100 percent of the time it got to produce an answer at all.
+
+The catch is what they did next. Recall on the fabricated claim is near-perfect across all three models. Precision is not. The macro F1 numbers reflect a single shared behavior. When the model is asked to flag the fake statistic in a paragraph that also contains real, sourced statistics, it tends to flag the real ones too. Models are cautious. They over-cite.
+
+This is a quieter failure than "the model hallucinated a number." It means a model deployed to vet other models' outputs would generate a high false-positive rate on legitimate citations. The verification layer is itself unreliable.
+
+Gemini's column reads worse for a different reason. It hits the 1024 max_tokens budget on 54 percent of cases. Its internal thinking consumes the budget before the answer arrives. On the cases it did finish (228 of 500), it scored similar precision-recall behavior to Opus and GPT.
+
+</BenchmarkTestSection>
+
+## What "below 95 percent" actually means
+
+<BenchmarkExampleTable
+  ceo="Your CFO presents a board deck with twenty market-size numbers. The deck was drafted by an AI. At a 65 percent catch rate, seven of those numbers are hallucinated and nobody knows which seven. You make a capital allocation decision on the strength of the chart."
+  analyst="You spend your morning reading a 30-page AI-drafted brief. By lunch you realize one number does not match the source. Now you have to re-verify every other number in the document. The afternoon is gone. The brief was supposed to save you a day."
+  operator="Thirty agents produce 174 memos a week. At a 35 percent miss rate on planted numbers, you are quietly shipping roughly 60 memos a week with at least one invented figure each. The principal acts on a sample. The portfolio reflects the rest."
+/>
+
+## What would falsify this finding
+
+A frontier model that finds the fabricated claim while also recognising that "47 percent of Fortune 500 companies report X" (a real, sourced statistic) is not a hallucination. None of the three models tested do that consistently at v1.0.0.
+
+## Anchored artifacts
+
+- [manifest.yaml](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/phantom_precision/manifest.yaml) -- pre-registered specification, the signed bytes
+- [manifest.bundle.json](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/phantom_precision/manifest.bundle.json) -- Sigstore signature plus the Rekor entry
+- [manifest.yaml.ots](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/phantom_precision/manifest.yaml.ots) -- OpenTimestamps proof (Bitcoin-anchored)
+- [cases.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/phantom_precision/cases.jsonl) -- 500 cases
+- [results.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/phantom_precision/results.jsonl) -- per-model scored results

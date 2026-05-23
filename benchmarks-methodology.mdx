@@ -1,0 +1,102 @@
+---
+title: 'How the benchmark works'
+description: 'Pre-registration, public anchoring, and the principles that make a result survive scrutiny.'
+---
+
+Most public AI benchmarks publish numbers. They do not publish commitments. A benchmark whose dataset can be silently changed, whose model roster can be re-rolled, or whose unflattering runs can be hidden is not a measurement instrument. It is a press release with a confidence interval.
+
+We do this differently. Before any model is called, we publish the dataset hash, the model roster with exact version strings, the sampling parameters, the scoring rubric, and the hypothesis. The manifest is signed with Sigstore cosign. The signature is anchored to the Sigstore Rekor transparency log. The hash is timestamped to a Bitcoin block via OpenTimestamps. If we re-publish a different manifest under the same version tag later, the old one stays in Rekor forever.
+
+After the run, the results publish on the same page as the manifest. Null results publish. Unfavorable results publish. The commitment to do that is itself anchored.
+
+## The seven principles
+
+<Steps>
+
+<Step title="Pre-registration is the artifact">
+The manifest freezes everything that could be retroactively changed: dataset hash, model versions, temperature, seed, scoring rubric, refusal policy, failure-publication commitment. The signed bytes of that file are the benchmark.
+</Step>
+
+<Step title="Two anchors, not one">
+The Sigstore Rekor log records the GitHub Actions identity that signed the manifest. The OpenTimestamps proof anchors the manifest hash to a Bitcoin block. Re-publishing under the same tag is detectable in either log alone.
+</Step>
+
+<Step title="Refusal is its own category">
+A refusal is not a wrong answer. We report refusal rates per model per wedge. F1 is computed over the non-refused subset. A model that refuses every case scores "refusal: 100%" with no F1 reported, which is the correct answer.
+</Step>
+
+<Step title="Synthetic ground truth is disclosed, not hidden">
+Where the dataset is synthesised, we say so on the wedge page. Where the rubric uses a constructed dependency graph instead of expert judgement, we say so on the wedge page. The disclosure is part of the cryptographic commitment.
+</Step>
+
+<Step title="Spot-check panels are required, not optional">
+Each wedge's case set is reviewed by three independent frontier models before publication: Claude Opus 4.7, GPT-5.5, and Gemini 3.1 Pro. The gate is zero unanimous fails on a 50-case sample. The panel result is published verbatim alongside the manifest.
+</Step>
+
+<Step title="Disagreement is data">
+Where the three reviewers diverge on rubric application, we publish the cases verbatim with each reviewer's rationale. The boundary of a rubric is itself part of the published artifact.
+</Step>
+
+<Step title="Anyone can verify">
+The `verify.sh` script at [github.com/valisbench/benchmarks](https://github.com/valisbench/benchmarks) has zero VALIS code paths. A Debian Docker container with cosign and ots installed runs it. You do not need to trust the publisher to verify the publication.
+</Step>
+
+</Steps>
+
+## Sampling parameter deviation
+
+<Note>
+**Deviation from the pre-registered manifest.** The v1.0.0 manifests pre-register `temperature: 0`, `top_p: 1`, `seed: 42` for all three providers. After pre-registration and anchoring, Anthropic deprecated these parameters on Claude Opus 4.7 and OpenAI deprecated them on GPT-5.5. Both APIs reject non-default values and use internal adaptive sampling. The harness omits sampling parameters when calling these models. Gemini 3.1 Pro Preview still accepts the parameters and was called with the pre-registered values.
+
+Anthropic's own documentation states that `temperature=0` never guaranteed identical outputs on prior models. The substantive commitment of the pre-registration -- no stochastic tuning of model behavior -- is honored across all three providers. The deviation is in which API surface expresses that commitment, not in the commitment itself.
+</Note>
+
+## Reasoning-model token budgets
+
+All three frontier models on the v1.0.0 roster are reasoning models. They do internal thinking before producing the final answer, and that thinking consumes part of the `max_tokens` budget on each call. The manifests pre-register `max_tokens: 1024` for every model.
+
+Gemini 3.1 Pro Preview exposes its thinking content as part of the response stream by default. When the budget is tight, the budget is consumed before the answer arrives and the case is recorded as `partial_response` rather than `response`. Excluded from F1, the same as any non-response outcome. Anthropic and OpenAI's reasoning content is omitted from the response stream by default, so the same 1024 budget produces the answer directly.
+
+This is a measurement observation about how each model handles the budget it is given, not a deviation from pre-registration. The `outcome_counts` field of every result row reports the per-case breakdown explicitly. Where you see a high `partial_response` rate, that is itself data about the model.
+
+## Worked example: phantom precision end-to-end
+
+How does a single wedge move from idea to anchored result? Here is phantom precision, step by step.
+
+<Steps>
+
+<Step title="Cases authored">
+500 cases hand-crafted. Each one is a paragraph of plausible business prose containing one fabricated numerical claim ("a recent McKinsey study showed 42% gains") and one to three real numerical claims as distractors. Each case reviewed by the founder for plausibility. The cases file is hashed.
+</Step>
+
+<Step title="Manifest written">
+The manifest fixes the dataset SHA256, the model roster (Opus 4.7, GPT-5.5 snapshot gpt-5.5-2026-04-23, Gemini 3.1 Pro Preview), sampling parameters, the scoring rubric (per-passage F1 against fabricated spans), the refusal policy, and the failure-publication commitment.
+</Step>
+
+<Step title="Spot-check panel runs">
+Three frontier models review a 50-case sample. Each returns pass/fail per case with rationale. Phantom precision v1.0.0 passed the gate with zero unanimous fails. 44 cases unanimous pass; 4 cases 2-of-3 pass; 2 cases 1-of-3 pass. The 4 + 2 are the disagreement set, published verbatim.
+</Step>
+
+<Step title="Tag pushed, run executes">
+`benchmarks-v1.0.0` git tag triggers the GitHub Actions workflow. `cosign sign-blob` with keyless OIDC signs the manifest. Sigstore Rekor receives the signature and returns the log index. `ots stamp` runs against the manifest hash. The OpenTimestamps proof commits to the public repo in "pending" state.
+</Step>
+
+<Step title="Bitcoin block lands">
+Within 3-6 hours, the Bitcoin block confirms. The daily `ots_finalizer` workflow upgrades the proof to "confirmed" automatically. The manifest hash is now anchored in a Bitcoin block. The record cannot be edited.
+</Step>
+
+<Step title="Anyone can verify">
+With cosign, ots, and the public repo, `./verify.sh v1.0.0` runs the chain end-to-end. A FULL PASS exits 0.
+</Step>
+
+</Steps>
+
+## What v1.0.0 does not yet do
+
+<Warning>
+Datasets are synthesised, not human-labelled. Spot-check panels confirm internal consistency, but v2 will add external labellers for a gold subset.
+
+The private held-out partition (200 cases per wedge) is encrypted at rest in the public repo. The decryption key is held by the founder. v2 will define a rotation policy and a key escrow mechanism.
+
+Determinism is best-effort across providers. Temperature zero and a fixed seed do not guarantee identical bytes across re-runs on every provider. The manifest documents this.
+</Warning>

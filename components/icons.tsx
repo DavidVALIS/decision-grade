@@ -278,6 +278,14 @@ export const IconFork = (p: IconProps) => (
   </Svg>
 );
 
+export const IconBars = (p: IconProps) => (
+  <Svg {...p}>
+    <rect x="4" y="13" width="3" height="8" />
+    <rect x="10.5" y="8" width="3" height="13" />
+    <rect x="17" y="3" width="3" height="18" />
+  </Svg>
+);
+
 // ─── VALIS Mark ───
 export function ValisMark({ size = 26, color = 'var(--accent)' }: { size?: number; color?: string }) {
   const opacities = [1, 0.72, 0.48, 0.85, 0.58];
@@ -345,6 +353,7 @@ const ICON_MAP: Record<string, IconComponent> = {
   IconScale,
   IconDoc,
   IconFork,
+  IconBars,
 
   // FontAwesome-style names used in the MDX
   building: IconBuilding,

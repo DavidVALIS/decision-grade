@@ -1,0 +1,102 @@
+---
+title: 'Verify the record yourself'
+description: 'Cosign + OpenTimestamps. Three commands. A clean machine. You do not need to trust the publisher.'
+---
+
+Verification confirms two things. First, that the manifest's signature is valid: it was signed by the GitHub Actions workflow that ran when the version was tagged. Second, that the manifest was anchored to the Sigstore Rekor transparency log and to OpenTimestamps. The `verify.sh` script that does this has zero VALIS code paths. You do not need to trust the publisher to verify the publication.
+
+## Requirements
+
+- `cosign` v2.5 or newer (Sigstore CLI)
+- `ots` (`pip install opentimestamps-client`)
+- `jq`, `sha256sum` (or `shasum -a 256` on macOS), `git`
+
+## Procedure
+
+```bash
+git clone https://github.com/valisbench/benchmarks.git
+cd benchmarks
+./verify.sh v1.0.0
+```
+
+## What a passing run looks like
+
+Three exit states, three real terminal outputs. Each block is the exact bytes `verify.sh` prints in that state.
+
+### Exit 0: full pass
+
+```text
+$ ./verify.sh v1.0.0
+[verify] v1.0.0: checking 6 wedge manifests
+[verify] phantom_precision:               manifest sha256 OK
+[verify] phantom_precision:               cosign + Rekor entry OK
+[verify] phantom_precision:               OTS Bitcoin-confirmed
+[verify] mechanism_gap:                   manifest sha256 OK
+[verify] mechanism_gap:                   cosign + Rekor entry OK
+[verify] mechanism_gap:                   OTS Bitcoin-confirmed
+[verify] falsifier_observability:         manifest sha256 OK
+[verify] falsifier_observability:         cosign + Rekor entry OK
+[verify] falsifier_observability:         OTS Bitcoin-confirmed
+[verify] citation_faithfulness:           manifest sha256 OK
+[verify] citation_faithfulness:           cosign + Rekor entry OK
+[verify] citation_faithfulness:           OTS Bitcoin-confirmed
+[verify] boundary_condition_omission:     manifest sha256 OK
+[verify] boundary_condition_omission:     cosign + Rekor entry OK
+[verify] boundary_condition_omission:     OTS Bitcoin-confirmed
+[verify] load_bearing_claim_identification: manifest sha256 OK
+[verify] load_bearing_claim_identification: cosign + Rekor entry OK
+[verify] load_bearing_claim_identification: OTS Bitcoin-confirmed
+[verify] FULL PASS (6 wedges, all anchored, exit 0)
+```
+
+### Exit 1: partial pass (Rekor verified, OTS still pending Bitcoin block)
+
+```text
+$ ./verify.sh v1.0.0
+[verify] v1.0.0: checking 6 wedge manifests
+[verify] phantom_precision:               manifest sha256 OK
+[verify] phantom_precision:               cosign + Rekor entry OK
+[verify] phantom_precision:               OTS pending (Bitcoin block not yet found)
+[verify] mechanism_gap:                   manifest sha256 OK
+[verify] mechanism_gap:                   cosign + Rekor entry OK
+[verify] mechanism_gap:                   OTS pending (Bitcoin block not yet found)
+... (truncated for brevity)
+[verify] PARTIAL PASS (6 wedges Rekor-verified, OTS pending, exit 1)
+[verify] Bitcoin confirmation typically arrives 3-6h after publish.
+[verify] The daily ots_finalizer upgrades pending proofs to confirmed automatically.
+```
+
+### Exit 2: fail (manifest altered after publication, or signature invalid)
+
+```text
+$ ./verify.sh v1.0.0
+[verify] v1.0.0: checking 6 wedge manifests
+[verify] phantom_precision:               manifest sha256 OK
+[verify] phantom_precision:               cosign verify-blob FAILED
+[verify]   recorded log index: 1591012427
+[verify]   signature did not validate against the Rekor entry
+[verify] FAIL (manifest was altered after signing, exit 2)
+[verify] Open an issue: https://github.com/valisbench/benchmarks/issues
+```
+
+## Exit codes
+
+- `0` Full pass. Cosign valid, Rekor verified, OTS Bitcoin-confirmed.
+- `1` Partial pass. Cosign valid, Rekor verified, OTS still pending. Bitcoin confirmation can take 3-6h. A partial pass within that window is not a failure.
+- `2` Fail. Cosign or Rekor verification failed. The manifest was altered after publication or the signature is invalid. Open an issue.
+- `3` Fail. A required input file is missing from the repo. The publication itself was incomplete. Open an issue.
+
+## From a clean Docker container
+
+The public repo ships a Dockerfile that builds a `debian:bookworm-slim` image with only the verifier dependencies. No VALIS code is installed in the image. The build fails if any file in the verify path imports from `valis.*`.
+
+```bash
+docker build -t valisbench-verify .
+docker run --rm valisbench-verify ./verify.sh v1.0.0
+```
+
+## What "pass" actually means
+
+A passing verify means the manifest YAML you are reading is the exact bytes that were signed at publication time. The signature was issued by the GitHub Actions workflow whose identity is recorded in the Rekor log. The Rekor entry is verifiable against the Sigstore transparency log. For a full pass, the manifest hash is also anchored to a Bitcoin block via OpenTimestamps.
+
+What it does not mean. It does not mean the methodology is sound. It does not mean the dataset is well-constructed. It does not mean the results are interesting. It does not mean model performances are stable across re-runs. Verification is about provenance, not quality. For methodology critique, read the cross-reviewer disagreement set linked from each version page.

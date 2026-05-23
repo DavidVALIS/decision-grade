@@ -1,0 +1,48 @@
+---
+title: 'v1.0.0 results'
+description: 'Six tests. Three frontier models. The numbers, per wedge, per model. Anchored on 2026-05-22.'
+---
+
+Six failure modes for AI reasoning, run against three frontier models, 500 cases per wedge. The manifests were signed and Bitcoin-timestamped before any model was called. The headline numbers below are the macro F1 score on the wedge's primary metric. The per-wedge pages drill into what each test measures, what each model did, and what "below 95 percent" looks like in production.
+
+<BenchmarkFindingCard wedge="phantom_precision" />
+
+## Per-wedge breakdown
+
+<CardGroup>
+
+<Card title="Can it spot a fake number?" href="/benchmarks-v1-0-0-phantom-precision/">
+**Phantom precision** · Best: GPT-5.5 at 0.65 F1. The models found the fabricated number almost every time. They also flagged real numbers as suspicious. Precision is the failure mode.
+</Card>
+
+<Card title='Does "because" actually mean because?' href="/benchmarks-v1-0-0-mechanism-gap/">
+**Mechanism gap** · Best: GPT-5.5 at 0.97 F1. The one test the best model nearly passed. Most claims with "because" in them are doing real work. A few are smuggling.
+</Card>
+
+<Card title="Could this claim ever be proven wrong?" href="/benchmarks-v1-0-0-falsifier-observability/">
+**Falsifier observability** · Best: GPT-5.5 at 0.85 F1. Models catch unfalsifiable claims. They also flag falsifiable-but-vague claims as unfalsifiable. The differentiator is precision.
+</Card>
+
+<Card title="When it cites a source, does the source say that?" href="/benchmarks-v1-0-0-citation-faithfulness/">
+**Citation faithfulness** · Best: Opus 4.7 at 0.86 F1. Recall is perfect across all three. About a quarter of faithful citations are falsely flagged. The failure pattern is to cry wolf until the AI becomes irrelevant.
+</Card>
+
+<Card title="Can it notice what is missing?" href="/benchmarks-v1-0-0-boundary-condition-omission/">
+**Boundary condition omission** · Best: Opus 4.7 at 0.40 F1. *This is the test.* All three frontier models score below 0.41. Good at evaluating what was said. Almost blind to what was not.
+</Card>
+
+<Card title="Which claim, if wrong, breaks the whole thing?" href="/benchmarks-v1-0-0-load-bearing-claim-identification/">
+**Load-bearing claim identification** · Best: GPT-5.5 at 0.99 F1. The one piece of good news. Models can tell you what to double-check, if you ask.
+</Card>
+
+</CardGroup>
+
+## Reviewer disagreement
+
+37 of the 200 spot-checked cases produced reviewer disagreement on rubric application. We publish those cases verbatim with each reviewer's rationale. The boundary of a rubric is itself part of the published artifact.
+
+[Read the reviewer disagreement set →](/benchmarks-v1-0-0-disagreement/)
+
+## Anchored artifacts
+
+All v1.0.0 manifests, signatures, OpenTimestamps proofs, cases, and results.jsonl files live in the public repo at [github.com/valisbench/benchmarks](https://github.com/valisbench/benchmarks/tree/main/v1.0.0). To run the full verification chain yourself: see [Verify the record](/benchmarks-verify/).

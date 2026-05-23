@@ -1,0 +1,38 @@
+---
+title: 'When it cites a source, does the source say that?'
+description: 'Citation faithfulness. 500 cases. Best model 0.86 F1. Recall is perfect. Precision is the differentiator: about a quarter of faithful citations are flagged as unfaithful.'
+---
+
+The AI cites a Reuters article to support a claim about Chinese export controls. You open the article. The article is real. The claim is not in it. Or worse, the article says the opposite. We tested whether the model can catch this gap when reviewing its own work.
+
+<BenchmarkTestSection wedge="citation_faithfulness" name="The numbers" scoreLine="F1 unfaithful · 500 cases · 3 models">
+
+Claude Opus 4.7 won this wedge. F1 on the unfaithful label was 0.86. GPT-5.5 was 0.77. Gemini 3.1 Pro was 0.79.
+
+This is one of two wedges where Opus beat GPT-5.5. The other was boundary condition omission, where everyone scored badly. Here, Opus beats GPT by a margin that survives 500 cases.
+
+What is interesting is the asymmetry. Recall on the unfaithful label is 1.0 across all three models. They never miss an unfaithful citation. The differentiator is precision. GPT and Gemini are more eager to flag faithful citations as unfaithful. Opus is more careful. The 0.09-point F1 spread between Opus and GPT is entirely precision.
+
+What this means in practice. A model deployed as a citation-checker would catch fabricated citations reliably. It would also generate false positives on real, supporting citations at a rate of roughly 1-in-4 to 1-in-6 depending on which model you use.
+
+</BenchmarkTestSection>
+
+## What "below 95 percent" actually means
+
+<BenchmarkExampleTable
+  ceo="Your team gives you a memo with 40 footnotes. You feel reassured. You should not. Roughly six of those footnotes do not actually support the sentence they are attached to. The reassurance is the whole problem."
+  analyst="Defending a memo in a meeting, you cite source 17. The partner pulls up source 17. It says something else. You learn that AI-drafted citations require the same level of fact-checking you would do for a junior intern who had been drinking."
+  operator="Your thirty agents collectively produce thousands of citations a day. At a 77 percent fidelity rate, hundreds of citations a day point at sources that do not say what is claimed. Anyone who pulls the thread finds the same pattern across the archive."
+/>
+
+## What would falsify this finding
+
+A citation-checker that maintains recall above 0.95 while precision exceeds 0.95. Across the published v1.0.0 roster, precision lands at 0.76 to 0.85.
+
+## Anchored artifacts
+
+- [manifest.yaml](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/citation_faithfulness/manifest.yaml)
+- [manifest.bundle.json](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/citation_faithfulness/manifest.bundle.json)
+- [manifest.yaml.ots](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/citation_faithfulness/manifest.yaml.ots)
+- [cases.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/citation_faithfulness/cases.jsonl)
+- [results.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/citation_faithfulness/results.jsonl)

@@ -1,0 +1,47 @@
+---
+title: 'Where the rubric is contested'
+description: 'Of the 200 spot-checked cases across the four new v1.0.0 wedges, 37 produced reviewer disagreement. We publish them verbatim.'
+---
+
+37 of the 200 spot-checked cases across the v1.0.0 wedges produced reviewer disagreement. The three frontier reviewers (Claude Opus 4.7, GPT-5.5, and Gemini 3.1 Pro) did not agree on how to apply the rubric. We publish those cases verbatim, with each reviewer's rationale.
+
+This is itself a finding, not a defect. Where the rubric admits two reads, that boundary is part of what the benchmark measures. A future version's rubric may sharpen the boundary. Until then, the disagreement is the data.
+
+## Per-wedge agreement summary
+
+| Wedge | 3-of-3 pass | 2-of-3 pass | 1-of-3 pass | 0-of-3 pass | total |
+|---|---|---|---|---|---|
+| Falsifier observability | 30 | 4 | 16 | 0 | 50 |
+| Citation faithfulness | 37 | 5 | 8 | 0 | 50 |
+| Boundary condition omission | 29 | 12 | 9 | 0 | 50 |
+| Load-bearing claim identification | 42 | 4 | 4 | 0 | 50 |
+
+Two of the original v1.0.0 wedges (phantom precision, mechanism gap) were spot-checked before the cross-reviewer panel was added. They appear in the broader v1.0.0 spot-check log but not in this disagreement set.
+
+<Note>
+**Zero unanimous fails.** Across all four wedges in the panel, no case was failed by all three reviewers. The gate condition was "zero unanimous-fail cases per wedge." All four wedges passed the gate.
+</Note>
+
+## What the disagreement cases look like
+
+Each case in the disagreement set lives in the source markdown with:
+- The case identifier and the wedge
+- The case content (passage, claim, or memo)
+- Each reviewer's verdict (pass / fail) and rationale
+- A short interpretation of where the rubric admits two reads
+
+The 1-of-3 pass cases (28 across the four wedges) are the most interesting. These are cases where two of three frontier reviewers agreed the case fails the rubric, but one disagreed. Reading the rationales side by side often reveals that the disagreement is not about facts. It is about how strictly to apply a rubric clause.
+
+The 2-of-3 pass cases (25 across the four wedges) are the milder form. One reviewer dissented from a majority pass. These typically reflect a reviewer being stricter than the rubric requires, not a substantive flaw in the case.
+
+## Full source
+
+The complete reviewer-by-reviewer rationales for all 37 disagreement cases live in the public repo:
+
+[CROSS_REVIEWER_DISAGREEMENT_v1.0.0.md](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/CROSS_REVIEWER_DISAGREEMENT.md)
+
+The markdown source ships as a companion artifact alongside the wedge manifests. The same `./verify.sh v1.0.0` chain validates that the disagreement file has not been altered since publication.
+
+## Why this matters
+
+Publishing the disagreement is part of the doctrinal commitment. A benchmark that hides reviewer disagreement is a benchmark whose rubric is doing more work than it has earned. By publishing the boundary cases, we let a third party see exactly where the rubric is sharp and where it is fuzzy. The reader can decide whether the rubric should be tightened, the cases re-graded, or the wedge published as-is with the asterisk explicit.

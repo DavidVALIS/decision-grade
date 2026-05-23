@@ -1,0 +1,483 @@
+{
+  "version": "1.0.0",
+  "created_at": "2026-05-22",
+  "wedges": {
+    "phantom_precision": [
+      {
+        "model_id": "claude-opus-4-7",
+        "wedge": "phantom_precision",
+        "roster_score": {
+          "macro_f1": 0.6336016096579473,
+          "model_id": "claude-opus-4-7",
+          "refusal_count": 3,
+          "refusal_rate": 0.006,
+          "scored_count": 497,
+          "total_count": 500
+        },
+        "outcome_counts": {
+          "error_rate_limit": 3,
+          "response": 497
+        }
+      },
+      {
+        "model_id": "gemini-3.1-pro-preview",
+        "wedge": "phantom_precision",
+        "roster_score": {
+          "macro_f1": 0.23625730994152025,
+          "model_id": "gemini-3.1-pro-preview",
+          "refusal_count": 272,
+          "refusal_rate": 0.544,
+          "scored_count": 228,
+          "total_count": 500
+        },
+        "outcome_counts": {
+          "partial_response": 272,
+          "response": 228
+        }
+      },
+      {
+        "model_id": "gpt-5.5-2026-04-23",
+        "wedge": "phantom_precision",
+        "roster_score": {
+          "macro_f1": 0.6482416329190523,
+          "model_id": "gpt-5.5-2026-04-23",
+          "refusal_count": 4,
+          "refusal_rate": 0.008,
+          "scored_count": 496,
+          "total_count": 500
+        },
+        "outcome_counts": {
+          "partial_response": 4,
+          "response": 496
+        }
+      }
+    ],
+    "mechanism_gap": [
+      {
+        "model_id": "claude-opus-4-7",
+        "wedge": "mechanism_gap",
+        "roster_score": {
+          "accuracy": 0.8174273858921162,
+          "f1_unsupported": 0.8466898954703833,
+          "fn": 0,
+          "fp": 88,
+          "malformed_count": 18,
+          "malformed_rate": 0.036,
+          "model_id": "claude-opus-4-7",
+          "precision_unsupported": 0.7341389728096677,
+          "recall_unsupported": 1.0,
+          "refusal_count": 0,
+          "refusal_rate": 0.0,
+          "scored_count": 482,
+          "tn": 151,
+          "total_count": 500,
+          "tp": 243
+        },
+        "outcome_counts": {
+          "error_rate_limit": 18,
+          "response": 482
+        }
+      },
+      {
+        "model_id": "gemini-3.1-pro-preview",
+        "wedge": "mechanism_gap",
+        "roster_score": {
+          "accuracy": 0.94,
+          "f1_unsupported": 0.9433962264150945,
+          "fn": 0,
+          "fp": 30,
+          "malformed_count": 0,
+          "malformed_rate": 0.0,
+          "model_id": "gemini-3.1-pro-preview",
+          "precision_unsupported": 0.8928571428571429,
+          "recall_unsupported": 1.0,
+          "refusal_count": 0,
+          "refusal_rate": 0.0,
+          "scored_count": 500,
+          "tn": 220,
+          "total_count": 500,
+          "tp": 250
+        },
+        "outcome_counts": {
+          "response": 500
+        }
+      },
+      {
+        "model_id": "gpt-5.5-2026-04-23",
+        "wedge": "mechanism_gap",
+        "roster_score": {
+          "accuracy": 0.966,
+          "f1_unsupported": 0.9671179883945841,
+          "fn": 0,
+          "fp": 17,
+          "malformed_count": 0,
+          "malformed_rate": 0.0,
+          "model_id": "gpt-5.5-2026-04-23",
+          "precision_unsupported": 0.9363295880149812,
+          "recall_unsupported": 1.0,
+          "refusal_count": 0,
+          "refusal_rate": 0.0,
+          "scored_count": 500,
+          "tn": 233,
+          "total_count": 500,
+          "tp": 250
+        },
+        "outcome_counts": {
+          "response": 500
+        }
+      }
+    ],
+    "falsifier_observability": [
+      {
+        "model_id": "claude-opus-4-7",
+        "wedge": "falsifier_observability",
+        "roster_score": {
+          "accuracy": 0.7404426559356136,
+          "f1_stated_unfalsifiable": 0.7929373996789727,
+          "fn": 0,
+          "fp": 129,
+          "malformed_count": 3,
+          "malformed_rate": 0.006,
+          "model_id": "claude-opus-4-7",
+          "precision_stated_unfalsifiable": 0.6569148936170213,
+          "recall_stated_unfalsifiable": 1.0,
+          "refusal_count": 0,
+          "refusal_rate": 0.0,
+          "scored_count": 497,
+          "tn": 121,
+          "total_count": 500,
+          "tp": 247
+        },
+        "outcome_counts": {
+          "error_other": 1,
+          "error_rate_limit": 2,
+          "response": 497
+        }
+      },
+      {
+        "model_id": "gemini-3.1-pro-preview",
+        "wedge": "falsifier_observability",
+        "roster_score": {
+          "accuracy": 0.81,
+          "f1_stated_unfalsifiable": 0.8397976391231028,
+          "fn": 1,
+          "fp": 94,
+          "malformed_count": 0,
+          "malformed_rate": 0.0,
+          "model_id": "gemini-3.1-pro-preview",
+          "precision_stated_unfalsifiable": 0.7259475218658892,
+          "recall_stated_unfalsifiable": 0.996,
+          "refusal_count": 0,
+          "refusal_rate": 0.0,
+          "scored_count": 500,
+          "tn": 156,
+          "total_count": 500,
+          "tp": 249
+        },
+        "outcome_counts": {
+          "response": 500
+        }
+      },
+      {
+        "model_id": "gpt-5.5-2026-04-23",
+        "wedge": "falsifier_observability",
+        "roster_score": {
+          "accuracy": 0.828,
+          "f1_stated_unfalsifiable": 0.8532423208191127,
+          "fn": 0,
+          "fp": 86,
+          "malformed_count": 0,
+          "malformed_rate": 0.0,
+          "model_id": "gpt-5.5-2026-04-23",
+          "precision_stated_unfalsifiable": 0.7440476190476191,
+          "recall_stated_unfalsifiable": 1.0,
+          "refusal_count": 0,
+          "refusal_rate": 0.0,
+          "scored_count": 500,
+          "tn": 164,
+          "total_count": 500,
+          "tp": 250
+        },
+        "outcome_counts": {
+          "response": 500
+        }
+      }
+    ],
+    "citation_faithfulness": [
+      {
+        "model_id": "claude-opus-4-7",
+        "wedge": "citation_faithfulness",
+        "roster_score": {
+          "accuracy": 0.8397565922920892,
+          "f1_unfaithful": 0.8616462346760071,
+          "fn": 0,
+          "fp": 79,
+          "malformed_count": 7,
+          "malformed_rate": 0.014,
+          "model_id": "claude-opus-4-7",
+          "precision_unfaithful": 0.7569230769230769,
+          "recall_unfaithful": 1.0,
+          "refusal_count": 0,
+          "refusal_rate": 0.0,
+          "scored_count": 493,
+          "subcategory_scores": [
+            {
+              "accuracy": 0.7864864864864864,
+              "f1_unfaithful": 0.7569230769230768,
+              "fn": 0,
+              "fp": 79,
+              "precision_unfaithful": 0.6089108910891089,
+              "recall_unfaithful": 1.0,
+              "scored_count": 370,
+              "subcategory": "unfaithful-contradictory",
+              "tn": 168,
+              "tp": 123
+            },
+            {
+              "accuracy": 0.7864864864864864,
+              "f1_unfaithful": 0.7569230769230768,
+              "fn": 0,
+              "fp": 79,
+              "precision_unfaithful": 0.6089108910891089,
+              "recall_unfaithful": 1.0,
+              "scored_count": 370,
+              "subcategory": "unfaithful-tangential",
+              "tn": 168,
+              "tp": 123
+            }
+          ],
+          "tn": 168,
+          "total_count": 500,
+          "tp": 246
+        },
+        "outcome_counts": {
+          "error_rate_limit": 7,
+          "response": 493
+        }
+      },
+      {
+        "model_id": "gemini-3.1-pro-preview",
+        "wedge": "citation_faithfulness",
+        "roster_score": {
+          "accuracy": 0.728,
+          "f1_unfaithful": 0.7861635220125786,
+          "fn": 0,
+          "fp": 136,
+          "malformed_count": 0,
+          "malformed_rate": 0.0,
+          "model_id": "gemini-3.1-pro-preview",
+          "precision_unfaithful": 0.6476683937823834,
+          "recall_unfaithful": 1.0,
+          "refusal_count": 0,
+          "refusal_rate": 0.0,
+          "scored_count": 500,
+          "subcategory_scores": [
+            {
+              "accuracy": 0.6382978723404256,
+              "f1_unfaithful": 0.6494845360824743,
+              "fn": 0,
+              "fp": 136,
+              "precision_unfaithful": 0.48091603053435117,
+              "recall_unfaithful": 1.0,
+              "scored_count": 376,
+              "subcategory": "unfaithful-contradictory",
+              "tn": 114,
+              "tp": 126
+            },
+            {
+              "accuracy": 0.6363636363636364,
+              "f1_unfaithful": 0.6458333333333334,
+              "fn": 0,
+              "fp": 136,
+              "precision_unfaithful": 0.47692307692307695,
+              "recall_unfaithful": 1.0,
+              "scored_count": 374,
+              "subcategory": "unfaithful-tangential",
+              "tn": 114,
+              "tp": 124
+            }
+          ],
+          "tn": 114,
+          "total_count": 500,
+          "tp": 250
+        },
+        "outcome_counts": {
+          "response": 500
+        }
+      },
+      {
+        "model_id": "gpt-5.5-2026-04-23",
+        "wedge": "citation_faithfulness",
+        "roster_score": {
+          "accuracy": 0.706,
+          "f1_unfaithful": 0.7727975270479134,
+          "fn": 0,
+          "fp": 147,
+          "malformed_count": 0,
+          "malformed_rate": 0.0,
+          "model_id": "gpt-5.5-2026-04-23",
+          "precision_unfaithful": 0.6297229219143576,
+          "recall_unfaithful": 1.0,
+          "refusal_count": 0,
+          "refusal_rate": 0.0,
+          "scored_count": 500,
+          "subcategory_scores": [
+            {
+              "accuracy": 0.6090425531914894,
+              "f1_unfaithful": 0.631578947368421,
+              "fn": 0,
+              "fp": 147,
+              "precision_unfaithful": 0.46153846153846156,
+              "recall_unfaithful": 1.0,
+              "scored_count": 376,
+              "subcategory": "unfaithful-contradictory",
+              "tn": 103,
+              "tp": 126
+            },
+            {
+              "accuracy": 0.606951871657754,
+              "f1_unfaithful": 0.6278481012658228,
+              "fn": 0,
+              "fp": 147,
+              "precision_unfaithful": 0.4575645756457565,
+              "recall_unfaithful": 1.0,
+              "scored_count": 374,
+              "subcategory": "unfaithful-tangential",
+              "tn": 103,
+              "tp": 124
+            }
+          ],
+          "tn": 103,
+          "total_count": 500,
+          "tp": 250
+        },
+        "outcome_counts": {
+          "response": 500
+        }
+      }
+    ],
+    "boundary_condition_omission": [
+      {
+        "model_id": "claude-opus-4-7",
+        "wedge": "boundary_condition_omission",
+        "roster_score": {
+          "distractor_match_rate": 0.0171898355754858,
+          "macro_f1": 0.4012300817002062,
+          "macro_precision": 0.33560285825285835,
+          "macro_recall": 0.5484333333333334,
+          "model_id": "claude-opus-4-7",
+          "refusal_count": 0,
+          "refusal_rate": 0.0,
+          "scored_count": 500,
+          "total_count": 500
+        },
+        "outcome_counts": {
+          "response": 500
+        }
+      },
+      {
+        "model_id": "gemini-3.1-pro-preview",
+        "wedge": "boundary_condition_omission",
+        "roster_score": {
+          "distractor_match_rate": 0.010071942446043165,
+          "macro_f1": 0.32349360283322576,
+          "macro_precision": 0.33186433063791565,
+          "macro_recall": 0.3384456424079067,
+          "model_id": "gemini-3.1-pro-preview",
+          "refusal_count": 235,
+          "refusal_rate": 0.47,
+          "scored_count": 265,
+          "total_count": 500
+        },
+        "outcome_counts": {
+          "error_other": 2,
+          "partial_response": 233,
+          "response": 265
+        }
+      },
+      {
+        "model_id": "gpt-5.5-2026-04-23",
+        "wedge": "boundary_condition_omission",
+        "roster_score": {
+          "distractor_match_rate": 0.02242152466367713,
+          "macro_f1": 0.32070718349692046,
+          "macro_precision": 0.24167558212304158,
+          "macro_recall": 0.5234333333333338,
+          "model_id": "gpt-5.5-2026-04-23",
+          "refusal_count": 0,
+          "refusal_rate": 0.0,
+          "scored_count": 500,
+          "total_count": 500
+        },
+        "outcome_counts": {
+          "response": 500
+        }
+      }
+    ],
+    "load_bearing_claim_identification": [
+      {
+        "model_id": "claude-opus-4-7",
+        "wedge": "load_bearing_claim_identification",
+        "roster_score": {
+          "macro_f1": 0.981081877374463,
+          "model_id": "claude-opus-4-7",
+          "refusal_count": 1,
+          "refusal_rate": 0.002,
+          "scored_count": 499,
+          "tier_1_macro_f1": 0.9903614457831326,
+          "tier_2_macro_f1": 0.9773618282654426,
+          "tier_3_macro_f1": 0.9755556486095406,
+          "tier_3_macro_precision": 1.0,
+          "tier_3_macro_recall": 0.9567151411462791,
+          "total_count": 500
+        },
+        "outcome_counts": {
+          "error_rate_limit": 1,
+          "response": 499
+        }
+      },
+      {
+        "model_id": "gemini-3.1-pro-preview",
+        "wedge": "load_bearing_claim_identification",
+        "roster_score": {
+          "macro_f1": 0.9231004124943527,
+          "model_id": "gemini-3.1-pro-preview",
+          "refusal_count": 104,
+          "refusal_rate": 0.208,
+          "scored_count": 396,
+          "tier_1_macro_f1": 0.9535353535353535,
+          "tier_2_macro_f1": 0.9209202199398275,
+          "tier_3_macro_f1": 0.8629953379953376,
+          "tier_3_macro_precision": 0.9615384615384616,
+          "tier_3_macro_recall": 0.7959706959706957,
+          "total_count": 500
+        },
+        "outcome_counts": {
+          "partial_response": 101,
+          "response": 399
+        }
+      },
+      {
+        "model_id": "gpt-5.5-2026-04-23",
+        "wedge": "load_bearing_claim_identification",
+        "roster_score": {
+          "macro_f1": 0.9866861812023107,
+          "model_id": "gpt-5.5-2026-04-23",
+          "refusal_count": 35,
+          "refusal_rate": 0.07,
+          "scored_count": 465,
+          "tier_1_macro_f1": 0.9927710843373495,
+          "tier_2_macro_f1": 0.9832589285714285,
+          "tier_3_macro_f1": 0.9833643574650766,
+          "tier_3_macro_precision": 1.0,
+          "tier_3_macro_recall": 0.9699212058924288,
+          "total_count": 500
+        },
+        "outcome_counts": {
+          "partial_response": 35,
+          "response": 465
+        }
+      }
+    ]
+  }
+}

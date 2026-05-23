@@ -1,0 +1,106 @@
+---
+title: 'Two of six.'
+description: 'Three frontier AI models. 3,000 questions. At a 95 percent accuracy bar, the best model cleared two tests. At 99 percent, none.'
+---
+
+## We gave three frontier models the same 3,000 questions
+
+500 questions on each of six tests. The questions were not trick questions. They were the questions a careful analyst asks before signing a memo. At a 95 percent accuracy bar, the best model in the world cleared two tests. Raise the bar to 99 percent and it cleared none.
+
+GPT-5.5, Claude Opus 4.7, and Gemini 3.1 Pro sat for the same exam. Six tests. Each one a thing a careful analyst does before signing off. Only two tests had any model clear 95 percent, and only one model cleared them. On the test for noticing what was missing from an analysis, the best score was 0.40. The worst was 0.32.
+
+<Note>
+  **What this is.** Six pre-registered evaluations of frontier reasoning models, anchored to a public transparency log before the models were called. Independent of any vendor. The methodology and the result both publish.
+</Note>
+
+## Why the bar matters
+
+Imagine a junior analyst who is right 90 percent of the time. Sounds great. Now imagine you have to check every memo they write, because you do not know which 10 percent is wrong. You are not faster. You are slower, and you are paying for both of you. That is what a sub-95 model does to a real workflow. At 95 percent, you can trust-but-verify on a sample. At 99 percent, you can let it run. Medical triage and sovereign strategy both need 99. Most enterprise AI is being sold at 90.
+
+## Six tests. What each one means.
+
+We ran six tests, each one targeting a different way an AI memo can be wrong. For each test you will see the best and worst model, a plain-English explanation, and three columns of consequence. One for the CEO signing the recommendation. One for the analyst writing it. One for the operator running thirty agents through the night.
+
+<CardGroup>
+  <Card title="The ER at 3 a.m." icon="building-shield">
+    An AI triage system reads the chart of a 64-year-old woman with chest pain. It cross-references her medication list and recommends a workup. The attending has nine other patients. She has eight seconds to decide whether to trust the recommendation.
+  </Card>
+  <Card title="A nation picks its decade" icon="compass">
+    A sovereign planning team runs analytical agents to choose which three industries to subsidize over the next ten years. The memo is 80 pages, cites 200 sources, and will move tens of billions of dollars. The prime minister reads the executive summary on Sunday night.
+  </Card>
+  <Card title="Thirty agents, no sleep" icon="briefcase">
+    A family office with $4 billion under management has thirty agents running 24/7. They produce decision-grade memos on private credit, geopolitical risk, counterparty exposure. The principal reads six a day. The other 174 inform positions taken without his eyes on them.
+  </Card>
+</CardGroup>
+
+<BenchmarkTestSection wedge="phantom_precision" name="Can it spot a fake number?">
+
+We hid a fabricated number inside otherwise sound business prose. Something like "the Brazilian medical device market grew 14.3 percent in 2024." The number is invented. Everything around it reads like a real consulting deck. The question for the model was simple. Find the lie. The best model in the world caught it two out of three times. The worst caught it one out of four.
+
+<BenchmarkExampleTable
+  ceo="Your CFO presents a board deck with twenty market-size numbers. The deck was drafted by an AI. At a 65 percent catch rate, seven of those numbers are hallucinated and nobody knows which seven. You make a capital allocation decision on the strength of the chart."
+  analyst="You spend your morning reading a 30-page AI-drafted brief. By lunch you realize one number does not match the source. Now you have to re-verify every other number in the document. The afternoon is gone. The brief was supposed to save you a day."
+  operator="Thirty agents produce 174 memos a week. At a 35 percent miss rate on planted numbers, you are quietly shipping roughly 60 memos a week with at least one invented figure each. The principal acts on a sample. The portfolio reflects the rest."
+/>
+</BenchmarkTestSection>
+
+<BenchmarkTestSection wedge="mechanism_gap" name='Does "because" actually mean because?'>
+
+The model reads a sentence like "Brazil will grow faster than Mexico because of demographic dividends." We ask, does the document actually present evidence for the demographic claim, or is it a naked assertion dressed up as a reason? This is the one test the best model nearly passed. Most claims with "because" in them are doing real work. A few are smuggling. The model can usually tell.
+
+<BenchmarkExampleTable
+  ceo='A strategy memo argues for entering a market because of consumer trends. The "because" is decorative. There is no underlying trend analysis. You greenlight a $200M expansion on what reads like reasoning but is closer to vibes.'
+  analyst='You inherit an AI-drafted research note where every claim has a "because" attached. About one in twenty of those becauses are empty. You either trust them all and ship a sloppy note, or check every one and lose your afternoon.'
+  operator='Across thirty agents, "because" appears thousands of times a day. The 3 percent miss rate at this test is your floor. Below 95, the floor falls out. Decisions get justified by reasoning that does not exist anywhere in the source material.'
+/>
+</BenchmarkTestSection>
+
+<BenchmarkTestSection wedge="falsifier_observability" name="Could this claim ever be proven wrong?">
+
+"Brazil's economy will be more resilient in 2027." What would have to happen for that to be wrong? If you cannot answer, the sentence is decorative, not analytical. We asked the models to tell falsifiable claims (testable) from unfalsifiable ones (slippery). The best model got it right 85 percent of the time. That sounds fine until you remember a memo has dozens of claims, and the unfalsifiable ones are exactly the ones that should be flagged.
+
+<BenchmarkExampleTable
+  ceo='The board recommendation is full of words like "resilient," "well-positioned," "structurally advantaged." None of those mean anything you can check in twelve months. You learn this only when the position blows up and there is no clear point of failure to debrief.'
+  analyst='Your edits get pushed back because the AI-drafted prose sounds polished. You know the sentences are weasel sentences but you cannot prove it fast enough in a meeting. The slippery claims stay in. The memo ships.'
+  operator='Thirty agents producing memos around the clock means a steady drift toward unfalsifiable prose. It is easier to write. It survives review. Over a year, your archive becomes unauditable. You cannot tell which past calls were right or wrong.'
+/>
+</BenchmarkTestSection>
+
+<BenchmarkTestSection wedge="citation_faithfulness" name="When it cites a source, does the source say that?">
+
+The AI cites a Reuters article to support a claim about Chinese export controls. You open the article. The article is real. The claim is not in it. Or worse, the article says the opposite. We tested whether the model can catch this gap when reviewing its own work. The best model caught it 86 percent of the time. The worst caught it 77. That means one in four to one in seven citations are doing nothing.
+
+<BenchmarkExampleTable
+  ceo="Your team gives you a memo with 40 footnotes. You feel reassured. You should not. Roughly six of those footnotes do not actually support the sentence they are attached to. The reassurance is the whole problem."
+  analyst="Defending a memo in a meeting, you cite source 17. The partner pulls up source 17. It says something else. You learn that AI-drafted citations require the same level of fact-checking you would do for a junior intern who had been drinking."
+  operator="Your thirty agents collectively produce thousands of citations a day. At a 77 percent fidelity rate, hundreds of citations a day point at sources that do not say what is claimed. Anyone who pulls the thread finds the same pattern across the archive."
+/>
+</BenchmarkTestSection>
+
+<BenchmarkTestSection wedge="boundary_condition_omission" name="Can it notice what is missing?">
+
+This is the test. A memo recommends a 30 percent allocation to Indian equities. The memo is articulate, well-sourced, internally consistent. It never mentions currency risk. We asked the models to spot the missing piece. The best model in the world scored 0.40. That is not a near-miss. That is a model that is genuinely good at evaluating what was said, and almost blind to what was not said. **The hard problem in AI is not lying. It is silence.**
+
+<BenchmarkExampleTable
+  ceo="You read a flawless brief on entering Vietnam. It does not mention that the local labor regulations make your unit economics impossible. The brief is not wrong. It is incomplete in exactly the way that costs you $80M and eighteen months. You learn the gap on the ground."
+  analyst="The AI produces a clean SWOT analysis. You ship it. Two weeks later in a partner meeting someone asks about a regulatory factor you never heard of. It was never in your sources. The AI did not flag it because the AI does not know what it does not know, and at 0.40 neither do you."
+  operator="Thirty agents producing decision-grade memos with a 40 percent ceiling on noticing omissions means the archive is, structurally, a record of partial pictures. Every position is taken on incomplete grounds. The principal cannot tell which gaps matter until one of them breaks something."
+/>
+</BenchmarkTestSection>
+
+<BenchmarkTestSection wedge="load_bearing_claim_identification" name="Which claim, if wrong, breaks the whole thing?">
+
+A 40-page recommendation rests on, at most, three or four claims. If any of them is false, the recommendation collapses. The other 200 claims are scaffolding. We asked the models to point at the load-bearing few. GPT-5.5 got it right almost every time. This is the one piece of good news in the report. The models are good at telling you what to double-check, if you ask.
+
+<BenchmarkExampleTable
+  ceo="You can ask the AI which three claims would have to be true for the recommendation to hold. You get a useful answer. You verify those three by hand. This is the closest thing in the report to a tool you can use today, on the condition that you use the right model."
+  analyst="Before sending a memo upstairs, you can ask the AI to identify the load-bearing claims and stress-test them. This is good practice and it works. With Gemini at 0.92, roughly one memo in twelve still has a load-bearing claim you missed."
+  operator="You can build a verification layer on top of thirty agents that asks each memo to surface its three most fragile claims and routes those for human review. This is real workflow value. At 0.99 it is reliable. At 0.92 you are auditing the auditor."
+/>
+</BenchmarkTestSection>
+
+## How the benchmark works
+
+Before any model is tested, we publish what we are going to do and how we will measure it. The published plan is signed and timestamped to a Bitcoin block. Anyone with a regular computer can verify nothing was changed after the fact.
+
+The anchored artifacts (manifests, signatures, OpenTimestamps proofs, raw cases) live at [github.com/valisbench/benchmarks](https://github.com/valisbench/benchmarks). The narrative you are reading is independent: it interprets, contextualises, and stakes the findings against a 95 percent decision-grade bar. The verification chain points at the bare evidence, not at the narrative.

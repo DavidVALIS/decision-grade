@@ -1,0 +1,38 @@
+---
+title: 'Could this claim ever be proven wrong?'
+description: 'Falsifier observability. 500 cases. Best model 0.85 F1. Models catch the unfalsifiable ones. They also flag the falsifiable-but-vague ones.'
+---
+
+"Brazil's economy will be more resilient in 2027." What would have to happen for that to be wrong? If you cannot answer, the sentence is decorative, not analytical. We asked the models to tell falsifiable claims (testable against reality) from unfalsifiable ones (slippery).
+
+<BenchmarkTestSection wedge="falsifier_observability" name="The numbers" scoreLine="F1 stated unfalsifiable · 500 cases · 3 models">
+
+GPT-5.5 gets it right 83 percent of the time. Gemini 3.1 Pro 81. Opus 4.7 74. F1 on the "stated unfalsifiable" label: 0.85 / 0.84 / 0.79.
+
+The wedge asks the model to read a claim and decide whether the claim could in principle be tested against reality. "Companies that prioritise customer experience grow faster" is unfalsifiable as written. "Companies with NPS above 50 grew revenue 12 percent YoY in 2024" is falsifiable. Models are asked to distinguish the two.
+
+All three pass the recall test. They almost never miss an unfalsifiable claim (recall 1.0, 1.0, 0.996). What they get wrong is in the other direction. They sometimes call a precise, falsifiable claim "unfalsifiable" too. Precision is the differentiator.
+
+Why this matters. A model deployed to flag "vague claims" in analysis would systematically over-flag falsifiable but imprecise prose. The model treats vagueness and unfalsifiability as the same thing. They are not.
+
+</BenchmarkTestSection>
+
+## What "below 95 percent" actually means
+
+<BenchmarkExampleTable
+  ceo='The board recommendation is full of words like "resilient," "well-positioned," "structurally advantaged." None of those mean anything you can check in twelve months. You learn this only when the position blows up and there is no clear point of failure to debrief.'
+  analyst='Your edits get pushed back because the AI-drafted prose sounds polished. You know the sentences are weasel sentences but you cannot prove it fast enough in a meeting. The slippery claims stay in. The memo ships.'
+  operator='Thirty agents producing memos around the clock means a steady drift toward unfalsifiable prose. It is easier to write. It survives review. Over a year, your archive becomes unauditable. You cannot tell which past calls were right or wrong.'
+/>
+
+## What would falsify this finding
+
+A model that hits 0.95 F1 here while maintaining precision above 0.85. The current frontier sits closer to 0.79 precision on the unfalsifiable label even when recall is maximal.
+
+## Anchored artifacts
+
+- [manifest.yaml](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/falsifier_observability/manifest.yaml)
+- [manifest.bundle.json](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/falsifier_observability/manifest.bundle.json)
+- [manifest.yaml.ots](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/falsifier_observability/manifest.yaml.ots)
+- [cases.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/falsifier_observability/cases.jsonl)
+- [results.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/falsifier_observability/results.jsonl)

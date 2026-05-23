@@ -1,0 +1,40 @@
+---
+title: 'Does "because" actually mean because?'
+description: 'Mechanism gap. 500 cases. Best model 0.97 F1. The one test the best model nearly passed.'
+---
+
+The model reads a sentence like "Brazil will grow faster than Mexico because of demographic dividends." Then we ask: does the document actually present evidence for the demographic claim, or is it a naked assertion dressed up as a reason?
+
+<BenchmarkTestSection wedge="mechanism_gap" name="The numbers" scoreLine="F1 unsupported · 500 cases · 3 models">
+
+All three frontier models identify when "X because Y" is asserted rather than supported. GPT-5.5 F1 on the unsupported label is 0.97. Gemini 3.1 Pro is 0.94. Claude Opus 4.7 is 0.85.
+
+This is a high ceiling. At 500 cases, mechanism gap is the easy wedge. Models can tell a mechanistic claim from a decorative one with high accuracy.
+
+The Opus number is the outlier worth flagging. 18 of 500 calls returned `error_rate_limit` on Opus, against 0 for the other two providers. That attrition is the difference between Opus's 0.85 F1 and the 0.94-0.97 the other two reach. With those 18 cases scored instead of dropped, Opus's number lands in the same neighborhood.
+
+</BenchmarkTestSection>
+
+## What "below 95 percent" actually means
+
+<BenchmarkExampleTable
+  ceo='A strategy memo argues for entering a market because of consumer trends. The "because" is decorative. There is no underlying trend analysis. You greenlight a $200M expansion on what reads like reasoning but is closer to vibes.'
+  analyst='You inherit an AI-drafted research note where every claim has a "because" attached. About one in twenty of those becauses are empty. You either trust them all and ship a sloppy note, or check every one and lose your afternoon.'
+  operator='Across thirty agents, "because" appears thousands of times a day. The 3 percent miss rate at this test is your floor. Below 95, the floor falls out. Decisions get justified by reasoning that does not exist anywhere in the source material.'
+/>
+
+## What this finding does not measure
+
+Whether the model would catch mechanism gaps in real prose where the structure is implicit. The v1.0.0 cases are explicit "X because Y" sentences. A model that can detect Y-is-unsupported in a one-sentence test may still miss it when the claim is embedded in a paragraph of competent-sounding analysis. v1.1 will test this.
+
+## What would falsify this finding
+
+A frontier model that drops below 0.80 F1 on the unsupported label here. No published model has.
+
+## Anchored artifacts
+
+- [manifest.yaml](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/mechanism_gap/manifest.yaml)
+- [manifest.bundle.json](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/mechanism_gap/manifest.bundle.json)
+- [manifest.yaml.ots](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/mechanism_gap/manifest.yaml.ots)
+- [cases.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/mechanism_gap/cases.jsonl)
+- [results.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/mechanism_gap/results.jsonl)
