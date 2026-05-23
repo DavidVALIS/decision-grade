@@ -1,0 +1,55 @@
+name: deploy
+
+# Cloudflare Pages production deploy via Wrangler. Replaces the previous
+# Cloudflare-GitHub-App auto-deploy, which stopped triggering when 2FA
+# was enforced and the OAuth integration could not refresh. This path
+# uses a scoped Cloudflare API token stored as a repo secret, so it is
+# unaffected by GitHub OAuth state.
+#
+# Requirements (set once):
+#   - CLOUDFLARE_API_TOKEN -- token with Account.Cloudflare Pages: Edit
+#                             and Account.Account Settings: Read scopes
+#   - CLOUDFLARE_ACCOUNT_ID -- the account ID containing the
+#                              `decision-grade` Pages project
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static site
+        # Invokes `next build` plus the prebuild hooks
+        # (sync-public + build-search-index). Output lands in `out/`.
+        run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy out --project-name=decision-grade --branch=main --commit-dirty=true
