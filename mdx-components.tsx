@@ -22,6 +22,7 @@ import {
 import { BenchmarkAnchoringEvidence } from '@/components/mdx/BenchmarkAnchoringEvidence';
 import { BenchmarkMethodologyDisclosure } from '@/components/mdx/BenchmarkMethodologyDisclosure';
 import { BenchmarkTestSection } from '@/components/mdx/BenchmarkTestSection';
+import { BenchmarkResultsGrid } from '@/components/mdx/BenchmarkResultsGrid';
 
 function slugify(text: string): string {
   return text
@@ -104,6 +105,7 @@ export function useMDXComponents(components: Record<string, unknown> = {}) {
     BenchmarkAnchoringEvidence,
     BenchmarkMethodologyDisclosure,
     BenchmarkTestSection,
+    BenchmarkResultsGrid,
     Frame: ({ children }: { children: ReactNode }) => (
       <div className="dg-card" style={{ padding: 20, margin: '24px 0' }}>
         {children}
