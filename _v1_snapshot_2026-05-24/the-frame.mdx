@@ -1,0 +1,248 @@
+---
+title: 'The Frame'
+description: 'What the problem with AI in 2026 actually is, and why your current controls do not catch it.'
+---
+
+The risk has moved. Last year's question was whether AI would make things up. This year's question is what to do when it doesn't.
+
+This page is the diagnosis. Where the failure now lives, what your current controls miss, and why the pattern is one your industry has seen before.
+
+<Note>
+  **In short:** Most executive AI guidance is scoped to the wrong problem. Hallucinations are detectable. The real risk has moved one layer down, to output that reads cleanly, fact-checks, and still reasons badly.
+</Note>
+
+## Most executive AI guidance is solving last year's problem
+
+The questions executives are asking about AI in 2026 are the questions that mattered in 2025. They were the right questions then. They are the wrong questions now.
+
+<CardGroup cols={2}>
+  <Card title="What current controls catch" icon="circle-check">
+    - Hallucinations
+    - Broken citations
+    - Undisclosed AI use
+    - Lack of human review
+    - Missing AI policy
+  </Card>
+
+  <Card title="Missing in current controls" icon="circle-xmark">
+    - Independent grounding of causal claims
+    - Pre-conclusion commitment to assumptions
+    - Observable falsifiers, not just stated ones
+    - Consistent rubric application across outputs
+    - Tamper-evident anchoring of reasoning
+  </Card>
+</CardGroup>
+
+Every item on the right requires structure well beyond a single LLM call. [The Doctrine](/the-doctrine) sets out what that structure looks like. Before that: five plain examples of what the right-hand column actually means in a deliverable.
+<AccordionGroup>
+  <Accordion title="Independent grounding of the causal claim">
+    A report says retention rose 15% because of the new onboarding flow. The "because" is the load-bearing part. Without a comparison to similar companies that didn't change onboarding, the rise could just as easily be from a market shift, a price change, or the three other things the same team fixed that quarter.
+  </Accordion>
+
+  <Accordion title="Pre-conclusion commitment to assumptions">
+    An investment thesis that says "I'll buy if Q3 revenue holds above $20M" commits to a test before the answer is known. A thesis that explains the same buy afterward with "we always knew revenue would hold" cannot fail, and therefore cannot succeed either.
+  </Accordion>
+
+  <Accordion title="Observable falsifiers, not just stated ones">
+    "Our strategy will fail if market conditions deteriorate" sounds careful but is unfalsifiable. Conditions always shift in some direction. "Our strategy fails if Q4 year-over-year retention drops below 80%" is observable: a number, a calendar, a yes-or-no answer.
+  </Accordion>
+
+  <Accordion title="Consistent rubric application across outputs">
+    Two strategy briefs both labeled "decision-grade" land on the CEO's desk. One had five claims flagged as unsupported during review. The other had none flagged because the reviewer that day was tired. Without a published, mechanically-applied rubric, "decision-grade" is a label, not a grade.
+  </Accordion>
+
+  <Accordion title="Tamper-evident anchoring of reasoning">
+    A signed, dated note in a doctor's paper chart can be challenged or supported years later. A shared document anyone with edit access can rewrite cannot, because the "original" is always whatever the latest version says. Reasoning that lives in revisable files has no protection against quiet edits after a conclusion turns out wrong.
+  </Accordion>
+</AccordionGroup>
+
+
+Those are the mechanisms verification provides. Here is what their absence looks like.
+
+The hard cases are not the obvious ones. Pro-tier models already cite everything. The failure mode that survives 2025 controls is output whose citations check out and whose reasoning still does not.
+
+Five examples follow. Each is a paragraph a McKinsey, BCG, or Gartner-shaped reader would nod through. Each is built around real, verifiable citations. Each fails at the structural-reasoning layer.
+
+<AccordionGroup>
+  <Accordion title="1. Selection-defined population (survivorship bias)">
+    *"Across the mid-market firms that have meaningfully integrated AI into their research workflows, time-to-insight has compressed by 30 to 50 percent without measurable loss of analytical quality. Organizations with mature governance frameworks have been disproportionate capturers of this efficiency, and the trajectory suggests the gap between AI-mature and AI-immature firms will widen through 2027."*
+
+    Citations: real productivity study, real governance-performance correlation, real industry forecast. All three describe what they claim to describe.
+
+    **Why it fails:** "Mid-market firms that have meaningfully integrated AI" is a survivor-defined population. The studies describe organizations that already succeeded; the conclusion generalizes the pattern to organizations contemplating the move. The selection rule does the load-bearing work. It is the same shape as "among hedge funds that survived 2008, conservative balance sheets outperformed." Both citations real. Guidance for anyone not already a survivor: useless.
+  </Accordion>
+
+  <Accordion title="2. Mechanism substitution (citation supports X, conclusion asserts Y)">
+    *"Deploying AI-assisted research across the analyst function reduces time-to-first-draft by 40 to 60 percent, freeing senior capacity for the higher-judgment work that drives strategic differentiation. Firms that have made the transition report sustained gains in client-facing throughput and improved analyst retention."*
+
+    Citations: four sources, all real, each describing exactly what it claims.
+
+    **Why it fails:** The citations measure time saved on drafts. The conclusion asserts the freed time goes to judgment. The source does not say where the freed time actually goes. Existing literature on professional time use (in law, consulting, equity research) suggests freed capacity gets absorbed by more clients, more deliverables, or earlier deadlines, not by more deliberation. The citation supports the first claim. The inferential step to the second is unsupported and, in the source as cited, unsourceable.
+  </Accordion>
+
+  <Accordion title="3. Aggregation across incomparable populations">
+    *"Controlled studies show AI coding assistants deliver a 55 percent acceleration in routine engineering tasks. Applying analogous tooling to the strategy function should produce comparable efficiency gains, particularly in the standardized components of analytical work: research synthesis, competitive review, and first-pass scenario construction."*
+
+    Citations: real randomized trial, real productivity literature.
+
+    **Why it fails:** The 55 percent is observed on a specific population. Developers writing boilerplate against well-typed APIs with deterministic test suites. Strategic research synthesis has no ground truth, no test harness, no structural type checking. The number is correct for its population. The analogical move to strategy is the unsupported step, and no citation can fix it, because the failure is in the inference, not the evidence.
+  </Accordion>
+
+  <Accordion title="4. Reverse causation (arrow read backward)">
+    *"Organizations with mature AI governance frameworks consistently outperform their less-prepared peers on AI-driven productivity metrics. Formalizing your governance practice is therefore one of the strongest moves available to a CIO planning AI deployment over the next eighteen months."*
+
+    Citations: real cross-sectional study, real industry advisory.
+
+    **Why it fails:** The studied organizations did not become good at AI because they had governance. They had governance because they were already well-resourced organizations capable of building anything they chose to build, including governance. The correlation is real. The implied causal direction is not established by the citation. A reader installing governance expecting the outperformance to follow is reading the arrow backward.
+  </Accordion>
+
+  <Accordion title="5. Trend extrapolation past the data">
+    *"Frontier model capability has roughly doubled every six months over the past three years. Inference cost has fallen by an order of magnitude annually over the same window. On the current trajectory, analytical workflows that today require senior judgment will be addressable by frontier models within eighteen to twenty-four months, which materially changes the case for investing in specialized analyst headcount over the planning horizon."*
+
+    Citations: three real sources, all describing observed trends accurately.
+
+    **Why it fails:** The citations describe the regime up to a point in time. The conclusion projects through the planning horizon. Whether the trend continues is the load-bearing assumption, and it sits in none of the citations. The argument depends entirely on an extrapolation the cited evidence does not itself vouch for. The same structural argument supported SaaS multiples in 2021. The trajectory was real until it wasn't.
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  **One shared property across all five.**
+
+  The citations were never the missing thing. Adding more of them does not address what is broken. What is broken is the inference from cited evidence to claimed conclusion.
+
+  A fact-checker confirms the citations. A reasoning-checker, if one existed in the workflow, would notice that the citations measure one thing and the conclusion asserts another. The fact-checker exists at every major firm. The reasoning-checker does not.
+
+  This is the failure no 2025 control was designed to surface, and the failure no Pro-tier "more citations" upgrade closes.
+</Note>
+
+## The verification deficit, in one comparison
+
+AI is in your analytical pipeline somewhere, accelerating throughput at one or more upstream steps. The token-level production cost collapsed by orders of magnitude. The all-in production cost, including the human prompting, editing, and integration that real analytical work still requires, fell by a more modest multiple. Either lens tells the same story: more analytical artifacts move through any given reviewer than was possible two years ago.
+
+| Cost layer | 2020 | 2026 | Change |
+|---|---|---|---|
+| **Producing 1,000 words at the token layer** | $5 to $15 (mid-career analyst time) | $0.001 to $0.02 (mainstream model API) | 250x to 15,000x cheaper |
+| **Producing 1,000 words all-in (with human prompting, editing, integration)** | $5 to $15 | $0.50 to $3 | ~5x to 20x cheaper |
+| **Verifying the structural reasoning underneath** | Hours of expert review, plus access to source data | Hours of expert review, plus access to source data, partially augmented by automated checks | Mostly unchanged at the structural layer |
+
+The token-level ratio is the headline. The all-in ratio is what shows up in throughput. Both matter for the diagnosis.
+
+<Stat
+  value="90–100%"
+  label="Frontier LLM failure rate on differential diagnosis across 21 models. The same models, given complete patient information, arrive at correct final diagnoses more than 90 percent of the time. The early-stage reasoning is where the failure lives."
+  source="Mass General Brigham · JAMA Network Open · April 2026 · See the Evidence Base"
+  href="/evidence"
+  size="md"
+/>
+
+### The counterthesis worth engaging
+
+The same technology that collapsed production cost is also collapsing some verification cost. Retrieval-augmented fact-checking, automated citation tracing, internal consistency checks, multi-model adjudication. None of these existed at scale in 2023. If verification is getting cheaper at the same rate as generation, the gap closes endogenously and the framework's premise weakens.
+
+Where the counterthesis holds: the fact-checking layer. Hallucination detection, citation grounding, internal consistency. These are getting cheaper. Some of this framework's own architectural commitments (independent verification across model families) ride on that improvement.
+
+Where it does not hold: the structural-reasoning layer. Verifying that a causal claim has real grounding, that an assumption was committed to before the conclusion, that a falsifier is observable, that a rubric was applied consistently. These require human expertise and judgment that does not scale at the same rate. The bottleneck migrates upward in the verification stack rather than closing. That migration is the operational risk this framework is built around.
+
+### The outcome at the reviewer's desk
+
+The scarce resource is no longer the analyst who writes. It is the reviewer who catches what the writing assumes.
+
+<Steps>
+  <Step title="Throughput rose because the upstream work got faster">
+    Research, summarization, and first-draft generation that took days now take hours. The deliverable does not have to be AI-generated for AI to be accelerating the pipeline behind it.
+  </Step>
+  <Step title="Review capacity has stayed flat">
+    Reviewer headcount, meeting time, and domain access did not scale at the same rate. The slow checks were the first thing cut under throughput pressure.
+  </Step>
+  <Step title="Unverified claims circulate at materially higher volume">
+    The probability that any specific output contains an unverified load-bearing claim has not fallen with the cost. It has risen with the volume.
+  </Step>
+</Steps>
+
+The verification deficit was always there. AI did not create it. AI revealed it. Before AI, the speed of human production limited the rate at which unverified claims could circulate. That speed limit was not a filter. It was a throttle. 
+
+AI removed the throttle. The deficit became visible.
+
+<Note>
+  **The verification deficit was always there.**
+
+  In 2015, the [Open Science Collaboration](https://doi.org/10.1126/science.aac4716) tried to replicate 100 peer-reviewed psychology findings. Only a third of them replicated.
+
+  Before AI. Before models could draft. Before any of the production-cost collapse this framework describes.
+
+  AI did not create the deficit. AI made it harder to ignore.
+</Note>
+
+## Why your existing controls do not catch it
+
+The diagnosis is not that one thing is broken. It is that several things compound.
+
+Cheap analysis floods the queue. Review gates check style and coherence, not structural validity. Analysts are rewarded for speed to briefing, not for forecast accuracy. Clients never see the claim-source map behind the polished deliverable. Opacity hides damage; incentives intensify; more cheap analysis floods in, faster. The loop closes on itself.
+
+Review systems formalize prose, presentation, and process, not structural-reasoning checks. That asymmetry is why disclosure and review regimes do not close the gap.
+
+When analysts are publicly named and legally exposed, the rules themselves push toward hedged language. [FINRA Rule 2241](https://www.finra.org/rules-guidance/rulebooks/finra-rules/2241), which governs U.S. equity research analysts, is a representative example: hedged language survives legal review, keeps the client comfortable, and cannot be demonstrated to be wrong. The system selects for prose that sounds authoritative while committing to nothing testable.
+
+Even the most disciplined formalized verification systems are partial. The U.S. intelligence community's Structured Analytic Techniques, codified in the [CIA Tradecraft Primer](https://www.cia.gov/resources/csi/static/Tradecraft-Primer-apr09.pdf) and [ICD 203](https://www.dni.gov/files/documents/ICD/ICD-203.pdf), force analysts to surface assumptions through explicit protocols. Recent scholarship questions whether these techniques reliably eliminate reasoning errors in field conditions. If the most rigorous formalized verification system in the world is partial, a checkbox disclosure regime cannot close the structural gap.
+
+## The pattern has played out before
+
+Cheap production. Unchanged review processes. Proxy-based trust. The architecture is not new. It produced the largest single financial collapse of the post-war era.
+
+| | 2000-2008 credit ratings | 2026 AI-augmented analysis |
+|---|---|---|
+| **Cheap production** | Quantitative models scoring securities faster than any human team | LLMs drafting 1,000 words for less than one cent |
+| **Unchanged review** | Methodology documents and a century-old brand | Style guides, fact-checkers, disclosure labels |
+| **Trust proxy** | AAA stamp | Polished prose |
+| **Volume** | ~30 mortgage securities rated triple-A every working day in 2006 | Unbounded |
+| **Visible until failure** | No | No |
+| **Cost when it failed** | Trillions | TBD |
+
+(Financial Crisis Inquiry Commission, [*The Financial Crisis Inquiry Report*](https://www.govinfo.gov/content/pkg/GPO-FCIC/pdf/GPO-FCIC.pdf), 2011, Chapter 7.)
+
+
+The mechanism that produced the failure is the same mechanism operating in analytical content now:
+
+1. Direct verification is expensive so market adopts a proxy
+2. Proxy correlates with quality at low production volume, so production volume surges
+3. Correlation breaks, and market does not notice until failure event
+
+The fix in adjacent domains has been consistent. When failure becomes visible enough, buyers demand proof artifacts.
+
+<Note>
+  **How the correction arrives, in adjacent domains:**
+
+  - **2008 banking** → U.S. regulators required institutions to validate every material model assumption ([SR 11-7](https://www.federalreserve.gov/boarddocs/srletters/2011/sr1107.htm), 2011; updated by SR 26-2 in 2026).
+  - **Cybersecurity procurement** → vendors moved from self-reported compliance to penetration-test evidence and SOC 2 attestations. The 2026 SOC 2 criteria emphasize continuous risk assessment and earlier security artifacts in procurement.
+  - **ESG reporting** → in the middle of the same shift right now.
+
+  The pattern: when the cost of being wrong exceeds the cost of demanding proof, buyers force the correction.
+</Note>
+
+The analogy has limits worth naming. Credit ratings carried regulatory force and directly triggered capital requirements; the 2008 cascade required leverage, fire-sale dynamics, and correlated mass holdings. A consulting deck does not trigger margin calls. The structural mechanism, however, is identical: proxy-based trust substitutes for verification, and the substitution is invisible until it fails.
+
+What is the analogue to the margin call for analytical content? Three candidates, none of them as fast or as systemic as 2008, all of them capable of producing the same effect over months rather than days:
+
+- **Regulatory enforcement** when an AI-augmented analysis underpins a regulated decision and turns out wrong. The SEC, FDA, financial regulators, and analogous bodies have authority over specific decision categories where unverified reasoning would expose the regulated entity directly.
+- **Litigation exposure** when a board, fiduciary, or counterparty acted on AI-augmented analysis that turns out to have hidden assumptions or missing premises. Discovery will reach for the reasoning chain. Tamper-evident reasoning is defensible; revisable Google Docs are not.
+- **Public failure events** that trigger buyer flight. The cybersecurity industry repriced trust in proxies after SolarWinds. The verification-of-analysis market will reprice trust in proxies after the first comparable disclosure.
+
+The cascade is slower than 2008. The structural mechanism is identical. The framework predicts the repricing arrives within eighteen months of the first widely-reported failure event.
+
+The rest of the site is built on that pattern. What proof artifacts look like for analytical content. What posture survives contact with the failure modes above. What to ask of the systems and vendors you already depend on.
+
+## Where this goes next
+
+<CardGroup cols={3}>
+  <Card title="The Evidence Base" icon="chart-line" href="/evidence">
+    The empirical case. Seven anchor sources with named primary citations. Measured AI error rates as of May 2026.
+  </Card>
+
+  <Card title="The Doctrine" icon="shield" href="/the-doctrine">
+    Zero Trust as the meta-principle. The three layers (Independence, Doctrine, Accountability) and what they rule out.
+  </Card>
+
+  <Card title="The Buyer's Checklist" icon="list-check" href="/buyers-checklist">
+    Seven procurement questions to put to any AI verification vendor. Red flags, scoring, the buyer's lever.
+  </Card>
+</CardGroup>

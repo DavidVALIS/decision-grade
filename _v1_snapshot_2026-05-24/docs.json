@@ -1,0 +1,54 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Decision-Grade AI",
+  "description": "A framework for executives working with AI in 2026. Decision-grade analysis, Zero Trust verification, and what to demand from your AI vendors.",
+  "colors": {
+    "primary": "#E79583",
+    "light": "#efe9dc",
+    "dark": "#0c0b09"
+  },
+  "appearance": {
+    "default": "dark",
+    "strict": false
+  },
+  "background": {
+    "color": {
+      "dark": "#0c0b09",
+      "light": "#efe9dc"
+    }
+  },
+  "fonts": {
+    "heading": {
+      "family": "Cormorant Garamond",
+      "weight": 300,
+      "source": "google"
+    },
+    "body": {
+      "family": "Instrument Sans",
+      "weight": 400,
+      "source": "google"
+    }
+  },
+  "styling": {
+    "eyebrows": "section",
+    "codeblocks": "dark"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Framework",
+        "pages": ["introduction", "the-frame", "evidence", "the-doctrine", "buyers-checklist", "lane-discipline", "watchlist"]
+      },
+      {
+        "tab": "About",
+        "pages": ["about"]
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/DavidVALIS/decision-grade"
+    }
+  }
+}
