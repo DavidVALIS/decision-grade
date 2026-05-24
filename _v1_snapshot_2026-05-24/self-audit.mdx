@@ -1,0 +1,102 @@
+---
+title: 'Self-Audit'
+description: 'A structural verification of the doctrine, run by VALIS. Summary of what the audit found, what the doctrine changed in response, and what is still open.'
+---
+
+The doctrine on this site argues that decision-grade work must be auditable, contestable, and evidence-bound. The same standard applies to the doctrine itself.
+
+This page summarises a structural verification run by VALIS, the system whose architecture the doctrine describes. The conflict of interest is plain: the analyzer is the publisher. Three things are done to hold that conflict at arm&apos;s length. The findings are reproduced rather than summarised away. Where the audit pressured a load-bearing claim, the doctrine has been revised; the revision is named, not implied. Where the audit found a gap that has not been closed, the gap is still listed below.
+
+## How the audit scored the doctrine
+
+<StatRow cols={2}>
+  <Stat
+    value="DG-C"
+    label="Decision Grade. Structurally Sound, Certified. The argument holds; the evidence backing each step is acceptable for an operational read but does not yet reach the Research-Grade (DG-B) band."
+    size="md"
+  />
+  <Stat
+    value="85 / 100"
+    label="Thesis Readiness Score. Composite measure across structural rigor, empirical grounding, and gate certification. Sits in the Decision-Ready zone (above 76) on the readiness scale."
+    size="md"
+  />
+  <Stat
+    value="95"
+    label="Structural Rigor. How well the argument is built. Up from 75 in the prior run, on tightened mechanism specificity and coverage of boundary conditions."
+    size="md"
+  />
+  <Stat
+    value="91.2"
+    label="Empirical Grounding. How well claims are supported by evidence. Up from 70, on the post-gate citation set and consistent application of verified sources across the analysis."
+    size="md"
+  />
+</StatRow>
+
+The honest read on these numbers: the doctrine is Structurally Sound and Certified at DG-C. The argument is well-built and the evidence is consistently applied. What holds it below Research-Grade is the depth of independent corroboration on specific load-bearing mechanisms, not a gap in the reasoning. Treat the strategic direction as reliable. Treat the specific mechanisms as provisional until operators generate their own performance data.
+
+<Note>
+  **What the score does not say.** A DG-C grade does not mean the doctrine is wrong. It means the document earned the Structurally Sound band: the argument holds, but the depth of evidence behind specific causal claims is not yet at the Research-Grade (DG-B) bar. The remedy is comparative evidence from real workflows, not a stronger tone.
+</Note>
+
+## What the audit pressured, and what changed
+
+The audit ran two structural pressure tests against load-bearing claims and surfaced four importance-5 gaps. Where the doctrine had a defensible response, the doctrine was revised before this page shipped. Each item below names what the audit pressured and where the response sits on the site.
+
+<AccordionGroup>
+  <Accordion title="The 90-day window is a control-start gate, not a maturity deadline">
+    **What the audit pressured.** The doctrine treated the first 90 days after AI-assisted drafting adoption as a hard window. The audit found this was a soft heuristic rather than a structural constraint. The decisive variables in quarter-one outcomes are written delegated authority for the sponsor and launch exposure, not the calendar.
+
+    **What the doctrine changed.** The Watchlist now opens the 90-day section with [A soft heuristic, not a structural law](/watchlist/#a-soft-heuristic-not-a-structural-law): the window is a control-start deadline, not a maturity claim. Explicit conditions that compress and extend the window are named, with the OMB M-24-10 eight-month government rollout as a federal benchmark for scale. The 90-day language survives, scoped to a release gate on one named workflow class rather than enterprise-wide maturity.
+  </Accordion>
+
+  <Accordion title="Inline verification friction can route high-stakes work off-path">
+    **What the audit pressured.** The doctrine prescribed inline release checkpoints for high-stakes documents. The audit found a recurring retrofit failure pattern: verification inserted inline, the compliant lane becoming slower than the informal one, users routing around it, telemetry thinning out. Time-pressured work (board prep, crisis response, regulatory deadlines) defected first.
+
+    **What the doctrine changed.** Lane Discipline now lists [the inline-friction revolt](/lane-discipline/#four-ways-lane-discipline-fails) as a named failure mode with the explicit fix: the auditable exception path must be faster than the unsanctioned workaround. The Watchlist adds *Inline Friction Revolt* to the [internal scenario signals](/watchlist/#internal-scenario-signals) you instrument inside your own pipeline, with override request rate and the share of decision-grade work reaching the decision-maker via non-lane paths as the metrics to track.
+  </Accordion>
+
+  <Accordion title="The doctrine did not specify how proof artifacts work in privileged or regulated contexts">
+    **What the audit pressured.** Public-chain commitments, refusal logs, source hashes, and customer-auditable certificates leak metadata that the underlying analysis is meant to keep confidential. Privileged legal advice, M&A strategy, export-controlled data, PHI/PII, and confidential board material were exactly the contexts where the decision-grade lane is most consequential, and exactly the contexts the doctrine did not engineer for.
+
+    **What the doctrine changed.** The Doctrine adds [The confidentiality boundary](/the-doctrine/#the-confidentiality-boundary) with three boundary modifications. Public commitments shift to customer-controlled transparency logs with selective disclosure. Source-document hash binding requires key segregation from certificates that travel outside the boundary. Immutable logs scope to verification decisions rather than deliberative content, with retention and discoverability designed before any sensitive workflow enters the lane. The Buyer&apos;s Checklist Q3 adds a [confidentiality note](/buyers-checklist/#3-cryptographic-anchoring-of-decisions) so the question lands in vendor evaluations.
+  </Accordion>
+
+  <Accordion title="The doctrine&apos;s own proof artifacts will be gamed once they become targets">
+    **What the audit pressured.** The doctrine asks for assumption registers, claim-source maps, refusal logs, rubric hashes, and deterministic gates. Once those artifacts matter, they get gamed. Low-quality sources attached to claims, non-load-bearing assumptions listed while real ones stay hidden, rubrics optimised for passing, decision-grade labels earned through paperwork rather than reasoning.
+
+    **What the doctrine changed.** The Doctrine adds [Proof artifacts become targets](/the-doctrine/#proof-artifacts-become-targets) with four anti-gaming measures: citation quality auditing at the claim-to-source level, assumption load-bearingness sampling, rubric stability testing against known-hard cases, and refusal log completeness audited by an entity independent of the one producing the log. The core posture is named openly: the architecture cannot eliminate the gaming incentive, but it can make the gaming visible.
+  </Accordion>
+</AccordionGroup>
+
+The audit also pressured the doctrine&apos;s scenario set. The original six-scenario taxonomy has since been restructured into five market trajectories plus three internal scenario signals, both on the [Watchlist](/watchlist/). The current set is the scenario set; the page above describes how the analysis arrived at it.
+
+## Where the doctrine is still weakest
+
+Two of the four highest-importance gaps remain open at the time of this page. They are listed plainly because the doctrine&apos;s posture is to surface gaps, not conceal them.
+
+<CardGroup cols={2}>
+  <Card title="No costed operating model" icon="weight-scale">
+    The doctrine quantifies falling generation cost but does not quantify the cost, latency, staffing, or engineering burden of running a multi-family verification stack: two-plus model families, adjudication, supervisor sign-off, quarterly audits, refusal-log review, and external anchoring. Without a costed operating model, executives cannot tell whether the advice is feasible for a mid-market strategy team, a consulting firm, or a regulated enterprise. The framework needs reference architectures with baseline headcount, review-minutes per artifact, added cycle time, and break-even points against simpler controls.
+  </Card>
+  <Card title="No comparative empirical evidence" icon="scale-balanced">
+    The doctrine treats multi-family verification, deterministic gates, and cryptographic anchoring as near-constitutional requirements. It does not compare them against domain-specific validators, sampled expert review, calibrated uncertainty reporting, or ordinary audit trails on real analytical outputs. The Buyer&apos;s Checklist now acknowledges that its [score bands are provisional](/buyers-checklist/#how-to-score-a-vendor) and not calibrated against measured verification quality, and the Watchlist names what a [sampling protocol](/watchlist/#a-frank-acknowledgment) for the underlying falsifier would look like. Neither of those closes the gap. Head-to-head evaluations on real memo, research, and board-pack workflows are still owed.
+  </Card>
+</CardGroup>
+
+The audit surfaced eight further gaps below importance-5 that are not reproduced here. They sit in the full audit at VALIS and are reachable on request.
+
+## Governance gate detail
+
+The evidence gate ran 132 citations through verification. 110 survived (all verified). 22 were excluded: 12 for missing URLs, 10 for failed fetches, 0 for missing corroboration. Sources Verified resolves to 100% of the surviving set. Evidence Applied resolves to 100% as well: 19 of 19 verified sources were used across the analysis, with no verified source left out.
+
+The composite read after governance: Decision Grade DG-C, Certified at the Structurally Sound band. Thesis Readiness Score 85 of 100, in the Decision-Ready zone. Structural Rigor moved from 75 to 95 in this run; Empirical Grounding moved from 70 to 91.2. The gains came from tightening mechanism specificity and pruning citations that could not survive independent retrieval; the residual gap to DG-B sits in the depth of corroboration on the most consequential load-bearing claims.
+
+## What this page is, and is not
+
+This page is a summary. The full analysis is held at VALIS and includes twenty-one research packets, the complete 1,134-claim audit with discriminating tests for each claim, the full scenario analysis (under the audit&apos;s original six-scenario taxonomy), the historical analogue analysis (Enron board oversight, Mata v. Avianca, Theranos secrecy), the cross-impact matrix, the strategic brief, and the verification-stack cycle-time evidence behind the pressure tests above. Methodology overview at [valissystems.com](https://valissystems.com).
+
+This page is dated. The audit reflects the doctrine as published on 20 May 2026. The doctrine has been revised since the audit, with each revision named in the sections above. Future doctrine revisions will trigger fresh audits.
+
+This page is contestable. The audit named the doctrine&apos;s weaknesses in numbered form, with the affected claim IDs. Disagree with the audit&apos;s reading of any gap, or with how the doctrine has responded, by filing an issue on the [repository](https://github.com/DavidVALIS/decision-grade/issues). Disagree with the doctrine itself the same way.
+
+If the analysis cannot be checked, it has not been earned. That stance applies to the doctrine, and applies first.

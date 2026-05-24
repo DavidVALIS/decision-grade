@@ -1,0 +1,36 @@
+---
+title: 'Does "because" actually mean because?'
+description: 'Mechanism gap. 500 cases. Best model 0.97 F1. The wedge where best-of-three approached the 95 percent decision-grade bar.'
+---
+
+The test presents a single sentence of the form "X because Y." The model is asked to classify whether Y is a supported mechanism for X, or an assertion presented as evidence. The score is binary F1 on the unsupported label, with recall on unsupported as the headline number.
+
+<BenchmarkTestSection wedge="mechanism_gap" name="The numbers" scoreLine="F1 unsupported · 500 cases · 3 models">
+
+GPT-5.5 cleared 0.95 with macro F1 0.97 on the unsupported label. Gemini followed at 0.94. Opus reported 0.85, reflecting `error_rate_limit` outcomes on 18 of 500 calls. Excluding the rate-limited cases from the denominator, Opus's performance is consistent with the other two providers.
+
+</BenchmarkTestSection>
+
+## What "below 95 percent" implies
+
+<BenchmarkExampleTable
+  ceo="Strategic recommendations frequently use causal language of the form 'X because Y.' Below 95 percent on this test, a non-trivial share of those causal claims are assertions, not supported inferences. The reader needs to verify each one independently."
+  analyst="AI-drafted research notes that use 'because' constructions require sentence-by-sentence verification. At 95 percent, sampling-based verification suffices. Below 95 percent, the verification cost approaches that of writing the note from scratch."
+  operator="At scale, agent-produced analytical output contains 'because' constructions in high volume. A 5 percent miss rate at 30 agents producing 100 such claims per day each results in approximately 150 unsupported claims per day reaching downstream consumers under this rubric."
+/>
+
+## What this finding does not measure
+
+The v1.0.0 cases isolate the "X because Y" construction in a single sentence. Whether the model can detect unsupported causal claims embedded in paragraph-length prose, where the structure is implicit, is not measured. v1.1 will test this.
+
+## What would falsify this finding
+
+A frontier model that drops below 0.85 F1 on the unsupported label on this case construction. No published model does at v1.0.0.
+
+## Anchored artifacts
+
+- [manifest.yaml](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/mechanism_gap/manifest.yaml)
+- [manifest.bundle.json](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/mechanism_gap/manifest.bundle.json)
+- [manifest.yaml.ots](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/mechanism_gap/manifest.yaml.ots)
+- [cases.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/mechanism_gap/cases.jsonl)
+- [results.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/mechanism_gap/results.jsonl)

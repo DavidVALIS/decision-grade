@@ -1,0 +1,104 @@
+---
+title: 'How the benchmark works'
+description: 'Pre-register what you are going to do, sign it, anchor it, run the test, publish results. The short version, in plain language.'
+---
+
+Before we ever ask an AI a single question, we publish the test. The exact questions. The exact models we will ask. The exact way we will score the answers. The exact threshold we want the answer to clear. All of it goes into one file. We sign that file cryptographically. We register the signature in a public log nobody owns. We timestamp the file's fingerprint into a Bitcoin block.
+
+Then we run the test.
+
+The purpose of this pre-registration is to remove the publisher's ability to alter the test parameters after observing results. The signature, the transparency log, and the Bitcoin anchor exist so that any retroactive change to the test plan is independently detectable by any third party. The mechanism does not rely on the publisher's intent; it removes the publisher's capacity to alter the record undetectably.
+
+When the test finishes, the results publish on the same page as the original test plan. Good results, bad results, embarrassing results. The commitment to publish either way is part of the file that gets signed.
+
+## The five things we lock down before running
+
+<Steps>
+
+<Step title="The questions">
+500 cases per test, hand-written. The hash of the file gets recorded. If the file ever changes by a single character, the hash changes, and the change is detectable against the signed record.
+</Step>
+
+<Step title="The roster">
+The exact model names and version strings we will call. Not "GPT-5.5" but `gpt-5.5-2026-04-23`. The provider can release a new version six months later. The version we tested cannot be retroactively swapped.
+</Step>
+
+<Step title="The settings">
+Temperature, seed, max tokens. The dials we set on the model when we called it. If we re-ran the test with hotter settings to get better numbers, you would see the difference between what was anchored and what was run.
+</Step>
+
+<Step title="The rubric">
+How we score each answer. What counts as right. What counts as wrong. What counts as the model refusing to answer (which we report separately, never as wrong).
+</Step>
+
+<Step title="The commitment to publish">
+A sentence that says, in plain language, that we will publish whatever we find. Null results publish. Embarrassing results publish. The commitment itself is part of the signed file, so abandoning it would be visible too.
+</Step>
+
+</Steps>
+
+## What "anchored" actually means
+
+Two things, both done with public infrastructure nobody owns.
+
+The first is a transparency log run by the Sigstore project. When we sign our test file, the signature goes into that log along with the GitHub Actions identity that signed it. If we ever sign a different file later under the same name, the old entry stays in the log forever. Anyone can pull the log and check.
+
+The second is a Bitcoin block. Through a free service called OpenTimestamps, the fingerprint of our test file gets bundled with thousands of others and folded into a Bitcoin transaction. Once that block confirms (a few hours, usually), the fingerprint is part of Bitcoin's history. Re-writing it would require re-writing Bitcoin's history. Which is not a thing that happens.
+
+Both checks happen in the verifier script anyone can run on their laptop. You do not have to trust us. The whole verification chain is publicly auditable in about a minute.
+
+## Worked example: phantom precision, end to end
+
+Phantom precision is the test that asks: can the model spot the fabricated number hidden in a paragraph that also contains real, sourced numbers? Here is how the test gets built and run.
+
+<Steps>
+
+<Step title="Cases written">
+500 paragraphs of plausible business prose. Each one contains exactly one fabricated number and one to three real, sourced numbers. The founder reviews each one for plausibility. The cases file is saved and its SHA256 fingerprint is recorded.
+
+(This is one of six tests. The full v1.0.0 publication covers 3,000 cases across all six tests.)
+</Step>
+
+<Step title="Test file written">
+The pre-registration document. It says: "We will ask these three models, with these settings, to find the fabricated number in each of these 500 cases. We will score per-passage F1 against the ground-truth fabricated spans. We will report refusals separately. We will publish whatever we find."
+</Step>
+
+<Step title="Spot-check panel runs">
+Three independent frontier models review a 50-case sample of the dataset. Each returns pass/fail with rationale on each case. The gate is zero unanimous-fail cases. For phantom precision, 44 cases were unanimous pass, 4 were 2-of-3 pass, and 2 were 1-of-3 pass. Zero unanimous fails. The 4 + 2 cases that produced disagreement are published verbatim alongside the result.
+</Step>
+
+<Step title="Sign and anchor">
+A git tag triggers an automated workflow. The workflow signs the test file with the project's keyless OIDC signature, posts the signature to the Sigstore transparency log, receives the log entry index, and runs the OpenTimestamps fingerprinting against the file's hash. All of this happens in the public domain.
+</Step>
+
+<Step title="Bitcoin block lands">
+Within a few hours of the tag push, the relevant Bitcoin block confirms. A scheduled job updates the OpenTimestamps proof to "fully anchored" status. The file's fingerprint is now part of the Bitcoin record. It cannot be changed.
+</Step>
+
+<Step title="Run the test, publish the result">
+The actual AI calls run. Each model gets each case with the pre-registered settings. The answers get scored against the pre-registered rubric. The results publish on the same page as the original test file, with a results.jsonl artifact alongside the manifest.
+</Step>
+
+<Step title="Anyone can verify">
+A reader runs `./verify.sh v1.0.0`. The script confirms the test file matches the signed bytes, the signature matches the recorded identity, the Sigstore log entry is intact, and the Bitcoin anchor is valid. A green run takes about a minute. No VALIS code is involved.
+</Step>
+
+</Steps>
+
+## Sampling parameter deviation
+
+The v1.0.0 pre-registration committed to specific temperature and top_p values in the test plan. After signing and anchoring, two of the three providers (Anthropic for Claude Opus 4.7, OpenAI for GPT-5.5) deprecated those sampling parameters. Both APIs now reject non-default values. Gemini 3.1 Pro Preview continues to accept the parameters.
+
+Re-signing the manifest under updated sampling parameters was rejected as a remediation: doing so would replace the cryptographic record of the original pre-registration. The implementation instead omits the sampling parameters when calling the two affected providers, and passes the originally-specified values to Gemini, where the API still accepts them.
+
+The substantive commitment of the pre-registration -- no manual tuning of model behaviour -- is preserved across all three providers. The deviation is in which API surface enforces the commitment. Anthropic's own published documentation states that `temperature=0` did not guarantee identical outputs on prior models. The published methodology page on decision-grade.ai discloses this deviation in full alongside the per-test results.
+
+## What v1.0.0 does not yet do
+
+<Warning>
+**Synthetic cases.** The test sets are hand-written, not curated from real-world incidents. Spot-check panels confirm internal consistency, but v2 will commission external labellers for a gold subset on the trickiest tests.
+
+**Held-out partition.** A separate set of 200 cases per test is encrypted at rest in the public repo. The decryption key is held by the founder. v2 will define a rotation policy and a key escrow mechanism.
+
+**Determinism.** Temperature zero and a fixed seed do not guarantee identical bytes across re-runs on every provider. The test file says so explicitly.
+</Warning>

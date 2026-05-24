@@ -1,0 +1,38 @@
+---
+title: 'Can it notice what is missing?'
+description: 'Boundary condition omission. 500 cases. All three frontier models scored below 0.41 macro F1. The wedge furthest from the decision-grade bar.'
+---
+
+The test presents an analysis that is internally coherent and appears complete but omits a boundary condition a careful reader would catch. The cases are constructed so the omission is detectable from the text alone, without outside knowledge. The model is asked to surface the omission. The score is macro F1 against the constructed truth set.
+
+<BenchmarkTestSection wedge="boundary_condition_omission" name="The numbers" scoreLine="Macro F1 · 500 cases · 3 models">
+
+Across 500 cases per model, Claude Opus 4.7 scored macro F1 0.40. GPT-5.5 scored 0.32. Gemini 3.1 Pro scored 0.32. Three frontier reasoning models, three independent providers, three different training corpora. The result is consistent.
+
+Recall on the truth set ranges from 0.43 to 0.55 across the three models. Precision ranges from 0.25 to 0.34. When the model flags an omission, it is correct in approximately one third of cases; when an omission exists, the model surfaces it in approximately half of cases. The pattern is consistent across providers and across case difficulty.
+
+The directional finding: frontier reasoning models evaluate what is present in an analysis with higher reliability than they evaluate what is absent. The completeness check is the weaker capability.
+
+</BenchmarkTestSection>
+
+## What "below 95 percent" implies
+
+<BenchmarkExampleTable
+  ceo="Decisions informed by AI-drafted analysis carry incompleteness risk that the AI itself does not reliably flag. An analysis that is internally coherent and well-cited can still omit conditions material to the decision. The measured rate suggests roughly half of such omissions remain unflagged."
+  analyst="Producing analysis with AI assistance does not extend the completeness check. Where AI is used to draft, a human pass for what is missing remains required. The measured precision also implies that AI-flagged omissions require human adjudication: roughly two-thirds of flags are false positives."
+  operator="At scale, agent-produced analytical output carries a structural incompleteness profile that compounds across the archive. A verification layer attempting to catch boundary-condition omissions with frontier models alone will, at the measured rate, miss approximately half of them and false-positive on roughly two-thirds of its flags."
+/>
+
+## What would falsify this finding
+
+Any of the three frontier models reaching macro F1 above 0.60 at the v1.0.0 case construction. None do at this version.
+
+A natural critique is that v1.0.0 uses a bare, one-shot prompt and that sophisticated prompt scaffolding might close the gap. Whether sophisticated prompting moves boundary-condition omission from 0.40 to 0.60 or higher is an open question. v1.1 of the benchmarks programme is scoped to test this directly.
+
+## Anchored artifacts
+
+- [manifest.yaml](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/boundary_condition_omission/manifest.yaml)
+- [manifest.bundle.json](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/boundary_condition_omission/manifest.bundle.json)
+- [manifest.yaml.ots](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/boundary_condition_omission/manifest.yaml.ots)
+- [cases.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/boundary_condition_omission/cases.jsonl)
+- [results.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/boundary_condition_omission/results.jsonl)

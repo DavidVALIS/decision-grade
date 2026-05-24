@@ -1,0 +1,80 @@
+---
+title: "The Costed Stack"
+description: "What verification costs. What doing it with humans costs you more. The number for your board."
+---
+
+> Read the numbers. Take them to your board. The math defends itself.
+
+<Note>
+  **Bottom line.** A two-person verification team handling moderate-volume decision-grade output costs your organisation roughly **$330,000 a year**. An automated multi-family verification stack delivering a higher catch rate costs roughly **$80,000 a year**. The gap is yours.
+</Note>
+
+<StatRow cols={4}>
+  <Stat value="$250k" label="saved per year, per 2,000-artifact workflow" />
+  <Stat value="25×" label="faster cycle time" />
+  <Stat value="1.3 FTEs" label="redeployed off verification line work" />
+  <Stat value="+7 pts" label="higher catch rate" />
+</StatRow>
+
+The savings scale with what you produce.
+
+<CardGroup cols={3}>
+  <Card title="~300 board memos or reports a year" icon="file-contract">
+    **Stack saves ~$1.2 million a year.** Cycle time ~6× faster. Longform deliverables multiply the gap; this is the largest absolute savings case.
+  </Card>
+  <Card title="~2,000 briefings or analyses a year" icon="clipboard-check">
+    **Stack saves ~$250,000 a year.** Cycle time ~25× faster. The most common decision-grade workflow.
+  </Card>
+  <Card title="~12,000 short answers a year" icon="magnifying-glass">
+    **Stack saves ~$50,000 a year.** At this size and stakes, you may not need verification at all. The model will tell you.
+  </Card>
+</CardGroup>
+
+## Four lines to take to your board
+
+<Steps>
+  <Step title="We are already paying for verification, just inefficiently.">
+    Either as an explicit review-team line item, or as the unmeasured cost of errors that slip through. Both sit in our budget; only one is currently visible.
+  </Step>
+  <Step title="The question is not whether to verify. It is how.">
+    Humans at independent-grade review cost about $165 per artifact. An automated multi-family stack costs about $40. Same job. Better catch rate, because three independent model families share fewer blind spots than two pairs of human eyes.
+  </Step>
+  <Step title="The savings scale with what we produce.">
+    Roughly $250,000 a year on 2,000 briefings. More than $1 million a year on 300 longform reports. The stack scales with volume; humans scale with headcount.
+  </Step>
+  <Step title="The downside is bounded. The upside is the cost of one bad call.">
+    A single uncaught error in a board memo or regulatory filing can cost six or seven figures. The first time the stack catches one that would have reached a binding decision, it has paid for itself.
+  </Step>
+</Steps>
+
+<Tip>
+  **The one useful thing to do before your next budget meeting.** Open [the workbook](/verification_stack_cost_model.xlsx). Set the annual volume to what you actually produce. Set the loss-per-error to your honest worst case. Read the recommendation off the Class Comparison sheet — it will either say *don't verify* or name the verification tier that pays for itself. If it says *don't verify*, walk away. If it says anything else, you already have the business case.
+</Tip>
+
+## The follow-up questions
+
+<AccordionGroup>
+  <Accordion title="How were these numbers derived?">
+    Marginal labour minutes at loaded analyst and supervisor rates, multi-family compute at API pricing, fixed-cost amortisation by annual volume. The full cost function, parameter set, and break-even math are in the [open workbook](/verification_stack_cost_model.xlsx). Every input is editable. Replace any default with your own measured number and the entire model re-runs.
+  </Accordion>
+  <Accordion title="Why does the stack catch more errors than humans, not fewer?">
+    Cognitive orthogonality. Three different model families share fewer training overlaps, cultural reflexes, and analytical blind spots than two humans on the same team, however senior. A second human reader is a different pair of eyes; three model families are three different reasoning chains. At independent-grade review the stack catches around 35% of structural errors; a human pair catches around 28%. The gap widens at higher tiers.
+  </Accordion>
+  <Accordion title="When does the comparison NOT favour the stack?">
+    Three places. Novel domains the models haven't seen — human catch rate rises and the comparison reverses. Regulated industries where human review is policy — the regulator decides, not the economics. And organisations producing fewer than ~200 decision-grade artifacts a year — fixed costs don't amortise and the stack is honestly more expensive. In all three cases the workbook will recommend against the stack. That's the falsifier working.
+  </Accordion>
+  <Accordion title="What about defensibility — cryptographic trails, regulatory exposure?">
+    Available at the top verification tier for around $8,000 a year of additional fixed cost. Pays for itself the first time discovery reaches your reasoning chain. Humans cannot produce equivalent tamper-evident reasoning trails at scale; that property is uniquely a stack capability.
+  </Accordion>
+  <Accordion title="What does the verification stack actually do, in operational terms?">
+    Runs multiple independent model families on every output, flags disagreements for focused human adjudication, applies architectural gates and a rubric, requires supervisor signoff, and (at the top tier) issues a cryptographically anchored certificate. The long-form treatment is in [The Doctrine](/the-doctrine) and [the Buyer's Checklist](/buyers-checklist).
+  </Accordion>
+  <Accordion title="What's the downside if we adopt and we're wrong?">
+    The stack's fixed costs are modest ($30k–$60k a year). Compute is metered, not contracted. Every parameter is open; the model will recommend the cheaper option — humans, or no verification at all — the moment your numbers justify it. If you change your mind, you turn it off. There is no 2-year contract or 6-person team to dissolve.
+  </Accordion>
+  <Accordion title="What if my organisation is regulated and human review is mandatory?">
+    The stack still pays. Adjudication is human, supervisor signoff is human, audit sampling is human, refusal-log review is human. The stack replaces the *line-by-line reading* that humans do worse than orthogonal models, not the judgment work humans uniquely do well. Regulators care about whether qualified humans signed off; they don't care that a stack drafted the rubric the humans applied.
+  </Accordion>
+</AccordionGroup>
+
+> The cost model passes its own [Buyer's Checklist](/buyers-checklist): open parameters, stated falsifier, freedom to recommend against the vendor that built it. [Download it](/verification_stack_cost_model.xlsx) and take it to your next budget conversation.

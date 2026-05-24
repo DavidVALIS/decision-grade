@@ -1,0 +1,34 @@
+---
+title: 'Can it spot a fake number?'
+description: 'Phantom precision. 500 cases. Best model 0.65 F1. The failure mode is precision, not recall.'
+---
+
+The test hides one fabricated numerical claim inside a paragraph of plausible business prose, alongside one to three real, sourced numerical claims as distractors. The model is asked to flag the fabricated claim. The score is per-passage F1 against the ground-truth fabricated spans, with the distractor false-positive rate reported separately.
+
+<BenchmarkTestSection wedge="phantom_precision" name="The numbers" scoreLine="Macro F1 · 500 cases · 3 models">
+
+Recall is near-perfect across all three models. Each one correctly flags the fabricated claim in roughly 99 percent of cases. The macro F1 spread reflects a single shared failure mode: precision. Models also flag real, sourced numerical claims as suspicious, producing a sustained false-positive rate on legitimate citations.
+
+Gemini's substantially lower F1 reflects a separate effect: it exceeded the 1024 max_tokens budget on 272 of 500 cases (54 percent), with internal reasoning consuming the budget before the answer was produced. On the 228 cases it finished, its precision-recall behaviour was similar to Opus and GPT-5.5.
+
+</BenchmarkTestSection>
+
+## What "below 95 percent" implies
+
+<BenchmarkExampleTable
+  ceo="AI-drafted analysis informs executive decisions. At a 65 percent catch rate on the planted fabrications, the rate of unflagged fabricated figures reaching the final document is approximately one in three. The deck reads well; the verification load shifts to the reader."
+  analyst="Vetting an AI-drafted brief requires manual re-verification of each numerical claim. The miss rate on this test does not permit treating AI-flagged citations as cleared. AI accelerates draft production, not verification."
+  operator="At scale, the per-call miss rate compounds. An organisation routing 1,000 reports per day through this style of AI analysis ships approximately 350 documents containing at least one unflagged fabricated figure under the rubric of this test."
+/>
+
+## What would falsify this finding
+
+A frontier model that combines near-perfect recall on fabricated claims with precision sufficient to maintain F1 above 0.95. As of v1.0.0, no tested model meets this condition.
+
+## Anchored artifacts
+
+- [manifest.yaml](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/phantom_precision/manifest.yaml) -- pre-registered specification, the signed bytes
+- [manifest.bundle.json](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/phantom_precision/manifest.bundle.json) -- Sigstore signature plus the Rekor entry
+- [manifest.yaml.ots](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/phantom_precision/manifest.yaml.ots) -- OpenTimestamps proof (Bitcoin-anchored)
+- [cases.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/phantom_precision/cases.jsonl) -- 500 cases
+- [results.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/phantom_precision/results.jsonl) -- per-model scored results

@@ -1,0 +1,32 @@
+---
+title: 'Could this claim ever be proven wrong?'
+description: 'Falsifier observability. 500 cases. Best model 0.85 F1. High recall, lower precision on the unfalsifiable label.'
+---
+
+The test presents a claim and asks the model to classify it as falsifiable (testable against observable reality) or unfalsifiable (not testable in principle). The score is binary F1 on the stated_unfalsifiable label.
+
+<BenchmarkTestSection wedge="falsifier_observability" name="The numbers" scoreLine="F1 stated unfalsifiable · 500 cases · 3 models">
+
+Recall on the unfalsifiable label is near-perfect across all three models (1.0, 1.0, 0.996). The F1 spread is driven by precision: each model flags some falsifiable-but-imprecise claims as unfalsifiable. The error pattern is consistent across providers: imprecise prose is classified the same as unfalsifiable claims, even when the underlying claim has observable consequences if false.
+
+</BenchmarkTestSection>
+
+## What "below 95 percent" implies
+
+<BenchmarkExampleTable
+  ceo="Strategic recommendations contain a mix of testable predictions and qualitative framing. At the measured precision, AI flagging of unfalsifiable language will over-flag legitimate but imprecise predictions, requiring human review to distinguish the two."
+  analyst="A second-pass AI verification layer applied to AI-drafted prose will tag a non-trivial share of valid but qualitative claims as unfalsifiable. Workflow integration requires the analyst to either accept the AI's flags by default (over-correcting) or re-verify each flag (eliminating the time saved)."
+  operator="At scale, agent-produced output that survives an AI-flag-as-unfalsifiable filter drifts toward more precise but more conservatively-scoped prose. Output that does not survive the filter accumulates a queue of contested claims requiring human adjudication."
+/>
+
+## What would falsify this finding
+
+A frontier model that combines recall above 0.95 on the unfalsifiable label with precision sufficient to maintain F1 above 0.95. As of v1.0.0, precision sits at approximately 0.79 even when recall is maximal.
+
+## Anchored artifacts
+
+- [manifest.yaml](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/falsifier_observability/manifest.yaml)
+- [manifest.bundle.json](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/falsifier_observability/manifest.bundle.json)
+- [manifest.yaml.ots](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/falsifier_observability/manifest.yaml.ots)
+- [cases.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/falsifier_observability/cases.jsonl)
+- [results.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/falsifier_observability/results.jsonl)

@@ -1,0 +1,429 @@
+/* ==========================================================================
+   Decision-Grade AI — VALIS dark theme overrides for Mintlify
+   Adapted from valis-base.css and valis-dark.css design system.
+   ========================================================================== */
+
+/* ── Fonts ─────────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap');
+
+/* ── Design tokens ────────────────────────────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --dg-bg-1: #0c0b09;
+  --dg-bg-2: #15130f;
+  --dg-bg-3: #1c1915;
+  --dg-bg-callout: #181510;
+
+  /* Text hierarchy */
+  --dg-fg-1: #efe9dc;
+  --dg-fg-2: #d9d2c2;
+  --dg-fg-3: #a09a8c;
+  --dg-fg-4: #756f64;
+
+  /* Borders */
+  --dg-rule: #2a2620;
+  --dg-rule-strong: #3a342b;
+  --dg-rule-subtle: rgba(239, 233, 220, 0.06);
+
+  /* Accent — salmon */
+  --dg-accent: #E79583;
+  --dg-accent-deep: #c4715f;
+  --dg-accent-muted: rgba(231, 149, 131, 0.16);
+  --dg-accent-soft: rgba(231, 149, 131, 0.10);
+
+  /* Status colors */
+  --dg-verified: #5fcf8f;
+  --dg-challenged: #e3b261;
+  --dg-unverified: #ff7a6e;
+  --dg-citation: #7aa7ff;
+
+  /* Type families */
+  --dg-font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --dg-font-sans: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+  --dg-font-mono: 'DM Mono', 'SF Mono', Menlo, monospace;
+}
+
+/* ── Body base ─────────────────────────────────────────────────────────── */
+body,
+html {
+  background: var(--dg-bg-1) !important;
+  color: var(--dg-fg-2);
+  font-family: var(--dg-font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "kern";
+}
+
+/* Mintlify wrapping shells */
+main, .main, [class*="Layout"], [class*="content"] {
+  background: var(--dg-bg-1);
+}
+
+/* ── Film grain overlay ─────────────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.45;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  mix-blend-mode: screen;
+}
+
+/* ── Typography ────────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6,
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  font-family: var(--dg-font-serif) !important;
+  font-weight: 300 !important;
+  color: var(--dg-fg-1) !important;
+  letter-spacing: -0.02em !important;
+}
+
+h1, .prose h1 {
+  font-size: clamp(2.4rem, 4.2vw, 3.6rem) !important;
+  line-height: 1.05 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+h2, .prose h2 {
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem) !important;
+  line-height: 1.15 !important;
+  margin-top: 3.5rem !important;
+  margin-bottom: 1.25rem !important;
+  letter-spacing: -0.015em !important;
+}
+
+h3, .prose h3 {
+  font-weight: 400 !important;
+  font-style: italic !important;
+  font-size: clamp(1.2rem, 1.8vw, 1.45rem) !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+h4, .prose h4 {
+  font-family: var(--dg-font-sans) !important;
+  font-weight: 600 !important;
+  font-size: 1.05rem !important;
+  letter-spacing: -0.005em !important;
+  font-style: normal !important;
+}
+
+/* Body text */
+p, .prose p, li, .prose li {
+  font-family: var(--dg-font-sans) !important;
+  font-size: 0.975rem !important;
+  line-height: 1.78 !important;
+  color: var(--dg-fg-2) !important;
+  font-weight: 400 !important;
+}
+
+.prose strong, p strong {
+  color: var(--dg-fg-1) !important;
+  font-weight: 600 !important;
+}
+
+.prose em, p em {
+  color: var(--dg-fg-1) !important;
+  font-style: italic !important;
+}
+
+/* ── Links ─────────────────────────────────────────────────────────────── */
+a, .prose a {
+  color: var(--dg-accent) !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid var(--dg-accent-muted) !important;
+  transition: border-color 200ms !important;
+}
+a:hover, .prose a:hover {
+  border-bottom-color: var(--dg-accent) !important;
+  color: var(--dg-accent) !important;
+}
+
+/* ── Code ──────────────────────────────────────────────────────────────── */
+code, .prose code {
+  font-family: var(--dg-font-mono) !important;
+  font-size: 0.85em !important;
+  background: var(--dg-bg-2) !important;
+  border: 1px solid var(--dg-rule) !important;
+  color: var(--dg-fg-2) !important;
+  padding: 1px 5px !important;
+  border-radius: 0 !important;
+  letter-spacing: 0.02em !important;
+}
+
+pre, .prose pre {
+  background: var(--dg-bg-2) !important;
+  border: 1px solid var(--dg-rule) !important;
+  border-radius: 0 !important;
+  padding: 1.25rem !important;
+}
+
+pre code {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+/* ── Callouts (Note, Tip, Warning, Info) ──────────────────────────────── */
+[class*="callout"],
+[class*="Callout"],
+blockquote {
+  background: var(--dg-bg-callout) !important;
+  border: 1px solid var(--dg-rule-strong) !important;
+  border-radius: 0 !important;
+  padding: 1.25rem 1.5rem !important;
+  margin: 2rem 0 !important;
+  color: var(--dg-fg-2) !important;
+}
+
+[class*="callout"] p,
+[class*="Callout"] p,
+blockquote p {
+  font-size: 0.94rem !important;
+  line-height: 1.7 !important;
+  color: var(--dg-fg-2) !important;
+}
+
+[class*="callout"] strong,
+[class*="Callout"] strong,
+blockquote strong {
+  color: var(--dg-fg-1) !important;
+}
+
+/* Warning variant (yellow-ish) */
+[class*="warning"],
+[class*="Warning"] {
+  border-color: rgba(227, 178, 97, 0.35) !important;
+  background: rgba(227, 178, 97, 0.04) !important;
+}
+
+/* Tip variant (greenish) */
+[class*="tip"],
+[class*="Tip"] {
+  border-color: rgba(95, 207, 143, 0.30) !important;
+  background: rgba(95, 207, 143, 0.04) !important;
+}
+
+/* Info variant — salmon highlight */
+[class*="info"],
+[class*="Info"] {
+  border-color: var(--dg-accent-muted) !important;
+  background: var(--dg-accent-soft) !important;
+}
+
+/* ── Cards & CardGroups ────────────────────────────────────────────────── */
+[class*="card"]:not(a[class*="card"] *):not([class*="callout"]):not([class*="Callout"]) {
+  background: var(--dg-bg-2) !important;
+  border: 1px solid var(--dg-rule) !important;
+  border-radius: 0 !important;
+  padding: 1.5rem 1.75rem !important;
+}
+
+[class*="card"] h3,
+[class*="card"] h4,
+[class*="card"] [class*="title"] {
+  font-family: var(--dg-font-sans) !important;
+  font-weight: 600 !important;
+  font-size: 1.02rem !important;
+  font-style: normal !important;
+  color: var(--dg-fg-1) !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+[class*="card"] p {
+  font-size: 0.92rem !important;
+  line-height: 1.65 !important;
+  color: var(--dg-fg-3) !important;
+}
+
+/* ── Tables ────────────────────────────────────────────────────────────── */
+table, .prose table {
+  border: 1px solid var(--dg-rule) !important;
+  border-radius: 0 !important;
+  background: var(--dg-bg-2) !important;
+}
+th, .prose th {
+  background: var(--dg-bg-3) !important;
+  color: var(--dg-fg-1) !important;
+  font-family: var(--dg-font-mono) !important;
+  font-size: 0.72rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  border-bottom: 1px solid var(--dg-rule) !important;
+  padding: 0.75rem 1rem !important;
+  text-align: left !important;
+}
+td, .prose td {
+  color: var(--dg-fg-2) !important;
+  font-size: 0.9rem !important;
+  padding: 0.75rem 1rem !important;
+  border-top: 1px solid var(--dg-rule-subtle) !important;
+}
+
+/* ── Sidebar ───────────────────────────────────────────────────────────── */
+nav[aria-label*="sidebar" i], nav[aria-label*="navigation" i],
+[class*="sidebar" i], [class*="Sidebar"] {
+  background: var(--dg-bg-1) !important;
+  border-right: 1px solid var(--dg-rule) !important;
+}
+
+[class*="sidebar" i] a,
+[class*="Sidebar"] a {
+  font-family: var(--dg-font-sans) !important;
+  font-size: 0.92rem !important;
+  color: var(--dg-fg-3) !important;
+  border-bottom: 0 !important;
+  letter-spacing: -0.005em !important;
+  transition: color 180ms !important;
+}
+
+[class*="sidebar" i] a:hover,
+[class*="Sidebar"] a:hover {
+  color: var(--dg-fg-1) !important;
+  background: transparent !important;
+}
+
+[class*="sidebar" i] a[aria-current="page"],
+[class*="sidebar" i] a.active,
+[class*="Sidebar"] a[aria-current="page"] {
+  color: var(--dg-fg-1) !important;
+  font-weight: 500 !important;
+  background: transparent !important;
+  border-left: 2px solid var(--dg-accent) !important;
+}
+
+/* Sidebar group labels */
+[class*="sidebar" i] [class*="group" i],
+[class*="Sidebar"] [class*="group" i] {
+  font-family: var(--dg-font-mono) !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.16em !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+  color: var(--dg-accent) !important;
+}
+
+/* ── Top nav / header ──────────────────────────────────────────────────── */
+header, [class*="topnav" i], [class*="TopNav"], [class*="header" i] {
+  background: color-mix(in oklab, var(--dg-bg-1) 90%, transparent) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid var(--dg-rule) !important;
+}
+
+header a, [class*="topnav" i] a {
+  font-family: var(--dg-font-sans) !important;
+  font-size: 0.86rem !important;
+  color: var(--dg-fg-3) !important;
+  border-bottom: 0 !important;
+  letter-spacing: 0.01em !important;
+}
+
+header a[aria-current="page"], header a.active,
+[class*="topnav" i] a.active {
+  color: var(--dg-fg-1) !important;
+  border-bottom: 1px solid var(--dg-accent) !important;
+}
+
+/* ── Right rail TOC ────────────────────────────────────────────────────── */
+[class*="toc" i], [class*="TOC"], [aria-label*="On this page" i] {
+  font-family: var(--dg-font-sans) !important;
+}
+
+[class*="toc" i] a, [aria-label*="On this page" i] a {
+  font-size: 0.82rem !important;
+  color: var(--dg-fg-3) !important;
+  border-bottom: 0 !important;
+  border-left: 1px solid transparent !important;
+  padding-left: 14px !important;
+  margin-left: -14px !important;
+}
+
+[class*="toc" i] a[aria-current="true"],
+[class*="toc" i] a.active {
+  color: var(--dg-fg-1) !important;
+  border-left-color: var(--dg-accent) !important;
+}
+
+/* "On this page" heading */
+[class*="toc" i] h2, [class*="toc" i] [class*="title"],
+[aria-label*="On this page" i] h2 {
+  font-family: var(--dg-font-mono) !important;
+  font-size: 0.62rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  color: var(--dg-accent) !important;
+  font-style: normal !important;
+}
+
+/* ── Mintlify "Note/Tip" header label ──────────────────────────────────── */
+[class*="callout"] [class*="title" i],
+[class*="Callout"] [class*="title" i] {
+  font-family: var(--dg-font-mono) !important;
+  font-size: 0.66rem !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  color: var(--dg-accent) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  margin-bottom: 0.4rem !important;
+}
+
+/* ── Buttons ───────────────────────────────────────────────────────────── */
+button:not([class*="card"]):not([class*="callout"]) {
+  border-radius: 0 !important;
+}
+
+button[class*="primary" i] {
+  background: var(--dg-accent) !important;
+  color: var(--dg-bg-1) !important;
+  border: 0 !important;
+}
+
+/* ── HR / dividers ─────────────────────────────────────────────────────── */
+hr {
+  border: 0 !important;
+  border-top: 1px solid var(--dg-rule) !important;
+  margin: 3rem 0 !important;
+}
+
+/* ── Search box ────────────────────────────────────────────────────────── */
+[class*="search" i] input,
+[role="search"] input {
+  background: var(--dg-bg-2) !important;
+  border: 1px solid var(--dg-rule) !important;
+  border-radius: 0 !important;
+  font-family: var(--dg-font-sans) !important;
+  color: var(--dg-fg-3) !important;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--dg-rule); }
+::-webkit-scrollbar-thumb:hover { background: var(--dg-rule-strong); }
+
+/* ── Selection ─────────────────────────────────────────────────────────── */
+::selection {
+  background: var(--dg-accent-muted);
+  color: var(--dg-fg-1);
+}
+
+/* ── Mermaid diagram colors ────────────────────────────────────────────── */
+.mermaid {
+  background: var(--dg-bg-2) !important;
+  border: 1px solid var(--dg-rule) !important;
+  padding: 1.5rem !important;
+}
+
+/* ── Reduced motion ────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  body::before { display: none; }
+  * { transition: none !important; animation: none !important; }
+}

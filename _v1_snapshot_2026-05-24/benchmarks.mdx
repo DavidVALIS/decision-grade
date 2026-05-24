@@ -1,0 +1,42 @@
+---
+title: 'Two of six.'
+description: 'Three frontier AI models on six pre-registered tests of structural reasoning. The best per-test score cleared the 95 percent decision-grade bar on two of the six.'
+---
+
+## What v1.0.0 measured
+
+500 cases on each of six narrow tests. Each test isolates a single structural check a careful analyst performs before signing off on an analysis. Across three frontier models (Claude Opus 4.7, GPT-5.5, Gemini 3.1 Pro), the best per-test score cleared 95 percent macro F1 on two of the six tests. At a 99 percent threshold, none of the tests cleared.
+
+The two tests where the best model cleared 95 percent are mechanism gap (telling supported reasoning from assertion) and load-bearing claim identification (surfacing the claims a recommendation depends on). The wedge with the lowest top score is boundary condition omission, where all three models scored below 0.41 macro F1.
+
+## The six tests at a glance
+
+Three bars per test, one per model. The dashed salmon line marks the 95 percent decision-grade threshold. A bar that reaches or crosses the line cleared the threshold on that test.
+
+<BenchmarkResultsGrid />
+
+## Where this matters
+
+These tests target the structural failure modes most consequential for high-stakes deployments, where the cost of acting on incomplete or incorrectly-framed AI output is materially higher than the cost of slower analysis. Three categories of deployment make the stakes visible:
+
+- **Clinical decision-support systems**, where AI-drafted triage or workup recommendations inform care delivered to real patients.
+- **National-strategy advisory work**, where analytical agents inform multi-year policy and capital-allocation decisions.
+- **Continuous analytical pipelines in capital markets**, where agent stacks running on financial, geopolitical, and counterparty data inform positions taken at scale.
+
+In each case, an AI output below the 95 percent decision-grade bar imposes a verification cost on the downstream operator. The per-wedge pages below quantify what "below 95 percent" means at scale for each test.
+
+## Why the threshold matters
+
+The 95 percent threshold defines the rate at which an output source becomes operationally useful without per-instance human re-verification. Below that rate, every output must be independently checked, because the consumer of the output does not know which subset is incorrect. The verification cost imposed on the consumer offsets the throughput gain provided by the producer.
+
+For higher-consequence work -- where errors cannot be undone after detection -- the operational threshold is closer to 99 percent. Clinical decision-support, sovereign strategy advisory, and continuous capital-allocation pipelines all fall in this category. At a 99 percent threshold, none of the six v1.0.0 tests cleared on any tested model.
+
+## Where to go next
+
+The deep read on any single test lives in its own page. Each one explains the test, names the models, shows the same chart you saw above, and walks through what "below 95 percent" looks like for a CEO, an analyst, and an operator running agents at scale.
+
+- [v1.0.0 results overview](/benchmarks-v1-0-0/) -- all six tests in one place, with links to each
+- [How the benchmark works](/benchmarks-methodology/) -- pre-registration, what we sign, what gets anchored, and why
+- [Verify the record yourself](/benchmarks-verify/) -- three terminal commands and a Docker one-liner
+
+The anchored evidence (manifests, signatures, OpenTimestamps proofs, raw cases, results) lives in the public repo at [github.com/valisbench/benchmarks](https://github.com/valisbench/benchmarks). The reading experience is here. The verification chain points at the bare evidence, not at the narrative.

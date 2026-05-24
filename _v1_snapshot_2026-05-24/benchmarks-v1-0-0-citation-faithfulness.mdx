@@ -1,0 +1,34 @@
+---
+title: 'When it cites a source, does the source say that?'
+description: 'Citation faithfulness. 500 cases. Best model 0.86 F1. Recall is perfect across all three; precision is the differentiator.'
+---
+
+The test presents a claim paired with a candidate real source. The source is genuine; the claim-source pairing is constructed. The model is asked to classify whether the source supports the claim. The score is binary F1 on the unfaithful label.
+
+<BenchmarkTestSection wedge="citation_faithfulness" name="The numbers" scoreLine="F1 unfaithful · 500 cases · 3 models">
+
+Recall on the unfaithful label is 1.0 across all three models. Each model correctly identifies every unfaithful citation in the test set. The F1 spread is precision-driven: each model also flags some genuinely-supporting citations as unfaithful, with the false-positive rate ranging from 14 to 23 percent.
+
+Claude Opus 4.7 reported the highest precision (0.86 F1). GPT-5.5 reported the lowest (0.77). Gemini 3.1 Pro reported 0.79. The 0.09-point F1 spread between Opus and GPT is attributable entirely to precision differences on faithful citations.
+
+</BenchmarkTestSection>
+
+## What "below 95 percent" implies
+
+<BenchmarkExampleTable
+  ceo="A memo with extensive citation footing reads as well-evidenced. At the measured precision, a non-trivial share of cited sources do not support the sentence they footnote. The presence of citations is not, by itself, evidence of structural soundness."
+  analyst="AI-drafted citations require source-level fact-checking. Recall on fabricated or unsupporting citations is good; the failure mode is the inverse: legitimate citations flagged as unsupporting, which require manual adjudication."
+  operator="At scale, agent-produced citation streams contain a sustained false-positive rate on faithful citations. The downstream effect is a trust-erosion pattern: human reviewers stop acting on flags after the false-positive rate exceeds their tolerance."
+/>
+
+## What would falsify this finding
+
+A frontier model that maintains recall above 0.95 on the unfaithful label while also achieving precision above 0.95. Across the v1.0.0 roster, precision lands between 0.76 and 0.85.
+
+## Anchored artifacts
+
+- [manifest.yaml](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/citation_faithfulness/manifest.yaml)
+- [manifest.bundle.json](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/citation_faithfulness/manifest.bundle.json)
+- [manifest.yaml.ots](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/citation_faithfulness/manifest.yaml.ots)
+- [cases.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/citation_faithfulness/cases.jsonl)
+- [results.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/citation_faithfulness/results.jsonl)

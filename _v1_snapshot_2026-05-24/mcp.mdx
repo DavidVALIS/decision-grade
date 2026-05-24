@@ -1,0 +1,142 @@
+---
+title: 'MCP Server'
+description: 'Connect any MCP-aware AI client (Claude Desktop, Cursor, others) to the framework. Tools to list, search, and read pages without trusting a hosted chat.'
+---
+
+The framework exposes a Model Context Protocol server at `https://decision-grade.ai/api/mcp`. Any MCP-aware AI client can connect, list available tools, and read the framework directly from the user's chosen AI.
+
+This is the on-doctrine surface for AI access to the framework. The user controls which AI runs the queries. The framework just publishes data with a typed interface.
+
+<Note>
+  **Three minute read.** Endpoint: `https://decision-grade.ai/api/mcp`. Transport: HTTP + JSON-RPC 2.0. Four tools: `list_pages`, `get_page`, `search`, `get_full_framework`. Two readable resources: `llms.txt`, `llms-full.txt`. No authentication, no rate limit beyond Cloudflare's defaults.
+</Note>
+
+## Why an MCP server
+
+The framework's [Zero Trust posture](/the-doctrine) says the customer should not have to trust the verifier. A hosted chat agent inserts the framework's hosting choices into the trust path. An MCP server keeps the user's AI of choice in that path. The framework is just published data.
+
+<CardGroup cols={2}>
+  <Card title="User controls the AI" icon="user">
+    Connect from Claude Desktop, Cursor, Windsurf, or any MCP-aware client. The AI you trust does the reading and reasoning.
+  </Card>
+  <Card title="Framework controls only the data" icon="layer-group">
+    The server returns markdown content and search results. It does not synthesize answers, refuse questions, or modify what the AI sees.
+  </Card>
+</CardGroup>
+
+## Tools
+
+<AccordionGroup>
+  <Accordion title="list_pages">
+    Returns all framework pages with id, title, num, and description. Use this first to discover what is available.
+
+    **Arguments:** none.
+
+    **Returns:** JSON array of page summaries.
+  </Accordion>
+
+  <Accordion title="get_page">
+    Fetch the full markdown content of one page.
+
+    **Arguments:** `slug` (string). One of `introduction`, `the-frame`, `the-doctrine`, `buyers-checklist`, `lane-discipline`, `watchlist`, `about`.
+
+    **Returns:** the full page markdown including callouts, tables, and mermaid diagrams.
+  </Accordion>
+
+  <Accordion title="search">
+    Text search across the entire framework. Returns matching sections grouped by page, with snippets.
+
+    **Arguments:** `query` (string), optional `limit` (number, default 8, max 20).
+
+    **Returns:** JSON with `total` count and `results` array of section matches.
+  </Accordion>
+
+  <Accordion title="get_full_framework">
+    Return the entire framework as a single document (the `llms-full.txt` bundle).
+
+    **Arguments:** none.
+
+    **Returns:** ~70 KB of plain text. Use when you want the whole framework in one fetch.
+  </Accordion>
+</AccordionGroup>
+
+## Connect from Claude Desktop
+
+Edit your Claude Desktop config (Settings → Developer → Edit Config), then add:
+
+```json
+{
+  "mcpServers": {
+    "decision-grade": {
+      "url": "https://decision-grade.ai/api/mcp"
+    }
+  }
+}
+```
+
+Restart Claude Desktop. The decision-grade tools appear in the tools menu. Ask Claude anything about AI verification and it will fetch from the framework.
+
+## Connect from Cursor
+
+In Cursor settings, add an MCP server entry:
+
+- **Name:** `decision-grade`
+- **Type:** `HTTP`
+- **URL:** `https://decision-grade.ai/api/mcp`
+
+The four tools become available in your Cursor agent.
+
+## Connect from any other client
+
+The transport is plain HTTP + JSON-RPC 2.0. Any client that speaks MCP over HTTP can connect.
+
+```bash
+# List available tools
+curl -X POST https://decision-grade.ai/api/mcp \
+  -H "content-type: application/json" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+
+# Search the framework
+curl -X POST https://decision-grade.ai/api/mcp \
+  -H "content-type: application/json" \
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"search","arguments":{"query":"verification deficit","limit":5}}}'
+```
+
+## What this is not
+
+<CardGroup cols={3}>
+  <Card title="Not a chat agent" icon="ban">
+    The server does not generate text or answer questions. It returns data. The AI you connect does the reasoning.
+  </Card>
+  <Card title="Not authenticated" icon="user-secret">
+    Public read-only endpoint. No accounts, no API keys. The framework is published openly.
+  </Card>
+  <Card title="Not stateful" icon="arrows-rotate">
+    Each request stands alone. There is no session, no memory, no personalization.
+  </Card>
+</CardGroup>
+
+## Verifying the server
+
+The same Zero Trust posture applies to this server. You can verify it operates as documented:
+
+- **Source is public.** The Cloudflare Pages Function code is at [github.com/DavidVALIS/decision-grade/blob/main/functions/api/mcp.ts](https://github.com/DavidVALIS/decision-grade/blob/main/functions/api/mcp.ts).
+- **Output is deterministic.** Same query yields the same result.
+- **Content is canonical.** All tool responses derive from `llms-full.txt` and `search-index.json`, which are also served at the site root.
+- **No hidden behavior.** The server does not call external LLMs or transform content; it only reads from the published bundle.
+
+If you observe a discrepancy between what the MCP server returns and what is published on the site, [open an issue](https://github.com/DavidVALIS/decision-grade/issues).
+
+## Where this goes next
+
+<CardGroup cols={3}>
+  <Card title="The Frame" icon="diagram-project" href="/the-frame">
+    The diagnosis: why verification is the operational problem now.
+  </Card>
+  <Card title="The Doctrine" icon="shield" href="/the-doctrine">
+    Zero Trust applied to AI verification.
+  </Card>
+  <Card title="The Buyer's Checklist" icon="list-check" href="/buyers-checklist">
+    Seven procurement questions to put to AI vendors.
+  </Card>
+</CardGroup>

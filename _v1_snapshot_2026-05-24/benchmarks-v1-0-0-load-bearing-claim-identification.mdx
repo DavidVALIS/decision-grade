@@ -1,0 +1,50 @@
+---
+title: 'Which claim, if wrong, breaks the whole thing?'
+description: 'Load-bearing claim identification. 500 cases. Best model 0.99 F1. The wedge most clearly above the decision-grade bar -- subject to the synthetic-ground-truth caveat below.'
+---
+
+<BenchmarkMethodologyDisclosure>
+The published results page for load-bearing claim identification leads with this methodology disclosure paragraph. The commitment is anchored to the same transparency log entry as the manifest.
+
+**v1.0.0 uses synthetic ground truth.** Cases are generated from a constructed dependency graph: each claim in a memo is tagged either load-bearing or scaffolding by the rule that produced the memo. The model is asked to recover the load-bearing set. Scoring is against the rule, not against expert judgement.
+
+The original PRD required external expert labellers on 80 real memos. This requirement is overridden for v1 to ship LBCI under the parallel-build schedule for v1.0.0. **v2 will commission expert labels on 80 real memos. If v2 expert-labelled F1 on any tier differs from v1 synthetic F1 by more than 0.15 (absolute) on the same model roster, v1 LBCI is deprecated and the publication updated.**
+
+This deprecation trigger is pre-registered as part of the v1.0.0 anchored manifest. The high scores below are decision-grade on the test as constructed, pending v2 expert validation.
+</BenchmarkMethodologyDisclosure>
+
+The test presents a recommendation built on a dependency graph of claims and asks the model to identify which claims, if false, would invalidate the recommendation. The other claims in the graph serve as supporting context but are not load-bearing.
+
+<BenchmarkTestSection wedge="load_bearing_claim_identification" name="The numbers" scoreLine="Macro F1 · 500 cases · 3 models">
+
+GPT-5.5 reported macro F1 0.99. Claude Opus 4.7 reported 0.98. Gemini 3.1 Pro reported 0.92.
+
+Gemini's lower score reflects partial-response attrition: it exceeded the 1024 max_tokens budget on 101 of 500 cases. On the 399 cases it finished, its scoring distribution is consistent with the other two providers.
+
+</BenchmarkTestSection>
+
+## Tier-3 breakdown
+
+The pre-registered hypotheses test tier-3 (the hardest difficulty band, with 10-15 claims per memo) separately. Opus and GPT both score above 0.97 macro F1 on tier 3. Gemini scores 0.86 on the cases it finished.
+
+<BenchmarkTierComparison />
+
+## What "below 95 percent" implies
+
+<BenchmarkExampleTable
+  ceo="A formal request to surface the load-bearing claims in an AI-drafted recommendation returns a useful list at GPT-5.5 / Opus 4.7 performance levels. Treating the returned set as exhaustive remains contingent on v2 expert validation."
+  analyst="A pre-submission step that asks the model to surface load-bearing claims and routes those for additional verification is operationally tractable on this wedge. On Gemini at 0.92, the false-negative rate implies one in approximately twelve memos retains an unflagged load-bearing claim."
+  operator="A continuous verification layer that flags load-bearing claims for review is feasible at the measured rates with the strongest model. The operational note is the synthetic-ground-truth caveat: v2 expert validation is required before treating these numbers as transferable to real memos with implicit structure."
+/>
+
+## What would falsify this finding
+
+Expert-labelled cases producing F1 below 0.85 on any tier where synthetic-labelled cases produced F1 above 0.97. The deprecation trigger above defines the threshold formally. The v2 expert-labelling programme is the operational test.
+
+## Anchored artifacts
+
+- [manifest.yaml](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/load_bearing_claim_identification/manifest.yaml)
+- [manifest.bundle.json](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/load_bearing_claim_identification/manifest.bundle.json)
+- [manifest.yaml.ots](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/load_bearing_claim_identification/manifest.yaml.ots)
+- [cases.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/load_bearing_claim_identification/cases.jsonl)
+- [results.jsonl](https://github.com/valisbench/benchmarks/blob/main/v1.0.0/load_bearing_claim_identification/results.jsonl)

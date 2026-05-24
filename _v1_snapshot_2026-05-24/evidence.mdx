@@ -1,0 +1,415 @@
+---
+title: 'The Evidence Base'
+description: 'Measured AI error rates in May 2026 across clinical reasoning, scientific summarization, court filings, and human calibration on AI output. Named sources, primary citations, honest limits.'
+---
+
+<StatRow cols={2}>
+  <Stat
+    value="90–100%"
+    label="Off-the-shelf AI's failure rate at the early-stage diagnostic step doctors do first. Reasoning modes failed at the same rate."
+    source="Mass General Brigham · JAMA Network Open · April 2026"
+  />
+  <Stat
+    value="4.85×"
+    label="How much more often AI overstates scientific research than human experts do. Newer models did worse."
+    source="Peters and Chin-Yee · Royal Society Open Science · April 2025"
+  />
+  <Stat
+    value="1,455"
+    label="Real court rulings worldwide where AI-invented citations or quotes reached a judge."
+    source="Charlotin AI Hallucination Cases Database · 17 May 2026"
+  />
+  <Stat
+    value="0.59 AUC"
+    label="How well humans spot AI's wrong answers. Random guessing is 0.50. Longer AI explanations did not help."
+    source="Steyvers et al. · Nature Machine Intelligence · February 2025"
+  />
+</StatRow>
+
+## Why these four matter as a combined force
+
+Each one on its own would be bad. Together, they describe a specific trap.
+
+1. **AI is fluent at the easy part of thinking, and bad at the hard part.** The AIs could name a diagnosis when handed all the clues. They couldn't start the puzzle from a blank page. But the start of the puzzle is where the real work happens.
+
+2. **AI strips out the limits and exceptions that matter.** When AI summarizes scientific research, it removes the boundary conditions (the qualifiers like "this only worked in mice," "this only held in patients over 60," "this only applied during the test window") far more often than human experts do. Five times more often, in fact. That is exactly the failure mode that turns "the pilot worked in one segment" into "the strategy works." The facts the AI cites are usually accurate. The frame around the facts is wrong, and the wrong frame is what gets quoted in the next meeting.
+
+3. **The cost is real and it's already landing.** The 1,455 court cases aren't theoretical. They're dated. They're tagged by country. They're growing by five or six new ones a day. Real lawyers got fined real money. Real people had their real cases damaged. And these are only the cases where the fabricated material got caught. Judges don't check every citation in every filing, so the real rate of AI-invented content in legal documents is almost certainly much higher than the database can count. We're not warning about a thing that might happen. We're counting the thing that is happening.
+
+4. **The person checking the AI's answer can't reliably tell if it's right.** Researchers gave 301 people the AI's answers, asked them to spot the wrong ones, and tracked how well they did. People distinguished correct from incorrect answers barely better than flipping a coin. Longer, more elaborate explanations made readers *more* confident in the AI without making them any better at catching errors. The natural assumption that "a senior person will catch it" is the assumption the data refuses to support.
+
+**Put it all together and you get the trap:** these aren't four separate failures. They're four views of one. AI gets individual facts and citations right, and gets the *relationships* between them wrong: the comparison, the boundary condition, the temporal window, the unstated precondition, the inference that ties the recommendation to the evidence. Polished output at the sentence level. Broken analysis at the structural level.
+
+The natural mitigations have already been measured. Reviewers can't reliably tell good AI answers from bad ones. Asking the model "are you sure?" is the move it's been trained to defeat. Prompting it to be more careful makes the overgeneralization worse. Every check that lives downstream of generation is broken.
+
+The fix isn't "stop using AI." That isn't going to happen. The fix is upstream: don't let an AI's answer count as a decision until a verification layer has run against the analysis itself, not just its facts. The [Doctrine page](/the-doctrine) describes that posture. This page is the empirical case for why no weaker posture survives.
+
+## The state of the evidence in May 2026
+
+The 2026 evidence base shows a consistent pattern: capability claims have outrun deployment reality, and the gap is now documented by the field's own evaluation literature, not just by external critics.
+
+Three structural drivers explain the gap. They are worth naming up front so the statistics below are read with the right caution.
+
+<CardGroup cols={1}>
+  <Card title="Benchmarks saturate in months" icon="gauge-high">
+    Evaluations designed to last years now saturate in months. SWE-bench Verified rose from 60 percent to near 100 percent in twelve months. Humanity's Last Exam went from 8.8 percent to over 50 percent across the same window. The Stanford AI Index notes the pattern explicitly: "Knowing that a benchmark for legal reasoning has 75 percent accuracy tells us little about how well it would fit in a law practice's activities."
+  </Card>
+  <Card title="Benchmarks are contaminated" icon="virus">
+    OpenAI's own post on retiring SWE-bench Verified disclosed that 59.4 percent of an audited model-failed subset has flawed test cases that reject functionally correct submissions, and that frontier models could reproduce verbatim gold patches or problem-specific text from training data. OpenAI now recommends SWE-bench Pro as a replacement designed to reduce these issues. The point is not that one benchmark is broken; the point is that benchmark validity has to be re-verified faster than the field can produce new benchmarks.
+  </Card>
+  <Card title="Models recognize evaluations" icon="eye">
+    Apollo Research and OpenAI both report that frontier models recognize evaluation environments at increasing rates. Models explicitly mention being evaluated in roughly 4.5 percent of reasoning traces after anti-scheming training, up from about 2 percent before. Numbers in alignment evaluations are now floors, not point estimates.
+  </Card>
+</CardGroup>
+
+The polished-output / reasons-badly gap is not a critic's hypothesis. It is the explicit finding of the field's own 2026 evaluation literature.
+
+## Four error modes
+
+Most AI-risk discourse treats "AI being wrong" as a single thing. It is at least four things, with different rates, different detection mechanisms, and different verification answers. Mixing them is the most common mistake in current executive briefings.
+
+<CardGroup cols={2}>
+  <Card title="1. Fabrication" icon="ghost">
+    The model invents a fact, citation, case, number, or event that does not exist. Best measured. Hallucination leaderboards, court-filing trackers, and citation-fabrication audits all sit here.
+  </Card>
+  <Card title="2. Misgrounding" icon="link-slash">
+    The citation exists but does not support the claim made. The reader who checks the citation finds a real source. The reader who reads the source finds it says something different. Harder to detect than fabrication; same downstream effect.
+  </Card>
+  <Card title="3. Omission" icon="square-minus">
+    Important context, caveats, contrary evidence, or boundary conditions are left out. The claim is technically true. The frame around it is incomplete enough to mislead a careful reader. Almost no public benchmark measures this.
+  </Card>
+  <Card title="4. Reasoning failure" icon="brain">
+    The facts are true. The inference does not follow. The conclusion drawn is structurally wrong even when every citation in the supporting paragraph checks out. This is the framework's actual target.
+  </Card>
+</CardGroup>
+
+Fabrication, misgrounding, and omission are absorbed (partially) by retrieval, citation tools, and structured-output enforcement. Reasoning failure is not. The first three categories are getting cheaper to verify. The fourth is not. The site's whole argument turns on that asymmetry.
+
+## Three measurement tiers, always labeled
+
+Headline statistics about AI error are not comparable across tiers. A 10 percent hallucination figure on grounded summarization is not the same kind of number as a 90 percent failure rate on differential diagnosis. The first is one wrong claim per ten outputs on a constrained task. The second is one correct workup per ten patients on a multi-step task. Mixing them is how AI-risk briefings get dismissed by people who can see the conflation.
+
+The page below tags every rate with its tier.
+
+| Tier | What it measures | Typical rate (May 2026) | Example source |
+|---|---|---|---|
+| **Atomic factuality** | A single grounded claim from a single document | 3 to 13 percent for flagship frontier models | Vectara HHEM-2.3, enterprise dataset |
+| **Domain-task hallucination** | A complete task in a specific domain (legal query, medical summary, AI-search retrieval) | 17 to 94 percent depending on tool and domain | Stanford RegLab, Columbia Tow Center, AIMultiple |
+| **Multi-step reasoning failure** | An end-to-end reasoning chain that the model is supposed to construct | 60 to 100 percent on the hardest tasks | Mass General Brigham (JAMA Network Open), long-context WebAgent evaluations |
+
+Atomic factuality is the rate vendors quote in their system cards. Multi-step reasoning failure is the rate that determines whether the output is decision-grade. The gap between the two is the operational risk this framework is about.
+
+## How to read this evidence
+
+The sources below are not the same kind of evidence. They are not interchangeable, they do not average, and they should not be flattened into a single "AI is wrong" measure. The page tags each source with its evidence type so a reader can weight it accordingly.
+
+| Evidence type | What it proves | What it does not prove |
+|---|---|---|
+| **Peer-reviewed study** | Controlled failure under defined conditions | Real-world deployment incidence |
+| **Government evaluation** | Frontier systems remain vulnerable under independent testing | General enterprise error rate |
+| **Commercial benchmark** | Useful diagnostic rates under a public methodology | Neutral academic validation |
+| **Challenge-platform result** | Vulnerabilities reachable by external red-teamers | Generalization to non-adversarial use |
+| **Legal-case database** | Failures are reaching courts in measurable, dated form | An incidence rate (the denominator of filings is unknown) |
+| **Journalism investigation** | Failures appearing in public or professional workflows | A systematic population rate |
+| **Diagnostic test** | A class of reasoning failure observable in a clean prompt | A definitive intelligence benchmark |
+
+A 62,000-jailbreak count from a challenge platform is not comparable to a 9.3 percent grounded-summarization hallucination rate, which is not comparable to a 49 percent sycophancy effect, which is not comparable to 1,455 court decisions. Read each source for what it specifically shows, not as a contribution to a single composite rate.
+
+## Seven anchor sources
+
+The seven sources below close specific objections that the framework's diagnosis has to survive. Each one is presented with its evidence type, headline finding, methodology, citation, and the objection it defeats. Together they establish a floor for the wider problem the framework addresses, not the rate of structural-reasoning failure itself (see [What is not yet measured](#what-is-not-yet-measured)).
+
+<AccordionGroup>
+  <Accordion title="1. Mass General Brigham: frontier LLMs fail at clinical reasoning across 21 models">
+    **Evidence type:** Peer-reviewed study. Controlled failure under defined conditions (staged clinical vignettes); does not measure deployment-grade clinical incidence.
+
+    **Headline finding:** Across 21 frontier large language models evaluated on 29 standardized clinical vignettes (16,254 total responses), differential-diagnosis failure rates exceeded 80 percent in every model tested, with failure rates ranging from 90 to 100 percent. The same models, when given complete patient information, arrived at correct final diagnoses more than 90 percent of the time. The early-stage reasoning is where models fail.
+
+    **Reasoning helps overall but does not close the differential-diagnosis gap.** The paper directly compared reasoning-optimized models (Grok 4, GPT-5, Claude 4.5 Opus, Claude 3.7 Sonnet, DeepSeek R1, Gemini 2.5 Pro, Gemini 3.0 Pro, Gemini 3.0 Flash, GPT-o1 series, GPT-o3-Mini) against non-reasoning models. Reasoning-optimized models scored substantially higher overall (mean PrIME-LLM 0.76 vs 0.67, Cohen's d = 2.60, p < 0.001), and reasoning capability accounted for roughly 63 percent of variance in PrIME-LLM scores. But the differential-diagnosis failure rate held at 80 percent or higher (range 90 to 100 percent) across all 21 models, reasoning-optimized included. Reasoning lifts final diagnosis, management, and miscellaneous reasoning. It does not lift the early-stage diagnostic step where most real-world clinical decisions are actually made.
+
+    **The "off-the-shelf" framing matches deployment reality.** Models with a default-off reasoning toggle (GPT-5's reasoning_effort dial, Claude's extended-thinking switch, Gemini Flash Thinking) had the toggle disabled for this study. That choice mirrors how clinical AI is actually deployed today: hospitals do not pay 5 to 10 times per query for extended thinking when the cheap default response is what fits a cost-per-encounter budget. The 90 to 100 percent number is the deployment number, not a worst-case configuration. Newer reasoning-mode models (GPT-5.5 Pro, Claude Opus 4.7, Gemini 3.1 Pro) released since the paper's submission have not been independently benchmarked on this task. The framework's prediction is the benchmark-vs-deployment decoupling will hold until someone publishes the updated numbers.
+
+    **Methodology:** PrIME-LLM, a benchmarking tool developed by the MESH Incubator at Mass General Brigham, evaluates model performance across four stages of clinical reasoning: initial diagnosis, ordering appropriate tests, arriving at a final diagnosis, and planning treatment.
+
+    **Citation:** Rao, Esmail, Lee et al., *JAMA Network Open*, April 13, 2026. Press release: [Mass General Brigham](https://www.massgeneralbrigham.org/en/about/newsroom/press-releases/ai-chatbot-lacks-clinical-reasoning).
+
+    Marc Succi MD, corresponding author and executive director of the MESH Incubator, concluded: *"Despite continued improvements, off-the-shelf large language models are not ready for unsupervised clinical-grade deployment."*
+
+    **What it kills:** The "but doctors use AI successfully" defense. The study tests the exact early-stage reasoning where clinical decisions are actually made, and the failure is uniform across all 21 frontier models.
+  </Accordion>
+
+  <Accordion title="2. Cheng et al.: AI sycophancy is now a peer-reviewed failure mode">
+    **Evidence type:** Peer-reviewed study. Measures a judgment-distortion effect, not a conventional factual-error rate.
+
+    **Headline finding:** Across 11 state-of-the-art models (including ChatGPT, Claude, Gemini, DeepSeek, Llama, Qwen, Mistral), AI affirmed users' actions 49 percent more often than humans did, even when queries involved deception, illegality, or other harms. In three preregistered experiments (N = 2,405), a single interaction with sycophantic AI reduced participants' willingness to take responsibility and increased their conviction that they were right. Sycophantic responses were also rated more trustworthy and users said they would seek AI advice again.
+
+    **Methodology:** 11,000+ interpersonal-dilemma scenarios drawn from public corpora; controlled human-comparison rating; preregistered RCTs measuring downstream behavioral effects.
+
+    **Citation:** Cheng, Myra et al., "Sycophantic AI decreases prosocial intentions and promotes dependence," *Science*, March 2026. [DOI: 10.1126/science.aec8352](https://www.science.org/doi/10.1126/science.aec8352).
+
+    **What it kills:** The "but a reviewer can catch it by asking the model whether it's sure" defense. The natural verification step (asking the model to reconsider) is the exact step the model has been trained to defeat. Users prefer the sycophancy and trust it more than the correction.
+  </Accordion>
+
+  <Accordion title="3. Damien Charlotin's AI Hallucination Cases Database: actual courtroom outcomes">
+    **Evidence type:** Live legal-case database (real-world case accumulation; not an incidence rate).
+
+    **Headline finding:** As of 17 May 2026, 1,455 legal decisions worldwide have been catalogued in which the use of generative AI was established or alleged and addressed by a court or tribunal. The categories include fabricated citations (1,214), misrepresented authorities (581), false quotes (383), and outdated advice (31). Cases span 34 countries; the USA accounts for 1,004, Canada 152, Australia 74, the UK 56, Israel 52, and the rest distributed across 29 other jurisdictions. Eugene Volokh documented 17 US court decisions in a single day (31 March 2026) noting suspected AI hallucinations in filings. US sanctions in Q1 2026 alone exceeded $145,000, with a single Oregon case reaching $110,000.
+
+    **Methodology:** Continuous, searchable, court-by-court database. Tagged by country, party, AI tool, nature, and outcome. The maintainer's own framing: this tracks legal *decisions* where AI use is established or alleged and addressed in more than a passing reference; it does not track the wider universe of AI-assisted court filings.
+
+    **Citation:** Damien Charlotin, HEC Paris Smart Law Hub. Live at [damiencharlotin.com/hallucinations/](https://www.damiencharlotin.com/hallucinations/).
+
+    Growth trajectory: 87 cases on 18 May 2025; 486 cases on 28 October 2025; ~1,350 cases by April 2026; 1,455 by mid-May 2026. The growth is uneven: some days yield none, and Volokh recorded 17 US decisions in a single day on 31 March 2026. The database is best read as a floor for visibility, not an incidence rate.
+
+    **What it kills:** The "but it isn't actually happening in the real world" defense. The cases are dated, jurisdiction-tagged, and accumulating in public. What this evidence does *not* show: the rate of AI-assisted filings that contain fabrications. Courts do not check every citation in every filing, so the denominator is unknown.
+  </Accordion>
+
+  <Accordion title="4. Stanford HAI 2026 AI Index: benchmark saturation outpacing evaluation">
+    **Evidence type:** Annual cross-industry index. Useful context on evaluation fragility and adoption scale; not itself a direct error-rate measurement.
+
+    **Headline finding:** SWE-bench Verified climbed from 60 percent to near 100 percent in a single year. Humanity's Last Exam moved from 8.8 percent (October 2025) to over 50 percent (Anthropic's Claude Opus 4.6, Google's Gemini 3.1 Pro) by April 2026. The same report concedes that frontier models score below 20 percent on replication in astrophysics and 33 percent on Earth-observation questions. The "jagged frontier" is now official.
+
+    **Methodology:** Annual cross-industry index published by Stanford Institute for Human-Centered AI; consolidates benchmark results, deployment indicators, regulatory developments, and incident data.
+
+    **Citation:** [The 2026 AI Index Report](https://hai.stanford.edu/ai-index/2026-ai-index-report), Stanford HAI, April 2026.
+
+    Ray Perrault, co-director of the AI Index steering committee, in IEEE Spectrum: *"We generally lack measures of how well a system (or agent) needs to function in a particular setting. Knowing that a benchmark for legal reasoning has 75 percent accuracy tells us little about how well it would fit in a law practice's activities."*
+
+    **What it kills:** The "but the benchmark scores prove the model is ready" defense. The most authoritative annual index in the field explicitly warns that benchmark performance is decoupled from deployment performance.
+  </Accordion>
+
+  <Accordion title="5. Vectara HHEM-2.3: third-party hallucination measurement on grounded summarization">
+    **Evidence type:** Commercial benchmark maintained by an AI-retrieval vendor. Useful diagnostic under public methodology; not a neutral academic gold standard.
+
+    **Headline finding:** On a controlled grounded-summarization task (the model is given source material and asked to summarize from it, an objectively easier task than open-ended fact retrieval), frontier models cluster at 7 to 13 percent hallucination. On Vectara's enterprise dataset of 7,700 longer documents (February 2026 release), Claude Opus 4.6 sat at 12.2 percent, Gemini 3 Pro at 13.6 percent, Claude Haiku 4.5 at 9.8 percent. Reasoning models performed worse than non-reasoning models on this task, because reasoning models add inferences beyond the source.
+
+    **Methodology:** HHEM-2.3 (Hughes Hallucination Evaluation Model) tests whether model summaries contain claims not grounded in the source documents. Continuously updated. Open methodology.
+
+    **Citation:** Vectara, [Hallucination Leaderboard](https://github.com/vectara/hallucination-leaderboard). Live Hugging Face Space: [vectara/leaderboard](https://huggingface.co/spaces/vectara/leaderboard).
+
+    **What it kills:** The "but RAG and grounding solved it" defense. The Vectara test is grounded summarization on supplied documents. The hallucination rates are still in double digits for flagship models.
+  </Accordion>
+
+  <Accordion title="6. UK AI Security Institute + Gray Swan: every frontier model is jailbreakable">
+    **Evidence type:** Government evaluation (AISI Trends Report) combined with a challenge-platform result (Gray Swan Arena). Two distinct sources, presented together because they corroborate each other.
+
+    **Headline finding (AISI Trends Report):** AISI evaluated frontier models over two years and found vulnerabilities in every system it tested. Universal jailbreaks (techniques that override safeguards across categories) were found across tested systems, with the time required to find one increasing from minutes to several hours between model generations. AISI's April 2026 evaluation of Claude Mythos Preview reported the first model to complete a 32-step enterprise cyber-attack simulation end-to-end.
+
+    **Headline finding (UK AISI x Gray Swan Agent Red-Teaming Challenge, March to April 2026):** Nearly 2,000 red-teamers made 1.8 million attempts against 22 anonymized agentic LLMs, targeting 44 specified harmful behaviors. They produced over 62,000 successful breaks. Every model was breakable.
+
+    **Methodology (AISI Trends Report):** Two years of frontier-model testing at the UK government's AI Security Institute; consolidated in the first public *Frontier AI Trends Report*. Independent of any model vendor.
+
+    **Methodology (Gray Swan Challenge):** Open red-teaming competition with $171,800 in prizes, conducted with UK AISI involvement. Attempts targeted real-world abuse categories (credential exfiltration, fraud execution, misinformation production, scam-stock recommendations).
+
+    **Citations:** UK AI Security Institute, [*Frontier AI Trends Report*](https://www.aisi.gov.uk/frontier-ai-trends-report). [Gray Swan AI announcement of UK AISI x Gray Swan Agent Red-Teaming Challenge results](https://www.grayswan.ai/news/uk-aisi-x-gray-swan-agent-red-teaming-challenge-results-snapshot).
+
+    **What it kills:** The "but the labs have safety teams and it's fine" defense. A government-backed evaluation and an open red-teaming competition independently produced the same conclusion: every model tested was vulnerable. The 62,000 figure is the count of successful breaks across 44 specified behaviors, not the count of distinct harmful behaviors discovered.
+  </Accordion>
+
+  <Accordion title="7. Opper car wash test + Heuristic Override Benchmark: reasoning failure on a child-level prompt">
+    **Evidence type:** Diagnostic test (vendor-run public evaluation) plus a follow-up preprint that systematized the failure mode. Useful for explaining a class of cognitive failure; not a primary statistical anchor.
+
+    **Headline finding (Opper, February 2026):** A simple prompt ("I want to wash my car. The car wash is 50 meters away. Should I walk or drive?") was administered to 53 frontier models with no system prompt, a forced choice between "drive" and "walk," and a required reasoning field. The correct answer is drive, because the car must be physically present to be washed. On a single run, 42 of 53 models said "walk." Only 11 said "drive." Across ten repeated trials per model, only 5 models out of 53 got it right every time (Claude Opus 4.6, Gemini 2.0 Flash Lite, Gemini 3 Flash, Gemini 3 Pro, Grok-4). The wrong answers all shared a structure: fluent reasoning about distance, fuel, exercise, and environment, while missing the unstated constraint that the car must be at the car wash.
+
+    **Headline finding (Heuristic Override Benchmark, March 2026):** A follow-up arXiv preprint generalized the car-wash failure mode into 500 prompts crossing four heuristic families (proximity, efficiency, cost, semantic match) with five constraint families (presence, capability, validity, scope, procedure). 14 frontier models were evaluated across 70,000 total responses. Under strict scoring (correct on all 10 trials), no model exceeded 75 percent overall accuracy. The presence-constraint family (the family most analogous to the car-wash prompt) was the hardest: mean strict accuracy 44.4 percent, range 20.0 to 75.0 percent across the 14 models. The top overall model (Gemini 3.1 Pro) hit 74.6 percent strict overall, but only 60.3 percent on presence.
+
+    **Methodology:** Opper, public evaluation across 53 models via standard API gateway. Independent replication by Focus AI on 131 models showed a 23.7 percent true-correct rate, broadly consistent with Opper's 20.8 percent. HOB by Cao et al., arXiv 2603.29025, "The Model Says Walk: How Surface Heuristics Override Implicit Constraints in LLM Reasoning."
+
+    **Citations:** Opper, [Car Wash Test on 53 leading AI models](https://opper.ai/blog/car-wash-test), February 2026. Replication: [Focus AI](https://thefocus.ai/reports/car-wash-test/). HOB paper: [arXiv 2603.29025](https://arxiv.org/abs/2603.29025).
+
+    **What it kills:** The "but reasoning models actually reason" defense. The car wash is a toy version of a class of business failure: surface optimization over unstated preconditions. The model sees a transportation choice and optimizes around distance. A human sees a goal: get the car washed. The cognitive failure mode generalizes directly to:
+
+    - "Should we cut price or increase marketing?" while missing that the real constraint is sales capacity.
+    - "Should we use Vendor A or Vendor B?" while missing that neither vendor satisfies the regulatory requirement.
+    - "Should we enter the market now or wait?" while missing that the core assumption about demand was never established.
+
+    The car wash example is valuable not because it is hard, but because it is easy. When models fail it, they are not failing for lack of knowledge. They are failing because the reasoning pathway locks onto the wrong frame and then produces a polished justification. Because the test went viral, future models may pass the specific prompt without solving the underlying class of failure; cite it as a diagnostic, not as a permanent benchmark.
+  </Accordion>
+</AccordionGroup>
+
+## Direct evidence: AI fails at analysis, not just at facts
+
+The seven anchor sources above are real but adjacent: grounded summarization, citation retrieval, legal research, clinical reasoning, court filings, frontier safety controls. The framework's actual target is sharper. Five recent studies measure structural-reasoning failure directly in analytical workflows, shifting the framework from "this gap is asserted" to "this gap is partly observed." They are not yet a single unified benchmark of executive decision memos, but they are the closest existing public measurement.
+
+<AccordionGroup>
+  <Accordion title="1. RAND 2026: claim truthfulness on technical policy reports">
+    **Evidence type:** Institutional research report (RAND Corporation). Not peer-reviewed.
+
+    **Headline finding:** Baseline LLM configurations achieved 48 to 54 percent accuracy on a six-category truthfulness task evaluating claims against source policy research reports. The categories included unsupported assertions, partial inaccuracies, inferred reasoning, and conflicting opinions. The benchmark is designed around analyst-grade reasoning, not fact lookup.
+
+    **Citation:** RAND Research Report [RRA4269-1](https://www.rand.org/pubs/research_reports/RRA4269-1.html), April 2026.
+
+    **What it kills:** The "but the model can summarize" defense. Even with the source documents available, baseline systems get the truthfulness judgment wrong roughly half the time on the nuanced categories that are exactly what an analyst is paid to apply.
+  </Accordion>
+
+  <Accordion title="2. Fin-RATE 2026: analytical errors in SEC-filing tracking">
+    **Evidence type:** arXiv preprint, not yet peer-reviewed. 17-LLM evaluation on SEC filings.
+
+    **Headline finding:** Accuracy dropped 18.60 percent moving from single-document reasoning to longitudinal tracking across reporting periods, and 14.35 percent moving to cross-entity comparison. The paper classifies the failure modes as comparison hallucinations, entity confusion, temporal mismatches, fabricated temporal claims, and trend distortion. These are not hallucinated citations; they are inferential errors in financial analysis.
+
+    **Citation:** "Fin-RATE: A Real-world Financial Analytics and Tracking Evaluation Benchmark for LLMs on SEC Filings," [arXiv 2602.07294](https://arxiv.org/abs/2602.07294), February 2026.
+
+    **What it kills:** The "but RAG over SEC filings is solid" defense. Even when the source documents are present and retrieval is clean, the model fails on the analytical relationships between them. The error taxonomy matches the framework's own definition of structural-reasoning failure almost line for line.
+  </Accordion>
+
+  <Accordion title="3. Peters and Chin-Yee 2025: overgeneralization in scientific summarization">
+    **Evidence type:** Peer-reviewed study (Royal Society Open Science).
+
+    **Headline finding:** LLM summaries of scientific texts were 4.85 times more likely than human-expert summaries to contain overly broad generalizations (95 percent confidence interval 3.06 to 7.70, p < 0.001). The result held across 4,900 LLM summaries and 10 LLMs tested. Per-model overgeneralization rates ranged from 26 to 73 percent. Newer models performed worse than earlier ones, against the usual "newer is better" assumption.
+
+    **Citation:** Uwe Peters and Benjamin Chin-Yee, "Generalization bias in large language model summarization of scientific research," *Royal Society Open Science*, April 2025. [DOI 10.1098/rsos.241776](https://royalsocietypublishing.org/doi/10.1098/rsos.241776).
+
+    **What it kills:** The "but the model summarizes accurately" defense. Overgeneralization is the structural failure that turns "this pilot showed promise" into "this strategy works." Direct quantification of the framework's claim that AI output omits boundary conditions.
+  </Accordion>
+
+  <Accordion title="4. Steyvers et al. 2025: humans cannot reliably tell when AI is wrong">
+    **Evidence type:** Peer-reviewed study (Nature Machine Intelligence).
+
+    **Headline finding:** Under default LLM explanations, users distinguished correct from incorrect model answers at an AUC of 0.59 to 0.60, barely above chance (0.50). The model's own internal confidence carried far more information (AUC 0.75 to 0.78). Longer explanations increased user confidence without improving answer accuracy. Uncertainty-aware explanations narrowed the calibration gap.
+
+    **Citation:** Mark Steyvers et al., "What Large Language Models Know and What People Think They Know," *Nature Machine Intelligence*, February 2025. [DOI 10.1038/s42256-024-00976-7](https://www.nature.com/articles/s42256-024-00976-7).
+
+    **What it kills:** The "but a reviewer will catch a bad answer" defense. The reviewer cannot, not at usefully better than chance. The combination of confident-sounding output and the reviewer's own overestimation of their discrimination ability is the failure mechanism the framework was built around.
+  </Accordion>
+
+  <Accordion title="5. Lee et al. 2025: high trust in GenAI correlates with less critical thinking">
+    **Evidence type:** Peer-reviewed study (CHI 2025). Self-reported survey of 319 knowledge workers and 936 first-hand GenAI work examples. Correlational, not causal.
+
+    **Headline finding:** Higher confidence in generative AI was associated with less self-reported critical thinking; higher self-confidence was associated with more. The data also showed that GenAI shifts cognitive work away from information gathering and idea generation toward verification, integration, and task stewardship. The result is directional, and the methodology is self-report rather than behavioral, but the pattern is consistent.
+
+    **Citation:** Hao-Ping Lee et al., "The Impact of Generative AI on Critical Thinking," *CHI 2025*. [DOI 10.1145/3706598.3713778](https://doi.org/10.1145/3706598.3713778).
+
+    **What it kills:** The "but humans add judgment on top" defense. The judgment shrinks when trust in the system is high. The mechanism is organizational, not technical, and it concentrates exactly where the framework predicts: at the point where a busy reviewer scans confident output without independent challenge.
+  </Accordion>
+</AccordionGroup>
+
+Two further studies widen the floor. CLAIM-BENCH (IJCNLP 2025, [arXiv 2506.08235](https://arxiv.org/abs/2506.08235)) tested six LLMs on more than 300 claim-evidence pairs from AI research papers and found significant gaps in claim-to-evidence reasoning that close only with multi-pass prompting. SECQUE (ACL GEM 2025, [arXiv 2504.04596](https://arxiv.org/abs/2504.04596)) tested seven LLMs on 565 expert-written SEC-filing questions; analyst-insight generation was the hardest task category across all models tested.
+
+Taken together, the five direct measurements plus the two supporting studies do not measure executive decision memos directly. They do measure: claim truthfulness against policy evidence (RAND), longitudinal and cross-entity reasoning in financial analysis (Fin-RATE), overgeneralization in scientific summarization (Peters and Chin-Yee), human calibration on AI output (Steyvers), and the inverse-correlation between trust and critical thinking (Lee). The "structural reasoning fails even when facts and citations check out" claim has gone from asserted to partly observed.
+
+## Supporting evidence
+
+Three additional studies are worth naming. They do not carry the page, but they widen the empirical floor.
+
+<CardGroup cols={1}>
+  <Card title="Columbia Tow Center AI-search audit" icon="magnifying-glass">
+    1,600 queries across eight AI-search and chatbot tools. Collectively wrong on over 60 percent of queries. Perplexity wrong 37 percent of the time. Grok 3 wrong 94 percent of the time, with 154 of 200 citations leading to 404 pages. [CJR, March 2025](https://www.cjr.org/tow_center/we-compared-eight-ai-search-engines-theyre-all-bad-at-citing-news.php).
+  </Card>
+  <Card title="Stanford RegLab: specialized legal AI" icon="scale-balanced">
+    Purpose-built legal AI tools (Lexis+ AI, Ask Practical Law AI) hallucinate in over 17 percent of queries; Westlaw AI-Assisted Research hallucinates in over 34 percent. General-purpose chatbots hallucinate in 58 to 88 percent of legal queries. [Stanford HAI / RegLab, *AI on Trial: Legal Models Hallucinate in 1 out of 6 (or More) Benchmarking Queries*, May 2024: still the standing reference in 2026 commentary](https://hai.stanford.edu/news/ai-trial-legal-models-hallucinate-1-out-6-or-more-benchmarking-queries).
+  </Card>
+  <Card title="Deloitte AU and CA reports" icon="building-circle-exclamation">
+    Deloitte Australia refunded the final installment of an AU$439,000 welfare-compliance report after AI-fabricated citations and a fake Federal Court quote were found. Deloitte Canada's CA$1,598,485 Newfoundland healthcare report contained at least four fake citations. Both controversies continued to drive 2026 governance debate.
+  </Card>
+</CardGroup>
+
+## Honest caveats
+
+The framework's Zero Trust posture extends to the evidence on this page. Seven things to hold in mind when reading any of the rates above.
+
+<AccordionGroup>
+  <Accordion title="The evidence types are heterogeneous and do not aggregate">
+    Counts, rates, behavioral effects, case databases, and toy-prompt diagnostics are not interchangeable. A 62,000 successful-break count from a challenge platform is not comparable to a 9.3 percent grounded-summarization hallucination rate, which is not comparable to a 49 percent sycophancy effect, which is not comparable to 1,455 court decisions. The [evidence-type table](#how-to-read-this-evidence) at the top of this page is the intended reading frame.
+  </Accordion>
+
+  <Accordion title="Vendor system cards are self-reported">
+    OpenAI, Anthropic, and Google publish hallucination rates against benchmarks they choose. *JAMA Network Open*, *Science*, the Stanford AI Index, the UK AISI report, and the HOB preprint are independent. Vectara HHEM-2.3 is third-party but commercial. Where numbers conflict, prefer independent over self-reported.
+  </Accordion>
+
+  <Accordion title="Methodologies do not average">
+    A 9.6 percent hallucination rate on GPT-5 with browsing (OpenAI system card) and a 10.9 percent rate on Claude Opus 4.5 (Vectara HHEM-2.3) are not comparable. The first is open-ended fact-seeking; the second is grounded summarization with a separate evaluator model. Show them side by side. Do not average them.
+  </Accordion>
+
+  <Accordion title="Evaluation-aware models distort eval signal">
+    Apollo Research has documented that frontier models recognize evaluation environments at increasing rates. Numbers from alignment and scheming evaluations are floors, not point estimates. The latent failure rate is at least as high as the measured rate, likely higher.
+  </Accordion>
+
+  <Accordion title="The court-filings denominator is unknown">
+    Charlotin's database catalogs court decisions in which AI-generated content was addressed by the court. Courts do not check every citation in every filing. The 1,455 figure is the number of visible cases, not the rate of fabrication in filings overall. The true rate is unknowable from public data.
+  </Accordion>
+
+  <Accordion title="Some standing references are 2024 or 2025 in origin">
+    The Stanford RegLab "58 to 88 percent legal-query hallucination" figure originates in 2024 work. The Columbia Tow Center AI-search study is from March 2025. Both remain the standing references in 2026 commentary because no comprehensive follow-ups have been published. Treat 2026 citations of them as restatements, not new measurement. The page is best read as "current public evidence as of May 2026," not "May 2026 measured error rates."
+  </Accordion>
+
+  <Accordion title="Viral examples become contaminated">
+    The Opper car wash test went viral in February 2026. Future model releases will have seen the prompt. The specific test result will degrade as a discriminator. The underlying class of failure (surface optimization over unstated preconditions) does not. Cite the example as a diagnostic, not as a permanent benchmark.
+  </Accordion>
+
+  <Accordion title="Reasoning settings were disabled for toggleable models in the MGB study, and newer reasoning models post-date the paper">
+    The MGB paper tested architecturally reasoning-optimized models in their reasoning configuration but disabled toggleable reasoning modes for models that have them (GPT-5's reasoning_effort dial, Claude's extended-thinking switch, Gemini Flash Thinking). The 90 to 100 percent differential-diagnosis failure rate held across both groups. Newer reasoning-mode models (GPT-5.5 Pro, Claude Opus 4.7, Gemini 3.1 Pro) post-date the paper and were not tested. Full methodology in anchor source #1 above.
+  </Accordion>
+</AccordionGroup>
+
+## What is not yet measured
+
+This section is now narrower than it was. The Direct evidence section above shifted the framework from "this gap is asserted" to "this gap is partly observed." RAND's policy-claim benchmark, Fin-RATE's financial-analytics taxonomy, Peters and Chin-Yee's overgeneralization study, Steyvers et al. on human calibration, and Lee et al. on the trust / critical-thinking inverse correlation each measure a slice of the framework's actual target.
+
+What still does not exist at scale is direct measurement of *deployed* executive analytical work: AI-augmented board memos, M&A diligence, regulatory submissions, strategy decks, capital-allocation memos. The five direct sources above cover the closest analogues. The deployment-level slice remains uncatalogued in public.
+
+Domain-specific validators exist. Retrieval checks exist. Legal citators exist. Medical review workflows exist. Benchmark harnesses exist. Human review exists. What does not yet exist at scale is a general-purpose, deployment-level system that checks whether AI-generated analysis is structurally valid: whether the claim follows from the evidence, whether assumptions are exposed, whether citations support the conclusion, and whether hidden constraints have been surfaced across arbitrary organizational outputs.
+
+<CardGroup cols={2}>
+  <Card title="Unanchored structural claims" icon="link-slash">
+    The rate at which deployed analytical output (consulting decks, research notes, board memos, regulatory filings) contains structurally unsupported claims. No public corpus. No continuous monitor. The framework predicts it has risen with AI volume. The framework currently cannot prove it.
+  </Card>
+  <Card title="Reasoning-validity at deployment" icon="brain-circuit">
+    The rate at which AI-generated inferences move from correct premises to correct conclusions in real organizational use. Benchmarks measure it on toy problems. Deployment is not measured at all.
+  </Card>
+  <Card title="Post-deployment discovery" icon="magnifying-glass-chart">
+    The rate at which structural errors in AI-assisted outputs are discovered after the work has shipped. Most analytical work is quietly superseded rather than formally corrected. No public dataset captures the discovery curve.
+  </Card>
+  <Card title="Executive trust calibration" icon="gauge-low">
+    The calibration of executive confidence in AI-augmented output versus its actual reliability. No continuous measure. The Cheng et al. sycophancy data suggests the calibration is broken in the unsafe direction.
+  </Card>
+</CardGroup>
+
+The absence is the problem. Without a general-purpose deployment-level reasoning-validity check, no continuous rate gets measured, and no executive sees the trend line they would respond to. The [2026 Watchlist](/watchlist) names the conditions under which this measurement would arrive and what would trigger it.
+
+The framework predicts the measurement arrives within eighteen months of the first widely-reported failure event. The Charlotin curve, the Deloitte refunds, and the JAMA Network Open clinical-reasoning study are the leading edge of that arrival, not the arrival itself.
+
+## A small piece of the measurement, done
+
+The four error modes above are deployment-level. The framework needs them measured continuously, in real organisational settings, with public methodology. That work does not yet exist at scale. But a smaller version of it now does.
+
+The [VALIS Benchmarks](/benchmarks/) ran the same three frontier models (Claude Opus 4.7, GPT-5.5, Gemini 3.1 Pro) against six narrow tests every analyst already does in their head before signing a memo. The hardest one, "notice what is missing from an analysis," is the structural failure mode the evidence above predicts. Here is what happened.
+
+<BenchmarkComparisonChart wedge="boundary_condition_omission" />
+
+Three frontier reasoning models. 500 cases each. None cleared 41 percent macro F1. This is one direct, anchored measurement of the omission failure mode the four-error-mode framework names. The pre-registered manifest was signed and Bitcoin-timestamped before any model was called, so the result cannot be retroactively softened.
+
+[See all six tests →](/benchmarks/)
+
+## How to use this page
+
+<Steps>
+  <Step title="If you are writing or reviewing an AI policy">
+    Use the four error modes as the structural backbone. A policy that addresses only fabrication will not catch the other three.
+  </Step>
+  <Step title="If you are evaluating a vendor">
+    Ask which tier their published error rates measure. Atomic factuality? Domain-task? Multi-step? An evaluation that does not name its tier is harder to compare against a peer.
+  </Step>
+  <Step title="If you are running an internal audit">
+    The Mass General Brigham methodology (PrIME-LLM) is the closest published template for evaluating multi-step reasoning. The framework's [Lane Discipline](/lane-discipline) page describes how to make it operational inside your own pipeline.
+  </Step>
+  <Step title="If you are contesting the framework">
+    Contest these seven anchor sources directly. They are the load-bearing studies. If you can refute three of them, the framework's empirical floor weakens materially.
+  </Step>
+</Steps>
+
+## Where this goes next
+
+<CardGroup cols={2}>
+  <Card title="The Doctrine" icon="shield" href="/the-doctrine">
+    The posture that responds to this evidence: Zero Trust applied to AI verification.
+  </Card>
+  <Card title="The Buyer's Checklist" icon="list-check" href="/buyers-checklist">
+    What to demand from vendors who claim to address these failure modes.
+  </Card>
+  <Card title="Benchmarks" icon="bars" href="/benchmarks/">
+    Six pre-registered, Bitcoin-anchored tests against three frontier models. Direct measurement of the structural failure modes this page describes.
+  </Card>
+  <Card title="2026 Watchlist" icon="calendar" href="/watchlist">
+    Dated signals that will tell you whether the framework holds. The conditions that would make the unmeasured become measurable.
+  </Card>
+</CardGroup>
