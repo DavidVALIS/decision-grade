@@ -1,25 +1,15 @@
 ---
-title: 'The doctrine for working with AI in 2026'
-description: 'Executive guidance for building AI into your workflows.'
+title: 'Hallucination was last year''s problem.'
+description: 'Executive guidance for working with AI in 2026. The risk has moved. This is the new shape of it, and what to do about it.'
 ---
-
-<Note>
-  **What this site is:** A framework for executives, technology leaders, and strategy functions navigating AI in 2026. 
-</Note>
 
 Most AI guidance you will read in 2026 is still scoped to facts and hallucinations. Will the model make things up. Can we catch it when it does. These are reasonable questions. They are not where the operational risk lives now.
 
-The risk that matters sits one layer down. AI is already in your analytical pipeline, whether you formally authorized it or not. Research synthesis, first-draft generation, summarization, briefing prep, the work whose output you are about to put your name on.
-
-The cost of producing polished words has collapsed. At the token layer, by two to three orders of magnitude. End-to-end, once human prompting, editing, and integration are counted, by a factor of five to twenty.
+The risk has moved one layer down. AI is already in your analytical pipeline, whether you formally authorized it or not. Research synthesis, first-draft generation, summarization, briefing prep. The work whose output you are about to put your name on.
 
 The output reads well, fact-checks cleanly, and contains no obvious hallucinations. It still reasons badly. It still makes load-bearing causal claims with no mechanism. It still omits the boundary conditions that would let a careful reader weigh it.
 
-Your existing controls do not catch this. They were not designed to. Style guides formalize prose. Performance reviews reward speed and confidence. Disclosure frameworks check what tool was used, not whether the reasoning is sound.
-
-The verification deficit was already inside your organization before any model was deployed. AI did not create it. AI revealed it.
-
-The 2026 executive question is not how to defend against hallucination. It is how to operate when polished output and sound reasoning have come apart, and when the cost of being wrong about that gap has begun to compound.
+Your existing controls do not catch this. They were not designed to.
 
 <Stat
   value="1,455"
@@ -28,6 +18,42 @@ The 2026 executive question is not how to defend against hallucination. It is ho
   href="/evidence"
   size="md"
 />
+
+<Note>
+  **What this site is.** A framework for executives, technology leaders, and strategy functions navigating AI verification in 2026. Six pages, in order: the problem, the evidence, the posture, what to demand from vendors, what to build inside, what would prove the framework wrong.
+</Note>
+
+## Where to start
+
+Pick by how much time you have or by what is on your calendar this quarter.
+
+<CardGroup cols={3}>
+  <Card title="If you have 5 minutes" icon="list-check" href="/buyers-checklist">
+    Read **The Buyer's Checklist**. Seven questions to put to any AI vendor claiming verification. The single test: *can I verify your verdicts without having to trust you?*
+  </Card>
+
+  <Card title="If you have 20 minutes" icon="diagram-project" href="/the-frame">
+    Read **The Frame**, then **The Buyer's Checklist**. The diagnosis plus the action.
+  </Card>
+
+  <Card title="If you have 60 minutes" icon="book" href="/the-frame">
+    Read in order: Frame, Evidence, Doctrine, Buyer's Checklist, Lane Discipline, Watchlist.
+  </Card>
+</CardGroup>
+
+<CardGroup cols={3}>
+  <Card title="A vendor evaluation is in flight" icon="list-check" href="/buyers-checklist">
+    Start with the seven procurement questions and bring them to the meeting.
+  </Card>
+
+  <Card title="A board meeting has an AI agenda item" icon="signs-post" href="/lane-discipline">
+    Start with **Lane Discipline** and bring the single board-level metric.
+  </Card>
+
+  <Card title="You are forwarding this to a CTO or CIO" icon="shield" href="/the-doctrine">
+    Start with **The Doctrine**. Zero Trust applied to AI verification, in three layers.
+  </Card>
+</CardGroup>
 
 ## Who this is for
 
@@ -44,39 +70,6 @@ The 2026 executive question is not how to defend against hallucination. It is ho
     Helps you build tools for decision support and reasoning that holds up under expert challenge.
   </Card>
 </CardGroup>
-
-## How to read this
-
-A reference, not a primer. Read in order for the full architecture. Jump in if you have a specific question.
-
-<Steps>
-  <Step title="The Frame">
-    The diagnosis. What the problem actually is, and why your current controls do not catch it.
-  </Step>
-  <Step title="The Evidence Base">
-    The data. Twelve named sources, dated and primary-cited, on how AI fails in May 2026.
-  </Step>
-  <Step title="The Doctrine">
-    The posture. Zero Trust applied to AI verification, in three layers.
-  </Step>
-  <Step title="The Buyer's Checklist">
-    The action outside your walls. Seven questions to put to any AI vendor.
-  </Step>
-  <Step title="Lane Discipline">
-    The action inside your walls. Decision-grade output versus volume-grade output, and how to keep them separate.
-  </Step>
-  <Step title="2026 Watchlist">
-    The calendar. Dated signals that will tell you whether the framework holds, and where it would break.
-  </Step>
-</Steps>
-
-<Tip>
-  **The framework is published openly.**
-
-  The source is on GitHub. Any AI can be pointed at the whole thing in a single fetch. The site has an MCP server so any AI client can read it directly.
-
-  That openness is part of the posture, not a side feature. The doctrine should not require trusting the publisher.
-</Tip>
 
 ## What the framework is not
 
@@ -98,18 +91,10 @@ Three inoculations against the most common misreadings.
 
 The scope is one question. When the cost of producing polished analytical output has collapsed, what does it mean to verify the reasoning underneath, and what should you ask of the systems and vendors you depend on for that verification?
 
-## Where to start
+<Tip>
+  **The framework is published openly.**
 
-<CardGroup cols={3}>
-  <Card title="Read in order" icon="book" href="/the-frame">
-    Start with **The Frame**. Roughly thirty minutes for the full architecture.
-  </Card>
+  The source is on GitHub. Any AI can be pointed at the whole thing in a single fetch via [llms.txt](/llms.txt) or the [MCP server](/mcp). Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): use, adapt, build on it, fork it, contest it.
 
-  <Card title="Architecture first" icon="shield" href="/the-doctrine">
-    **The Doctrine** if you want the posture before the diagnosis.
-  </Card>
-
-  <Card title="Action first" icon="list-check" href="/buyers-checklist">
-    **The Buyer's Checklist** if a vendor evaluation is already on your calendar.
-  </Card>
-</CardGroup>
+  That openness is part of the posture, not a side feature. The doctrine should not require trusting the publisher.
+</Tip>
