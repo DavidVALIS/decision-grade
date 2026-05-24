@@ -50,11 +50,17 @@ export function Layout({ slug, title, description, toc = [], children }: LayoutP
       </div>
 
       <footer className="dg-footer">
-        <span>© {year} David Lundblad · CC BY 4.0</span>
-        <span>
-          <a href={REPO_URL} target="_blank" rel="noreferrer">
-            Source on GitHub
-          </a>
+        <span>© {year} David Lundblad · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a></span>
+        <span className="dg-footer-links">
+          <a href="/about/">About</a>
+          <span aria-hidden="true">·</span>
+          <a href="/llms.txt" target="_blank" rel="noreferrer">llms.txt</a>
+          <span aria-hidden="true">·</span>
+          <a href="/llms-full.txt" target="_blank" rel="noreferrer">llms-full.txt</a>
+          <span aria-hidden="true">·</span>
+          <a href="/mcp/">MCP</a>
+          <span aria-hidden="true">·</span>
+          <a href={REPO_URL} target="_blank" rel="noreferrer">Source on GitHub</a>
         </span>
       </footer>
       <div className="grain-overlay" aria-hidden="true" />

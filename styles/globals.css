@@ -1198,6 +1198,16 @@ a.dg-stat--center:hover {
   border-bottom: 1px solid var(--rule);
 }
 .dg-footer a:hover { color: var(--fg-1); border-color: var(--accent); }
+.dg-footer-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.dg-footer-links > [aria-hidden] {
+  color: var(--fg-4);
+  opacity: 0.55;
+}
 
 /* Reveal animation */
 @keyframes dg-reveal {
