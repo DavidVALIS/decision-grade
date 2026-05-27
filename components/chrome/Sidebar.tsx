@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { PAGES, BENCHMARK_PAGES, BENCHMARK_VERSION_GROUPS, REPO_URL, REPO_RAW_URL } from '@/lib/pages';
+import { PAGES, REPO_URL, REPO_RAW_URL } from '@/lib/pages';
 import { getIcon, IconX } from '@/components/icons';
 
 export function Sidebar() {
@@ -87,44 +87,13 @@ export function Sidebar() {
           })}
         </div>
 
-        <div className="dg-sidebar-group">
-          <p className="dg-sidebar-group-label">Benchmarks</p>
-          {BENCHMARK_PAGES.map((p) => {
-            const Icon = getIcon(p.icon);
-            const active = slug === p.id;
-            return (
-              <Link
-                key={p.id}
-                href={`/${p.id}/`}
-                className={`dg-sidebar-item${active ? ' dg-sidebar-item--active' : ''}`}
-              >
-                <span className="dg-sidebar-num">{p.num}</span>
-                {Icon ? <Icon className="dg-sidebar-icon" size={16} /> : null}
-                <span>{p.title}</span>
-              </Link>
-            );
-          })}
-          {BENCHMARK_VERSION_GROUPS.map((group) => (
-            <div key={group.version} className="dg-sidebar-subgroup">
-              <p className="dg-sidebar-subgroup-label">{group.version}</p>
-              {group.pages.map((p) => {
-                const Icon = getIcon(p.icon);
-                const active = slug === p.id;
-                return (
-                  <Link
-                    key={p.id}
-                    href={`/${p.id}/`}
-                    className={`dg-sidebar-item dg-sidebar-item--nested${active ? ' dg-sidebar-item--active' : ''}`}
-                  >
-                    <span className="dg-sidebar-num">{p.num}</span>
-                    {Icon ? <Icon className="dg-sidebar-icon" size={14} /> : null}
-                    <span>{p.title}</span>
-                  </Link>
-                );
-              })}
-            </div>
-          ))}
-        </div>
+        {/*
+          Benchmarks section intentionally hidden from sidebar (v2.1, 2026-05-24).
+          Benchmark pages still render at /benchmarks/* by direct URL via
+          lib/pages.ts entries, but are not advertised in nav, in llms.txt,
+          in llms-full.txt, or in the search index. Treated the same way as
+          /cost: present, unfinished or held back, not surfaced.
+        */}
 
         <div className="dg-sidebar-group">
           <p className="dg-sidebar-group-label">Appendix</p>
