@@ -87,13 +87,7 @@ export function Sidebar() {
           })}
         </div>
 
-        {/*
-          Benchmarks section intentionally hidden from sidebar (v2.1, 2026-05-24).
-          Benchmark pages still render at /benchmarks/* by direct URL via
-          lib/pages.ts entries, but are not advertised in nav, in llms.txt,
-          in llms-full.txt, or in the search index. Treated the same way as
-          /cost: present, unfinished or held back, not surfaced.
-        */}
+        {/* Benchmarks section removed 2026-07-06: pages deleted, routes 404. */}
 
         <div className="dg-sidebar-group">
           <p className="dg-sidebar-group-label">Appendix</p>

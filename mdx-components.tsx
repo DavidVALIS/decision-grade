@@ -13,16 +13,6 @@ import { Step } from '@/components/mdx/Step';
 import { Mermaid } from '@/components/mdx/Mermaid';
 import { Stat, StatRow } from '@/components/mdx/Stat';
 import { Quote } from '@/components/mdx/Quote';
-import { BenchmarkExampleTable } from '@/components/mdx/BenchmarkExampleTable';
-import { BenchmarkFindingCard } from '@/components/mdx/BenchmarkFindingCard';
-import {
-  BenchmarkComparisonChart,
-  BenchmarkTierComparison,
-} from '@/components/mdx/BenchmarkComparisonChart';
-import { BenchmarkAnchoringEvidence } from '@/components/mdx/BenchmarkAnchoringEvidence';
-import { BenchmarkMethodologyDisclosure } from '@/components/mdx/BenchmarkMethodologyDisclosure';
-import { BenchmarkTestSection } from '@/components/mdx/BenchmarkTestSection';
-import { BenchmarkResultsGrid } from '@/components/mdx/BenchmarkResultsGrid';
 
 function slugify(text: string): string {
   return text
@@ -97,15 +87,6 @@ export function useMDXComponents(components: Record<string, unknown> = {}) {
     Stat,
     StatRow,
     Quote,
-    // Benchmarks
-    BenchmarkExampleTable,
-    BenchmarkFindingCard,
-    BenchmarkComparisonChart,
-    BenchmarkTierComparison,
-    BenchmarkAnchoringEvidence,
-    BenchmarkMethodologyDisclosure,
-    BenchmarkTestSection,
-    BenchmarkResultsGrid,
     Frame: ({ children }: { children: ReactNode }) => (
       <div className="dg-card" style={{ padding: 20, margin: '24px 0' }}>
         {children}
