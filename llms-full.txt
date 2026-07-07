@@ -622,7 +622,7 @@ The seven anchor sources above are real but adjacent: grounded summarization, ci
   </Accordion>
 </AccordionGroup>
 
-Two further studies widen the floor. CLAIM-BENCH (IJCNLP 2025, [arXiv 2506.08235](https://arxiv.org/abs/2506.08235)) tested six LLMs on more than 300 claim-evidence pairs from AI research papers and found significant gaps in claim-to-evidence reasoning that close only with multi-pass prompting. SECQUE (ACL GEM 2025, [arXiv 2504.04596](https://arxiv.org/abs/2504.04596)) tested seven LLMs on 565 expert-written SEC-filing questions; analyst-insight generation was the hardest task category across all models tested.
+Two further studies widen the floor. CLAIM-BENCH (IJCNLP 2025, [arXiv 2506.08235](https://arxiv.org/abs/2506.08235)) tested six LLMs on more than 300 claim-evidence pairs from AI research papers and found gaps in claim-to-evidence reasoning that close only with multi-pass prompting. SECQUE (ACL GEM 2025, [arXiv 2504.04596](https://arxiv.org/abs/2504.04596)) tested seven LLMs on 565 expert-written SEC-filing questions; analyst-insight generation was the hardest task category across all models tested.
 
 Taken together, the five direct measurements plus the two supporting studies do not measure executive decision memos directly. They do measure: claim truthfulness against policy evidence (RAND), longitudinal and cross-entity reasoning in financial analysis (Fin-RATE), overgeneralization in scientific summarization (Peters and Chin-Yee), human calibration on AI output (Steyvers), and the inverse-correlation between trust and critical thinking (Lee). The "structural reasoning fails even when facts and citations check out" claim has gone from asserted to partly observed.
 
@@ -1556,7 +1556,7 @@ Each failure is invisible in the moment and only obvious in the post-mortem. Kno
   </Card>
 
   <Card title="4. The attention inversion" icon="eye">
-    Volume-grade content gets more leadership attention than decision-grade because there is more of it. What gets rewarded gets repeated: speed to inbox, zero stakeholder friction, confident language. What gets ignored: forecast scoring, postmortem accuracy, explicit uncertainty. The decision-grade lane becomes vestigial.
+    Volume-grade content gets more leadership attention than decision-grade because there is more of it. What gets rewarded gets repeated: speed to inbox, no pushback from the people who sign off, confident language. What gets ignored: forecast scoring, postmortem accuracy, explicit uncertainty. The decision-grade lane becomes vestigial.
 
     **Fix:** Decision-grade outputs need clear routing to the decision-makers. Volume-grade outputs need clear routing away from them unless explicitly requested. Performance reviews need to score accuracy alongside speed.
   </Card>
@@ -1912,7 +1912,7 @@ The arguments on this site come from a specific path. The three pieces that prod
 
 ### Yahoo, 2024: the protocol that was right for its moment
 
-In 2024, I authored an AI usage protocol for Yahoo. It was scoped to what the AI conversation was actually about at the time: fact-checking, citation grounding, disclosure, human review. A reasonable response to the 2024 landscape.
+In 2024, I authored an AI usage protocol for Yahoo. It was scoped to what the AI conversation was actually about at the time: fact-checking, citation grounding, disclosure, human review. A reasonable response to what AI looked like in 2024.
 
 It was also the wrong frame for where things were going. Models improved on the hallucination axis faster than the protocols I had written assumed. The remaining failure mode was no longer getting the facts wrong. It was producing fluent, well-cited, hallucination-free output that still reasoned badly. The 2024 toolkit was solving the visible problem. The problem was changing underneath it.
 
