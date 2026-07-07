@@ -20,7 +20,7 @@ Most AI guidance you will read in 2026 is still scoped to facts and hallucinatio
 
 The risk has moved one layer down. AI is already in your analytical pipeline, whether you formally authorized it or not. Research synthesis, first-draft generation, summarization, briefing prep. The work whose output you are about to put your name on.
 
-The output reads well, fact-checks cleanly, and contains no obvious hallucinations. It still reasons badly. It still makes load-bearing causal claims with no mechanism. It still omits the boundary conditions that would let a careful reader weigh it.
+The output reads well, fact-checks cleanly, and contains no obvious hallucinations. It still reasons badly. It still rests its conclusions on causal claims with no mechanism. It still omits the boundary conditions that would let a careful reader weigh it.
 
 Your existing controls do not catch this. They were not designed to.
 
@@ -144,7 +144,7 @@ The questions executives are asking about AI in 2026 are the questions that matt
 Every item on the right requires structure well beyond a single LLM call. [The Doctrine](/the-doctrine) sets out what that structure looks like. Before that: five plain examples of what the right-hand column actually means in a deliverable.
 <AccordionGroup>
   <Accordion title="Independent grounding of the causal claim">
-    A report says retention rose 15% because of the new onboarding flow. The "because" is the load-bearing part. Without a comparison to similar companies that didn't change onboarding, the rise could just as easily be from a market shift, a price change, or the three other things the same team fixed that quarter.
+    A report says retention rose 15% because of the new onboarding flow. The whole claim rests on the "because." Without a comparison to similar companies that didn't change onboarding, the rise could just as easily be from a market shift, a price change, or the three other things the same team fixed that quarter.
   </Accordion>
 
   <Accordion title="Pre-conclusion commitment to assumptions">
@@ -177,7 +177,7 @@ Five examples follow. Each is a paragraph a McKinsey, BCG, or Gartner-shaped rea
 
     Citations: real productivity study, real governance-performance correlation, real industry forecast. All three describe what they claim to describe.
 
-    **Why it fails:** "Mid-market firms that have meaningfully integrated AI" is a survivor-defined population. The studies describe organizations that already succeeded; the conclusion generalizes the pattern to organizations contemplating the move. The selection rule does the load-bearing work. It is the same shape as "among hedge funds that survived 2008, conservative balance sheets outperformed." Both citations real. Guidance for anyone not already a survivor: useless.
+    **Why it fails:** "Mid-market firms that have meaningfully integrated AI" is a survivor-defined population. The studies describe organizations that already succeeded; the conclusion generalizes the pattern to organizations contemplating the move. The selection rule carries the whole argument. It is the same shape as "among hedge funds that survived 2008, conservative balance sheets outperformed." Both citations real. Guidance for anyone not already a survivor: useless.
   </Accordion>
 
   <Accordion title="2. Mechanism substitution (citation supports X, conclusion asserts Y)">
@@ -209,7 +209,7 @@ Five examples follow. Each is a paragraph a McKinsey, BCG, or Gartner-shaped rea
 
     Citations: three real sources, all describing observed trends accurately.
 
-    **Why it fails:** The citations describe the regime up to a point in time. The conclusion projects through the planning horizon. Whether the trend continues is the load-bearing assumption, and it sits in none of the citations. The argument depends entirely on an extrapolation the cited evidence does not itself vouch for. The same structural argument supported SaaS multiples in 2021. The trajectory was real until it wasn't.
+    **Why it fails:** The citations describe the regime up to a point in time. The conclusion projects through the planning horizon. Whether the trend continues is the assumption the whole conclusion rests on, and it sits in none of the citations. The argument depends entirely on an extrapolation the cited evidence does not itself vouch for. The same structural argument supported SaaS multiples in 2021. The trajectory was real until it wasn't.
   </Accordion>
 </AccordionGroup>
 
@@ -257,7 +257,7 @@ The scarce resource is no longer the analyst who writes. It is the reviewer who 
     Reviewer headcount, meeting time, and domain access did not scale at the same rate. The slow checks were the first thing cut under throughput pressure.
   </Step>
   <Step title="Unverified claims circulate at materially higher volume">
-    The probability that any specific output contains an unverified load-bearing claim has not fallen with the cost. It has risen with the volume.
+    The probability that any specific output rests on an unverified claim has not fallen with the cost. It has risen with the volume.
   </Step>
 </Steps>
 
@@ -720,7 +720,7 @@ The framework predicts the measurement arrives within eighteen months of the fir
     The Mass General Brigham methodology (PrIME-LLM) is the closest published template for evaluating multi-step reasoning. The framework's [Lane Discipline](/lane-discipline) page describes how to make it operational inside your own pipeline.
   </Step>
   <Step title="If you are contesting the framework">
-    Contest these seven anchor sources directly. They are the load-bearing studies. If you can refute three of them, the framework's empirical floor weakens materially.
+    Contest these seven anchor sources directly. They are the studies the framework rests on. If you can refute three of them, the framework's empirical floor weakens materially.
   </Step>
 </Steps>
 
@@ -888,12 +888,12 @@ The architecture surfaces every exception. It does not pretend exceptions never 
 
 ### Proof artifacts become targets
 
-The doctrine asks for assumption registers, claim-source maps, refusal logs, rubric hashes, and deterministic gates. Once those artifacts matter, they get gamed. Low-quality sources attached to claims to satisfy the citation requirement. Non-load-bearing assumptions listed while real assumptions stay hidden. Rubrics quietly optimized for passing rather than catching. Refusal logs curated for the audit reader. Decision-grade labels earned through paperwork rather than reasoning.
+The doctrine asks for assumption registers, claim-source maps, refusal logs, rubric hashes, and deterministic gates. Once those artifacts matter, they get gamed. Low-quality sources attached to claims to satisfy the citation requirement. Cosmetic assumptions listed while the assumptions the conclusion rests on stay hidden. Rubrics quietly optimized for passing rather than catching. Refusal logs curated for the audit reader. Decision-grade labels earned through paperwork rather than reasoning.
 
 The doctrine's core argument is that prior controls devolved into theater. Its own controls will face the same pressure. The defense is not naivete about it. The defense is treating artifact integrity as a measured property, not a claimed one.
 
 - **Citation quality, not just citation count.** A claim with three citations whose sources do not actually support it is worse than a claim with one citation that does. Audit a sampled subset of decision-grade outputs at the claim-to-source level on a published cadence.
-- **Assumption load-bearingness, not just assumption listing.** An assumption register that names ten cosmetic assumptions while the real load-bearing assumption sits unstated is gaming. Audits sample for assumptions that, if flipped, would change the conclusion, and confirm those are the ones in the register.
+- **Which assumptions the conclusion rests on, not just which are listed.** An assumption register that names ten cosmetic assumptions while the assumption the whole conclusion rests on sits unstated is gaming. Audits sample for assumptions that, if flipped, would change the conclusion, and confirm those are the ones in the register.
 - **Rubric stability under adversarial cases, not just under happy-path cases.** A rubric that passes everything is not a rubric. Rubric versions are tested against known-hard cases on each revision, and the pass rate is part of the change log.
 - **Refusal log completeness, not just refusal log presence.** A refusal log is gamed by selective entry. The audit on the log is independent of the entity producing it, and unexplained gaps in the entry pattern are themselves a refusal-log defect.
 
