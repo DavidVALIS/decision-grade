@@ -1,8 +1,8 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Decision-Grade AI",
-  "description": "A framework for executives working with AI in 2026. Decision-grade analysis, Zero Trust verification, and what to demand from your AI vendors.",
+  "name": "Decision Grade",
+  "description": "A public framework for making AI-assisted professional work more decision-ready before reliance.",
   "colors": {
     "primary": "#E79583",
     "light": "#efe9dc",

@@ -7,12 +7,12 @@ export type PageEntry = {
 
 export const PAGES: PageEntry[] = [
   { id: 'introduction', title: 'Introduction', icon: 'IconLayers', num: '00' },
-  { id: 'the-frame', title: 'The Frame', icon: 'IconCrosshair', num: '01' },
-  { id: 'evidence', title: 'The Evidence Base', icon: 'IconPulse', num: '02' },
-  { id: 'the-doctrine', title: 'The Doctrine', icon: 'IconShield', num: '03' },
-  { id: 'buyers-checklist', title: "The Buyer's Checklist", icon: 'IconChecklist', num: '04' },
-  { id: 'lane-discipline', title: 'Lane Discipline', icon: 'IconLanes', num: '05' },
-  { id: 'watchlist', title: '2026 Watchlist', icon: 'IconCalendar', num: '06' },
+  { id: 'the-frame', title: 'The problem', icon: 'IconCrosshair', num: '01' },
+  { id: 'evidence', title: 'Current evidence', icon: 'IconPulse', num: '02' },
+  { id: 'the-doctrine', title: 'What Decision Grade means', icon: 'IconShield', num: '03' },
+  { id: 'buyers-checklist', title: 'Questions to ask', icon: 'IconChecklist', num: '04' },
+  { id: 'lane-discipline', title: 'Reliance lanes', icon: 'IconLanes', num: '05' },
+  { id: 'watchlist', title: 'What to measure', icon: 'IconCalendar', num: '06' },
 ];
 
 // Benchmarks section removed 2026-07-06. Pages, components, and data

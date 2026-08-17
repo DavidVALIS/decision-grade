@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Decision-Grade AI</title>
+        <title>Decision Grade</title>
         <meta httpEquiv="refresh" content="0; url=/introduction/" />
         <link rel="canonical" href="/introduction/" />
       </Head>

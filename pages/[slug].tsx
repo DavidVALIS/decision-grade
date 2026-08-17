@@ -49,7 +49,7 @@ export default function DocsPage({ slug, mdxSource, frontmatter, toc }: PageProp
   const page = getBySlug(slug);
   const title = frontmatter.title ?? page?.title ?? slug;
   const description = frontmatter.description;
-  const pageTitle = `${title} · Decision-Grade AI`;
+  const pageTitle = `${title} · Decision Grade`;
 
   return (
     <>

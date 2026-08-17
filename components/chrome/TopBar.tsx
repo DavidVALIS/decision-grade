@@ -31,7 +31,7 @@ export function TopBar() {
 
         <Link href="/introduction/" className="dg-brand">
           <ValisMark size={24} />
-          <span className="dg-brand-text">Decision-Grade AI</span>
+          <span className="dg-brand-text">Decision Grade</span>
         </Link>
 
         <div className="dg-topbar-actions">

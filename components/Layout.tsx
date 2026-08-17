@@ -50,7 +50,7 @@ export function Layout({ slug, title, description, toc = [], children }: LayoutP
       </div>
 
       <footer className="dg-footer">
-        <span>© {year} David Lundblad · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a></span>
+        <span>© {year} VALIS Systems · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a></span>
         <span className="dg-footer-links">
           <a href="/about/">About</a>
           <span aria-hidden="true">·</span>

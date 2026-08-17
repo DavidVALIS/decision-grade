@@ -1,27 +1,41 @@
-# Decision-Grade AI
+# Decision Grade
 
-A framework for executives working with AI in 2026. Decision-grade analysis, Zero Trust verification, and what to demand from your AI vendors.
+A public framework for making AI-assisted professional work more decision-ready before reliance.
 
 Live site: [decision-grade.ai](https://decision-grade.ai)
 
 ## What this is
 
-This repository is the source for the Decision-Grade AI framework, a public reference for executives, technology leaders, and strategy functions navigating the verification deficit underneath AI-augmented analysis.
+This repository contains the public source for decision-grade.ai.
 
-The framework is published openly because the Zero Trust posture it advocates extends to the doctrine itself. You should not have to trust the publisher. You can verify the framework, contest it, fork it, or implement it elsewhere.
+Within VALIS, **Decision Grade** is an earned Scout Full disposition for one declared use. It is not a permanent property of a document or a guarantee of correctness. For synthesis, scenarios, backcasting, implications, and recommendations after a scan, the site uses **decision-ready** instead.
+
+The framework explains the problem, current evidence, the use-bound meaning of Decision Grade, questions to ask before relying, reliance lanes, and the measures still needed to prove comparative value.
 
 ## How to read
 
-The site at [decision-grade.ai](https://decision-grade.ai) is the canonical reading experience. Every page is also available as Markdown in this repository, and an `llms.txt` index is published at the site root for AI-assisted reading.
+The site is the canonical reading experience. Every page is also available as Markdown in this repository.
+
+- [`llms.txt`](https://decision-grade.ai/llms.txt) is the compact index.
+- [`llms-full.txt`](https://decision-grade.ai/llms-full.txt) contains the complete framework.
+- The [MCP endpoint](https://decision-grade.ai/mcp) publishes the same material to compatible clients.
+
+The `_v1_snapshot_2026-05-24` directory is a historical snapshot. It does not represent the current framework or current VALIS language.
+
+## Evidence boundary
+
+External research on the site supports the problem. It does not prove that VALIS or another product outperforms a strong direct model review or a qualified human reviewer.
+
+The active research case uses work published or materially updated on or after April 1, 2026. Primary legal and public records are treated separately and used only for the bounded point they establish.
 
 ## Contributing
 
-Issues and pull requests are welcome. The framework is intended to evolve in response to the regulatory and market signals it describes. Substantive disagreements are particularly welcome; the doctrine improves when it is contested.
+Substantive corrections and disagreements are welcome through issues and pull requests. A proposed claim should include the primary source, publication date, measured task, unit and denominator, and material limit.
 
 ## License
 
-Content is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE). You may share, adapt, and build upon the work in any medium for any purpose, including commercially, with attribution.
+Content is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE). You may share and adapt the work with attribution.
 
 ## Publisher
 
-Published by VALIS Systems. The publisher has a commercial interest in the doctrine being adopted. The doctrine itself is independent of any specific product. Reference: [valissystems.com](https://valissystems.com).
+Published by VALIS Systems. VALIS has a commercial interest in the problem and the approach described here. Reference: [valissystems.com](https://valissystems.com).

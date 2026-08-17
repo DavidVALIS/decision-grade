@@ -6,33 +6,36 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-declare -A titles=(
-  [introduction]="Introduction"
-  [the-frame]="The Frame"
-  [evidence]="The Evidence Base"
-  [the-doctrine]="The Doctrine"
-  [buyers-checklist]="The Buyer's Checklist"
-  [lane-discipline]="Lane Discipline"
-  [watchlist]="2026 Watchlist"
-  [about]="About"
-  [mcp]="MCP Server"
-)
+title_for() {
+  case "$1" in
+    introduction) echo "A stronger basis for a decision." ;;
+    the-frame) echo "The problem" ;;
+    evidence) echo "Current evidence" ;;
+    the-doctrine) echo "What Decision Grade means" ;;
+    buyers-checklist) echo "Questions to ask before relying" ;;
+    lane-discipline) echo "Reliance lanes" ;;
+    watchlist) echo "What to measure" ;;
+    about) echo "About" ;;
+    mcp) echo "MCP server" ;;
+    *) echo "ERROR: Unknown page: $1" >&2; return 1 ;;
+  esac
+}
 
 PAGES=(introduction the-frame evidence the-doctrine buyers-checklist lane-discipline watchlist about mcp)
 
 {
   cat <<'HEADER'
-# Decision-Grade AI — Full Framework
+# Decision Grade — Full Framework
 
-> A framework for executives, technology leaders, and strategy functions working with AI in 2026. Built around verification: what to demand from AI vendors, what to build inside your organization, and what to watch over the next eighteen months.
+> A public framework for making AI-assisted professional work more decision-ready before reliance.
 
-This file is the full text of all nine pages of the decision-grade.ai framework, assembled into a single document for AI-assisted reading. The canonical reading experience is at https://decision-grade.ai. Source is at https://github.com/DavidVALIS/decision-grade.
+This file contains all nine pages published at decision-grade.ai, assembled for AI-assisted reading. The canonical reading experience is at https://decision-grade.ai. Source is at https://github.com/DavidVALIS/decision-grade.
 
 Published by VALIS Systems. Content licensed under Creative Commons Attribution 4.0 International (CC BY 4.0). Reference: https://valissystems.com.
 
-The framework starts from a single observation: AI is already in your analytical pipeline somewhere. The token-level production cost collapsed by two to three orders of magnitude. The all-in cost of analytical work fell by roughly 5x to 20x. Verification cost has not moved at the same rate at the structural-reasoning layer. The gap between those two cost curves is the operational risk that most executive AI guidance does not yet address.
+Within VALIS, Decision Grade is an earned Scout Full disposition for one declared use. It is not a permanent property of a document or a guarantee of correctness. Work after Scout should be described as more decision-ready: a stronger basis for judgment with evidence, assumptions, reasoning, limits, and epistemic distance made visible.
 
-The framework is published openly because the Zero Trust posture it advocates extends to the doctrine itself. You should not have to trust the publisher. You can verify the framework, contest it, fork it, or implement it elsewhere.
+External research on this site supports the problem. It does not prove that VALIS or any other product outperforms a strong model or a qualified human reviewer.
 
 HEADER
 
@@ -44,7 +47,7 @@ HEADER
     echo ""
     echo "---"
     echo ""
-    echo "# ${titles[$f]}"
+    echo "# $(title_for "$f")"
     echo ""
     # Strip only the YAML frontmatter (between the first two --- at the top of the file).
     # Horizontal rules (---) further down in the file must be preserved.
@@ -63,16 +66,16 @@ HEADER
 # Walks the bundle counting lines per page (between H1 markers), then checks
 # each page has at least 30 lines of content. The previous assertion used
 # "---" as page-end marker but that collides with horizontal rules inside
-# pages (e.g. between sections of the Buyer's Checklist).
+# pages.
 errors=0
 declare -a TITLES=()
 for f in "${PAGES[@]}"; do
-  TITLES+=("# ${titles[$f]}")
+  TITLES+=("# $(title_for "$f")")
 done
 
 for i in "${!PAGES[@]}"; do
   f="${PAGES[$i]}"
-  title="${titles[$f]}"
+  title="$(title_for "$f")"
   # The next title (or "" if last)
   next_idx=$((i + 1))
   if [ "$next_idx" -lt "${#TITLES[@]}" ]; then

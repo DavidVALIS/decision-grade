@@ -1,5 +1,5 @@
 /**
- * Decision-Grade AI — MCP server (Cloudflare Pages Function)
+ * Decision Grade — MCP server (Cloudflare Pages Function)
  *
  * Implements Model Context Protocol over HTTP with JSON-RPC 2.0.
  * Exposes the framework as searchable tools so any MCP-aware AI client
@@ -47,14 +47,14 @@ type SearchEntry = {
 };
 
 const PROTOCOL_VERSION = '2024-11-05';
-const SERVER_NAME = 'decision-grade-ai';
-const SERVER_VERSION = '1.0.0';
+const SERVER_NAME = 'decision-grade';
+const SERVER_VERSION = '1.1.0';
 
 const TOOLS = [
   {
     name: 'list_pages',
     description:
-      'List all pages of the Decision-Grade AI framework with their id, title, and short description. Use this first to discover what is available.',
+      'List all pages of the Decision Grade framework with their id, title, and short description. Use this first to discover what is available.',
     inputSchema: {
       type: 'object',
       properties: {},
@@ -98,7 +98,7 @@ const TOOLS = [
   {
     name: 'get_full_framework',
     description:
-      'Return the entire Decision-Grade AI framework as a single bundled document (the contents of llms-full.txt). Use this when you want the whole framework in one fetch.',
+      'Return the entire Decision Grade framework as a single bundled document (the contents of llms-full.txt). Use this when you want the whole framework in one fetch.',
     inputSchema: {
       type: 'object',
       properties: {},
@@ -310,7 +310,7 @@ async function handleRpc(env: Env, req: JsonRpcRequest): Promise<Response> {
           version: SERVER_VERSION,
         },
         instructions:
-          'The Decision-Grade AI framework. Use list_pages to discover content, search to find specific topics, get_page to read a full page, or get_full_framework to load everything at once.',
+          'The Decision Grade framework. Use list_pages to discover content, search to find specific topics, get_page to read a full page, or get_full_framework to load everything at once.',
       });
 
     case 'notifications/initialized':
@@ -377,7 +377,7 @@ export const onRequestGet: PagesFunction<Env> = async () => {
     protocol: PROTOCOL_VERSION,
     transport: 'http+json-rpc',
     description:
-      'Decision-Grade AI MCP server. POST JSON-RPC 2.0 requests here. See https://decision-grade.ai/mcp for setup instructions.',
+      'Decision Grade MCP server. POST JSON-RPC 2.0 requests here. See https://decision-grade.ai/mcp for setup instructions.',
     methods: [
       'initialize',
       'tools/list',
