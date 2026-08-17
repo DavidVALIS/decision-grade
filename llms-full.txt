@@ -4,11 +4,11 @@
 
 This file contains all nine pages published at decision-grade.ai, assembled for AI-assisted reading. The canonical reading experience is at https://decision-grade.ai. Source is at https://github.com/DavidVALIS/decision-grade.
 
-Published by VALIS Systems. Content licensed under Creative Commons Attribution 4.0 International (CC BY 4.0). Reference: https://valissystems.com.
+Publisher and commercial-interest disclosure appears in the About section. Content licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
 
-Within VALIS, Decision Grade is an earned Scout Full disposition for one declared use. It is not a permanent property of a document or a guarantee of correctness. Work after Scout should be described as more decision-ready: a stronger basis for judgment with evidence, assumptions, reasoning, limits, and epistemic distance made visible.
+Decision Grade is earned through a defined full review for one declared use. It is not a permanent property of a document or a guarantee of correctness. Work beyond the reviewed material should be described as more decision-ready: a stronger basis for judgment with evidence, assumptions, reasoning, limits, and epistemic distance made visible.
 
-External research on this site supports the problem. It does not prove that VALIS or any other product outperforms a strong model or a qualified human reviewer.
+External research on this site supports the problem. It does not prove that any particular system outperforms a strong model or a qualified human reviewer.
 
 
 ---
@@ -23,9 +23,9 @@ It may be accurate in parts, well written, and covered in citations. The importa
 That question is harder than fact-checking. It asks whether the evidence supports the claims, whether the numbers use the right base, whether the assumptions are visible, whether the conclusion follows, and what remains unresolved.
 
 <Note>
-  **Decision Grade is narrow on purpose.** Within VALIS, it is an earned Scout Full disposition for one declared use. It is not a permanent property of a document, a general label for good analysis, or a promise that the result is universally correct.
+  **Decision grade is narrow on purpose.** It is earned for one declared use through a defined review. It is not a permanent property of a document, a general label for good analysis, or a promise that the result is universally correct.
 
-  For work beyond a document scan—including synthesis, scenarios, backcasting, implications, and recommendations—the better term is **decision-ready**. The aim is a stronger basis for judgment, with the distance from source evidence made visible.
+  For work beyond the reviewed material—including synthesis, scenarios, backcasting, implications, and recommendations—the better term is **decision-ready**. The aim is a stronger basis for judgment, with the distance from source evidence made visible.
 </Note>
 
 ## The practical reframe
@@ -34,7 +34,7 @@ Think of the difference between an article with citations and the same article w
 
 The citations do not make the article correct. They give the reader a stronger basis for checking what the author says. A good integrity process does something similar for AI-assisted professional work: it makes the claims, evidence, assumptions, arithmetic, reasoning, limits, and unresolved questions easier to inspect before anyone relies on them.
 
-The result should be more decision-ready than an ordinary prompt-and-answer workflow. That is the product direction. How much better is an empirical question that must be measured against strong model and human comparators.
+A disciplined process should produce work that is more decision-ready than an ordinary prompt-and-answer workflow. How much better is an empirical question that must be measured against strong model and human comparators.
 
 ## Where to start
 
@@ -104,13 +104,13 @@ Each step may be useful. Each step also creates more room for assumptions, omitt
 - That one research result supplies a universal AI error rate.
 - That multiple models are automatically independent.
 - That a completed check guarantees a safe outcome.
-- That current external research proves VALIS outperforms a strong model or a qualified human reviewer.
+- That current external research proves any particular system outperforms a strong model or a qualified human reviewer.
 
 <Tip>
   **Published openly.** The source is on [GitHub](https://github.com/DavidVALIS/decision-grade). The framework is also available through [llms.txt](/llms.txt), the [full-text bundle](/llms-full.txt), and the [public MCP server](/mcp). Content is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 </Tip>
 
-This site is published by VALIS Systems. VALIS has a commercial interest in the problem and the approach described here. The evidence and limits are presented so the argument can be checked without treating that interest as proof.
+The [publisher and commercial-interest disclosure](/about) is stated separately from the doctrine.
 
 ---
 
@@ -202,13 +202,13 @@ The prose may become more specific as work moves down this table. Warranted spec
 
 Future-facing work can still be valuable. It should be presented as a conditional decision aid, not as a verified forecast.
 
-## Scout and the work after Scout
+## Verification and the work that follows
 
-Scout checks one document for one declared use. Within VALIS, **Decision Grade** is reserved for an earned Scout Full disposition for that use.
+A bounded integrity review checks one document for one declared use. **Decision Grade** applies only to the material and use that earned it.
 
-Analysis after Scout performs a different job. It may synthesize several checked documents, add research, build scenarios, test implications, or recommend action. The source material can be stronger because Scout checked it. The new reasoning still has to earn its own support.
+Work after that review performs a different job. It may synthesize several checked documents, add research, build scenarios, test implications, or recommend action. The source material can be stronger because it was checked. The new reasoning still has to earn its own support.
 
-The right promise for post-Scout work is therefore not that it becomes Decision Grade. It is that the work should become more decision-ready than ordinary prompting by preserving the evidence, assumptions, challenge, limits, and distance traveled.
+The Decision Grade determination does not transfer to newly authored work. That work should become more decision-ready than ordinary prompting by preserving the evidence, assumptions, challenge, limits, and distance traveled.
 
 Whether it is substantially better must be shown through comparative tests. It should not be asserted from architecture alone.
 
@@ -240,7 +240,7 @@ The evidence does not supply one universal AI error rate. It supports a more use
 - Long, delegated workflows introduce failure patterns that short tasks do not show.
 - A model name, citation, or completed run is not a complete account of system quality.
 
-External research supports the problem. It does **not** prove that Scout—or any other product—outperforms a strong direct model review or a qualified human reviewer.
+External research supports the problem. It does **not** prove that any particular review system outperforms a strong direct model review or a qualified human reviewer.
 
 ## AI is already in the work
 
@@ -275,7 +275,7 @@ In the preliminary baseline, three tested models achieved 48, 54, and 53 percent
 The important point is not a universal performance rate. It is the difference created by the rubric. A yes-or-no check can look much stronger while losing the distinction between full and partial support.
 
 <Note>
-  **Safe reading:** A document check should preserve degrees of support when those degrees matter to the decision. The RAND task concerned technical policy reports under a specific preliminary benchmark; its rates do not transfer automatically to board papers, investment memos, or Scout.
+  **Safe reading:** A document check should preserve degrees of support when those degrees matter to the decision. The RAND task concerned technical policy reports under a specific preliminary benchmark; its rates do not transfer automatically to board papers, investment memos, or another review system.
 </Note>
 
 [RAND report](https://doi.org/10.7249/RRA4269-1)
@@ -348,7 +348,7 @@ The shared lesson is modest: a model name and a final score do not fully describ
 
 ## What remains unproven
 
-The strongest missing evidence is VALIS's own comparative evidence:
+The strongest missing evidence for any decision-readiness system is comparative evidence:
 
 1. Same-document tests against a strong direct frontier-model review and qualified human review.
 2. Calibrated recall and precision for material findings.
@@ -357,7 +357,7 @@ The strongest missing evidence is VALIS's own comparative evidence:
 5. Repair value: whether authors fix material problems faster and more completely.
 6. Failure handling: whether incomplete, contradictory, or malformed work is reliably stopped and surfaced.
 
-Until those measures exist, “substantially more decision-ready” is the direction of the product and the standard it must earn—not a measured superiority claim.
+Until those measures exist, “substantially more decision-ready” is a standard to earn—not a measured superiority claim.
 
 ---
 
@@ -365,7 +365,7 @@ Until those measures exist, “substantially more decision-ready” is the direc
 
 
 <Note>
-  **The definition.** Decision Grade is an earned Scout Full disposition for one declared use. It is not another name for important work, a permanent document label, or a guarantee of correctness.
+  **The definition.** Decision Grade is earned through a defined full review for one declared use. It is not another name for important work, a permanent document label, or a guarantee of correctness.
 </Note>
 
 The term is useful only if it stays narrow.
@@ -384,11 +384,11 @@ Without a declared use, “quality” becomes a general impression. With a decla
 
 <CardGroup cols={2}>
   <Card title="It says" icon="circle-check">
-    - Scout Full completed the required work
+    - The required full review completed
     - The result is bound to a named document version
     - The use was declared
     - Material findings and limits were preserved
-    - The recorded disposition permits that declared use
+    - The recorded determination permits that declared use
   </Card>
 
   <Card title="It does not say" icon="circle-xmark">
@@ -396,20 +396,20 @@ Without a declared use, “quality” becomes a general impression. With a decla
     - No future event can invalidate the document
     - The document is fit for every audience or decision
     - A human no longer owns the decision
-    - Later analysis inherits the disposition
+    - Later work inherits the determination
   </Card>
 </CardGroup>
 
-Decision Grade is earned through a Full process. Full completion alone does not award it. A completed scan can still produce a hold, a refusal, a limited result, or named work that must happen first.
+Decision Grade is earned through a full review. Completion alone does not award it. A completed review can still produce a hold, a refusal, a limited result, or named work that must happen first.
 
-## Rapid and Full do different jobs
+## Triage and full review do different jobs
 
 | Process | Purpose | What it can do | What it cannot do |
 |---|---|---|---|
-| **Rapid** | Fast triage while work is changing | Indicate possible issues in either reliance lane | Clear Decision-lane reliance |
-| **Full** | Deeper pre-reliance process | Support a recorded use decision after required work completes | Guarantee clearance or universal safety |
+| **Triage** | Fast review while work is changing | Indicate possible issues in either reliance lane | Clear Decision-lane reliance |
+| **Full review** | Deeper pre-reliance process | Support a recorded use decision after required work completes | Guarantee clearance or universal safety |
 
-Rapid is not the “low-quality” product and Full is not a seal. They answer different workflow needs.
+Triage is not a low-quality substitute, and full review is not a seal. They answer different workflow needs.
 
 ## The integrity process
 
@@ -445,13 +445,13 @@ Useful separation comes from how the work is arranged: fresh source-bound reads,
 
 Different providers may strengthen that separation in some configurations. They do not create it automatically.
 
-## After Scout: decision readiness, not label inheritance
+## After review: decision readiness, not label inheritance
 
-Scout checks a bounded source artifact. Work after Scout can add synthesis, outside research, scenarios, backcasting, implications, and recommendations.
+A review checks a bounded source artifact. Work after it can add synthesis, outside research, scenarios, backcasting, implications, and recommendations.
 
 Those steps are valuable because decisions often require more than one document. They also increase epistemic distance. New reasoning introduces new assumptions and new ways for specificity to outrun support.
 
-The Decision Grade disposition therefore does not transfer to post-Scout Analysis.
+The Decision Grade determination therefore does not transfer to newly authored work.
 
 The right standard is **decision readiness**:
 
@@ -639,8 +639,8 @@ That is why lane discipline belongs at the point of use, not as a decorative lab
 | **Use** | Developing, provisional, reversible | Consequential, difficult to reverse |
 | **Examples** | Working synthesis, meeting preparation, idea development, early comparison | Capital allocation, rights, policy, safety, fiduciary, regulatory, board, or material reputation decisions |
 | **Default** | Unlabeled work enters here | Must be declared |
-| **Rapid** | May triage while work changes | May triage, but cannot clear reliance |
-| **Full** | May be used when deeper review is warranted | Required before consideration |
+| **Triage** | May indicate issues while work changes | May indicate issues, but cannot clear reliance |
+| **Full review** | May be used when deeper review is warranted | Required before consideration |
 | **Completion** | Does not imply outside truth | Does not automatically clear use |
 
 Volume does not mean careless. Decision does not mean prestigious. The labels exist to match review force to the cost of error.
@@ -652,7 +652,7 @@ flowchart TD
     A[Work is created or received] --> B[Declare intended use]
     B --> C{Reliance lane}
     C -->|Volume| D[Provisional use<br/>with visible limits]
-    C -->|Decision| E[Scout Full required]
+    C -->|Decision| E[Full review required]
     E --> F{Recorded use decision}
     F -->|Allowed| G[Use for the declared decision]
     F -->|Condition or Not Yet| H[Repair, research, or recheck]
@@ -663,13 +663,13 @@ flowchart TD
 
 The practical rule is straightforward: if the work moves into a more consequential use, the review must be reconsidered for that use.
 
-## Rapid is triage, not clearance
+## Triage is not clearance
 
-Rapid may identify issues while a document is changing. It can be useful in either lane, including work that may later support a consequential decision.
+Fast triage may identify issues while a document is changing. It can be useful in either lane, including work that may later support a consequential decision.
 
-Rapid never clears Decision work.
+Triage never clears Decision work.
 
-Full is the deeper process required before Decision-lane consideration. Full completion is still not automatic clearance. The result may allow the use, impose a condition, require more work, or refuse.
+A full review is required before Decision-lane consideration. Completion is still not automatic clearance. The result may allow the use, impose a condition, require more work, or refuse.
 
 ## Decision Grade does not travel by inheritance
 
@@ -692,19 +692,19 @@ The source material may be stronger because it was checked. The new use and new 
   <Card title="1. Unlabeled work reaches a consequential decision" icon="triangle-exclamation">
     A working brief is forwarded upward and treated as cleared because it looks finished.
 
-    **Control:** Unlabeled material defaults to Volume and may not support Decision-lane reliance without reclassification and Full.
+    **Control:** Unlabeled material defaults to Volume and may not support Decision-lane reliance without reclassification and a full review.
   </Card>
 
   <Card title="2. Every important document is called Decision Grade" icon="mask">
     The term becomes praise rather than a recorded disposition.
 
-    **Control:** Reserve Decision Grade for Scout Full, one declared use, and an earned allowed disposition.
+    **Control:** Reserve Decision Grade for one declared use and an earned allowed determination after full review.
   </Card>
 
-  <Card title="3. Rapid becomes the deadline shortcut" icon="clock">
-    Triage is treated as clearance because Full takes longer.
+  <Card title="3. Triage becomes the deadline shortcut" icon="clock">
+    Triage is treated as clearance because full review takes longer.
 
-    **Control:** Make the resulting action state explicit. Rapid can indicate; it cannot clear Decision reliance.
+    **Control:** Make the resulting action state explicit. Triage can indicate; it cannot clear Decision reliance.
   </Card>
 
   <Card title="4. The label survives a change in use" icon="arrows-rotate">
@@ -738,8 +738,8 @@ Do not invent a universal percentage of documents that should be in either lane.
 
 Measure the workflow with named denominators:
 
-- Decision-lane documents that received Full before reliance.
-- Rapid results later used without Full.
+- Decision-lane documents that received full review before reliance.
+- Triage results later used without full review.
 - Use changes that triggered reclassification.
 - Conditions or holds resolved before action.
 - Overrides, bypass signals, and time to responsible review.
@@ -886,14 +886,14 @@ A thin, complete comparison is worth more than a broad architecture with no meas
 
 
 <Note>
-  **Disclosure first.** This site is published by VALIS Systems. David Lundblad, VALIS's founder, is the author. VALIS has a commercial interest in the problem and the approach described here.
+  **Publisher disclosure.** Decision Grade is an independent guiding doctrine for executives. It is published by [VALIS Systems](https://valissystems.com) and authored by David Lundblad, its founder. VALIS builds commercial products related to the problem this framework addresses and therefore has an interest in the doctrine being useful and adopted. Nothing else on this site should be read as a product description, capability claim, or proof for the publisher.
 </Note>
 
 ## Why this site exists
 
 AI has made it easier to produce professional-looking work. The harder question is what that work supports before a person, agent, or system relies on it.
 
-This site offers a public language for that question:
+This site offers a public doctrine for answering that question:
 
 - declare the intended use;
 - establish what entered the process;
@@ -905,19 +905,13 @@ This site offers a public language for that question:
 
 The aim is not to make every document certain. It is to give the next responsible reader a stronger basis for judgment.
 
-## Relationship to VALIS
+## Independence of the doctrine
 
-VALIS is building verification infrastructure for AI-assisted professional decisions. Its category is data integrity for AI.
+The framework stands apart from any implementation.
 
-Scout is the VALIS product that scans one document for one declared use before reliance. Within VALIS, Decision Grade is an earned Scout Full disposition for that use.
+Its principles can be used to evaluate a direct model review, an internal workflow, a professional-service process, a software product, or a human review practice. No particular architecture, vendor, model, or brand earns trust merely by adopting the language.
 
-This public framework is broader than one product. It also discusses procurement, reliance lanes, measurement, and the discipline required when work moves beyond a checked source into synthesis, scenarios, backcasting, implications, and recommendations.
-
-Those later outputs should become more decision-ready. They do not inherit the Decision Grade disposition from their inputs.
-
-<Note>
-  Product architecture and intent are not proof of performance. Current VALIS claims must be supported by the named product state, environment, test, and evidence record. External research on this site supports the problem; it does not establish VALIS superiority.
-</Note>
+The doctrine should be judged by whether its claims are clear, its evidence is bounded, its limits are visible, and its proposed tests can be run by someone who does not share the author's interest.
 
 ## Evidence policy
 
@@ -949,21 +943,17 @@ The current evidence and open gaps are collected on [Current evidence](/evidence
 
 ## What this site is not
 
-This is not legal advice, investment advice, or a guarantee that a particular document or system is fit for use. It is not a product specification or a substitute for the accountable person's judgment.
+This is not legal advice, investment advice, a product specification, or a guarantee that a particular document or system is fit for use. It is not a substitute for the accountable person's judgment.
 
-The language is intended to make claims easier to test, not to make the publisher immune from challenge.
+The language is intended to make claims easier to test, not to make the author or publisher immune from challenge.
 
 ## Author and contact
 
-David Lundblad is the founder of VALIS Systems and the author of this framework.
+David Lundblad is the author of this framework.
 
-<CardGroup cols={2}>
+<CardGroup cols={1}>
   <Card title="Framework source" icon="github" href="https://github.com/DavidVALIS/decision-grade">
     Read the source, open an issue, or propose a correction.
-  </Card>
-
-  <Card title="VALIS Systems" icon="briefcase" href="https://valissystems.com">
-    Learn more about the company building in this category.
   </Card>
 </CardGroup>
 
@@ -1065,7 +1055,7 @@ curl -X POST https://decision-grade.ai/api/mcp \
 
 <CardGroup cols={3}>
   <Card title="Read-only" icon="eye">
-    The endpoint publishes framework content. It does not edit documents, run Scout, or take action in another system.
+    The endpoint publishes framework content. It does not edit documents, evaluate them, or take action in another system.
   </Card>
 
   <Card title="Public" icon="globe">

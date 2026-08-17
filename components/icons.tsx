@@ -286,33 +286,6 @@ export const IconBars = (p: IconProps) => (
   </Svg>
 );
 
-// ─── VALIS Mark ───
-export function ValisMark({ size = 26, color = 'var(--accent)' }: { size?: number; color?: string }) {
-  const opacities = [1, 0.72, 0.48, 0.85, 0.58];
-  const pos: [number, number][] = [
-    [12, 4],
-    [4, 12],
-    [20, 12],
-    [12, 20],
-    [12, 12],
-  ];
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
-      {pos.map(([x, y], i) => (
-        <rect
-          key={i}
-          x={x - 1.7}
-          y={y - 1.7}
-          width={3.4}
-          height={3.4}
-          fill={color}
-          opacity={opacities[i]}
-        />
-      ))}
-    </svg>
-  );
-}
-
 // ─── String → component map ───
 // Maps both the original icon names from chrome.jsx (IconLayers etc.)
 // and the FontAwesome-style names used in the existing MDX (icon="building", etc.)

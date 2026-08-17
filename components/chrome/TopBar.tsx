@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { IconSearch, IconGitHub, IconMenu, ValisMark } from '@/components/icons';
+import { IconCrosshair, IconSearch, IconGitHub, IconMenu } from '@/components/icons';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { REPO_URL } from '@/lib/pages';
 
@@ -30,7 +30,7 @@ export function TopBar() {
         </button>
 
         <Link href="/introduction/" className="dg-brand">
-          <ValisMark size={24} />
+          <IconCrosshair size={22} aria-hidden="true" />
           <span className="dg-brand-text">Decision Grade</span>
         </Link>
 

@@ -7,7 +7,7 @@ type Props = {
 
 type Theme = 'dark' | 'light';
 
-// VALIS palette per theme.
+// Site palette per theme.
 const PALETTE = {
   dark: {
     bg: '#15130f',
@@ -29,7 +29,7 @@ const PALETTE = {
   },
 } as const;
 
-// Map hardcoded hex values used in MDX mermaid blocks to VALIS-aligned values.
+// Map hardcoded hex values used in MDX mermaid blocks to site-aligned values.
 // Original colors were: slate-800 default, dark-red failure, dark-green success,
 // dark-amber warning. Each maps to a muted, on-brand tone per theme.
 function applyValisColors(chart: string, theme: Theme): string {

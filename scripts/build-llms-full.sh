@@ -31,11 +31,11 @@ PAGES=(introduction the-frame evidence the-doctrine buyers-checklist lane-discip
 
 This file contains all nine pages published at decision-grade.ai, assembled for AI-assisted reading. The canonical reading experience is at https://decision-grade.ai. Source is at https://github.com/DavidVALIS/decision-grade.
 
-Published by VALIS Systems. Content licensed under Creative Commons Attribution 4.0 International (CC BY 4.0). Reference: https://valissystems.com.
+Publisher and commercial-interest disclosure appears in the About section. Content licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
 
-Within VALIS, Decision Grade is an earned Scout Full disposition for one declared use. It is not a permanent property of a document or a guarantee of correctness. Work after Scout should be described as more decision-ready: a stronger basis for judgment with evidence, assumptions, reasoning, limits, and epistemic distance made visible.
+Decision Grade is earned through a defined full review for one declared use. It is not a permanent property of a document or a guarantee of correctness. Work beyond the reviewed material should be described as more decision-ready: a stronger basis for judgment with evidence, assumptions, reasoning, limits, and epistemic distance made visible.
 
-External research on this site supports the problem. It does not prove that VALIS or any other product outperforms a strong model or a qualified human reviewer.
+External research on this site supports the problem. It does not prove that any particular system outperforms a strong model or a qualified human reviewer.
 
 HEADER
 

@@ -2,25 +2,25 @@
 
 > A public framework for making AI-assisted professional work more decision-ready before reliance.
 
-Within VALIS, Decision Grade is an earned Scout Full disposition for one declared use. It is not a permanent property of a document or a guarantee of correctness. Work after Scout—including synthesis, scenarios, backcasting, implications, and recommendations—should be described as more decision-ready. The aim is a stronger basis for judgment with the source, evidence, assumptions, reasoning, limits, and epistemic distance made visible.
+Decision Grade is earned through a defined full review for one declared use. It is not a permanent property of a document or a guarantee of correctness. Work beyond the reviewed material—including synthesis, scenarios, backcasting, implications, and recommendations—should be described as more decision-ready. The aim is a stronger basis for judgment with the source, evidence, assumptions, reasoning, limits, and epistemic distance made visible.
 
-External research on this site supports the problem. It does not prove that VALIS or another product outperforms a strong direct model review or a qualified human reviewer.
+External research on this site supports the problem. It does not prove that any particular system outperforms a strong direct model review or a qualified human reviewer.
 
 ## Framework pages
 
 - [A stronger basis for a decision](https://decision-grade.ai/introduction): The core reframe. A polished, cited document can still fail the decision it was written to support. Decision Grade is narrow and use-bound; decision readiness is the broader goal.
-- [The problem](https://decision-grade.ai/the-frame): Why citations, coherence, and a correct endpoint do not establish that the route to a conclusion is sound. Introduces epistemic distance and the boundary between Scout and later Analysis.
+- [The problem](https://decision-grade.ai/the-frame): Why citations, coherence, and a correct endpoint do not establish that the route to a conclusion is sound. Introduces epistemic distance and the boundary between reviewed material and later authored work.
 - [Current evidence](https://decision-grade.ai/evidence): Active 2026 research on professional adoption, partial support, stepwise reasoning, long workflows, and multi-agent handoffs, with the task and limit attached to each result.
-- [What Decision Grade means](https://decision-grade.ai/the-doctrine): The formal use-bound Scout Full disposition, what it says, what it does not say, and why later analytical work cannot inherit the label.
+- [What Decision Grade means](https://decision-grade.ai/the-doctrine): The use-bound determination, what it says, what it does not say, and why later analytical work cannot inherit the label.
 - [Questions to ask before relying](https://decision-grade.ai/buyers-checklist): Ten evidence-oriented questions for reviewing an AI-assisted document, internal build, direct model review, or verification vendor. No universal score or invented threshold.
 - [Reliance lanes](https://decision-grade.ai/lane-discipline): Volume and Decision as intended reliance contexts. Rapid may triage in either lane but cannot clear Decision work; Full is required before consideration and does not automatically clear it.
 - [What to measure](https://decision-grade.ai/watchlist): Comparative quality, recall, precision, stability, decision usefulness, repair value, failure handling, and the discipline required for scenarios and watches.
-- [About](https://decision-grade.ai/about): Publisher disclosure, relationship to VALIS, evidence policy, and current claim boundaries.
+- [About](https://decision-grade.ai/about): Independence, evidence policy, authorship, and publisher-interest disclosure.
 - [MCP server](https://decision-grade.ai/mcp): Public, read-only access to the framework through `https://decision-grade.ai/api/mcp`.
 
-## Publisher
+## Publisher disclosure
 
-Published by VALIS Systems. VALIS has a commercial interest in the problem and the approach described here. Reference: https://valissystems.com.
+Decision Grade is an independent guiding doctrine for executives. It is published by VALIS Systems, which has a commercial interest in the problem and the approach described here. Reference: https://valissystems.com.
 
 Content is licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
 
